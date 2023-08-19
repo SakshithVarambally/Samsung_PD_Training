@@ -83,6 +83,18 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/6fc399a1d0b7
  read_liberty    /reads .lib file
  write_verilog   /create output netlist
 
+ .lib contains different flavours of gates(slow, medium, fast etc)
+ Combination delay in logic path determines the max speed of operation of digital logic circuit.
+
+ Fclk = 1/Tclk
+ More the clock speed, better is the performance
+
+ Tradeoff between different cells;  
+ Load in digital circuit is due to capacitance.
+ To charge/discharge the capacitance fast, we need transistors capable of sourcing more current -> wide transistors, low delay but more area and power.
+
+ Narrow transistors are used for less Area and power but more delay
+
  <img width="1085" alt="iverilog" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/83673d85b9d212bc5f5ba8bb78d6f59cba5088e6/yosys.png">
 
@@ -92,4 +104,12 @@ show : This command shows
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e7b25070eae5670927c16ebfcd6dbcbd2e6834b9/yosys%20with%20show.png">
 
 <details>
- <summary> Introduction to Yosys and Logic synthesis </summary> </summary>
+ <summary> Labs using Yosys and Sky130 PDKs</summary> </summary>
+ commands used for synthesis
+
+ read_verilog    /reads the verilog design
+ read_liberty    /reads .lib file
+ synth -top good_mux    
+ abc -liberty ../lib/sky       /Converts rtl to netlist, gates from .lib
+ write_verilog   /create output netlist 
+ 
