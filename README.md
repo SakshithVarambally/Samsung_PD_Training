@@ -84,4 +84,9 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/6fc399a1d0b7
  write_verilog   /create output netlist
 
  <img width="1085" alt="iverilog" 
-src=" ">
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/83673d85b9d212bc5f5ba8bb78d6f59cba5088e6/yosys.png">
+
+show : This command shows
+
+ <img width="1085" alt="iverilog" 
+src="">
