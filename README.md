@@ -42,4 +42,12 @@ If this design is relevent or not to the specifications, is checked through simu
 
 Test Bench: It is a set of stimulus that is applied as input, so that output can be checked with required specifications.
 
-<img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f81f46c9f861cb08ef7596f570cbd10cc01e9091/Samsung_PD_%23day0/icc2_shell.png">
+<img width="1085" alt="testbench" 
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e9b2ccf08d08d98cf3391071bc9e8cdf23bdb25/Test_bench.png">
+
+Iverilog simulates the design with testbench and gives a vcd file as an output.
+vcd : Value change dump format
+gtkwave is used to see the waveforms of output corresponding to input to verify the functionality of the design.
+
+<img width="1085" alt="iverilog" 
+src="  ">
