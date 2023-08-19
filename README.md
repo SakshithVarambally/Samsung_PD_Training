@@ -21,7 +21,7 @@ I invoked lc_shell using the following commands: lc_shell
      
 Below is the screenshot showing sucessful launch:
 
-<img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/afc24b6ff5118eda2448534db9fd8df4751c1efd/Samsung_PD_%23day0/lc_shell.png">
+<img width="1085" alt="icc2_shell" src="
 
 <details>
  <summary>pt_shell </summary>
@@ -68,4 +68,7 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/8fc352c80011
  gtkwave tb_goodmux.vcd               /loads the corresponding waveform
 
  <img width="1085" alt="iverilog" 
-src="  "> 
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d1b3c06d6bdfb1be0defff1a5c1928fd9a239524/iverilog.png"> 
+
+<img width="1085" alt="iverilog" 
+src=" > 
