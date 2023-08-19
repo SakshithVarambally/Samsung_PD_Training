@@ -89,4 +89,7 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/83673d85b9d2
 show : This command shows
 
  <img width="1085" alt="iverilog" 
-src="">
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e7b25070eae5670927c16ebfcd6dbcbd2e6834b9/yosys%20with%20show.png">
+
+<details>
+ <summary> Introduction to Yosys and Logic synthesis </summary> </summary>
