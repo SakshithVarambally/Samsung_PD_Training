@@ -74,7 +74,7 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d1b3c06d6bdf
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/6fc399a1d0b7dca892fa3f25ad518f11af132285/Samsung_PD_%23day0/gtkwave.png">
 
 <details>
- <summary> Labs using iverilog and gtkwave </summary> </summary>
+ <summary> Introduction to Yosys and Logic synthesis </summary> </summary>
  Yosys is a tool used for converting RTL to netlist
 
  The following commands are used in the simulation
@@ -83,4 +83,5 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/6fc399a1d0b7
  read_liberty    /reads .lib file
  write_verilog   /create output netlist
 
- 
+ <img width="1085" alt="iverilog" 
+src=" ">
