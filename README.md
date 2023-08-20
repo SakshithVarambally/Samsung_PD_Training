@@ -122,4 +122,4 @@ write_verilog                  #create output netlist
 The result shows the consolidated no of different gates being used in the netlist and the no of inputs and outputs.
  
 <img width="1085" alt="yosys" 
-src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e7b25070eae5670927c16ebfcd6dbcbd2e6834b9/yosys%20with%20show.png">
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/0724226ad98b9f7052627f71d9c85cbf7e136c93/Samsung_PD_%23day0/yosys_final.png">
