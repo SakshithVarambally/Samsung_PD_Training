@@ -41,7 +41,8 @@ Below is the screenshot showing sucessful launch:
 <details>
  <summary> yosys </summary>
 I invoked yosys using the following commands: yosys
-     
+
+Yosys is a framework for RTL synthesis and more. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. Yosys is the core component of most our implementation and verification flows.     
 
      
 Below is the screenshot showing sucessful launch:
