@@ -22,7 +22,8 @@ I invoked lc_shell using the following commands: lc_shell
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="lc_shell" 
-src="
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/3598414705a3bd628359947ffa97dfbfb6037bd3/Samsung_PD_%23day0/lc_shell.png">
+
 
 <details>
  <summary>pt_shell </summary>
@@ -121,5 +122,4 @@ write_verilog                  #create output netlist
 The result shows the consolidated no of different gates being used in the netlist and the no of inputs and outputs.
  
 <img width="1085" alt="yosys" 
-src="<img width="1085" alt="synthesis" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e7b25070eae5670927c16ebfcd6dbcbd2e6834b9/yosys%20with%20show.png">
