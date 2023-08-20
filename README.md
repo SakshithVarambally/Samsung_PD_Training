@@ -1,4 +1,4 @@
-# Samsung_PD_Training
+
 
 ## Day-0-Installation
 
@@ -13,9 +13,10 @@ IC Compiler II is a complete netlist-to-GDSII implementation system that include
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f81f46c9f861cb08ef7596f570cbd10cc01e9091/Samsung_PD_%23day0/icc2_shell.png">
-
- <details>
- <summary>lc_shell </summary>
+</details>
+	
+<details>
+<summary>lc_shell </summary>
 I invoked lc_shell using the following commands: lc_shell
 
 
@@ -25,6 +26,7 @@ Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="lc_shell" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/3598414705a3bd628359947ffa97dfbfb6037bd3/Samsung_PD_%23day0/lc_shell.png">
+</details>
 
 
 <details>
@@ -38,6 +40,8 @@ Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e0245a8279215425e6a0e2ccf73813ad8d797a02/Samsung_PD_%23day0/pt_shell.png">
 
+</details>
+
 <details>
  <summary> yosys </summary>
 I invoked yosys using the following commands: yosys
@@ -48,9 +52,10 @@ Yosys is a framework for RTL synthesis and more. It currently has extensive Veri
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/1626dbcc4c0acf3e2a1dac7f69d15f93b18925b4/yosys_invoke.png">
+</details>
 
 
-## Day-1 Introductio to Verilog RTL design and Synthesis
+# Day-1 Introduction to Verilog RTL design and Synthesis
 <details>
  <summary>  Introduction to open-source simulator iverilog</summary>
 	
@@ -71,6 +76,8 @@ gtkwave is used to see the waveforms of output corresponding to input to verify 
 <img width="1085" alt="iverilog" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/8fc352c80011d6e96499c5e888e259c13eee9d6e/iverilog%20represntation.png">
 
+</details>
+
 <details>
 <summary> Labs using iverilog and gtkwave </summary>
 
@@ -89,6 +96,8 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d1b3c06d6bdf
 
 <img width="1085" alt="iverilog" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/6fc399a1d0b7dca892fa3f25ad518f11af132285/Samsung_PD_%23day0/gtkwave.png">
+
+</details>
 
 <details>
 <summary> Introduction to Yosys and Logic synthesis </summary> </summary>
@@ -123,6 +132,8 @@ show : This command shows the design connections visually.
 
 <img width="1085" alt="iverilog" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e7b25070eae5670927c16ebfcd6dbcbd2e6834b9/yosys%20with%20show.png">
+
+</details>
 
 <details>
 <summary> Labs using Yosys and Sky130 PDKs</summary> </summary>
