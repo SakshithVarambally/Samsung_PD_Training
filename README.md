@@ -17,8 +17,9 @@ Below is the screenshot showing sucessful launch:
  <details>
  <summary>lc_shell </summary>
 I invoked lc_shell using the following commands: lc_shell
-     
 
+
+The Library Compiler tool from Synopsys captures ASIC libraries and translates them into Synopsys internal database format for physical synthesis or into VHDL format for simulation. 
      
 Below is the screenshot showing sucessful launch:
 
@@ -29,7 +30,8 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/3598414705a3
 <details>
  <summary>pt_shell </summary>
 I invoked pt_shell using the following commands: pt_shell
-     
+
+Synopsys' PrimeTime static timing analysis tool provides a single, golden, trusted signoff solution for timing, signal integrity, power and variation-aware analysis.     
 
      
 Below is the screenshot showing sucessful launch:
@@ -138,5 +140,6 @@ write_verilog -noattr
 -noattr reduces the netlist size by deleting the additional information attatched to the design elements making the netlist compact.
 
 The below screenshot shows the synthesised netlist of a good_mux i.e a 2:1 Mux 
+
 <img width="1085" alt="yosys" 
-src=">
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/404bb412d6b276af1dce4b8629cabc08f9411996/synthesised_netlist.png">
