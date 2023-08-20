@@ -6,8 +6,9 @@
  <details>
  <summary>icc2_shell </summary>
 I invoked icc2_shell using the following commands: icc2_shell
-     
 
+
+IC Compiler II is a complete netlist-to-GDSII implementation system that includes early design exploration and prototyping, detailed design planning, block implementation, chip assembly and sign-off driven design closure.
      
 Below is the screenshot showing sucessful launch:
 
@@ -34,6 +35,17 @@ I invoked pt_shell using the following commands: pt_shell
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e0245a8279215425e6a0e2ccf73813ad8d797a02/Samsung_PD_%23day0/pt_shell.png">
+
+<details>
+ <summary> yosys </summary>
+I invoked yosys using the following commands: yosys
+     
+
+     
+Below is the screenshot showing sucessful launch:
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e0245a8279215425e6a0e2ccf73813ad8d797a02/Samsung_PD_%23day0/pt_shell.png">
+
 
 ## Day-1 Introductio to Verilog RTL design and Synthesis
 <details>
@@ -113,11 +125,11 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e7b25070eae5
 <summary> Labs using Yosys and Sky130 PDKs</summary> </summary>
 commands used for synthesis
 
-read_verilog                   #reads the verilog design
-read_liberty                   #reads .lib file
+read_verilog                          #reads the verilog design
+read_liberty                          #reads .lib file
 synth -top good_mux    
-abc -liberty ../lib/sky        #Converts rtl to netlist, gates from .lib
-write_verilog                  #create output netlist 
+abc -liberty ../lib/<lib name>        #Converts rtl to netlist, gates from .lib
+write_verilog                         #create output netlist 
 
 The result shows the consolidated no of different gates being used in the netlist and the no of inputs and outputs.
  
