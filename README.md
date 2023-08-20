@@ -132,6 +132,11 @@ abc -liberty ../lib/<lib name>        #Converts rtl to netlist, gates from .lib
 write_verilog                         #create output netlist 
 
 The result shows the consolidated no of different gates being used in the netlist and the no of inputs and outputs.
- 
+
+
+write_verilog -noattr
+-noattr reduces the netlist size by deleting the additional information attatched to the design elements making the netlist compact.
+
+The below screenshot shows the synthesised netlist of a good_mux i.e a 2:1 Mux 
 <img width="1085" alt="yosys" 
-src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/0724226ad98b9f7052627f71d9c85cbf7e136c93/Samsung_PD_%23day0/yosys_final.png">
+src=">
