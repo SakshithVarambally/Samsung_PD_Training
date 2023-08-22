@@ -188,3 +188,66 @@ The below screenshot shows the synthesised netlist of a good_mux i.e a 2:1 Mux
 
 <img width="1085" alt="yosys" 
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/404bb412d6b276af1dce4b8629cabc08f9411996/synthesised_netlist.png">
+</details>
+
+# Day - 2
+
+<details>
+<summary> Introduction to timing libs </summary> </summary>
+
+A ".lib" file contains the following information
+
+Cell Definitions: The file contains definitions for various standard cells used in digital circuit design. Each cell is associated with a specific functionality.
+
+Timing Information: The ".lib" file includes data about cell delays, rise and fall times, input/output transition times, etc. This information helps in estimating the overall timing behavior of the designed circuit.
+
+Power Characteristics: ".lib" files often include data about power consumption for different operations and conditions, aiding in power analysis and optimization.
+
+Functional Behavior: The ".lib" file provides information about the logical behavior of each cell, including its truth table or Boolean equation representation. This data is essential for the synthesis process that translates a high-level description of the circuit into actual logic gates.
+
+Process, Voltage and Temperature Variations: Modern VLSI designs need to account for variations in process,voltage and temperature. ".lib" files might provide data on how cell behavior changes with different operating conditions.( P V T)
+Process: Variation due to Fabrication. As cells cant be fabricated in the exact same way when done in millions.
+Voltage : Variations due to different voltages.
+Temperature : Should work fine in Siachen glacier and Thar desert too.
+
+Sizing Information: The ".lib" file might include sizing information for cells, helping designers choose appropriate sizes based on performance and power considerations.
+
+<img width="1166" alt="lib untro" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/97d50aec-fa08-46f5-8d66-4ce6389d7c48">
+
+The above image shows that this library is in 
+Cmos Technology with 130 nm teachnology,
+typical typical process variation considered,
+1.8 Voltage,
+25 degree celcius temperature,
+and it also shows how the different parameters are measured further and on which units.
+
+<img width="1182" alt="lib_different_flavours" <img width="674" alt="lib_different_flavours2" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/328dfe52-aef3-4b72-8d07-ac6801b2c013">
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/32588b1e-6181-41a7-9d1e-74afc6fd4e02">
+
+The above screenshots show different flavours of the same cells which are present in the library.
+It also shows how the parameters differ for each combination of input applied to the cell.
+<img width="1576" alt="lib_comparison" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/57780378-7bda-4898-a102-b06b79ccec56">
+
+The above screenshot clearly shows the comparison between the flovours of the cell.
+With wider cells being the fastest but having the highest area in comparison to smaller cells which have less area but more delay. the Cell in between has parameters between these two cells. i.e Less area than wider cells and more area than smaller cells.
+
+</details>
+
+<details>
+<summary> Hierarchial Vs Flat </summary> </summary>
+
+Hierarchical synthesis involves breaking down a complex design into smaller, manageable blocks or modules. Each module is synthesized separately, and then these synthesized modules are integrated into the overall design hierarchy. This approach is beneficial for handling large and complex designs because it allows for better organization, and easier design reuse.
+
+Flat synthesis, on the other hand, involves synthesizing the entire design as a single unit or block. All modules and sub-modules are synthesized together in a single step. This approach is simpler in terms of design setup, but it may become impractical for large and complex designs due to the increased complexity and longer synthesis times.
+
+</details>
+
+<details>
+<summary> Various Flop Coding Styles </summary> </summary>
+
+Flops are used to avoid glitches in combinational circuits
+
+<img width="1700" alt="asyncff_waveform" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/cefdd811-5be5-4760-9be7-f8bc34e19059">
+
+The above waveform shows the operation of D flip-flop with asynchronous reset
+As soon as asynchronous reset is high, irrespective of Clock, the Q follows D.
