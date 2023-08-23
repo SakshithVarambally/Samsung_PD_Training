@@ -255,8 +255,8 @@ Flat synthesis, on the other hand, involves synthesizing the entire design as a 
 
 <details>
 <summary> Various Flop Coding Styles </summary> </summary>
-
-Flops are used to avoid glitches in combinational circuits
+Flops are iused as storage elemments in digital circuits which give stable output despite of glitches or unintended changes in input signals.
+With increasing number of combinational circuits, the glitches also increase ,thereby making output highly unstable.This property of Flop are used to avoid glitches in combinational circuits.
 
 <img width="1700" alt="asyncff_waveform" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/cefdd811-5be5-4760-9be7-f8bc34e19059">
 
@@ -268,17 +268,36 @@ As soon as asynchronous reset is high, irrespective of Clock, the Q follows D.
 The above screenshot represents the synchronous reset.
 Here we observe that the low(0) signal is seen at the output at the next positive clockedge after the apply of sychronous reset signal and not at the same instant as observed in asynchronous reset.
 
+The below screenshot represents the synthesised design of Asynchronous set D Flipflop.
+In Asynchronous set D Flipflop irrespective of the clock edge, the q value is  forced to 1 when async_set signal is high(1).
+ <img width="1716" alt="async_set" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/96bfeb83-e7c9-48ad-b0c6-91a0aef33737">
 
- <img width="1716" alt="async_set" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/96bfeb83-e7c9-48ad-b0c6-91a0aef33737"><img width="1725" alt="sync_res" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/45fe1860-0a1a-440a-96e2-67be36357306">
+ The below screenshot represents the synthesised design of Synchronous Reset D Flipflop.
+ In Synchronous Reset D Flipflo, Q value is set to 0 when the reset signal is high(1) but only at the next positive edge of clock signal.
+ <img width="1725" alt="sync_res" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/45fe1860-0a1a-440a-96e2-67be36357306">
 
-<img width="1725" alt="sync_res" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3a6ec4ba-ff11-486e-bfa3-d8baf7c26929">
 </details>
 
 <details>
 <summary> Optimizations </summary> </summary>
+Certain optiizations can be done in such a way that the logic can be realized without the usage of any hardware. Here are 2 such examples, 
+1st one is multiplying a 3bit number by 2, called as mult_2.
+<img width="1231" alt="mul2 verilog" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/bc506996-1203-475e-b46d-e5369963caea">
 
-<img width="1231" alt="mul2 verilog" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/bc506996-1203-475e-b46d-e5369963caea"><img width="1211" alt="mult_8 verilog" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b8bfea20-062f-4441-8240-0086788dfa71">
+It is seen that the result can be obtained directly by connecting the same input bits to the output and grounding the LSB.
+The synthesised netlist for the same is shown below
 
-<img width="1704" alt="mul2 synthesis" <img width="1208" alt="mul2 netlist" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/38effaa9-8678-4e71-823a-1eb0bc65ec6e">
+<img width="1704" alt="mul2 synthesis" <img width="1208" alt="mul2 netlist" 
+src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/38effaa9-8678-4e71-823a-1eb0bc65ec6e">
+
+Another such optimization is found in multiplying a 3bit number by 9.
+This is realized by applying a simple distributive property
+a*9=y;  
+a*(8+1)=y;
+a*8+a*1= y;
+<img width="1211" alt="mult_8 verilog" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b8bfea20-062f-4441-8240-0086788dfa71">
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/5425fbd3-db96-47dc-a0d9-30c70de29b03">
+
+The below screenshot represents the final netlist of the design.
+
 <img width="1206" alt="mult8_netlist" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3eaedf70-4980-4cd0-8dc9-175425d86e0f">
