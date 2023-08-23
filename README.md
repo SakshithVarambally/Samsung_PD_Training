@@ -190,7 +190,7 @@ The below screenshot shows the synthesised netlist of a good_mux i.e a 2:1 Mux
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/404bb412d6b276af1dce4b8629cabc08f9411996/synthesised_netlist.png">
 </details>
 
-# Day - 2  Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
+# Day - 2 Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
 
 
 <details>
