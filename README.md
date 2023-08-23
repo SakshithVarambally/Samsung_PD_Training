@@ -190,7 +190,8 @@ The below screenshot shows the synthesised netlist of a good_mux i.e a 2:1 Mux
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/404bb412d6b276af1dce4b8629cabc08f9411996/synthesised_netlist.png">
 </details>
 
-# Day - 2
+# Day - 2  Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
+
 
 <details>
 <summary> Introduction to timing libs </summary> </summary>
@@ -228,7 +229,7 @@ The above screenshots show different flavours of the same cells which are presen
 It also shows how the parameters differ for each combination of input applied to the cell.
 <img width="1576" alt="lib_comparison" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/57780378-7bda-4898-a102-b06b79ccec56">
 
-The above screenshot clearly shows the comparison between the flovours of the cell.
+The above screenshot clearly shows the comparison between the flavours of the cell.
 With wider cells being the fastest but having the highest area in comparison to smaller cells which have less area but more delay. the Cell in between has parameters between these two cells. i.e Less area than wider cells and more area than smaller cells.
 
 </details>
@@ -251,6 +252,13 @@ The below screenshot shows the final netlist after synthesis.
 
 Flat synthesis, on the other hand, involves synthesizing the entire design as a single unit or block. All modules and sub-modules are synthesized together in a single step. This approach is simpler in terms of design setup, but it may become impractical for large and complex designs due to the increased complexity and longer synthesis times.
 
+The below screeshot shows how the cells are being instantiated directly in flat synthesis rather tham sub_blocks/modules being synthesised in hierarchial synthesis.
+![flat_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/199cba63-5e14-4ed4-b0ca-245a190e6d4a)
+
+The below screenshot represents the netlist of the flattened synthesis of the design.
+![flat_synthesiss_netlist](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/05e6055f-c9b9-4334-a33f-a8939f08c336)
+
+
 </details>
 
 <details>
@@ -270,6 +278,10 @@ Here we observe that the low(0) signal is seen at the output at the next positiv
 
 The below screenshot represents the synthesised design of Asynchronous set D Flipflop.
 In Asynchronous set D Flipflop irrespective of the clock edge, the q value is  forced to 1 when async_set signal is high(1).
+Here along with the normal procedure of synthesis in yosys, one additional command being used is:
+dfflibmap -liberty <lib_path>
+
+This command will only look for d flip flops in the library and not all the cells.
  <img width="1716" alt="async_set" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/96bfeb83-e7c9-48ad-b0c6-91a0aef33737">
 
  The below screenshot represents the synthesised design of Synchronous Reset D Flipflop.
@@ -292,12 +304,12 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/
 
 Another such optimization is found in multiplying a 3bit number by 9.
 This is realized by applying a simple distributive property
-a*9=y;  
+a* (9) =y;  
 a*(8+1)=y;
-a*8+a*1= y;
+(a*8) + (a*1) = y;
 <img width="1211" alt="mult_8 verilog" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b8bfea20-062f-4441-8240-0086788dfa71">
 src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/5425fbd3-db96-47dc-a0d9-30c70de29b03">
 
-The below screenshot represents the final netlist of the design.
+The below screenshot represents the final netlist of the design. The result is given by simply represting the inputs i.e. (a,a)
 
 <img width="1206" alt="mult8_netlist" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3eaedf70-4980-4cd0-8dc9-175425d86e0f">
