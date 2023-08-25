@@ -313,3 +313,14 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/
 The below screenshot represents the final netlist of the design. The result is given by simply represting the inputs i.e. (a,a)
 
 <img width="1206" alt="mult8_netlist" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3eaedf70-4980-4cd0-8dc9-175425d86e0f">
+
+<details>
+<summary> Optimizations </summary> </summary>
+
+<img width="467" alt="Screenshot 2023-08-24 at 10 33 41 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a80577f5-283b-45a9-b27e-216d18eb1fe2">
+
+<img width="1714" alt="Screenshot 2023-08-24 at 10 43 06 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0cefc2f9-acaf-4e42-a6a9-812d303bc7b6">
+<img width="1728" alt="Screenshot 2023-08-24 at 10 45 51 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/315078e5-c4a7-4f93-9bf8-89bb087e0f5f">
+<img width="1690" alt="Screenshot 2023-08-24 at 10 46 05 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0e5f76cc-8db5-4a7f-929b-2732584068a6">
+<img width="1702" alt="Screenshot 2023-08-25 at 9 14 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/497fdb67-678b-45a9-a13c-756d1e6c2c64">
+<img width="1674" alt="Screenshot 2023-08-25 at 9 16 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/216e2cc4-69ff-4bf5-bb83-d841598282e0">
