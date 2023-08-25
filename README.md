@@ -324,3 +324,10 @@ The below screenshot represents the final netlist of the design. The result is g
 <img width="1690" alt="Screenshot 2023-08-24 at 10 46 05 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0e5f76cc-8db5-4a7f-929b-2732584068a6">
 <img width="1702" alt="Screenshot 2023-08-25 at 9 14 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/497fdb67-678b-45a9-a13c-756d1e6c2c64">
 <img width="1674" alt="Screenshot 2023-08-25 at 9 16 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/216e2cc4-69ff-4bf5-bb83-d841598282e0">
+
+multiple_opt2
+<img width="1294" alt="Screenshot 2023-08-25 at 9 35 55 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a81ce8db-83a7-4dd3-ab65-41c73359e75d">
+
+multiple.v
+
+<img width="1308" alt="Screenshot 2023-08-25 at 9 39 24 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/495dc5b5-cfc8-442f-80e9-b79fccf6f9ba">
