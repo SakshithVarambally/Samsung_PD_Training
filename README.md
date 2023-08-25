@@ -336,18 +336,41 @@ Optimized circuit
 <img width="1714" alt="Screenshot 2023-08-24 at 10 43 06 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0cefc2f9-acaf-4e42-a6a9-812d303bc7b6">
 
 Example 2
+
+![opt_check2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/4a4cea07-c748-4647-9b53-6d1ee52023bc)
+
 <img width="1728" alt="Screenshot 2023-08-24 at 10 45 51 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/315078e5-c4a7-4f93-9bf8-89bb087e0f5f">
-<img width="1690" alt="Screenshot 2023-08-24 at 10 46 05 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0e5f76cc-8db5-4a7f-929b-2732584068a6">
+
 Example 3
+![opt_check3_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/f2013533-c9a9-4b3d-805a-6626beea263d)
+
+
 <img width="1702" alt="Screenshot 2023-08-25 at 9 14 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/497fdb67-678b-45a9-a13c-756d1e6c2c64">
-<img width="1674" alt="Screenshot 2023-08-25 at 9 16 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/216e2cc4-69ff-4bf5-bb83-d841598282e0">
 
-multiple_opt2
-<img width="1294" alt="Screenshot 2023-08-25 at 9 35 55 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a81ce8db-83a7-4dd3-ab65-41c73359e75d">
 
-multiple.v
+Example 4
+ ![opt_check4_veri](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77714b16-abd8-499d-b002-141ce1c11b78)
 
-<img width="1308" alt="Screenshot 2023-08-25 at 9 39 24 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/495dc5b5-cfc8-442f-80e9-b79fccf6f9ba">
+![opt_check4_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/545cb4c8-c9bb-4524-ab8f-7a04cbe58fbf)
+
+Example 5 Multiple modules
+![multiple_module_opt2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/266d74d3-8936-45d0-bd94-2c3862f7fd69)
+
+Without Flatten
+![multiple_opt2_synthesiswitoutflat](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b982c7b2-08ad-4a33-819f-3454ea6ca2ee)
+
+With Flatten
+![multi_opt2_withflatten_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c3011331-32e6-498d-a0f0-37c79bf3e74c)
+
+Example 6
+![multiopt_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/1887119b-d73d-4004-a294-e11313967fb4)
+
+Without flatten
+![muti_opt_syntheiswithoutflatten](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/93d04f84-4da3-4f8a-9891-c14d3c70e401)
+
+With flatten
+![multi_opt_withflatten](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/06dae011-baaa-4167-aef5-a1299067cd5a)
+
 
 Basic Methods:
 
