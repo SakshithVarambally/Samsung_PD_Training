@@ -313,15 +313,32 @@ src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/
 The below screenshot represents the final netlist of the design. The result is given by simply represting the inputs i.e. (a,a)
 
 <img width="1206" alt="mult8_netlist" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3eaedf70-4980-4cd0-8dc9-175425d86e0f">
+</details>
+
+# Day-3 Combinational and sequential optimizations 
 
 <details>
-<summary> Optimizations </summary> </summary>
+<summary> Combinational logic optimizations with examples</summary> </summary>
+Combinational logic optimization involves refining digital designs to enhance efficiency in terms of area and power. This is achieved through synthesis tools that apply techniques like constant propagation and Boolean logic optimization, often using methods like Karnaugh maps or the Quine-McCluskey algorithm. These methods help in streamlining the logic circuit to achieve a more efficient and effective design.
+
+An example for constant propagation
+#insert constant propagation pic here
+
+Example for Boolean logic optimization
+y=a?(b?c:(c?a:)):(!c)
+
+The given concurrent statement utilizes a ternary operator to create a sequence of multiplexers. Upon analyzing the boolean expressions at the outputs of each multiplexer and applying boolean reduction methods, the resulting expression for output 'y' simplifies to ~(a XOR c). This effectively represents the logic of the initial expression. To optimize the circuit using Yosys, you can utilize the command "opt_clean -purge" within the Yosys environment. This command aids in streamlining the circuit design.
+
+Example-1
 
 <img width="467" alt="Screenshot 2023-08-24 at 10 33 41 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a80577f5-283b-45a9-b27e-216d18eb1fe2">
-
+Optimized circuit 
 <img width="1714" alt="Screenshot 2023-08-24 at 10 43 06 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0cefc2f9-acaf-4e42-a6a9-812d303bc7b6">
+
+Example 2
 <img width="1728" alt="Screenshot 2023-08-24 at 10 45 51 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/315078e5-c4a7-4f93-9bf8-89bb087e0f5f">
 <img width="1690" alt="Screenshot 2023-08-24 at 10 46 05 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0e5f76cc-8db5-4a7f-929b-2732584068a6">
+Example 3
 <img width="1702" alt="Screenshot 2023-08-25 at 9 14 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/497fdb67-678b-45a9-a13c-756d1e6c2c64">
 <img width="1674" alt="Screenshot 2023-08-25 at 9 16 54 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/216e2cc4-69ff-4bf5-bb83-d841598282e0">
 
@@ -331,3 +348,63 @@ multiple_opt2
 multiple.v
 
 <img width="1308" alt="Screenshot 2023-08-25 at 9 39 24 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/495dc5b5-cfc8-442f-80e9-b79fccf6f9ba">
+
+Basic Methods:
+
+Sequential Constant Propagation: This initial approach focuses on optimizing logic circuits by capitalizing on situations where the output of a flip-flop remains persistently zero. However, when the second flip-flop's output is in a constant state of change, it's unsuitable for this optimization technique.
+Advanced Strategies:
+
+State Optimization: More advanced in nature, this technique centers around enhancing efficiency by identifying and removing unused states within a circuit. The outcome is a leaner and more efficient state machine.
+Retiming: A potent strategy involving the strategic movement of registers within the combinational logic of a circuit. This optimization improves performance by finding the right balance between power consumption and delay, all while preserving the original input-output behavior.
+Sequential Logic Cloning (Floor Plan Aware Synthesis): Particularly relevant during the physical synthesis phase, this method tackles routing delay challenges. By introducing intermediary flip-flops between a source flip-flop and more distant ones, the aim is to reduce delays. The term "cloning" is used due to the creation of new flip-flops with identical functionality to the source.
+
+Example 1
+Here the output is recieved in the next clock cycle, after the receiveal of reset signal.
+
+
+![dff_const1_V](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/646c09a8-d604-4ee0-ac34-78f9e261b6f6)
+
+Simulation
+![dff_const1](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/7c27b21c-377b-412b-a187-f9f8b5781cb7)
+Synthesis
+
+![dff_const1_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/ac672e3f-b3a8-45e0-ba37-974abde252b5)
+
+Example 2
+Here flop wont be enabled as the output is always high.
+![dff_const2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fa2af418-a916-4aa7-ad67-c4d463ad16eb)
+Simulation
+![dff_const2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9b72a06b-51e3-4e34-a9ed-d03b6f506001)
+Synthesis
+![dff_const2_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/6179c411-6d9c-4d1b-95ed-74636d7cb9a8)
+Example 3
+![dff_const3_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fad1fde8-44a7-41e8-a0c1-e19360b71bce)
+Simulation
+![dff_const3_simulation](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0f2cbe02-6725-4e85-8aed-d1ca5cc528a0)
+Synthesis
+![dff_const3_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0a7f86ee-36a6-404b-8eb5-0a5b0f92694d)
+Example 4
+![dff_const4_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3d3c8c0d-9cee-47df-bff2-db7719811e97)
+Simulation
+![dff_const4](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/74617ffb-d6db-4186-8a06-a27bb8808eb0)
+Synthesis
+![dff_const4_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/797e7cc2-0f15-4912-9404-6b6a3f6a3dbd)
+Example 5
+![dff_const5_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a29946be-4afd-4816-ae36-3410c546dcf3)
+Simulation
+![dff_const5](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/1c8986ee-2d29-43d2-911b-a1414987bf4b)
+Synthesis
+![dff_const5_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/ac0538fd-85c1-4a99-9fb4-e593b5204e24)
+
+<details> Unused output </details>
+Counter verilog
+![counter_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fb581a31-a654-469c-9042-87493a29e171)
+Counter Synthesis
+![counter_syntheswis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/498aae90-0297-45c5-bd6e-56cff8045d94)
+
+Counter 2 verilog
+![counter_opt2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/5c5e80d0-c178-4525-8fe0-cf3ce4d647d6)
+
+Counter synthesised netlist
+
+![counter_opt2_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/230783bb-17d0-405a-b879-c8bef03aa3aa)
