@@ -318,7 +318,7 @@ The below screenshot represents the final netlist of the design. The result is g
 # Day-3 Combinational and sequential optimizations 
 
 <details>
-<summary> Combinational logic optimizations with examples</summary> </summary>
+<summary> Combinational logic optimizations with examples</summary> 
 Combinational logic optimization involves refining digital designs to enhance efficiency in terms of area and power. This is achieved through synthesis tools that apply techniques like constant propagation and Boolean logic optimization, often using methods like Karnaugh maps or the Quine-McCluskey algorithm. These methods help in streamlining the logic circuit to achieve a more efficient and effective design.
 
 An example for constant propagation
@@ -342,6 +342,7 @@ Example 2
 <img width="1728" alt="Screenshot 2023-08-24 at 10 45 51 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/315078e5-c4a7-4f93-9bf8-89bb087e0f5f">
 
 Example 3
+
 ![opt_check3_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/f2013533-c9a9-4b3d-805a-6626beea263d)
 
 
@@ -349,28 +350,39 @@ Example 3
 
 
 Example 4
+
  ![opt_check4_veri](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77714b16-abd8-499d-b002-141ce1c11b78)
 
 ![opt_check4_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/545cb4c8-c9bb-4524-ab8f-7a04cbe58fbf)
 
 Example 5 Multiple modules
+
 ![multiple_module_opt2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/266d74d3-8936-45d0-bd94-2c3862f7fd69)
 
 Without Flatten
+
 ![multiple_opt2_synthesiswitoutflat](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b982c7b2-08ad-4a33-819f-3454ea6ca2ee)
 
 With Flatten
+
 ![multi_opt2_withflatten_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c3011331-32e6-498d-a0f0-37c79bf3e74c)
 
 Example 6
+
 ![multiopt_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/1887119b-d73d-4004-a294-e11313967fb4)
 
 Without flatten
+
 ![muti_opt_syntheiswithoutflatten](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/93d04f84-4da3-4f8a-9891-c14d3c70e401)
 
 With flatten
+
 ![multi_opt_withflatten](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/06dae011-baaa-4167-aef5-a1299067cd5a)
 
+</details>
+<details> 
+	
+<summary>Sequential Logic Optimizations </summary>
 
 Basic Methods:
 
@@ -382,52 +394,92 @@ Retiming: A potent strategy involving the strategic movement of registers within
 Sequential Logic Cloning (Floor Plan Aware Synthesis): Particularly relevant during the physical synthesis phase, this method tackles routing delay challenges. By introducing intermediary flip-flops between a source flip-flop and more distant ones, the aim is to reduce delays. The term "cloning" is used due to the creation of new flip-flops with identical functionality to the source.
 
 Example 1
-Here the output is recieved in the next clock cycle, after the receiveal of reset signal.
+
+Here the output is recieved in the next clock cycle, after the reset signal is recieved.
 
 
 ![dff_const1_V](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/646c09a8-d604-4ee0-ac34-78f9e261b6f6)
 
 Simulation
+
 ![dff_const1](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/7c27b21c-377b-412b-a187-f9f8b5781cb7)
+
 Synthesis
 
 ![dff_const1_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/ac672e3f-b3a8-45e0-ba37-974abde252b5)
 
 Example 2
+
 Here flop wont be enabled as the output is always high.
+
 ![dff_const2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fa2af418-a916-4aa7-ad67-c4d463ad16eb)
+
 Simulation
+
 ![dff_const2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9b72a06b-51e3-4e34-a9ed-d03b6f506001)
 Synthesis
+
 ![dff_const2_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/6179c411-6d9c-4d1b-95ed-74636d7cb9a8)
+
 Example 3
+
 ![dff_const3_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fad1fde8-44a7-41e8-a0c1-e19360b71bce)
+
 Simulation
+
 ![dff_const3_simulation](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0f2cbe02-6725-4e85-8aed-d1ca5cc528a0)
+
 Synthesis
+
 ![dff_const3_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0a7f86ee-36a6-404b-8eb5-0a5b0f92694d)
+
 Example 4
+
 ![dff_const4_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3d3c8c0d-9cee-47df-bff2-db7719811e97)
+
+
 Simulation
+
 ![dff_const4](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/74617ffb-d6db-4186-8a06-a27bb8808eb0)
+
 Synthesis
+
 ![dff_const4_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/797e7cc2-0f15-4912-9404-6b6a3f6a3dbd)
+
 Example 5
+
 ![dff_const5_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a29946be-4afd-4816-ae36-3410c546dcf3)
+
 Simulation
+
 ![dff_const5](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/1c8986ee-2d29-43d2-911b-a1414987bf4b)
+
 Synthesis
+
 ![dff_const5_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/ac0538fd-85c1-4a99-9fb4-e593b5204e24)
 
-<details> Unused output </details>
+</details>
+
+<details> 
+	
+<summary>Unused output </summary>
+
+Sequential optimizations for unused outputs are techniques used to improve the efficiency and power consumption of digital circuits by minimizing the impact of unused or unnecessary outputs.These outputs consume power and can contribute to signal integrity issues.
+
 Counter verilog
+A 3bit counter is realized and syntheised.
+
 ![counter_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fb581a31-a654-469c-9042-87493a29e171)
+
 Counter Synthesis
+
 ![counter_syntheswis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/498aae90-0297-45c5-bd6e-56cff8045d94)
 
 Counter 2 verilog
+
 ![counter_opt2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/5c5e80d0-c178-4525-8fe0-cf3ce4d647d6)
 
 Counter synthesised netlist
 
 ![counter_opt2_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/230783bb-17d0-405a-b879-c8bef03aa3aa)
+</details>
