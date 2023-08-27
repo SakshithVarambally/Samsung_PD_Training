@@ -322,7 +322,7 @@ The below screenshot represents the final netlist of the design. The result is g
 Combinational logic optimization involves refining digital designs to enhance efficiency in terms of area and power. This is achieved through synthesis tools that apply techniques like constant propagation and Boolean logic optimization, often using methods like Karnaugh maps or the Quine-McCluskey algorithm. These methods help in streamlining the logic circuit to achieve a more efficient and effective design.
 
 An example for constant propagation
-#insert constant propagation pic here
+
 
 Example for Boolean logic optimization
 y=a?(b?c:(c?a:)):(!c)
@@ -331,17 +331,21 @@ The given concurrent statement utilizes a ternary operator to create a sequence 
 
 Example-1
 
+By pulling one of the inputs to logic 0, the floo gets minimized to an And gate.
 <img width="467" alt="Screenshot 2023-08-24 at 10 33 41 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a80577f5-283b-45a9-b27e-216d18eb1fe2">
 Optimized circuit 
 <img width="1714" alt="Screenshot 2023-08-24 at 10 43 06 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0cefc2f9-acaf-4e42-a6a9-812d303bc7b6">
 
 Example 2
+The given Verilog code corresponds to the logic equation y = a'b + a. As a result of optimization, the synthesized outcome will be a basic OR gate.
 
 ![opt_check2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/4a4cea07-c748-4647-9b53-6d1ee52023bc)
 
 <img width="1728" alt="Screenshot 2023-08-24 at 10 45 51 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/315078e5-c4a7-4f93-9bf8-89bb087e0f5f">
 
 Example 3
+
+Originally, the provided code aimed to implement two multiplexers. However, through optimization, it condenses into a 3-input AND gate, as illustrated below.
 
 ![opt_check3_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/f2013533-c9a9-4b3d-805a-6626beea263d)
 
@@ -353,9 +357,14 @@ Example 4
 
  ![opt_check4_veri](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77714b16-abd8-499d-b002-141ce1c11b78)
 
-![opt_check4_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/545cb4c8-c9bb-4524-ab8f-7a04cbe58fbf)
+After optimization the result is an xor Gate.
+
+![opt_check4_v]
+(https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/545cb4c8-c9bb-4524-ab8f-7a04cbe58fbf)
 
 Example 5 Multiple modules
+
+Here the multiple modules are being used, but with optimization we check if these are actually required and used or not.
 
 ![multiple_module_opt2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/266d74d3-8936-45d0-bd94-2c3862f7fd69)
 
@@ -366,6 +375,7 @@ Without Flatten
 With Flatten
 
 ![multi_opt2_withflatten_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c3011331-32e6-498d-a0f0-37c79bf3e74c)
+
 
 Example 6
 
@@ -379,7 +389,9 @@ With flatten
 
 ![multi_opt_withflatten](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/06dae011-baaa-4167-aef5-a1299067cd5a)
 
+
 </details>
+
 <details> 
 	
 <summary>Sequential Logic Optimizations </summary>
@@ -387,16 +399,18 @@ With flatten
 Basic Methods:
 
 Sequential Constant Propagation: This initial approach focuses on optimizing logic circuits by capitalizing on situations where the output of a flip-flop remains persistently zero. However, when the second flip-flop's output is in a constant state of change, it's unsuitable for this optimization technique.
+
 Advanced Strategies:
 
 State Optimization: More advanced in nature, this technique centers around enhancing efficiency by identifying and removing unused states within a circuit. The outcome is a leaner and more efficient state machine.
+
 Retiming: A potent strategy involving the strategic movement of registers within the combinational logic of a circuit. This optimization improves performance by finding the right balance between power consumption and delay, all while preserving the original input-output behavior.
+
 Sequential Logic Cloning (Floor Plan Aware Synthesis): Particularly relevant during the physical synthesis phase, this method tackles routing delay challenges. By introducing intermediary flip-flops between a source flip-flop and more distant ones, the aim is to reduce delays. The term "cloning" is used due to the creation of new flip-flops with identical functionality to the source.
 
 Example 1
 
-Here the output is recieved in the next clock cycle, after the reset signal is recieved.
-
+The below code represents a D flip-flop with an asynchronous reset. This reset function allows the system to be reset independently of its clock signal. After the reset, the system returns to its regular operation synchronously for the next cycle. 
 
 ![dff_const1_V](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/646c09a8-d604-4ee0-ac34-78f9e261b6f6)
 
@@ -408,18 +422,23 @@ Synthesis
 
 ![dff_const1_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/ac672e3f-b3a8-45e0-ba37-974abde252b5)
 
+We can see that 1 flop is enough to realize the design.
+
 Example 2
 
-Here flop wont be enabled as the output is always high.
 
 ![dff_const2_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fa2af418-a916-4aa7-ad67-c4d463ad16eb)
 
 Simulation
 
 ![dff_const2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9b72a06b-51e3-4e34-a9ed-d03b6f506001)
+
 Synthesis
 
 ![dff_const2_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/6179c411-6d9c-4d1b-95ed-74636d7cb9a8)
+
+It's noticeable that the output consistently remains at '1' regardless of changes in the reset or clock signals. Based on this waveform, it seems that utilizing a buffer cell with its input tied to a logic '1' is sufficient to accurately represent and achieve the desired behavior of the design.
+Hence flop wont be enabled as the output is always high.
 
 Example 3
 
@@ -430,6 +449,8 @@ Simulation
 ![dff_const3_simulation](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0f2cbe02-6725-4e85-8aed-d1ca5cc528a0)
 
 Synthesis
+
+In this design, when the reset is going from '1' to '0' q1 will be set to '1' in next edge of clock cycle and q will be latched a data from q1. Because of Clk-Q delay(Tc-q) q is latched with '0' and will be changed to '1' in next edge of cock cycle.
 
 ![dff_const3_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0a7f86ee-36a6-404b-8eb5-0a5b0f92694d)
 
@@ -446,6 +467,7 @@ Synthesis
 
 ![dff_const4_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/797e7cc2-0f15-4912-9404-6b6a3f6a3dbd)
 
+The tool has finally optimized the design to 2 buffers with input pulled to logic 1.
 Example 5
 
 ![dff_const5_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a29946be-4afd-4816-ae36-3410c546dcf3)
@@ -457,6 +479,9 @@ Simulation
 Synthesis
 
 ![dff_const5_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/ac0538fd-85c1-4a99-9fb4-e593b5204e24)
+
+Because the values of q1 and q change based on both the reset signal and the clock, the design has been optimized by using two D flip-flops. The first flip-flop's data (D) input is directly connected to a logic '1', and its output is then connected to the input of the second flip-flop. This arrangement helps manage the transitions more effectively.
+
 
 </details>
 
@@ -473,6 +498,8 @@ A 3bit counter is realized and syntheised.
 
 Counter Synthesis
 
+During the synthesis process, when the 0 bit is solely used for output, only a single flip-flop is created with an inverter for the toggle function. The other bits remain unused, resulting in their respective flip-flops not being generated.
+
 ![counter_syntheswis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/498aae90-0297-45c5-bd6e-56cff8045d94)
 
 Counter 2 verilog
@@ -482,4 +509,6 @@ Counter 2 verilog
 Counter synthesised netlist
 
 ![counter_opt2_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/230783bb-17d0-405a-b879-c8bef03aa3aa)
+
+In this scenario, all three bits are utilized, necessitating the presence of three flip-flops. Additionally, an adder circuit has been incorporated to handle the counting logic.
 </details>
