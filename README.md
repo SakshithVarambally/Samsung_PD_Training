@@ -515,6 +515,35 @@ In this scenario, all three bits are utilized, necessitating the presence of thr
 
 # day 4
 
+GLS involves comparing the behavior of the synthesized gate-level netlist with that of the original RTL (Register Transfer Level) code. This comparison aims to ensure that the synthesized netlist maintains both the logical functionality and the expected timing of the original design.
+
+When mismatches occur between synthesis and simulation, GLS helps identify and resolve these issues. It's essential to use the same testbench for both RTL simulation and GLS. This ensures that if the netlist and the RTL are logically the same, running the same testbench should yield matching outputs for both.
+Gate level verilog models come in two main types: timing-aware models that assess both functionality and timing, and functional models that focus solely on functionality. This distinction helps capture and rectify differences between the synthesized netlist and the RTL design.
+
+These are some reasons why we should check the netlist after synthesis
+
+Missing Sensitivity List: The simulator detects changes in inputs to determine when computations should occur. If the sensitivity list is incomplete, the simulator might not catch all required input changes, leading to incorrect or stagnant outputs.
+
+Blocking and Non-Blocking Assignments: The way assignments are made in Verilog can impact the simulation results. Mixing blocking and non-blocking assignments improperly can cause mismatches between synthesis and simulation.
+
+Non-Standard Verilog Coding: Using coding practices not recognized by synthesis tools can lead to differences in how the code is interpreted during synthesis versus simulation. This can result in unexpected behavior.
+
+Blocking and non-blocking statements are foundational concepts in Verilog, crucial for accurately simulating digital circuit behavior:
+
+Blocking Statements: With the "=" symbol, blocking assignments execute in a sequence, pausing the execution of subsequent statements. They provide immediate updates to variables, instantly reflecting the changes made.
+
+Non-blocking Statements: Denoted by "<=", non-blocking assignments allow parallel execution and don't impede subsequent statements. They capture simultaneous behaviors, mimicking the action of registers and flip-flops.
+
+Sequential Flow: Blocking statements follow a sequential flow, processed in the order they're written. This characteristic makes them suitable for representing combinational logic.
+
+Concurrent Operation: Non-blocking assignments model hardware components like registers and flip-flops, accommodating their concurrent updates. This aligns with the simultaneous nature of these elements in actual hardware.
+
+Risk of Race Conditions: Incorporating blocking assignments within "always" blocks containing multiple assignments can introduce race conditions. These conditions emerge when the assignment order influences the final result.
+
+Coveats with blocking statements
+#insert here
+
+
 Example 1:
 This verilog code represents a mux that selects between i1 and i0 based on the select line.
 ![ternary_mux_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/72ca3c54-ec25-4c7f-9ebb-1c55be7e7e84)
@@ -536,12 +565,22 @@ This is not the intended function which was expected to be observed.
 The below snap represents the the schematic of the design after synthesis
 ![bad_mux_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9cc0b1c8-5bbd-4ae7-bf52-12f1391fe21a)
 
-The below snap shows the waveform after syntheis
+The below snap shows the waveform after syntheis.
+It can be observed that the RTL simulation and GLS simulation are different from each other.
 ![bad_mux_gls](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/536b3897-8e70-428d-bcfa-e8ae11b4b163)
 
-
+The below snap represents the design for which we are going to run the simulation and synthsis. It comprises an OR and AND gate.
 ![blocking_c_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/dc47b1be-82fb-4866-ab27-919a8597ab2c)
 
+The code mentioned above has a situation where the variable 'y' retains its previous or leftover value (referred to as garbage or q0 value). This causes a delay in the output similar to what happens in a flip-flop delay. This delay results in the output being visible one clock cycle later, as shown in the accompanying image.
+
 ![blocking_gtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/09d41fa2-47ab-4e16-88db-3d434cdedfd5)
+
+After performing synthesis we get schematic as below, which is a OA21 as output.
+
 ![blocking_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9ca391ac-20b7-4dcf-8a30-7bd5354cafb6)
+
+When we look at the image provided for the GLS below, it's evident that the output differs significantly from the results obtained during regular simulation. We can clearly observe the delay caused by flip-flops, and the output resembles that of an OA21 gate's expected output.
+
+
 ![blocking_glsgtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77a20582-1969-4986-a65e-783279e2f956)
