@@ -512,3 +512,36 @@ Counter synthesised netlist
 
 In this scenario, all three bits are utilized, necessitating the presence of three flip-flops. Additionally, an adder circuit has been incorporated to handle the counting logic.
 </details>
+
+# day 4
+
+Example 1:
+This verilog code represents a mux that selects between i1 and i0 based on the select line.
+![ternary_mux_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/72ca3c54-ec25-4c7f-9ebb-1c55be7e7e84)
+The below snap represents the waveform before synthesis
+![mux_gtkwave](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/326669fd-9042-44d8-b52c-546794022a5f)
+The below schematic represents the design after synthesis
+![ternary_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/d8f125a6-2f56-4d5c-b71e-875dae58ae8a)
+
+The below snap represents the waveform after synthesis, and we can observe that the waveforms before and after synthesis match each other, hence there is no synthesis simulations mismatch observed in this case.
+![ternary_gls_gtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/eaaa8858-b48c-41de-a7f3-aaac53f56481)
+
+Example 2
+The below code shows the verilog code of a mux with the usage of Non-blocking statements
+![bad_mux_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/13470f44-897b-407a-b220-036da43b3562)
+
+The below snap shows the waveform before synthesis and here we can observe that the output is updating only when the value of the select line is changing. The subsequent changes observed in the selected input lines (i0 or i1) does not reflect in the output waveform.
+This is not the intended function which was expected to be observed.
+![bad_mux_gtkwave](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/df12546d-2d4e-42d7-af6f-fcd41410a960)
+The below snap represents the the schematic of the design after synthesis
+![bad_mux_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9cc0b1c8-5bbd-4ae7-bf52-12f1391fe21a)
+
+The below snap shows the waveform after syntheis
+![bad_mux_gls](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/536b3897-8e70-428d-bcfa-e8ae11b4b163)
+
+
+![blocking_c_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/dc47b1be-82fb-4866-ab27-919a8597ab2c)
+
+![blocking_gtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/09d41fa2-47ab-4e16-88db-3d434cdedfd5)
+![blocking_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9ca391ac-20b7-4dcf-8a30-7bd5354cafb6)
+![blocking_glsgtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77a20582-1969-4986-a65e-783279e2f956)
