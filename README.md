@@ -513,7 +513,10 @@ Counter synthesised netlist
 In this scenario, all three bits are utilized, necessitating the presence of three flip-flops. Additionally, an adder circuit has been incorporated to handle the counting logic.
 </details>
 
-# day 4
+# Day 4 - GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
+
+<details>
+<summary> GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements </summary>
 
 GLS involves comparing the behavior of the synthesized gate-level netlist with that of the original RTL (Register Transfer Level) code. This comparison aims to ensure that the synthesized netlist maintains both the logical functionality and the expected timing of the original design.
 
@@ -543,13 +546,22 @@ Risk of Race Conditions: Incorporating blocking assignments within "always" bloc
 Coveats with blocking statements
 #insert here
 
+</details>
+<details>
+<summary> Labs on GLS and Synthesis-Simulation Mismatch
+</summary>
 
 Example 1:
 This verilog code represents a mux that selects between i1 and i0 based on the select line.
+
 ![ternary_mux_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/72ca3c54-ec25-4c7f-9ebb-1c55be7e7e84)
+
 The below snap represents the waveform before synthesis
+
 ![mux_gtkwave](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/326669fd-9042-44d8-b52c-546794022a5f)
+
 The below schematic represents the design after synthesis
+
 ![ternary_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/d8f125a6-2f56-4d5c-b71e-875dae58ae8a)
 
 The below snap represents the waveform after synthesis, and we can observe that the waveforms before and after synthesis match each other, hence there is no synthesis simulations mismatch observed in this case.
@@ -561,13 +573,41 @@ The below code shows the verilog code of a mux with the usage of Non-blocking st
 
 The below snap shows the waveform before synthesis and here we can observe that the output is updating only when the value of the select line is changing. The subsequent changes observed in the selected input lines (i0 or i1) does not reflect in the output waveform.
 This is not the intended function which was expected to be observed.
+
 ![bad_mux_gtkwave](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/df12546d-2d4e-42d7-af6f-fcd41410a960)
+
 The below snap represents the the schematic of the design after synthesis
+
 ![bad_mux_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9cc0b1c8-5bbd-4ae7-bf52-12f1391fe21a)
 
 The below snap shows the waveform after syntheis.
 It can be observed that the RTL simulation and GLS simulation are different from each other.
+
 ![bad_mux_gls](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/536b3897-8e70-428d-bcfa-e8ae11b4b163)
+
+Example 3
+In this example, the always block uses (*) symbol. With this the always block is evaluated when any signal changes. 
+
+![good_mux_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/48847860-993e-4bc4-b66b-2eafd9b8a944)
+
+The output of the simulation is shown below, which is the functionality of a mux.
+
+![good_gtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/97dbf7a0-a367-41a6-bc02-ce5b4042a259)
+
+The schematic after synthesis is shown below
+
+![goodmux_synthesis](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/42961c60-7edb-4068-a791-b744d3aa29b1)
+
+The below snap represents the simulation of netlist with testbench.
+
+![goodmux_gls](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/09c979a3-8dec-4b74-8a41-4f87e375021b)
+
+The Gate level simulation and the RTL simulation show similar simulation results, due to which we can conclude that this style of coding preserves the intended functionality of the Mux.
+</details>
+
+
+<details>
+<summary> Labs on synth-sim mismatch for blocking statement </summary>
 
 The below snap represents the design for which we are going to run the simulation and synthsis. It comprises an OR and AND gate.
 ![blocking_c_v](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/dc47b1be-82fb-4866-ab27-919a8597ab2c)
@@ -583,4 +623,11 @@ After performing synthesis we get schematic as below, which is a OA21 as output.
 When we look at the image provided for the GLS below, it's evident that the output differs significantly from the results obtained during regular simulation. We can clearly observe the delay caused by flip-flops, and the output resembles that of an OA21 gate's expected output.
 
 
-![blocking_glsgtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77a20582-1969-4986-a65e-783279e2f956)
+![blocking_glsgtk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/77a20582-1969-4986-a65e-783279e2f9)
+</details>
+<details>
+<summary> Summary </summary>
+
+To prevent these kinds of discrepancies, it's necessary to perform Gate Level Simulation to verify the circuit against expected outputs. This process helps identify any inconsistencies between the circuit's synthesis (the gate-level representation) and its simulated behavior. By running GLS, we can catch any potential mismatches that might arise during the synthesis and simulation stages.
+
+</details>
