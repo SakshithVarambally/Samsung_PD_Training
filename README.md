@@ -548,9 +548,10 @@ Coveats with blocking statements
 Here are the understandings on Coveats with blocking statements
 
 ![Coveats1](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/8186086c-2aab-4e39-a855-b80c88605d59)
-![coveats2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/8d0f672b-5610-4620-bb15-a68e754e0172)
 
+![coveats2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/8d0f672b-5610-4620-bb15-a68e754e0172)
 </details>
+
 <details>
 <summary> Labs on GLS and Synthesis-Simulation Mismatch
 </summary>
