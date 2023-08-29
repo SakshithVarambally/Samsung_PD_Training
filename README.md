@@ -544,7 +544,11 @@ Concurrent Operation: Non-blocking assignments model hardware components like re
 Risk of Race Conditions: Incorporating blocking assignments within "always" blocks containing multiple assignments can introduce race conditions. These conditions emerge when the assignment order influences the final result.
 
 Coveats with blocking statements
-#insert here
+
+Here are the understandings on Coveats with blocking statements
+
+![Coveats1](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/8186086c-2aab-4e39-a855-b80c88605d59)
+![coveats2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/8d0f672b-5610-4620-bb15-a68e754e0172)
 
 </details>
 <details>
