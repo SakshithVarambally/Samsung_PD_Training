@@ -704,3 +704,43 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 
 <details>
 <summary>Design Compiler</summary>
+
+<summary>tcl Scripting</summary>
+Tool command Language (tcl) is a language designed for various purposes, including automation, rapid prototyping, and embedding within other software applications. 
+
+Syntax and Commands
+
+Tcl follows precised syntax>.
+Using 'set' for variable creation and assignment, like 'a=5'. 
+
+Conditional statements 
+'if-else' are enclosed in curly braces, e.g.
+if {$a < 10} {
+    {...} 
+    }else {
+    {...}
+    }
+
+
+'echo' displays output, similar to Linux.
+
+'while' loops follow the format:
+while {condition}
+{statements}
+}
+
+'incr' is used for incrementing.
+
+'for' loops are structured as
+for {looping var} {condition} {update}{ {statements}
+}
+
+'foreach' iterates through lists, similar to arrays in C.
+
+' \ ' denotes line continuation.
+
+'foreach_in_collection' is a DC-specific command.
+
+e.g. foreach var list{
+statement 
+}
