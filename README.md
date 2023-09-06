@@ -708,15 +708,15 @@ Design Compiler (DC), often abbreviated as DC, stands as a crucial high-level sy
 
 Key Terminologies:
 
-Synopsys Design Constraints (SDC): These are essential design constraints supplied to DC, enabling precise optimization to achieve the optimal implementation.
+1)Synopsys Design Constraints (SDC): These are essential design constraints supplied to DC, enabling precise optimization to achieve the optimal implementation.
 
-1).lib: A Design Library housing Standard cells, pivotal building blocks for IC design. DC recognizes libraries in the .lib format.
+2).lib: A Design Library housing Standard cells, pivotal building blocks for IC design. DC recognizes libraries in the .lib format.
 
-2).db: Similar to .lib but presented in a distinct format, DC comprehends libraries in the .db format, broadening compatibility.
+3).db: Similar to .lib but presented in a distinct format, DC comprehends libraries in the .db format, broadening compatibility.
 
-3).ddc: A Synopsys proprietary format tailored for storing design information. DC possesses the capability to both generate and parse .ddc files, streamlining data exchange.
+4).ddc: A Synopsys proprietary format tailored for storing design information. DC possesses the capability to both generate and parse .ddc files, streamlining data exchange.
 
-4) Design: RTL (Register-Transfer Level) files embodying the behavioral model of the design, serving as the foundation for subsequent IC design stages.
+5)Design: RTL (Register-Transfer Level) files embodying the behavioral model of the design, serving as the foundation for subsequent IC design stages.
 
 Here is the RTL code for the design that is going to be synthesized.
 It cosists of a Mux and a flop with Reset
@@ -725,10 +725,11 @@ It cosists of a Mux and a flop with Reset
 The following netlist will be obtained when the libraries are not mapped 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_synth_gtechf.png">
 
-Tge below snap shows the netlist after mapping
+The below snap shows the netlist after mapping.
+The main mappings performed are setting up target and link libraries
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_syn_netlist.png">
 
-The results after Compile is shoown below
+The results after Compile is shown below
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_compile.png">
 
 Design Vision: Design Vision, a highly utilized tool within Electronic Design Automation, originates from the Synopsys. Its primary role encompasses functions such as logic synthesis and formal verification, serving as a cornerstone in the VLSI design process.
