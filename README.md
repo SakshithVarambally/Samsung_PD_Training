@@ -705,8 +705,12 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 <details>
 <summary>Design Compiler</summary>
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png">
-
-
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_synth_gtechf.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_syn_netlist.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_compile.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dv_schematic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dv_full_schematic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dc_setup.png">
 </details>
 
 <details>
@@ -714,40 +718,15 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 Tool command Language (tcl) is a language designed for various purposes, including automation, rapid prototyping, and embedding within other software applications. 
 
 Syntax and Commands
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/set.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/for_loop.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/while_loop.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/foreach_in_collection.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/sample_tcl.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/source_sample_tcl.png">
 
-Tcl follows precised syntax.
-Using 'set' for variable creation and assignment, like 'a=5'. 
-
-Conditional statements 
-'if-else' are enclosed in curly braces, e.g.
-if {$a < 10} {
-    {...} 
-    }else {
-    {...}
-    }
-<
-
-'echo' displays output, similar to Linux.
-
-'while' loops follow the format:
-while {condition}
-{statements}
-}
-
-'incr' is used for incrementing.
-
-'for' loops are structured as
-for {looping var} {condition} {update}{ {statements}
-}
-
-'foreach' iterates through lists, similar to arrays in C.
-
-' \ ' denotes line continuation.
-
-'foreach_in_collection' is a DC-specific command.
-
-e.g. foreach var list{
-statement 
-}
-
-
+# Day 7
+<details>
+<summary></summary>
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png
+</details>
