@@ -704,12 +704,47 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 
 <details>
 <summary>Design Compiler</summary>
+Design Compiler (DC), often abbreviated as DC, stands as a crucial high-level synthesis tool from Synopsys, a premier EDA solutions provider. It holds a central role in the intricate world of integrated circuit (IC) design, serving as an indispensable component of contemporary VLSI design workflows.
+
+Key Terminologies:
+
+Synopsys Design Constraints (SDC): These are essential design constraints supplied to DC, enabling precise optimization to achieve the optimal implementation.
+
+1).lib: A Design Library housing Standard cells, pivotal building blocks for IC design. DC recognizes libraries in the .lib format.
+
+2).db: Similar to .lib but presented in a distinct format, DC comprehends libraries in the .db format, broadening compatibility.
+
+3).ddc: A Synopsys proprietary format tailored for storing design information. DC possesses the capability to both generate and parse .ddc files, streamlining data exchange.
+
+4) Design: RTL (Register-Transfer Level) files embodying the behavioral model of the design, serving as the foundation for subsequent IC design stages.
+
+Here is the RTL code for the design that is going to be synthesized.
+It cosists of a Mux and a flop with Reset
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png">
+
+The following netlist will be obtained when the libraries are not mapped 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_synth_gtechf.png">
+
+Tge below snap shows the netlist after mapping
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_syn_netlist.png">
+
+The results after Compile is shoown below
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_compile.png">
+
+Design Vision: Design Vision, a highly utilized tool within Electronic Design Automation, originates from the Synopsys. Its primary role encompasses functions such as logic synthesis and formal verification, serving as a cornerstone in the VLSI design process.
+
+To initiate Design Vision, a series of commands are employed. Firstly, the c shell is activated, followed by the execution of the "design_vision" command.
+
+Upon launching Design Vision, the initial step involves converting the design into a .ddc file format. This crucial transformation is achieved through the "write -f ddc -out <filename_name>" command.
+The schematic of the design obtained after reading .ddc file is shown below.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dv_schematic.png">
+
+Upon double clicking, the entire design with implemented gates will be shown
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dv_full_schematic.png">
+
+ synopsys_dc.setup: 
+ All repetitive tasks which is needed for tool setup can be pointed in this file.
+ These need not be set each and every time explicitly 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dc_setup.png">
 </details>
 
