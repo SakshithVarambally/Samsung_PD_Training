@@ -836,8 +836,55 @@ Sourcing the sample tcl file to Print the gates, a small multiplication table an
 </details>
 
 # Day 7
+
 <details>
-<summary></summary>
+<summary>STA</summary>
+Static Timing Analysis (STA) plays a pivotal role in the design and verification of digital integrated circuits, ensuring they meet timing requirements and operate reliably.
+
+STA assesses the timing performance of circuits without actual simulation, ensuring signals traverse the circuit within specified time limits, ensuring proper functionality and performance goals.
+
+Delay:
+
+Delay measures the time taken for a signal to travel from one point in a digital circuit to another, impacting performance, power consumption, and reliability.
+
+Max Delay Constraint:
+
+A Max Delay Constraint sets an upper limit on signal propagation delay through a specific path or circuit. For example, in a setup with 2 D flip-flops connected by combinational logic:
+Tck >= Tcq + Tcomb + Tst
+
+Min Delay Constraint:
+
+A Min Delay Constraint establishes a minimum allowable delay for signal propagation, preventing signals from propagating too quickly and causing timing violations:
+Thold < Tcq + Tcomb
+Delay Analogy:
+
+Understanding delay is akin to two buckets being filled by different water inflow rates. This relates to VLSI, where higher inflow (current) corresponds to lower transition delay and bucket size reflects load capacitance.
+
+Cell Delay Function:
+
+A cell's delay depends on input transitions and load capacitance, reflecting how quickly it can process signals.
+Timing Arc:
+
+Timing arcs in VLSI design describe the intricate relationship between input and output transitions of logic elements, considering rising/falling edges, setup/hold times, and propagation delays. They are crucial for precise timing analysis.
+The difference between the Combinational and sequential timing arcs are mentioned below.
+
+Combinational Timing Arc:
+
+Focus: Combinational timing arcs are concerned with the timing behavior of combinational logic elements, such as gates and multiplexers.
+Characteristics: They define the relationship between input transitions (changes in logic levels) and the resulting output transitions within a single combinational logic element.
+Propagation Delay: Combinational timing arcs primarily capture the propagation delay of the combinational logic, which is the time it takes for the output to respond to changes in the input.
+No Memory: Combinational logic has no memory; it depends solely on the current input values to produce an output.
+
+Sequenctial Timing Arc:
+
+Focus: Sequential timing arcs are specific to sequential elements like flip-flops (registers).
+Characteristics: They define the timing behavior of sequential elements in terms of setup time, hold time, and clock-to-q delay.
+Setup Time: Setup time refers to the minimum time before the clock edge when data must be stable to ensure proper capture by the flip-flop.
+Hold Time: Hold time represents the minimum time after the clock edge during which data must remain stable.
+Clock-to-Q Delay: This is the time it takes for the data to propagate from the flip-flop's input (D) to the output (Q) after the clock edge.
+Memory Elements: Sequential elements have memory, as they store data from one clock cycle to the next
+
+ 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/neg_unate.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_rising.png">
