@@ -907,7 +907,15 @@ There is also one more type of Unateness called as complex unateness described w
 Here certain pins will have positive and others will have negative unateness.
 
 Some important points to remember:
+Setup or Hold is always measured w.r.t. Sampling point.
 
+Therfore for Pos DLatch: setup is measured before negedge and hold is measured after negedge.
+For Neg D latch: Setup is measured before posedge and Hold is measured after posedge.
+
+</details>
+<details>
+<summary>Labs </summary>
+</details>
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/neg_unate.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_rising.png">
