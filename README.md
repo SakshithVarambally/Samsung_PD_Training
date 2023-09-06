@@ -728,5 +728,19 @@ Syntax and Commands
 # Day 7
 <details>
 <summary></summary>
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/neg_unate.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_rising.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_falling.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/clock_true.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/and_cells.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_libs_and.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_libs_and4.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_lib_pins_nand4bb.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/attribute_nand4bb.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/nand_function.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_tcl.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_run.png">
+
+
 </details>
