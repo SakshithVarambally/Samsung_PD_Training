@@ -835,10 +835,10 @@ Sourcing the sample tcl file to Print the gates, a small multiplication table an
 
 </details>
 
-# Day 7
+# Day 7 Basics of STA
 
 <details>
-<summary>STA</summary>
+<summary> STA </summary>
 Static Timing Analysis (STA) plays a pivotal role in the design and verification of digital integrated circuits, ensuring they meet timing requirements and operate reliably.
 
 STA assesses the timing performance of circuits without actual simulation, ensuring signals traverse the circuit within specified time limits, ensuring proper functionality and performance goals.
