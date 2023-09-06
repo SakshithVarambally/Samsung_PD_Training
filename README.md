@@ -725,6 +725,8 @@ Syntax and Commands
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/sample_tcl.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/source_sample_tcl.png">
 
+</details>
+
 # Day 7
 <details>
 <summary></summary>
