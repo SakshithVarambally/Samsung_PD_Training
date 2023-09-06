@@ -706,6 +706,7 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 <summary>Design Compiler</summary>
 
 https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png
+
 </details>
 
 <details>
