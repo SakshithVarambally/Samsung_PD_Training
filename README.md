@@ -856,6 +856,7 @@ Min Delay Constraint:
 
 A Min Delay Constraint establishes a minimum allowable delay for signal propagation, preventing signals from propagating too quickly and causing timing violations:
 Thold < Tcq + Tcomb
+
 Delay Analogy:
 
 Understanding delay is akin to two buckets being filled by different water inflow rates. This relates to VLSI, where higher inflow (current) corresponds to lower transition delay and bucket size reflects load capacitance.
@@ -863,6 +864,7 @@ Understanding delay is akin to two buckets being filled by different water inflo
 Cell Delay Function:
 
 A cell's delay depends on input transitions and load capacitance, reflecting how quickly it can process signals.
+
 Timing Arc:
 
 Timing arcs in VLSI design describe the intricate relationship between input and output transitions of logic elements, considering rising/falling edges, setup/hold times, and propagation delays. They are crucial for precise timing analysis.
@@ -884,7 +886,28 @@ Hold Time: Hold time represents the minimum time after the clock edge during whi
 Clock-to-Q Delay: This is the time it takes for the data to propagate from the flip-flop's input (D) to the output (Q) after the clock edge.
 Memory Elements: Sequential elements have memory, as they store data from one clock cycle to the next
 
- 
+Unateness:
+Unateness refers to a property of a logic function or a Boolean equation that describes how the output of a gate or circuit behaves with respect to changes in the input variables. It characterizes how the output responds to transitions in its inputs, specifically whether it prefers rising (from 0 to 1) or falling (from 1 to 0) transitions or if it doesn't exhibit a preference. Unateness is a concept used in various stages of digital design, including synthesis, optimization, and timing analysis.
+
+There are two main types of unateness:
+
+Positive Unateness:
+
+In a positively unate logic function, the output of a gate or circuit is more sensitive to one input transition than the other.
+Specifically, a gate with positive unateness responds faster or more strongly to a particular input transition (either rising or falling) and is less sensitive to the opposite transition.
+For example, a gate may exhibit positive unateness for rising transitions, meaning it responds more quickly to input transitions from 0 to 1 than from 1 to 0.
+
+Negative Unateness:
+
+In a negatively unate logic function, the output of a gate or circuit is more sensitive to the opposite input transition compared to the other.
+A gate with negative unateness responds faster or more strongly to the input transition it is not sensitive to in the positively unate case.
+For example, a gate may exhibit negative unateness for falling transitions, meaning it responds more quickly to input transitions from 1 to 0 than from 0 to 1.
+
+There is also one more type of Unateness called as complex unateness described with respect to pins.
+Here certain pins will have positive and others will have negative unateness.
+
+Some important points to remember:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/neg_unate.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_rising.png">
