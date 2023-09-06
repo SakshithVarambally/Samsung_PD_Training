@@ -754,11 +754,65 @@ Upon double clicking, the entire design with implemented gates will be shown
 Tool command Language (tcl) is a language designed for various purposes, including automation, rapid prototyping, and embedding within other software applications. 
 
 Syntax and Commands
+Assigning a variable
+~~~ruby
+set a 10
+ser b 10
+set a [expr $a + $b]
+~~~
+if else condition
+~~~ruby
+
+if { condition } {
+<statements>
+} else {
+<statements>
+}
+~~~
+while loop
+~~~ruby
+
+while {<condition>} {
+/statements
+}
+~~~
+For loop
+~~~ruby
+for {<looping variable>} {condition} {incr/decr} {
+/statements
+}
+~~~
+For each
+~~~ruby
+
+foreach var list{
+statement
+}
+~~~
+For each with respect to Collection 
+~~~ruby
+foreach_in_collection var collection {
+statement
+}
+~~~
+tcl Labs:
+
+Variables Assignment
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/set.png">
+
+For Loop
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/for_loop.png">
+
+While Loop
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/while_loop.png">
+
+Foreach in Collection
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/foreach_in_collection.png">
+
+Creating a new sample tcl file
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/sample_tcl.png">
+
+Sourcing the sample tcl file to Print the gates, a small multiplication table and a list as shown.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/source_sample_tcl.png">
 
 </details>
