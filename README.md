@@ -914,7 +914,7 @@ For Neg D latch: Setup is measured before posedge and Hold is measured after pos
 
 </details>
 <details>
-<summary>Labs </summary>
+<summary> Labs on Scripting </summary>
 </details>
 
 .lib contains the delay and power information in terms of a Matrix called as look up table. 2 parmeters will be mentioned and the delay or power for all their possible values will be given as shown. In case the value doesnt exist directly in ghe table, the tool takes the nearest values and interpolates it accordingly.
@@ -944,16 +944,15 @@ Deriving the Pin information for nand4bb.
 The results show that 2 inputs are being barred, hence the name. These types of differences account fir the different flavour of cellls found in .lib
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_lib_pins_nand4bb.png">
 
-Atributes of and4
+Deriving the functional Atributes of and4 and nand gate with get_lib_attribute
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/attribute_nand4bb.png">
 
-Deriving the Functional aspects of nand gate
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/nand_function.png">
 
-Creating a new script
+Creating a new script, in which a list is created and for each cell mentioned in the list, its output pin and functionality is displayed.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_tcl.png">
 
-Sourcing the script
+On sourcing the script the respective information is being displayed.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_run.png">
 
 
