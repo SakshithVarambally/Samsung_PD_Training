@@ -705,6 +705,7 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 <details>
 <summary>Design Compiler</summary>
 
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png
 </details>
 
 <details>
@@ -713,7 +714,7 @@ Tool command Language (tcl) is a language designed for various purposes, includi
 
 Syntax and Commands
 
-Tcl follows precised syntax>.
+Tcl follows precised syntax.
 Using 'set' for variable creation and assignment, like 'a=5'. 
 
 Conditional statements 
