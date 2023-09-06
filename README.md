@@ -835,7 +835,7 @@ Sourcing the sample tcl file to Print the gates, a small multiplication table an
 
 </details>
 
-# Day 7 Basics of STA
+# Day 7 Basic SDC
 
 <details>
 <summary> STA </summary>
