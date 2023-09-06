@@ -704,8 +704,8 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 
 <details>
 <summary>Design Compiler</summary>
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png
 
 </details>
 
@@ -725,7 +725,7 @@ if {$a < 10} {
     }else {
     {...}
     }
-
+<
 
 'echo' displays output, similar to Linux.
 
@@ -749,3 +749,5 @@ for {looping var} {condition} {update}{ {statements}
 e.g. foreach var list{
 statement 
 }
+
+
