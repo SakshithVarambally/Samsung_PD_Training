@@ -705,7 +705,10 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 <details>
 <summary>Design Compiler</summary>
 
-<summary>tcl Scripting</summary>
+</details>
+
+<details>
+<summary> tcl Scripting </summary>
 Tool command Language (tcl) is a language designed for various purposes, including automation, rapid prototyping, and embedding within other software applications. 
 
 Syntax and Commands
