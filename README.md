@@ -917,7 +917,42 @@ For Neg D latch: Setup is measured before posedge and Hold is measured after pos
 <summary> Labs on Scripting </summary>
 </details>
 
+A Timing File (.lib) 
+This serves as a text-based repository of essential data related to Standard Cells used in VLSI design. This file encapsulates information about Timing, Area, and Power characteristics. It adheres to a PVT naming convention, signifying Process, Voltage, and Temperature specifications. For instance, "sky130_fd_sc_hd_tt_025C_1v8" implies 130 nm technology, standard process, 25°C temperature, and a 1.8 V voltage.
+
+Key components within the Timing File:
+
+Library and Technology:
+
+The file includes the library name and the technology used. This helps identify the specific set of standard cells and design rules employed.
+Units:
+
+The Timing File specifies units for various parameters such as time, power, voltage, current, resistance, and capacitance. This ensures consistency and accurate interpretation of data.
+Operating Conditions:
+
+It provides values for the operating conditions, encompassing process variations, voltage levels, and temperature ranges. These conditions include maximum (Max), minimum (Min), and typical values.
+
+Key components within the Timing File:
 .lib contains the delay and power information in terms of a Matrix called as look up table. 2 parmeters will be mentioned and the delay or power for all their possible values will be given as shown. In case the value doesnt exist directly in ghe table, the tool takes the nearest values and interpolates it accordingly.
+
+Cell-specific details in the Timing File encompass:
+
+Cell Information:
+
+Cell name is stated, identifying each standard cell.
+Area of the cell is outlined, describing the physical space it occupies.
+Pin Data:
+
+Details about pins are recorded, including pin names and their functional direction (input, output, etc.).
+Information about leakage power concerning input pin logic states is presented.
+
+Pin Characteristics:
+
+Pin-level information covers aspects like internal power consumption, capacitance, and other electrical properties.
+Capacitance values for rising and falling transitions are documented.
+Fanout load data is included, reflecting how a pin's output affects connected components.
+
+
 It is observed that as the input transition and load capacitance increases the delay also goes on increasing.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
 
