@@ -795,6 +795,24 @@ foreach_in_collection var collection {
 statement
 }
 ~~~
+
+Difference between collection and list: 
+
+Both "collection" and "list" are data structures used to store and manipulate data. However, they have distinct characteristics and use cases:
+
+Collection:
+
+A collection in TCL refers to a group of items stored together, which can be of different types, including strings, integers, and other data structures like lists.
+Collections in DC are often used to represent more complex data structures, such as hierarchical information about the design, including cells and instances.
+They are typically accessed using methods and functions specific to Synopsys tools like Design Compiler.
+
+List:
+
+A list in TCL is a basic data structure that stores a sequence of elements.
+Lists are commonly used for managing and iterating through simpler data, such as file names, command-line arguments, or strings.
+TCL provides a range of built-in commands to manipulate lists, making them a versatile choice for handling sequential data.
+
+
 tcl Labs:
 
 Variables Assignment
