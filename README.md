@@ -918,6 +918,7 @@ For Neg D latch: Setup is measured before posedge and Hold is measured after pos
 </details>
 
 .lib contains the delay and power information in terms of a Matrix called as look up table. 2 parmeters will be mentioned and the delay or power for all their possible values will be given as shown. In case the value doesnt exist directly in ghe table, the tool takes the nearest values and interpolates it accordingly.
+It is observed that as the input transition and load capacitance increases the delay also goes on increasing.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
 
 The unateness of the cells mentioned in the .lib is shown below
@@ -944,11 +945,21 @@ Deriving the Pin information for nand4bb.
 The results show that 2 inputs are being barred, hence the name. These types of differences account fir the different flavour of cellls found in .lib
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_lib_pins_nand4bb.png">
 
-Deriving the functional Atributes of and4 and nand gate with get_lib_attribute
+Deriving the functional Atributes of and4 and nand gate with get_lib_attribute 
+
+Deriving attibutes follows the below syntax
+~~~ruby
+get_lib_attribute <lib_cell/lib_pin> <attribute_name>
+~~~
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/attribute_nand4bb.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/nand_function.png">
 
+Deriving the area and capacitance of cells.
+It is observed that the capacitance of clock pin would be higher than other pins as the clock signal will be traveeling multiple places and connected to many elements across the design.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/763dad82f9051dab6e55fc1540134775c50878d3/day_7/get_lib_area.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/763dad82f9051dab6e55fc1540134775c50878d3/day_7/get_lib_capacitance.png">
 Creating a new script, in which a list is created and for each cell mentioned in the list, its output pin and functionality is displayed.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_tcl.png">
 
