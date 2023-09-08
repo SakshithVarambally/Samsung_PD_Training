@@ -704,43 +704,302 @@ Example: The gate-level netlist becomes the basis for configuring the physical l
 
 <details>
 <summary>Design Compiler</summary>
+Design Compiler (DC), often abbreviated as DC, stands as a crucial high-level synthesis tool from Synopsys, a premier EDA solutions provider. It holds a central role in the intricate world of integrated circuit (IC) design, serving as an indispensable component of contemporary VLSI design workflows.
 
-<summary>tcl Scripting</summary>
+Key Terminologies:
+
+1)Synopsys Design Constraints (SDC): These are essential design constraints supplied to DC, enabling precise optimization to achieve the optimal implementation.
+
+2).lib: A Design Library housing Standard cells, pivotal building blocks for IC design. DC recognizes libraries in the .lib format.
+
+3).db: Similar to .lib but presented in a distinct format, DC comprehends libraries in the .db format, broadening compatibility.
+
+4).ddc: A Synopsys proprietary format tailored for storing design information. DC possesses the capability to both generate and parse .ddc files, streamlining data exchange.
+
+5)Design: RTL (Register-Transfer Level) files embodying the behavioral model of the design, serving as the foundation for subsequent IC design stages.
+
+Here is the RTL code for the design that is going to be synthesized.
+It cosists of a Mux and a flop with Reset
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/dc_synopsis/lab1_v.png">
+
+The following netlist will be obtained when the libraries are not mapped 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_synth_gtechf.png">
+
+The below snap shows the netlist after mapping.
+The main mappings performed are setting up target and link libraries
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_syn_netlist.png">
+
+The results after Compile is shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/lab1_compile.png">
+
+Design Vision: Design Vision, a highly utilized tool within Electronic Design Automation, originates from the Synopsys. Its primary role encompasses functions such as logic synthesis and formal verification, serving as a cornerstone in the VLSI design process.
+
+To initiate Design Vision, a series of commands are employed. Firstly, the c shell is activated, followed by the execution of the "design_vision" command.
+
+Upon launching Design Vision, the initial step involves converting the design into a .ddc file format. This crucial transformation is achieved through the "write -f ddc -out <filename_name>" command.
+The schematic of the design obtained after reading .ddc file is shown below.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dv_schematic.png">
+
+Upon double clicking, the entire design with implemented gates will be shown
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dv_full_schematic.png">
+
+ synopsys_dc.setup: 
+ All repetitive tasks which is needed for tool setup can be pointed in this file.
+ These need not be set each and every time explicitly 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/dc_setup.png">
+</details>
+
+<details>
+<summary> tcl Scripting </summary>
 Tool command Language (tcl) is a language designed for various purposes, including automation, rapid prototyping, and embedding within other software applications. 
 
 Syntax and Commands
+Assigning a variable
+~~~ruby
+set a 10
+ser b 10
+set a [expr $a + $b]
+~~~
+if else condition
+~~~ruby
 
-Tcl follows precised syntax>.
-Using 'set' for variable creation and assignment, like 'a=5'. 
-
-Conditional statements 
-'if-else' are enclosed in curly braces, e.g.
-if {$a < 10} {
-    {...} 
-    }else {
-    {...}
-    }
-
-
-'echo' displays output, similar to Linux.
-
-'while' loops follow the format:
-while {condition}
-{statements}
+if { condition } {
+<statements>
+} else {
+<statements>
 }
+~~~
+while loop
+~~~ruby
 
-'incr' is used for incrementing.
-
-'for' loops are structured as
-for {looping var} {condition} {update}{ {statements}
+while {<condition>} {
+/statements
 }
-
-'foreach' iterates through lists, similar to arrays in C.
-
-' \ ' denotes line continuation.
-
-'foreach_in_collection' is a DC-specific command.
-
-e.g. foreach var list{
-statement 
+~~~
+For loop
+~~~ruby
+for {<looping variable>} {condition} {incr/decr} {
+/statements
 }
+~~~
+For each
+~~~ruby
+
+foreach var list{
+statement
+}
+~~~
+For each with respect to Collection 
+~~~ruby
+foreach_in_collection var collection {
+statement
+}
+~~~
+
+Difference between collection and list: 
+
+Both "collection" and "list" are data structures used to store and manipulate data. However, they have distinct characteristics and use cases:
+
+Collection:
+
+A collection in TCL refers to a group of items stored together, which can be of different types, including strings, integers, and other data structures like lists.
+Collections in DC are often used to represent more complex data structures, such as hierarchical information about the design, including cells and instances.
+They are typically accessed using methods and functions specific to Synopsys tools like Design Compiler.
+
+List:
+
+A list in TCL is a basic data structure that stores a sequence of elements.
+Lists are commonly used for managing and iterating through simpler data, such as file names, command-line arguments, or strings.
+TCL provides a range of built-in commands to manipulate lists, making them a versatile choice for handling sequential data.
+
+
+tcl Labs:
+
+Variables Assignment
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/set.png">
+
+For Loop
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/for_loop.png">
+
+While Loop
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/while_loop.png">
+
+Foreach in Collection
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/foreach_in_collection.png">
+
+Creating a new sample tcl file
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/sample_tcl.png">
+
+Sourcing the sample tcl file to Print the gates, a small multiplication table and a list as shown.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/dc_synopsis/tcl/source_sample_tcl.png">
+
+</details>
+
+# Day 7 Basic SDC
+
+<details>
+<summary> STA </summary>
+Static Timing Analysis (STA) plays a pivotal role in the design and verification of digital integrated circuits, ensuring they meet timing requirements and operate reliably.
+
+STA assesses the timing performance of circuits without actual simulation, ensuring signals traverse the circuit within specified time limits, ensuring proper functionality and performance goals.
+
+Delay:
+
+Delay measures the time taken for a signal to travel from one point in a digital circuit to another, impacting performance, power consumption, and reliability.
+
+Max Delay Constraint:
+
+A Max Delay Constraint sets an upper limit on signal propagation delay through a specific path or circuit. For example, in a setup with 2 D flip-flops connected by combinational logic:
+Tck >= Tcq + Tcomb + Tst
+
+Min Delay Constraint:
+
+A Min Delay Constraint establishes a minimum allowable delay for signal propagation, preventing signals from propagating too quickly and causing timing violations:
+Thold < Tcq + Tcomb
+
+Delay Analogy:
+
+Understanding delay is akin to two buckets being filled by different water inflow rates. This relates to VLSI, where higher inflow (current) corresponds to lower transition delay and bucket size reflects load capacitance.
+
+Cell Delay Function:
+
+A cell's delay depends on input transitions and load capacitance, reflecting how quickly it can process signals.
+
+Timing Arc:
+
+Timing arcs in VLSI design describe the intricate relationship between input and output transitions of logic elements, considering rising/falling edges, setup/hold times, and propagation delays. They are crucial for precise timing analysis.
+The difference between the Combinational and sequential timing arcs are mentioned below.
+
+Combinational Timing Arc:
+
+Focus: Combinational timing arcs are concerned with the timing behavior of combinational logic elements, such as gates and multiplexers.
+Characteristics: They define the relationship between input transitions (changes in logic levels) and the resulting output transitions within a single combinational logic element.
+Propagation Delay: Combinational timing arcs primarily capture the propagation delay of the combinational logic, which is the time it takes for the output to respond to changes in the input.
+No Memory: Combinational logic has no memory; it depends solely on the current input values to produce an output.
+
+Sequenctial Timing Arc:
+
+Focus: Sequential timing arcs are specific to sequential elements like flip-flops (registers).
+Characteristics: They define the timing behavior of sequential elements in terms of setup time, hold time, and clock-to-q delay.
+Setup Time: Setup time refers to the minimum time before the clock edge when data must be stable to ensure proper capture by the flip-flop.
+Hold Time: Hold time represents the minimum time after the clock edge during which data must remain stable.
+Clock-to-Q Delay: This is the time it takes for the data to propagate from the flip-flop's input (D) to the output (Q) after the clock edge.
+Memory Elements: Sequential elements have memory, as they store data from one clock cycle to the next
+
+Unateness:
+Unateness refers to a property of a logic function or a Boolean equation that describes how the output of a gate or circuit behaves with respect to changes in the input variables. It characterizes how the output responds to transitions in its inputs, specifically whether it prefers rising (from 0 to 1) or falling (from 1 to 0) transitions or if it doesn't exhibit a preference. Unateness is a concept used in various stages of digital design, including synthesis, optimization, and timing analysis.
+
+There are two main types of unateness:
+
+Positive Unateness:
+
+In a positively unate logic function, the output of a gate or circuit is more sensitive to one input transition than the other.
+Specifically, a gate with positive unateness responds faster or more strongly to a particular input transition (either rising or falling) and is less sensitive to the opposite transition.
+For example, a gate may exhibit positive unateness for rising transitions, meaning it responds more quickly to input transitions from 0 to 1 than from 1 to 0.
+
+Negative Unateness:
+
+In a negatively unate logic function, the output of a gate or circuit is more sensitive to the opposite input transition compared to the other.
+A gate with negative unateness responds faster or more strongly to the input transition it is not sensitive to in the positively unate case.
+For example, a gate may exhibit negative unateness for falling transitions, meaning it responds more quickly to input transitions from 1 to 0 than from 0 to 1.
+
+There is also one more type of Unateness called as complex unateness described with respect to pins.
+Here certain pins will have positive and others will have negative unateness.
+
+Some important points to remember:
+Setup or Hold is always measured w.r.t. Sampling point.
+
+Therfore for Pos DLatch: setup is measured before negedge and hold is measured after negedge.
+For Neg D latch: Setup is measured before posedge and Hold is measured after posedge.
+
+</details>
+<details>
+<summary> Labs on Scripting </summary>
+</details>
+
+A Timing File (.lib) 
+This serves as a text-based repository of essential data related to Standard Cells used in VLSI design. This file encapsulates information about Timing, Area, and Power characteristics. It adheres to a PVT naming convention, signifying Process, Voltage, and Temperature specifications. For instance, "sky130_fd_sc_hd_tt_025C_1v8" implies 130 nm technology, standard process, 25°C temperature, and a 1.8 V voltage.
+
+Key components within the Timing File:
+
+Library and Technology:
+
+The file includes the library name and the technology used. This helps identify the specific set of standard cells and design rules employed.
+Units:
+
+The Timing File specifies units for various parameters such as time, power, voltage, current, resistance, and capacitance. This ensures consistency and accurate interpretation of data.
+Operating Conditions:
+
+It provides values for the operating conditions, encompassing process variations, voltage levels, and temperature ranges. These conditions include maximum (Max), minimum (Min), and typical values.
+
+Key components within the Timing File:
+.lib contains the delay and power information in terms of a Matrix called as look up table. 2 parmeters will be mentioned and the delay or power for all their possible values will be given as shown. In case the value doesnt exist directly in ghe table, the tool takes the nearest values and interpolates it accordingly.
+
+Cell-specific details in the Timing File encompass:
+
+Cell Information:
+
+Cell name is stated, identifying each standard cell.
+Area of the cell is outlined, describing the physical space it occupies.
+Pin Data:
+
+Details about pins are recorded, including pin names and their functional direction (input, output, etc.).
+Information about leakage power concerning input pin logic states is presented.
+
+Pin Characteristics:
+
+Pin-level information covers aspects like internal power consumption, capacitance, and other electrical properties.
+Capacitance values for rising and falling transitions are documented.
+Fanout load data is included, reflecting how a pin's output affects connected components.
+
+
+It is observed that as the input transition and load capacitance increases the delay also goes on increasing.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/lookup_table.png">
+
+The unateness of the cells mentioned in the .lib is shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/4029c5524a4bee7d90d5b81148ecd3415da29d34/day_7/neg_unate.png">
+
+
+The setup information about the cells will also be mentioned in the .lib. The following snaps show this information 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_rising.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/setup_falling.png">
+
+The pin information will be clearly described for each cell, for the clock pin, the Clock attribute will be true as shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/clock_true.png">
+
+Traversing through the library cells and printing all the cells with 'and'. This shows both and and nand cells.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/and_cells.png">
+
+The below snap represents deriving the pin information for a 2 pin And cell
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_libs_and.png">
+
+The same is being shown with respect to 4 pin And cell
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_libs_and4.png">
+
+Deriving the Pin information for nand4bb.
+The results show that 2 inputs are being barred, hence the name. These types of differences account fir the different flavour of cellls found in .lib
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/get_lib_pins_nand4bb.png">
+
+Deriving the functional Atributes of and4 and nand gate with get_lib_attribute 
+
+Deriving attibutes follows the below syntax
+~~~ruby
+get_lib_attribute <lib_cell/lib_pin> <attribute_name>
+~~~
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/attribute_nand4bb.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/nand_function.png">
+
+Deriving the area and capacitance of cells.
+It is observed that the capacitance of clock pin would be higher than other pins as the clock signal will be traveeling multiple places and connected to many elements across the design.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/763dad82f9051dab6e55fc1540134775c50878d3/day_7/get_lib_area.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/763dad82f9051dab6e55fc1540134775c50878d3/day_7/get_lib_capacitance.png">
+Creating a new script, in which a list is created and for each cell mentioned in the list, its output pin and functionality is displayed.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_tcl.png">
+
+On sourcing the script the respective information is being displayed.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_run.png">
+
+
+</details>
