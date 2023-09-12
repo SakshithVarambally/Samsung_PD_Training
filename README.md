@@ -915,7 +915,6 @@ For Neg D latch: Setup is measured before posedge and Hold is measured after pos
 </details>
 <details>
 <summary> Labs on Scripting </summary>
-</details>
 
 A Timing File (.lib) 
 This serves as a text-based repository of essential data related to Standard Cells used in VLSI design. This file encapsulates information about Timing, Area, and Power characteristics. It adheres to a PVT naming convention, signifying Process, Voltage, and Temperature specifications. For instance, "sky130_fd_sc_hd_tt_025C_1v8" implies 130 nm technology, standard process, 25°C temperature, and a 1.8 V voltage.
