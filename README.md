@@ -1101,34 +1101,32 @@ To effectively specify constraints in SDC (Tcl format) for your design, follow t
 </details>
 <details>
 <summary>Labs</summary>
-# Day 8
-<summary> Advanced Constraints </summary>
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_regexp_match.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/ref%26inst_name.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8dvpindir_ofn5.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_schematic.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_before_clk.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_create_clock.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_create_clock.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_input_delay.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_io_delay.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_afterinput_transition.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_reportiming_after_out_delay.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_withcaptrans_afteriodelay.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_after_outload.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_regexp_match.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/ref%26inst_name.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8dvpindir_ofn5.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_schematic.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_before_clk.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_create_clock.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_create_clock.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_input_delay.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_io_delay.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_afterinput_transition.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_reportiming_after_out_delay.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_withcaptrans_afteriodelay.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_after_outload.png"
 </deatails>
 <details> 
 <summary>Labs</summary>
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/gen_clk.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/report_timing_gen_clock.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/completely_comnstrained_design_tcl.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/gen_clk.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/report_timing_gen_clock.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/completely_comnstrained_design_tcl.png"
 </details>
 <details>
 <summary> VCLK</summary>
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/vclk_violated_path.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/create_virt_clock.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/schematic_lab14.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_violated.png
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_not_violated.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/vclk_violated_path.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/create_virt_clock.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/schematic_lab14.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_violated.png"
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_not_violated.png"
 
 </details>
