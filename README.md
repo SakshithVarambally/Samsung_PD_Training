@@ -1004,7 +1004,7 @@ On sourcing the script the respective information is being displayed.
 
 </details>
 
-# Day 8
+# Day 8 Advanced Constraints
 <details>
 <summary> Clock </summary>
 Each timing path in a digital circuit must be controlled and regulated by a clock signal. This regulation involves setting specific parameters for the clock, such as its timing period and waveform characteristics. The clock's period essentially acts as a constraint on the maximum time allowed for the combinational logic to process data, as the other parameters like setup and hold times are defined in the library (.lib) files. Up until the Clock Tree Synthesis (CTS) phase in the Application-Specific Integrated Circuit (ASIC) design process, the clock is assumed to be perfect or ideal. This clock signal is typically generated using components like oscillators, Phase-Locked Loops (PLLs), or external clock sources.
