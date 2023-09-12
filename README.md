@@ -1008,31 +1008,54 @@ On sourcing the script the respective information is being displayed.
 <details>
 <summary>Labs</summary>
 Here the 'regexp' is used to compare 2 strings and return a boolean value indicating if they are same or not. The below snap represents a script that prints only the CLOCK pins among all the pins.
+	
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_regexp_match.png">
+
 The below script shows how to print the referenec name along with the instance name for the components in the design.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/ref%26inst_name.png">
+
 The below snap represents a script taht fetches all the pins with its direction in the design
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8dvpindir_ofn5.png">
 After reading the ddc file in Design Vision, the schematic is shown as below.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_schematic.png">
+
 On report_timing, the timing report of the design is seen in which it shows that the design is unconstrained.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_before_clk.png">
+
 After creating a clock, <get_clocks *> fetches all the clocks that are present in the design as shown below.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_create_clock.png">
+
 The timing report after creating clock shows that the design's data path is now constrained.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_create_clock.png">
 	
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_input_delay.png">
+
 The timing report after specifying the Input/output delay constraints.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_io_delay.png">
+
 The timing report after specifying input transistion.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_afterinput_transition.png">
+
 The timing report after specifying Output external delay
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_reportiming_after_out_delay.png">
+
 The timinmg repoirt with the capacitance and trans values specified.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_withcaptrans_afteriodelay.png">
+
 A script that contains all the necessary constraints is sourced directly.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_after_outload.png">
+
 </deatails>
 <details> 
 <summary>Labs</summary>
