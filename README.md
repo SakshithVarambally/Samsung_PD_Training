@@ -1075,11 +1075,11 @@ The timing report after specifying Output external delay
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_reportiming_after_out_delay.png">
 
-The timinmg repoirt with the capacitance and trans values specified.
+The timing report with the capacitance and transition values specified.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_withcaptrans_afteriodelay.png">
 
-A script that contains all the necessary constraints is sourced directly.
+The timing report after specifying the output load constraints.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_after_outload.png">
 
