@@ -1033,7 +1033,34 @@ After creating a clock, <get_clocks *> fetches all the clocks that are present i
 The timing report after creating clock shows that the design's data path is now constrained.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_create_clock.png">
-	
+
+ IO Delay
+ ========
+ In digital design, we manage IO delays using commands like set_input_delay and set_output_delay:
+
+set_input_delay:
+
+This command controls when data should reach the input port concerning the clock edge.
+Positive delay means data arrives after the clock edge, while negative delay implies data arrives before it.
+Use -add for multiple paths and -clock_fall for different clock edges.
+
+set_output_delay:
+
+This command constrains when data should reach the output flop relative to the clock edge.
+Positive delay tightens the maximum constraint, while negative delay tightens the minimum constraint.
+The -add switch appends constraints.
+Constraining IO Paths:
+
+For pure combinational logic, employ set_max_latency or create a virtual clock.
+set_max_latency sets a maximum propagation time from one port to another.
+A virtual clock, defined with create_clock, helps allocate time for IO paths without an actual clock.
+
+set_driving_cell:
+
+For module-level IOs with similar technology, use this command to model input transitions based on load/fanout.
+Specify the library cell name and relevant ports.
+
+The below snap specifies Input delay being added as constraint.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_input_delay.png">
 
 The timing report after specifying the Input/output delay constraints.
@@ -1059,16 +1086,55 @@ A script that contains all the necessary constraints is sourced directly.
 </deatails>
 <details> 
 <summary>Labs</summary>
+When dealing with clocks in digital design, it's common for the clock used in the external world and the clock reaching the input module to be physically separate due to long routing distances. These lengthy connections often involve buffer stages, which can introduce delays into the clock network.
+
+To overcome this, we create what's known as a "generated clock" at a different location to ensure logical and physical synchronization. This generated clock is always defined in relation to a "master" clock, which is the primary clock source or the clock signal arriving at the primary IO pins.
+
+Here's the command used to define such a generated clock:
+~~~ ruby
+create_generated_clock -name MYGEN_CLK -master [get_clocks MY_CLK] -source [get_ports clk] -div 1 [get_ports out_clk]
+~~~
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/gen_clk.png">
+
+The timing report displaying the master clock along with the Gen_Clock with all its specifications.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/report_timing_gen_clock.png">
+
+The completely constrained design after sourcing the tcl file containing all the constraints.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/completely_comnstrained_design_tcl.png">
 </details>
 <details>
 <summary> VCLK</summary>
+Virtual Clock
+=============
+Avirtual clock is an abstract or imaginary clock signal that is used to specify timing constraints for certain paths or elements in a digital design. It's called a "virtual" clock because it doesn't represent an actual clock signal that drives flip-flops or registers within the design; rather, it serves as a reference for timing analysis.
+
+Eg : For an input signal IN_C and an output signal OUT_Z that are part of a purely combinational logic path. You want to specify that the data from IN_C to OUT_Z should arrive within 1 nanosecond, even though there's no physical clock driving this path. You can define a virtual clock, for example, named "my_vclk," and set timing constraints using this virtual clock:
+
+~~~ruby
+create_clock -name my_vclk -period 5
+set_input_delay -max 1.5 -clock my_vclk [get_ports IN_C]
+set_output_delay -max 2.5 -clock my_vclk [get_ports OUT_Z]
+~~~
+
+The below report hows the violation of timing.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/vclk_violated_path.png">
+
+Creating a virtual Clock as mentioned in the example above
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/create_virt_clock.png">
+
+The schematic of the design after the creation of virtual Clock
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/schematic_lab14.png">
+
+The below snaps show how the the time violations improved flr the given path.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_violated.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_not_violated.png">
 
 </details>
