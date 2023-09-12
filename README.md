@@ -1109,7 +1109,8 @@ The completely constrained design after sourcing the tcl file containing all the
 <summary> VCLK</summary>
 Virtual Clock
 =============
-Avirtual clock is an abstract or imaginary clock signal that is used to specify timing constraints for certain paths or elements in a digital design. It's called a "virtual" clock because it doesn't represent an actual clock signal that drives flip-flops or registers within the design; rather, it serves as a reference for timing analysis.
+	
+A virtual clock is an abstract or imaginary clock signal that is used to specify timing constraints for certain paths or elements in a digital design. It's called a "virtual" clock because it doesn't represent an actual clock signal that drives flip-flops or registers within the design; rather, it serves as a reference for timing analysis.
 
 Eg : For an input signal IN_C and an output signal OUT_Z that are part of a purely combinational logic path. You want to specify that the data from IN_C to OUT_Z should arrive within 1 nanosecond, even though there's no physical clock driving this path. You can define a virtual clock, for example, named "my_vclk," and set timing constraints using this virtual clock:
 
@@ -1119,7 +1120,7 @@ set_input_delay -max 1.5 -clock my_vclk [get_ports IN_C]
 set_output_delay -max 2.5 -clock my_vclk [get_ports OUT_Z]
 ~~~
 
-The below report hows the violation of timing.
+The below report how much the timing  violation was
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/vclk_violated_path.png">
 
@@ -1131,7 +1132,10 @@ The schematic of the design after the creation of virtual Clock
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/schematic_lab14.png">
 
-The below snaps show how the the time violations improved flr the given path.
+The below snaps show how the the time violations improved for the given path.
+The 2 ways to meet timings are (Set_max_delay and Vclk and the choice depends on the design and designer)
+
+By adding an inverter and Xnor gate the slack is being met. This is also an optimization done by the tool.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_violated.png">
 
