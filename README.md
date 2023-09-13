@@ -915,7 +915,6 @@ For Neg D latch: Setup is measured before posedge and Hold is measured after pos
 </details>
 <details>
 <summary> Labs on Scripting </summary>
-</details>
 
 A Timing File (.lib) 
 This serves as a text-based repository of essential data related to Standard Cells used in VLSI design. This file encapsulates information about Timing, Area, and Power characteristics. It adheres to a PVT naming convention, signifying Process, Voltage, and Temperature specifications. For instance, "sky130_fd_sc_hd_tt_025C_1v8" implies 130 nm technology, standard process, 25°C temperature, and a 1.8 V voltage.
@@ -1001,5 +1000,240 @@ Creating a new script, in which a list is created and for each cell mentioned in
 On sourcing the script the respective information is being displayed.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9cb4853784dabb74ab8236a53bc1a4841595a1b7/day_7/my_script_run.png">
 
+
+</details>
+
+# Day 8 Advanced Constraints
+<details>
+<summary> Clock </summary>
+Each timing path in a digital circuit must be controlled and regulated by a clock signal. This regulation involves setting specific parameters for the clock, such as its timing period and waveform characteristics. The clock's period essentially acts as a constraint on the maximum time allowed for the combinational logic to process data, as the other parameters like setup and hold times are defined in the library (.lib) files. Up until the Clock Tree Synthesis (CTS) phase in the Application-Specific Integrated Circuit (ASIC) design process, the clock is assumed to be perfect or ideal. This clock signal is typically generated using components like oscillators, Phase-Locked Loops (PLLs), or external clock sources.
+
+Clock Skew
+=========
+
+
+Skew is the difference in arrival of clock at two consecutive pins of a sequential element. Clock skew is the variation at arrival time of clock at destination points in the clock network. The difference in the arrival of clock signal at the clock pin of different flops.
+Two types of skews are defined: Local skew and Global skew.
+- Local skew
+Local skew is the difference in the arrival of clock signal at the clock pin of related flops.
+- Global skew
+Global skew is the difference in the arrival of clock signal at the clock pin of non related flops. This also defined as the difference between shortest clock path delay and longest clock path delay reaching two sequential elements.
+
+<img width="710" alt="Screenshot 2023-09-11 at 11 53 00 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/00aadf2e-d798-413c-a1a9-3198622b2ac2">
+
+Clock skew can become a more challenging problem as clock frequency increases, as the margin for error significantly decreases with a higher clock frequency. To minimize clock skew, complex synchronous circuits employ clock distribution networks similar to the one shown in Figure 5. These are often also referred to as clock trees. Each inverter in the clock tree amplifies the clock signal to drive the next level of the clock tree. The goal is to have the clock signal simultaneously arrive at all register inputs.
+
+Skew can be positive or negative. When data and clock are routed in same direction then it is Positive skew. When data and clock are routed in opposite direction then it is negative skew.
+Positive Skew improves setup timing but can lead to hold violations. Whereas negative skew can lead to setup violations but can improve hold timings.
+
+Clock Latency
+=============
+
+Clock latency is an ideal mode term. It refers to the delay that is specified to exist between the source of the clock signal and the flip-flop clock pin. This is a delay specified by the user – not a real, measured thing. When the clock is actually created, then that same delay is now referred to as the “insertion delay”. Insertion delay (ID) is a real, measurable delay path through a tree of buffers. Sometimes the clock latency is interpreted as a desired target value for the insertion delay.
+
+Clock latency is the time taken by the clock to reach the sink pin from the clock source. It is divided into two parts – Clock Source Latency and Clock Network Latency. Clock Source Latency defines the delay between the clock waveform origin point to the definition point. Clock Network Latency is the delay form the clock definition point to the sink pin. Clock Latency is also called Clock Insertion Delay. Please see the below 2 pictures to get a better understanding of what Clock Latency is.
+
+<img width="788" alt="Screenshot 2023-09-12 at 7 00 40 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/0e87a689-9a37-44ce-8081-632883079d76">
+
+Clock Uncertainity
+=================
+
+Clock uncertainty is the deviation of the actual arrival time of the clock edge with respect to the ideal arrival time. In ideal mode the clock signal can arrive at all clock pins simultaneously. But in fact, that perfection is not achievable. So, to anticipate the fact that the clock will arrive at different times at different clock pins, the “ideal mode” clock assumes a clock uncertainty. For example, a 1 ns clock with a 100 ps clock uncertainty means that the next clock tick will arrive in 1 ns plus or minus 50 ps.
+A deeper question gets into why the clock does not always arrive exactly one clock period later. There are several possible reasons but here will list 3 major ones:
+(a) The insertion delay to the launching flip-flop’s clock pin is different than the insertion delay to the capturing flip-flop’s clock pin (one paths through the clock tree can be longer than another path). This is called clock skew.
+(b) The clock period is not constant. Some clock cycles are longer or shorter than others in a random fashion. This is called clock jitter which can be contributed from PLL or crystal osillator, cables, transmitters, receivers, internal circuitry of the PLL, thermal noise of the osillator etc. In the case of Pre CTS, since clock tree is not built, uncertainty = skew + jitter . Post CTS uncertainty = jitter .
+(c) Even if the launching clock path and the capturing clock path are absolutely identical, their path delays can still be different because of on-chip variation (OCV). This is where the chip’s delay properties vary across the die due to process variations or temperature variations or other reasons. This essentially increases the clock skew.
+
+Jitter
+=====
+
+clock jitter is the deviation of a clock edge from its ideal position in time. Simply speaking, it is the inability of a clock source to produce a clock with clean edges. As the clock edge can arrive within a range, the difference between two successive clock edges will determine the instantaneous period for that cycle. So, clock jitter is of importance while talking about timing analysis. There are many causes of jitter including PLL loop noise, power supply ripples, thermal noise, crosstalk between signals etc.
+
+
+
+For example:
+A clock source (say PLL) is supposed to provide a clock of frequency 10 MHz, amounting to a clock period of 100 ns. If it was an ideal clock source, the successive rising edges would come at 0 ns, 100 ns, 200 ns, 300 ns and so on. However, since, the PLL is a non-ideal clock source, it will have some uncertainty in producing edges. It may produce edges at 0 ns, 99.9 ns, 201 ns etc. Or we can say that the clock edge may come at any time between (<ideal_time>+- jitter); i.e. 0, between 99-101 ns, between 199-201 ns etc (1 ns is jitter). However, counting over a number of cycles, average period will come out to be ~100 ns.
+
+<img width="809" alt="Screenshot 2023-09-12 at 7 06 08 AM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/1490a783-cc95-4e05-b19e-c183019a44b8">
+
+</details>
+<details>
+<summary> Advanced constraints </summary>
+To effectively specify constraints in SDC (Tcl format) for your design, follow these commands:
+
+1. *Querying Ports and Clocks:*
+   - To get all ports in the design: `get_ports *`
+   - To get a specific port (e.g., clk): `get_ports clk`
+   - To get ports with names containing 'clk': `get_ports clk`
+   - To get all input ports: `get_ports * -filter "direction == in"`
+   - To get all output ports: `get_ports * -filter "direction == out"`
+   - To get all clocks: `get_clocks *`
+   - To get a specific clock (e.g., clk): `get_clocks clk`
+   - To get clocks with names containing 'clk': `get_clocks clk`
+   - To get clocks with a period greater than 10: `get_clocks * -filter "period > 10"`
+
+2. *Querying Cell Attributes:*
+   - To list all cells (both physical and hierarchical): `get_cells * -hier`
+   - To check if a cell is hierarchical (true/false): `get_attribute [get_cells u_combo_logic] is_hierarchical`
+
+3. *Clock Definition:*
+   - To create a clock named `<clock_name>` with a period of `<PERIOD>` at a clock generator point (e.g., primary IO pin clk): `create_clock -name <clock_name> -per <PERIOD> [get_ports clk]`
+
+4. *Clock Uncertainty and Latency:*
+   - To set clock latency (network delay): `set_clock_latency 3 <clock_name>`
+   - To set clock uncertainty (jitter & skew): `set_clock_uncertainty 0.5 <clock_name>`
+
+5. *Waveform Definition:*
+   - By default, a 50% duty cycle waveform is defined with rise at 0 and 10 and fall at 5ns. You can customize with `-wave {<starting rise edge> <first fall edge>}`.
+6. *Constraining IO Paths:*
+   - Input Ports:
+     - Set maximum input delay with respect to the clock: `set_input_delay -max 3 -clock [get_clocks <clock_name>] [get_ports IN_*]`
+     - Set minimum input delay with respect to the clock: `set_input_delay -min 0.5 -clock [get_clocks <clock_name>] [get_ports IN_*]`
+     - Set maximum input transition: `set_input_transition -max 1.5 [get_ports IN_*]`
+     - Set minimum input transition: `set_input_transition -min 0.75 [get_ports IN_*]`
+   - Output Ports:
+     - Set maximum output delay with respect to the clock: `set_output_delay -max 3 -clock [get_clocks <clock_name>] [get_ports OUT_Y]`
+     - Set minimum output delay with respect to the clock: `set_output_delay -min 0.5 -clock [get_clocks <clock_name>] [get_ports OUT_Y]`
+     - Set maximum output load: `set_output_load -max 80 [get_ports OUT_Y]`
+     - Set minimum output load: `set_output_load -min 20 [get_ports OUT_Y]`
+
+</details>
+
+<details>
+<summary>Labs</summary>
+Here the 'regexp' is used to compare 2 strings and return a boolean value indicating if they are same or not. The below snap represents a script that prints only the CLOCK pins among all the pins.
+
+	
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_regexp_match.png">
+
+The below script shows how to print the referenec name along with the instance name for the components in the design.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/ref%26inst_name.png">
+
+The below snap represents a script taht fetches all the pins with its direction in the design
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8dvpindir_ofn5.png">
+After reading the ddc file in Design Vision, the schematic is shown as below.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_schematic.png">
+
+On report_timing, the timing report of the design is seen in which it shows that the design is unconstrained.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_before_clk.png">
+
+After creating a clock, <get_clocks *> fetches all the clocks that are present in the design as shown below.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_create_clock.png">
+
+The timing report after creating clock shows that the design's data path is now constrained.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_create_clock.png">
+
+ IO Delay
+ ========
+ In digital design, we manage IO delays using commands like set_input_delay and set_output_delay:
+
+set_input_delay:
+
+This command controls when data should reach the input port concerning the clock edge.
+Positive delay means data arrives after the clock edge, while negative delay implies data arrives before it.
+Use -add for multiple paths and -clock_fall for different clock edges.
+
+set_output_delay:
+
+This command constrains when data should reach the output flop relative to the clock edge.
+Positive delay tightens the maximum constraint, while negative delay tightens the minimum constraint.
+The -add switch appends constraints.
+Constraining IO Paths:
+
+For pure combinational logic, employ set_max_latency or create a virtual clock.
+set_max_latency sets a maximum propagation time from one port to another.
+A virtual clock, defined with create_clock, helps allocate time for IO paths without an actual clock.
+
+set_driving_cell:
+
+For module-level IOs with similar technology, use this command to model input transitions based on load/fanout.
+Specify the library cell name and relevant ports.
+
+The below snap specifies Input delay being added as constraint.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_input_delay.png">
+
+The timing report after specifying the Input/output delay constraints.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/report_timing_after_io_delay.png">
+
+The timing report after specifying input transistion.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_afterinput_transition.png">
+
+The timing report after specifying Output external delay
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_reportiming_after_out_delay.png">
+
+The timing report with the capacitance and transition values specified.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_withcaptrans_afteriodelay.png">
+
+The timing report after specifying the output load constraints.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/1/lab8_report_timing_after_outload.png">
+
+</details>
+
+<details> 
+<summary> Generated Clock </summary>
+When dealing with clocks in digital design, it's common for the clock used in the external world and the clock reaching the input module to be physically separate due to long routing distances. These lengthy connections often involve buffer stages, which can introduce delays into the clock network.
+
+To overcome this, we create what's known as a "generated clock" at a different location to ensure logical and physical synchronization. This generated clock is always defined in relation to a "master" clock, which is the primary clock source or the clock signal arriving at the primary IO pins.
+
+Here's the command used to define such a generated clock:
+~~~ ruby
+create_generated_clock -name MYGEN_CLK -master [get_clocks MY_CLK] -source [get_ports clk] -div 1 [get_ports out_clk]
+~~~
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/gen_clk.png">
+
+The timing report displaying the master clock along with the Gen_Clock with all its specifications.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/report_timing_gen_clock.png">
+
+The completely constrained design after sourcing the tcl file containing all the constraints.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/clock/completely_comnstrained_design_tcl.png">
+</details>
+
+<details>
+<summary> VCLK </summary>
+	
+Virtual Clock
+============
+	
+A virtual clock is an abstract or imaginary clock signal that is used to specify timing constraints for certain paths or elements in a digital design. It's called a "virtual" clock because it doesn't represent an actual clock signal that drives flip-flops or registers within the design; rather, it serves as a reference for timing analysis.
+
+Eg : For an input signal IN_C and an output signal OUT_Z that are part of a purely combinational logic path. You want to specify that the data from IN_C to OUT_Z should arrive within 1 nanosecond, even though there's no physical clock driving this path. You can define a virtual clock, for example, named "my_vclk," and set timing constraints using this virtual clock:
+
+~~~ruby
+create_clock -name my_vclk -period 5
+set_input_delay -max 1.5 -clock my_vclk [get_ports IN_C]
+set_output_delay -max 2.5 -clock my_vclk [get_ports OUT_Z]
+~~~
+
+
+Creating a virtual Clock as mentioned in the example above
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/create_virt_clock.png">
+
+The schematic of the design after the creation of virtual Clock
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/schematic_lab14.png">
+
+The below snaps show how the the time violations improved for the given path.
+The 2 ways to meet timings are (Set_max_delay and Vclk and the choice depends on the design and designer)
+
+By adding an inverter and Xnor gate the slack is being met. This is also an optimization done by the tool.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_violated.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_not_violated.png">
 
 </details>
