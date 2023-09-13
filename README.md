@@ -1218,9 +1218,6 @@ set_input_delay -max 1.5 -clock my_vclk [get_ports IN_C]
 set_output_delay -max 2.5 -clock my_vclk [get_ports OUT_Z]
 ~~~
 
-The below report shows how much the timing  violation was initially.
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/vclk_violated_path.png">
 
 Creating a virtual Clock as mentioned in the example above
 
