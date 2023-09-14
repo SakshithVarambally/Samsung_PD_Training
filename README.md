@@ -1240,6 +1240,95 @@ By adding an inverter and Xnor gate the slack is being met. This is also an opti
 
 # Day9 Optimizations
 <details>
+<summary> Optimization techniques </summary>
+Optimization goals primarily revolve around achieving the best trade-offs between power consumption, performance, and area utilization. These goals are often conflicting, and optimizing one can negatively impact the others. Cost function-based optimization is commonly employed to balance these objectives. Let's delve into each of these optimization goals and their trade-offs:
+
+1. Power Optimization:
+ - Goal: Minimizing power consumption is crucial to extend battery life in portable devices and reduce overall energy consumption.
+ - Methods: Techniques like voltage scaling, clock gating, and power gating are used to reduce dynamic and leakage power.
+ - Trade-offs: Aggressively reducing power can slow down performance and require larger areas due to the need for power-efficient components.
+
+2. *Performance Optimization*:
+- Goal: Enhancing performance aims to maximize the speed and throughput of the VLSI design.
+- Methods: Techniques include high clock frequencies, pipelining, and parallel processing to improve performance.
+- Trade-offs: Focusing too much on performance can increase power consumption and may require larger chip areas to accommodate complex circuitry.
+
+3. *Area Optimization*:
+- Goal: Minimizing chip area is essential to reduce manufacturing costs and allow for integration of more functions on a single chip.
+- Methods: Logic optimization, area-efficient circuit designs, and efficient placement and routing can help reduce area utilization.
+- Trade-offs: Reducing chip area often results in increased power consumption and can limit the performance due to constraints on component size and complexity.
+
+Some examples of Tradeoff related issues
+
+- *Power-Performance Trade-off*: Aggressively optimizing for power can lead to lower clock frequencies and reduced performance. Conversely, pushing for higher performance may result in increased power consumption.
+
+- *Performance-Area Trade-off*: Achieving higher performance may require more complex and larger circuits, thus increasing the chip area and possibly manufacturing costs.
+
+- *Power-Area Trade-off*: Minimizing power and area simultaneously can be challenging, as low-power designs may necessitate larger transistors or additional components, which can increase area.
+
+
+COMBINATIONAL
+
+
+*1. Constant Propagation:*
+- Constant Propagation: When one input is made constant in a Boolean expression, the circuit can be simplified. For example, (AB+C)' can be reduced to C', saving area and power.
+
+*2. Boolean Logic Optimization:*
+- Karnaugh Maps (K-Maps): K-Maps are graphical tools used to minimize Boolean functions by grouping adjacent minterms or maxterms.
+- Quine-McCluskey Algorithm: This method systematically finds the prime implicants of a Boolean function to achieve minimal logic expressions.
+
+*3. Resource Sharing:*
+- Multiplexer Optimization: Consider a ternary operator y=sel?ab:cd. Instead of using separate multipliers for a*b and c*d, you can share the same sel condition, reducing area and power consumption.
+
+*4. Logic Sharing:*
+- Shared Logic: When multiple gates can use the same intermediate logic, it reduces redundancy. For example, if you have y=a&b&c and z=(a&b)|c, sharing the common AND gate results in a more area and power-efficient design.
+
+*5. Balanced vs. Preferential Implementation:*
+- Balanced Implementation: Ensures equal time allocation to all timing arcs. This approach is suitable when all signals have similar timing requirements.
+- Preferential Implementation: Gives priority to signals with tight timing constraints, allowing them to have shorter delays. This strategy optimizes for critical paths but may not be energy-efficient for non-critical paths.
+
+*6. Nested Ternary Operator Optimization:*
+- Nested Ternary Operators: Simplifying nested ternary operators can significantly reduce logic complexity. For example, optimizing a nested ternary operator with 3 multiplexers can be reduced to an XOR (exnor) gate, leading to area and power savings.
+
+SEQUENTIAL
+
+*Basic Sequential Optimization:*
+
+1. Sequential Constant Propagation:
+- Goal: Identify and propagate constants through sequential logic to simplify the design.
+- Method: When a flip-flop's D input is connected to a constant value (e.g., high or low), the optimization tool can replace it with a direct connection to Vdd or Vss to save area and power.
+
+2. Retiming:
+- Goal: Reorder flip-flops in the design to optimize for critical paths and minimize clock-to-q delays.
+- Method: By moving flip-flops across combinational logic, retiming aims to balance the pipeline stages, improve performance, and meet timing constraints.
+
+3. Unused Flop Removal:
+- Goal: Eliminate flip-flops that are not contributing to the functionality of the design.
+- Method: If a flip-flop's output is unused or redundant, it can be safely removed from the circuit, reducing area and power consumption.
+
+4. Clock Gating:
+- Goal: Reduce power consumption by gating the clock signal to flip-flops when their operation is unnecessary.
+- Method: Clock gating logic is introduced to enable/disable clock signals to flip-flops based on certain conditions, saving dynamic power.
+
+*Advanced Sequential Optimization:*
+
+1. State Optimization:
+- Goal: Optimize the state encoding in finite state machines (FSMs) to reduce area and improve performance.
+- Method: Re-encoding the states in an FSM can lead to a more compact representation, reducing the number of flip-flops required.
+
+2. Sequential Logic Cloning:
+- Goal: Replicate specific sequential logic elements to meet timing constraints.
+- Method: Cloning allows for the duplication of critical flip-flops to ensure that timing requirements are met, even at the expense of area.
+
+*Optimization of Unused Outputs:*
+
+1. Unused Output Optimization:
+- Goal: Minimize the generation of outputs that are not used in the design.
+- Method: When certain outputs are not required, the optimization tool can eliminate the associated logic and flip-flops, leading to area and power savings.
+
+The use of boolean variables like `compile_seqmap_propagate_constants`, `compile_delete_unloaded_sequential_cells`, and `compile_register_replication` allows  to control these optimization processes. Enabling or disabling these variables helps tailor the optimization to specific design requirements and constraints.
+</details>
+<details>
 <summary> Labs </summary>
 The opt_check design has a Multiplexer in its design, but after optimization it reduces into an AND gate and an inverter as shown below.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check_schematic1.png">
