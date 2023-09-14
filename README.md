@@ -1239,29 +1239,63 @@ By adding an inverter and Xnor gate the slack is being met. This is also an opti
 </details>
 
 # Day9 Optimizations
+<details>
 <summary> Labs </summary>
-
+The opt_check design has a Multiplexer in its design, but after optimization it reduces into an AND gate and an inverter as shown below.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check_schematic1.png">
+
+In the design opt_check2.v the ternary operator reduces to an OR gate as shown below
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/optcheck2_2.png">
+
+The optimization reduces the design into a 3input Nand gate as shown below
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check3_3.png">
+
+In the below snaps, The design shows 3 Multiplexers which after optimization reduces ti just a single Ex-Nor Gate as shown.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check4_beforeopt_4.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check4_afteropt_5.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_R1_6.png">
+
+The below snaps show how the resource sharing works by reducing the no of cells and accordingly reducing the area.
+This also includes the usage of an application variable that is set_max_area.
+Here it is restricted to 800 micro metre².
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_max_area800_7.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_R1_6.png">
+
+The Schematic after applying delay  to select line
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_delay_to_sel_7.png">
+
+The schematic showing the usage of tie cells 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const_tiecellis_shown_9.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff-const2_10.png">
+
+The below snap shows the schematic without optimization 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const3_no_opt_11.png">
+
+The below snap shows the schematic when the seq_mapping is set to false.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const2_seq_map_false_12.png">
+
+The below snaps show the schematic of Boundary optimization when boundary optimization is enabled and set to false  respectively.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_boundary_schematic_13.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_bound_opt_false_14.png">
+
+The below snaps show how the retiming concept works; by removing and adding adding logic between other flops where there is availability of slack with corrsponding timing reports.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/retime_after_15.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/boundry_schem_16.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_after_buff_18.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_before_19.png">
+
+The below snaps shows the timing report before considering the multipath cycle.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_before_timing_20.png">
+
+The below snap shows the timing report after the Multicycle path.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_after_mcp_21.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_final_report_after_buff_22.png">
+
+The below snap shows the timing report of the entire design after the multicycle path has been initiated.
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_report_0cycle_path_22.png">
 
-
+</details>
