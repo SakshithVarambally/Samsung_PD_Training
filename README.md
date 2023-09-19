@@ -1600,6 +1600,9 @@ We can see fhe usage of divide and rule policy, where the fanout on single load 
 </details>
 
 # Day 11 Baby SOC
+<details>
+	
+<summary> My Phone Processor </summary>
 Some points on my phone processor:
 
 Qualcomm Snapdragon 888 Octa-Core Processor
@@ -1653,3 +1656,4 @@ The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobil
 
 13. **Operating System Support**:
     - Compatible with various Android-based operating systems.
+</details>
