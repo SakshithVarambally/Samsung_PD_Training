@@ -1411,7 +1411,8 @@ The below snap shows the timing report of the entire design after the multicycle
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_report_0cycle_path_22.png">
 
 </details>
-# Day 10
+
+# Day 10 QOR
 <details>
 <summary> Introduction to QOR</summary>
 Quality checks are integral to the VLSI design and manufacturing process, serving to ensure the reliability and functionality of integrated circuits. These checks are ongoing and iterative, occurring at various stages to guarantee that ICs meet performance, reliability, and manufacturability standards. Advanced simulation and verification tools are frequently employed to automate and streamline these checks.
@@ -1509,7 +1510,7 @@ The 'report_timing' command in VLSI design is a valuable tool for analyzing the 
 
 The above examples showcase various ways to use the report_timing command to analyze and optimize design's timing characteristics. The choice of options and values depends on specific design goals and debugging requirements.
 
-jjjj
+<img width="1109" alt="Screenshot 2023-09-19 at 7 15 40 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/331095b4-d2fe-4d85-a84a-067350bea262">
 
 
 In a design with multiple sequential elements, such as flip-flops (DFF_A, DFF_B, DFF_C), you may have various timing paths to consider. For instance, there are two critical paths: one from DFF_A to DFF_C with a maximum delay of 1.65ns and another from DFF_B to DFF_C with a minimum delay of 1ns. In this context, 'delay_type max' analyzes the A-to-C path, while 'delay_type min' assesses the B-to-C path.
@@ -1520,7 +1521,7 @@ The 'report_timing -rise_to DFF_C/D' command reports a maximum delay of 1.5ns fo
 
 When assessing multiple paths, the 'report_timing -max_paths' command identifies the worst violated path per endpoint. Combining it with 'nworst' helps select the number of paths to report per endpoint, providing a comprehensive view of critical timing issues in the design.
 
-Jjjjjj
+<img width="1266" alt="Screenshot 2023-09-19 at 7 16 46 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a6c420d6-4876-42d1-a66f-60e5d046086a">
 
 In the design, there are four distinct timing paths to consider, each with its own characteristics. To assess these paths, the '-max_paths' switch is employed, allowing you to retrieve information about the most critical paths in the design. For example, using 'report_timing -max_paths 2' will generate reports for the two most critical timing paths, revealing details like slack values (-1vand -1.2ns).
 
@@ -1559,6 +1560,23 @@ Check_design shows the presence of Feedthrough
 
 Feedthrough
 =========
+
+Feedthrough refers to the situation where the synthesis tool generates logic or routing that allows a signal to propagate between unrelated parts of the design, potentially causing unintended interactions and issues.
+
+**Causes of Feedthrough in VLSI Synthesis:**
+
+- Logical Errors: Errors in the RTL (Register Transfer Level) description of the design, such as missing or incorrect constraints, can lead to feedthrough issues during synthesis.
+- Insufficient Constraints: Insufficient timing, area, or other constraints provided to the synthesis tool can result in suboptimal or incorrect logic being generated, leading to feedthrough.
+- High-Level Abstractions: Sometimes, high-level abstractions or design descriptions may not accurately capture the intended behavior of the design, causing feedthrough to occur.
+  
+**Mitigation of Feedthrough in VLSI Synthesis:**
+
+- Constraints: Providing accurate and comprehensive design constraints is crucial to guide the synthesis tool in generating the desired logic.
+- Static Timing Analysis (STA): Use STA tools to verify and analyze the synthesized design. STA can help identify potential feedthrough issues by analyzing signal paths and timing violations.
+- Design Reviews: Conduct thorough design reviews to identify and rectify logical errors or ambiguities in the RTL code.
+- Retiming: Retiming is a synthesis optimization technique that can help reduce feedthrough by repositioning flip-flops or registers in the design. It can be used to minimize the impact of feedthrough on critical paths.
+- Gate-Level Simulation: Simulate the synthesized design at the gate level to validate its functionality and timing correctness.
+- Sequential Equivalence Checking: Use sequential equivalence checking tools to ensure that the synthesized logic behaves equivalently to the original RTL description and does not introduce feedthrough.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_design_feedthrough4.png">
 
