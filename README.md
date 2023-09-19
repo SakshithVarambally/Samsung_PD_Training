@@ -1237,3 +1237,177 @@ By adding an inverter and Xnor gate the slack is being met. This is also an opti
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_not_violated.png">
 
 </details>
+
+# Day9 Optimizations
+<details>
+<summary> Optimization techniques </summary>
+Optimization goals primarily revolve around achieving the best trade-offs between power consumption, performance, and area utilization. These goals are often conflicting, and optimizing one can negatively impact the others. Cost function-based optimization is commonly employed to balance these objectives. Let's delve into each of these optimization goals and their trade-offs:
+
+1. Power Optimization:
+ - Goal: Minimizing power consumption is crucial to extend battery life in portable devices and reduce overall energy consumption.
+ - Methods: Techniques like voltage scaling, clock gating, and power gating are used to reduce dynamic and leakage power.
+ - Trade-offs: Aggressively reducing power can slow down performance and require larger areas due to the need for power-efficient components.
+
+2. *Performance Optimization*:
+- Goal: Enhancing performance aims to maximize the speed and throughput of the VLSI design.
+- Methods: Techniques include high clock frequencies, pipelining, and parallel processing to improve performance.
+- Trade-offs: Focusing too much on performance can increase power consumption and may require larger chip areas to accommodate complex circuitry.
+
+3. *Area Optimization*:
+- Goal: Minimizing chip area is essential to reduce manufacturing costs and allow for integration of more functions on a single chip.
+- Methods: Logic optimization, area-efficient circuit designs, and efficient placement and routing can help reduce area utilization.
+- Trade-offs: Reducing chip area often results in increased power consumption and can limit the performance due to constraints on component size and complexity.
+
+Some examples of Tradeoff related issues
+
+- *Power-Performance Trade-off*: Aggressively optimizing for power can lead to lower clock frequencies and reduced performance. Conversely, pushing for higher performance may result in increased power consumption.
+
+- *Performance-Area Trade-off*: Achieving higher performance may require more complex and larger circuits, thus increasing the chip area and possibly manufacturing costs.
+
+- *Power-Area Trade-off*: Minimizing power and area simultaneously can be challenging, as low-power designs may necessitate larger transistors or additional components, which can increase area.
+
+
+COMBINATIONAL
+
+
+*1. Constant Propagation:*
+- Constant Propagation: When one input is made constant in a Boolean expression, the circuit can be simplified. For example, (AB+C)' can be reduced to C', saving area and power.
+
+*2. Boolean Logic Optimization:*
+- Karnaugh Maps (K-Maps): K-Maps are graphical tools used to minimize Boolean functions by grouping adjacent minterms or maxterms.
+- Quine-McCluskey Algorithm: This method systematically finds the prime implicants of a Boolean function to achieve minimal logic expressions.
+
+*3. Resource Sharing:*
+- Multiplexer Optimization: Consider a ternary operator y=sel?ab:cd. Instead of using separate multipliers for a*b and c*d, you can share the same sel condition, reducing area and power consumption.
+
+*4. Logic Sharing:*
+- Shared Logic: When multiple gates can use the same intermediate logic, it reduces redundancy. For example, if you have y=a&b&c and z=(a&b)|c, sharing the common AND gate results in a more area and power-efficient design.
+
+*5. Balanced vs. Preferential Implementation:*
+- Balanced Implementation: Ensures equal time allocation to all timing arcs. This approach is suitable when all signals have similar timing requirements.
+- Preferential Implementation: Gives priority to signals with tight timing constraints, allowing them to have shorter delays. This strategy optimizes for critical paths but may not be energy-efficient for non-critical paths.
+
+*6. Nested Ternary Operator Optimization:*
+- Nested Ternary Operators: Simplifying nested ternary operators can significantly reduce logic complexity. For example, optimizing a nested ternary operator with 3 multiplexers can be reduced to an XOR (exnor) gate, leading to area and power savings.
+
+SEQUENTIAL
+
+*Basic Sequential Optimization:*
+
+1. Sequential Constant Propagation:
+- Goal: Identify and propagate constants through sequential logic to simplify the design.
+- Method: When a flip-flop's D input is connected to a constant value (e.g., high or low), the optimization tool can replace it with a direct connection to Vdd or Vss to save area and power.
+
+2. Retiming:
+- Goal: Reorder flip-flops in the design to optimize for critical paths and minimize clock-to-q delays.
+- Method: By moving flip-flops across combinational logic, retiming aims to balance the pipeline stages, improve performance, and meet timing constraints.
+
+3. Unused Flop Removal:
+- Goal: Eliminate flip-flops that are not contributing to the functionality of the design.
+- Method: If a flip-flop's output is unused or redundant, it can be safely removed from the circuit, reducing area and power consumption.
+
+4. Clock Gating:
+- Goal: Reduce power consumption by gating the clock signal to flip-flops when their operation is unnecessary.
+- Method: Clock gating logic is introduced to enable/disable clock signals to flip-flops based on certain conditions, saving dynamic power.
+
+*Advanced Sequential Optimization:*
+
+1. State Optimization:
+- Goal: Optimize the state encoding in finite state machines (FSMs) to reduce area and improve performance.
+- Method: Re-encoding the states in an FSM can lead to a more compact representation, reducing the number of flip-flops required.
+
+2. Sequential Logic Cloning:
+- Goal: Replicate specific sequential logic elements to meet timing constraints.
+- Method: Cloning allows for the duplication of critical flip-flops to ensure that timing requirements are met, even at the expense of area.
+
+*Optimization of Unused Outputs:*
+
+1. Unused Output Optimization:
+- Goal: Minimize the generation of outputs that are not used in the design.
+- Method: When certain outputs are not required, the optimization tool can eliminate the associated logic and flip-flops, leading to area and power savings.
+
+The use of boolean variables like `compile_seqmap_propagate_constants`, `compile_delete_unloaded_sequential_cells`, and `compile_register_replication` allows  to control these optimization processes. Enabling or disabling these variables helps tailor the optimization to specific design requirements and constraints.
+</details>
+<details>
+<summary> Labs </summary>
+The opt_check design has a Multiplexer in its design, but after optimization it reduces into an AND gate and an inverter as shown below.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check_schematic1.png">
+
+In the design opt_check2.v the ternary operator reduces to an OR gate as shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/optcheck2_2.png">
+
+The optimization reduces the design into a 3input Nand gate as shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check3_3.png">
+
+In the below snaps, The design shows 3 Multiplexers which after optimization reduces ti just a single Ex-Nor Gate as shown.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check4_beforeopt_4.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check4_afteropt_5.png">
+
+The below snaps show how the resource sharing works by reducing the no of cells and accordingly reducing the area.
+This also includes the usage of an application variable that is set_max_area.
+Here it is restricted to 800 micro metre².
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_max_area800_7.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_R1_6.png">
+
+The Schematic after applying delay  to select line
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_delay_to_sel_7.png">
+
+The schematic showing the usage of tie cells 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const_tiecellis_shown_9.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff-const2_10.png">
+
+Boundary Optimization
+==================
+
+Boundary optimization is a vital strategy employed during the logic synthesis phase of chip design to achieve optimal balance in terms of area usage, timing performance, and power efficiency. When implementing boundary optimization, it's possible to realize a notable reduction of approximately 5-10% in the standard cell area, along with a timing enhancement of roughly 2-5%. 
+
+In the synthesis process, an essential decision involves selecting which specific modules or components should undergo boundary optimization and which should remain unaffected. This choice plays a crucial role in fine-tuning the overall design, ensuring that critical areas such as area utilization, timing constraints, and power consumption are optimized to meet the desired specifications.
+
+
+The below snap shows the schematic without optimization 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const3_no_opt_11.png">
+
+The below snap shows the schematic when the seq_mapping is set to false.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const2_seq_map_false_12.png">
+
+The below snaps show the schematic of Boundary optimization when boundary optimization is enabled and set to false  respectively.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_boundary_schematic_13.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_bound_opt_false_14.png">
+
+Retiming
+======
+The below snaps show how the retiming concept works; by removing and adding adding logic between other flops where there is availability of slack with corrsponding timing reports.
+
+Retiming is an optimizing algorithm for improving the circuit performance. It moves registers across combo-logic without affecting the functionality of design at primary input/output ports. Registers shall be added and to or removed from the design while performing retiming. However, additional registers do not add clock latency to the design’s performance.
+Critical paths are examined along with their non-critical adjacent paths. There shall be many non-critical paths with positive slack. The strategy is to leverage positive slack on one side of a sequential element to balance negative slack on the other. 
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/boundry_schem_16.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/retime_after_15.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_after_buff_18.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_before_19.png">
+
+Multicycle Path
+==============
+
+A Multi-Cycle Path (MCP) in digital circuit design represents a path connecting two flip-flops, where the intermediate combinational logic can introduce delays spanning more than one clock cycle. This design approach allows certain paths to take their time propagating data from source to destination, acknowledging that not all data needs to meet standard single-cycle timing constraints. Unlike false paths, MCPs are valid and must be analyzed, but over multiple clock periods.
+
+In standard timing analysis without MCP constraints, setup checks assess the time for data to travel from a source flip-flop's clock edge to the destination flip-flop's next clock edge, while hold checks ensure data stability within the same clock period. However, with MCPs, the analysis expands to multiple clock periods, recognizing that data on these paths may propagate more slowly but remains valid and reliable for specific design purposes.
+
+The below snaps shows the timing report before considering the multipath cycle.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_before_timing_20.png">
+
+The below snap shows the timing report after the Multicycle path.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_after_mcp_21.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_final_report_after_buff_22.png">
+
+The below snap shows the timing report of the entire design after the multicycle path has been initiated.
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_report_0cycle_path_22.png">
+
+</details>
