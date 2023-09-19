@@ -1,5 +1,4 @@
 
-
 ## Day-0-Installation
 
 	
@@ -1415,10 +1414,15 @@ The below snap shows the timing report of the entire design after the multicycle
 # Day 10 QOR
 <details>
 <summary> Introduction to QOR</summary>
+	
+Quality of Results or Quality Checks
+===============
+
 Quality checks are integral to the VLSI design and manufacturing process, serving to ensure the reliability and functionality of integrated circuits. These checks are ongoing and iterative, occurring at various stages to guarantee that ICs meet performance, reliability, and manufacturability standards. Advanced simulation and verification tools are frequently employed to automate and streamline these checks.
 
 In the realm of digital electronics and integrated circuits, propagation delay assumes a pivotal role. It signifies the time required for an electrical signal to travel from a digital logic gate's input to its output. Propagation delay, measured in units like nanoseconds (ns) or picoseconds (ps), significantly influences circuit speed and performance. Various factors, such as technology choices, wire lengths, and circuit complexity, impact this parameter.
 
+**Delay**
 Rising Edge Propagation Delay (tpdr) characterizes the duration needed for an output signal to change from a low state (0) to a high state (1) following a corresponding transition in the input signal.
 
 On the other hand, Falling Edge Propagation Delay (tpdf) represents the time required for the output signal to shift from a high state (1) back to a low state (0) in response to a similar transition in the input signal.
