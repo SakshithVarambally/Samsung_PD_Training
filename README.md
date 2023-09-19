@@ -1600,8 +1600,56 @@ We can see fhe usage of divide and rule policy, where the fanout on single load 
 </details>
 
 # Day 11 Baby SOC
+Some points on my phone processor:
 
+Qualcomm Snapdragon 888 Octa-Core Processor
+======
 
+The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobile devices. Here are its key architecture and design specifications:
 
+1. **CPU Architecture**:
+   - The Snapdragon 888 uses a tri-cluster CPU architecture.
+   - It features one high-performance core, three high-performance cores, and four power-efficient cores.
 
+2. **CPU Cores**:
+   - 1x Cortex-X1 core clocked at up to 2.84 GHz for maximum performance.
+   - 3x Cortex-A78 cores clocked at up to 2.4 GHz for sustained high performance.
+   - 4x Cortex-A55 cores clocked at up to 1.8 GHz for power efficiency.
 
+3. **Manufacturing Process**:
+   - Built using a 5nm process technology for improved power efficiency and performance.
+
+4. **GPU**:
+   - Adreno 660 GPU for graphics processing, offering excellent gaming performance and graphics rendering.
+
+5. **AI and Machine Learning**:
+   - Hexagon 780 AI processor with improved AI and machine learning capabilities.
+   - 26 TOPS (Trillions of Operations Per Second) AI performance.
+
+6. **Modem**:
+   - Integrated X60 5G modem for high-speed 5G connectivity with support for mmWave and sub-6 GHz bands.
+
+7. **Camera Support**:
+   - Up to a 200-megapixel single camera or dual 64-megapixel cameras.
+   - 8K video recording and playback support.
+   - Advanced image signal processing capabilities.
+
+8. **Display Support**:
+   - Support for QHD+ displays with up to a 144Hz refresh rate.
+   - HDR10+ support for high-quality visuals.
+
+9. **Connectivity**:
+   - Bluetooth 5.2, Wi-Fi 6E, and Wi-Fi 6 for fast and reliable wireless connections.
+
+10. **Security**:
+    - Hardware-based security features, including a secure processing unit (SPU) for enhanced device security.
+
+11. **Audio**:
+    - Qualcomm Aqstic audio technology for improved audio quality.
+
+12. **Charging and Battery**:
+    - Support for Qualcomm Quick Charge 5 technology for fast charging.
+    - Enhanced power efficiency for longer battery life.
+
+13. **Operating System Support**:
+    - Compatible with various Android-based operating systems.
