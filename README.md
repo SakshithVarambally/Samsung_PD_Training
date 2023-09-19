@@ -1361,6 +1361,14 @@ The schematic showing the usage of tie cells
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff-const2_10.png">
 
+Boundary Optimization
+==================
+
+Boundary optimization is a vital strategy employed during the logic synthesis phase of chip design to achieve optimal balance in terms of area usage, timing performance, and power efficiency. When implementing boundary optimization, it's possible to realize a notable reduction of approximately 5-10% in the standard cell area, along with a timing enhancement of roughly 2-5%. 
+
+In the synthesis process, an essential decision involves selecting which specific modules or components should undergo boundary optimization and which should remain unaffected. This choice plays a crucial role in fine-tuning the overall design, ensuring that critical areas such as area utilization, timing constraints, and power consumption are optimized to meet the desired specifications.
+
+
 The below snap shows the schematic without optimization 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const3_no_opt_11.png">
 
@@ -1371,11 +1379,26 @@ The below snaps show the schematic of Boundary optimization when boundary optimi
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_boundary_schematic_13.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_bound_opt_false_14.png">
 
+Retiming
+======
 The below snaps show how the retiming concept works; by removing and adding adding logic between other flops where there is availability of slack with corrsponding timing reports.
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/retime_after_15.png">
+
+Retiming is an optimizing algorithm for improving the circuit performance. It moves registers across combo-logic without affecting the functionality of design at primary input/output ports. Registers shall be added and to or removed from the design while performing retiming. However, additional registers do not add clock latency to the design’s performance.
+Critical paths are examined along with their non-critical adjacent paths. There shall be many non-critical paths with positive slack. The strategy is to leverage positive slack on one side of a sequential element to balance negative slack on the other. 
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/boundry_schem_16.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/retime_after_15.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_after_buff_18.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_before_19.png">
+
+Multicycle Path
+==============
+
+A Multi-Cycle Path (MCP) in digital circuit design represents a path connecting two flip-flops, where the intermediate combinational logic can introduce delays spanning more than one clock cycle. This design approach allows certain paths to take their time propagating data from source to destination, acknowledging that not all data needs to meet standard single-cycle timing constraints. Unlike false paths, MCPs are valid and must be analyzed, but over multiple clock periods.
+
+In standard timing analysis without MCP constraints, setup checks assess the time for data to travel from a source flip-flop's clock edge to the destination flip-flop's next clock edge, while hold checks ensure data stability within the same clock period. However, with MCPs, the analysis expands to multiple clock periods, recognizing that data on these paths may propagate more slowly but remains valid and reliable for specific design purposes.
 
 The below snaps shows the timing report before considering the multipath cycle.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_before_timing_20.png">
