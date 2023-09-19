@@ -1660,7 +1660,7 @@ The key aspects of constraining a design in the context of a synthesis script us
 In a nutshell, TCL scripts are used to specify how a digital design should be synthesized, including timing, clock domains, and optimization strategies. The synthesis flow involves checking, compiling, and reporting, while optimization knobs fine-tune the design for better performance or area efficiency. Proper constraints and optimization can significantly impact the final quality of the synthesized design.
 </details>
 
-# Day 11 Baby SOC
+# Day 11 SOC
 <details>
 	
 <summary> My Phone Processor </summary>
