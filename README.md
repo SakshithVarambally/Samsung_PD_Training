@@ -1412,7 +1412,39 @@ The below snap shows the timing report of the entire design after the multicycle
 
 </details>
 # Day 10
+<details>
+<summary> Introduction to QOR</summary>
+Quality checks are integral to the VLSI design and manufacturing process, serving to ensure the reliability and functionality of integrated circuits. These checks are ongoing and iterative, occurring at various stages to guarantee that ICs meet performance, reliability, and manufacturability standards. Advanced simulation and verification tools are frequently employed to automate and streamline these checks.
+
+In the realm of digital electronics and integrated circuits, propagation delay assumes a pivotal role. It signifies the time required for an electrical signal to travel from a digital logic gate's input to its output. Propagation delay, measured in units like nanoseconds (ns) or picoseconds (ps), significantly influences circuit speed and performance. Various factors, such as technology choices, wire lengths, and circuit complexity, impact this parameter.
+
+Rising Edge Propagation Delay (tpdr) characterizes the duration needed for an output signal to change from a low state (0) to a high state (1) following a corresponding transition in the input signal.
+
+On the other hand, Falling Edge Propagation Delay (tpdf) represents the time required for the output signal to shift from a high state (1) back to a low state (0) in response to a similar transition in the input signal.
+
+It's important to note that tpdr and tpdf are not equal because the mobility of electrons and holes, essential components in electronic circuits, differs. This discrepancy in mobility leads to variations in signal propagation times during transitions from low to high and high to low states
+ 
+</details>
+
 <details> 
+<summary> report_timing </summary>
+The 'report_timing' command in VLSI design is a valuable tool for analyzing the timing characteristics of a digital circuit. It provides essential information about timing paths, including cell delays, signal transitions, capacitance, and slack. By default, 'report_timing' displays setup delay with two significant digits.
+
+In a design with multiple sequential elements, such as flip-flops (DFF_A, DFF_B, DFF_C), you may have various timing paths to consider. For instance, there are two critical paths: one from DFF_A to DFF_C with a maximum delay of 1.65ns and another from DFF_B to DFF_C with a minimum delay of 1ns. In this context, 'delay_type max' analyzes the A-to-C path, while 'delay_type min' assesses the B-to-C path.
+
+To ensure proper circuit operation within a specified clock cycle (e.g., 5ns), it's crucial for the clock's rising edge to arrive no earlier than the data signal. This condition ensures a non-negative slack. 'check_design' identifies design inconsistencies, 'check_timing' verifies constraint specifications, and 'report_constraints' assesses design feasibility regarding electrical parameters like power and capacitance.
+
+The 'report_timing -rise_to DFF_C/D' command reports a maximum delay of 1.5ns for the A-to-C path and a minimum delay of 1.15ns for the B-to-C path. Slack, the time margin for meeting setup and hold requirements, is calculated as required time minus arrival time. For setup, the A-to-C path exhibits positive slack of 2.85ns, indicating timing compliance. Similarly, the B-to-C path, in terms of hold requirements, has positive slack of 0.9ns, indicating a met hold condition.
+
+When assessing multiple paths, the 'report_timing -max_paths' command identifies the worst violated path per endpoint. Combining it with 'nworst' helps select the number of paths to report per endpoint, providing a comprehensive view of critical timing issues in the design.
+
+Jjjjjj
+
+In the design, there are four distinct timing paths to consider, each with its own characteristics. To assess these paths, the '-max_paths' switch is employed, allowing you to retrieve information about the most critical paths in the design. For example, using 'report_timing -max_paths 2' will generate reports for the two most critical timing paths, revealing details like slack values (-1vand -1.2ns).
+
+It's crucial to understand that 'max_paths' focuses on identifying the worst violated path for each specific endpoint, rather than providing an overview of the worst violations across the entire design. To obtain more comprehensive insights into critical timing issues, the 'nworst' switch complements 'max_paths' by specifying the number of worst violated paths to report for each endpoint. This combined approach lets you effectively pinpoint and address critical timing challenges within the design.
+</details>
+<details>
 <summary> Lab </summary>
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep_time1.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep2.png">
