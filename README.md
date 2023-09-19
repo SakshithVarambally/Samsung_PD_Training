@@ -1411,3 +1411,30 @@ The below snap shows the timing report of the entire design after the multicycle
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_report_0cycle_path_22.png">
 
 </details>
+# Day 10
+<details> 
+<summary> Lab </summary>
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep_time1.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep_hold3.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_design_feedthrough4.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_timing5.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/report_constraints6.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/report_constraint.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/mux_128_bef_const.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/mux_128_aft_const.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_high_fanout.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_after_set_max.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_before_set_transition.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_transition_after.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_trans_met.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
+</details>
+
+# Day 11 Baby SOC
+
+
+
+
+
