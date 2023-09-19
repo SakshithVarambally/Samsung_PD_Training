@@ -1658,7 +1658,6 @@ In a nutshell, TCL scripts are used to specify how a digital design should be sy
 <details>
 	
 <summary> My Phone Processor </summary>
-Some points on my phone processor:
 
 Qualcomm Snapdragon 888 Octa-Core Processor
 ======
