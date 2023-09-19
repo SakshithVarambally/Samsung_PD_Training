@@ -1587,7 +1587,7 @@ In the below schematic we can see the single enable_pin drawing the entire desig
 check_timing gives the overall picture if the constraints are applied or not.
 As seen below, the following end points are not constrained which will be constrained further later.
 
-Note: Click pins can never be constrained, only frequency of operation can be changed.
+Note: Clock pins can never be constrained, only frequency of their operation can be changed.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_timing5.png">
 
 report_constraint shows all the violations that are occurring on the deisgn 
