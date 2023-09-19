@@ -1576,12 +1576,18 @@ report_constraint shows all the violations that are occurring on the deisgn
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/report_constraint.png">
 
+128 bit Mux before applying constraints
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/mux_128_bef_const.png">
 
+128 bit mux after applying constraints
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/mux_128_aft_const.png">
+
+High net fanout
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_high_fanout.png">
+After set_max
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_after_set_max.png">
 
+set_max_tranistion being applied to the design
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_before_set_transition.png">
 
 After max transition is mentioned, the transition constraint gets nullified as shown.
@@ -1591,6 +1597,8 @@ After max transition is mentioned, the transition constraint gets nullified as s
 The timing report that is observed after providing maximum transition is shown below. The transition value is being limited which was earlier mentioning some library value that was fed from .lib
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_trans_met.png">
 
+The design schematic after the the application of constraints. We can observe that the load on select/enable pin is reduced deastically by the introduction of buffers which drive the subsequent nets.
+We can see fhe usage of divide and rule policy, where the fanout on single load pin is divided by the usage of local buffers.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
 </details>
 
