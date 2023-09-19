@@ -1552,7 +1552,7 @@ Points to identify it is hold check
 - Library hold time is mentioned
 - slack is reqd - arrival
 - The check is happening for same clock cycle.
-- 
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep_hold3.png">
 
 Check_design shows the presence of Feedthrough
@@ -1561,6 +1561,8 @@ Feedthrough
 =========
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_design_feedthrough4.png">
+
+In the below schematic we can see the single enable_pin drawing the entire design which is a high fanout pin in the design.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
 
@@ -1576,15 +1578,10 @@ report_constraint shows all the violations that are occurring on the deisgn
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/report_constraint.png">
 
-128 bit Mux before applying constraints
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/mux_128_bef_const.png">
 
-128 bit mux after applying constraints
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/mux_128_aft_const.png">
-
-High net fanout
+High net fanout can be observed on the enable pin i.e. 128
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_high_fanout.png">
-After set_max
+In the below snap we can see the high fanout being reduced to 17 and tge subsequent introduction of buffers in the design.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_after_set_max.png">
 
 set_max_tranistion being applied to the design
@@ -1597,7 +1594,7 @@ After max transition is mentioned, the transition constraint gets nullified as s
 The timing report that is observed after providing maximum transition is shown below. The transition value is being limited which was earlier mentioning some library value that was fed from .lib
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_trans_met.png">
 
-The design schematic after the the application of constraints. We can observe that the load on select/enable pin is reduced deastically by the introduction of buffers which drive the subsequent nets.
+The final design schematic after the the application of constraints. We can observe that the load on select/enable pin is reduced deastically by the introduction of buffers which drive the subsequent nets.
 We can see fhe usage of divide and rule policy, where the fanout on single load pin is divided by the usage of local buffers.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
 </details>
