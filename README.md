@@ -12,6 +12,52 @@ IC Compiler II is a complete netlist-to-GDSII implementation system that include
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f81f46c9f861cb08ef7596f570cbd10cc01e9091/Samsung_PD_%23day0/icc2_shell.png">
+
+.v
+module fulladder (  input [3:0] a,  
+                  input [3:0] b,  
+                  input c_in,  
+                  output reg c_out,  
+                  output reg [3:0] sum);  
+  
+    always @ (a or b or c_in) begin  
+    {c_out, sum} = a + b + c_in;  
+  end  
+endmodule  
+
+tb
+module tb_fulladd;  
+    // 1. Declare testbench variables  
+   reg [3:0] a;  
+   reg [3:0] b;  
+   reg c_in;  
+   wire [3:0] sum;  
+   integer i;  
+  
+    // 2. Instantiate the design and connect to testbench variables  
+   fulladd  fa0 ( .a (a),  
+                  .b (b),  
+                  .c_in (c_in),  
+                  .c_out (c_out),  
+                  .sum (sum));  
+  
+    // 3. Provide stimulus to test the design  
+   initial begin  
+      a <= 0;  
+      b <= 0;  
+      c_in <= 0;  
+  
+      $monitor ("a=0x%0h b=0x%0h c_in=0x%0h c_out=0x%0h sum=0x%0h", a, b, c_in, c_out, sum);  
+  
+        // Use a for loop to apply random values to the input  
+      for (i = 0; i < 5; i = i+1) begin  
+         #10 a <= $random;  
+             b <= $random;  
+                 c_in <= $random;  
+      end  
+   end  
+endmodule  
+
 </details>
 	
 <details>
@@ -1716,4 +1762,6 @@ The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobil
 
 13. **Operating System Support**:
     - Compatible with various Android-based operating systems.
+   
 </details>
+
