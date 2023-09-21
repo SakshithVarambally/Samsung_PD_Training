@@ -1818,7 +1818,8 @@ The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobil
 <details>
 <summary>Labs</summary>
 Code of encoder
-~~~ruby
+	
+~~~ ruby
 module encoder8_3( input [7:0]y, input en, output reg [2:0]a);
 
 always @(*)
@@ -1840,7 +1841,7 @@ endmodule
 ~~~
 
 Code of testbench
-~~~ruby
+~~~ ruby
 `timescale 1ns / 1ps
 module test_encoder;
 reg [7:0]Y;
@@ -1876,16 +1877,27 @@ endmodule
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_v.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_tb.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_gtk.png">
+
+The below snap shows the Verilog and corresponding testbench of Digital to analog Converter and its GTKWave observed after simulation
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_v.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_tb.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_gtk.png">
+
+The below snaps show the GTKWave of the core
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk_reset.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk.png">
+
+The below snaps show the GTKwave of Pll which is the clock generator in the deisgn after simulation.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/pll_gtk.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int.png">
+
+The below snap shows the simulation of the RISCV core integrated with DAC Block.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int_gtk.png">
+The below snap shows the simulation after the integration of RISCV with PLL. In the first snap we can observe how the 2 designs merge to give the integrated design
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int_gtk.png">
+
+The simulation of the final Top module with RISCV Core, PLL and DAC integrated together is shown below.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsdsoc_gtk.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsd_full.png">
 
