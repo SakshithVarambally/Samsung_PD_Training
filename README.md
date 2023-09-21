@@ -1816,7 +1816,29 @@ The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobil
 # Day 12
 
 <details>
-<summary>Labs</summary>
+<summary>RISCV </summary>
+RISC-V is an open-source instruction set architecture (ISA) based on reduced instruction set computing (RISC) principles. It's designed to be highly customizable and adaptable for various computing needs. RISC-V stands out for its openness, allowing anyone to implement it without licensing fees, which has led to its growing popularity in both academia and industry. It has the potential to be used in a wide range of applications, from embedded systems to supercomputers
+
+risc V architecture, fetch ...
+Sure, I can explain the basic structure of a RISC-V CPU with the key stages you mentioned:
+
+1. **Fetch (IF - Instruction Fetch):** In this stage, the CPU fetches the next instruction from memory. The program counter (PC) is used to determine the address of the instruction in memory. The fetched instruction is then stored in an instruction register.
+
+2. **Decode (ID - Instruction Decode):** In this stage, the CPU decodes the fetched instruction. It determines what operation the instruction specifies, which registers are involved, and what immediate values might be needed. This stage also determines the control signals required for subsequent stages.
+
+3. **Register File Read:** The CPU reads the values from the registers specified by the instruction in this stage. It typically involves reading values from two source registers (e.g., Rs1 and Rs2) based on the decoded instruction.
+
+4. **Execute (EX - Execute):** This stage performs the actual operation specified by the instruction. It can include arithmetic operations (e.g., addition, subtraction), logical operations (e.g., AND, OR), and data movement operations (e.g., load, store). The ALU (Arithmetic Logic Unit) is often used for these computations.
+
+5. **Register File Write:** If the instruction involves writing back a result to a register (e.g., Rd), this stage writes the result into the appropriate register in the register file. This is necessary to update the state of the CPU and make the result available for subsequent instructions.
+
+6. **Control Logic:** Throughout all the stages, the control logic manages the flow of data and control signals. It determines when to advance to the next stage, when to stall or flush the pipeline in case of hazards, and when to branch to a different instruction address if a branch instruction is encountered.
+
+The RISC-V architecture is designed to be simple and efficient, which is why it follows a reduced instruction set computing (RISC) philosophy. This means that instructions are generally simple and execute in one clock cycle, which makes it easier to design and implement a CPU based on the RISC-V ISA (Instruction Set Architecture). Additionally, the use of a register file and a pipeline architecture helps improve instruction throughput and performance.
+ </details>
+ <details>
+<summary> Encoder Task </summary>
+	 
 Code of encoder
 	
 ~~~ ruby
@@ -1840,7 +1862,7 @@ end
 endmodule
 ~~~
 
-Code of testbench
+testbench 
 ~~~ ruby
 `timescale 1ns / 1ps
 module test_encoder;
@@ -1875,11 +1897,48 @@ end
 endmodule
 ~~~
 
+An 8:3 encoder, also known as a priority encoder, is a digital circuit that encodes one of eight active inputs into a 3-bit binary output code. In this case, you want to understand how it works with the given inputs: 01, 02, 04, 08, 10, 20, 40, and 80. Let's break down how this encoder operates and its waveform for these inputs.
+
+1. Inputs:
+- 01: 0001
+- 02: 0010
+- 04: 0100
+- 08: 1000
+- 10: 0001 0000
+- 20: 0010 0000
+- 40: 0100 0000
+- 80: 1000 0000
+
+2. 8:3 Encoder Operation:
+- The encoder prioritizes the highest active input and generates a 3-bit binary output that represents the position of the highest active input.
+- The most significant bit (MSB) of the output indicates whether input 80 is active or not.
+- The second bit indicates the presence of input 40.
+- The least significant bit (LSB) indicates the presence of input 20.
+
+3. Waveform for Inputs:
+   To visualize the operation of the 8:3 encoder with the given inputs, you would observe the following waveforms for the inputs and outputs over time (assuming each input is active for a brief moment):
+   
+- When 01 is active: Output = 001
+- When 02 is active: Output = 010
+- When 04 is active: Output = 100
+- When 08 is active: Output = 1000
+- When 10 is active: Output = 1000 (continues from the previous state)
+- When 20 is active: Output = 1000 (still continues)
+- When 40 is active: Output = 1100 (the 2nd bit becomes 1)
+- When 80 is active: Output = 1110 (the 1st bit becomes 1)
+
+This waveform illustrates how the encoder encodes the highest priority active input into a binary output code, with the most significant bit representing the highest priority input and the least significant bit representing the lowest priority input.
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_gtk.png">
 </details>
 
 <details>
 <summary> Labs </summary>
+
+DAC
+==
 
 The below snap shows the Verilog and corresponding testbench of Digital to analog Converter and its GTKWave observed after simulation.
 
@@ -1891,8 +1950,17 @@ gtkwave avsddac_tb_test.vcd
 ~~~
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_v.png">
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_tb.png">
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_gtk.png">
+
+rvmyth
+==
 
 The rvmyth processor operates as a RISC-V processor with a five-stage pipeline, consisting of fetch, decode, read, execute, and write stages. At its output, it produces 10-bit digital codes. Its primary function is to perform addition by incrementing a 10-bit binary value by 1, with the 11th bit reserved for a sign flag. When the sign flag is set, it begins counting down instead of up.
 The below snaps show the GTKWave of the RVMyth processor
@@ -1904,13 +1972,24 @@ iverilog mythcore_test.v tb_mythcore_test.v
 gtkwave tb_mythcore_test.vcd
 ~~~
 
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk_reset.png">
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk.png">
+
+Pll
+==
 
 The below snaps show the GTKwave of Pll after simulation which is the clock generator in the design.
 
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/pll_gtk.png">
 
+rvmyth interfaced with dac
+===
 
 The below snap shows the simulation of the rvmyth interfaced with DAC Block.
 
@@ -1921,20 +2000,27 @@ verilog rvmyth_avsddac.v rvmyth_avsddac_TB.v
 ./a.out
 gtkwave rvmyth_avsddac.vcd
 ~~~
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int.png">
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int_gtk.png">
 
-out [9:0] --> rvymth 10-bit digital output
 
-D [9:0] --> DAC 10-bit digital input
-
-Out --> DAC analog output
-
+rvmyth interfaced with pll
+==
 
 The below snap shows the simulation after the integration of Rvmyth with PLL. In the first snap we can observe how the 2 designs under test merge to give the resultant design.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int.png">
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int_gtk.png">
+
+VSDSOC
+===
 
 The simulation of the final Top module:
 rvmyth with PLL and DAC integrated together is shown below.
