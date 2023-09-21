@@ -1876,6 +1876,10 @@ endmodule
 ~~~
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_gtk.png">
+</details>
+
+<details>
+<summary> Labs </summary>
 
 The below snap shows the Verilog and corresponding testbench of Digital to analog Converter and its GTKWave observed after simulation.
 
@@ -1910,6 +1914,7 @@ The below snaps show the GTKwave of Pll after simulation which is the clock gene
 
 The below snap shows the simulation of the rvmyth interfaced with DAC Block.
 
+
 Commands
 ~~~ruby
 verilog rvmyth_avsddac.v rvmyth_avsddac_TB.v
@@ -1918,6 +1923,13 @@ gtkwave rvmyth_avsddac.vcd
 ~~~
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int_gtk.png">
+
+out [9:0] --> rvymth 10-bit digital output
+
+D [9:0] --> DAC 10-bit digital input
+
+Out --> DAC analog output
+
 
 The below snap shows the simulation after the integration of Rvmyth with PLL. In the first snap we can observe how the 2 designs under test merge to give the resultant design.
 
@@ -1937,7 +1949,7 @@ gtkwave dump.vcd
 This snap shows all the blocks as unit under tests.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsd_full.png">
 
-This snap shows the final simulation.
+The below snap shows the final simulation.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsdsoc_gtk.png">
 
 </details>
