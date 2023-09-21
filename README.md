@@ -13,50 +13,7 @@ Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f81f46c9f861cb08ef7596f570cbd10cc01e9091/Samsung_PD_%23day0/icc2_shell.png">
 
-.v
-module fulladder (  input [3:0] a,  
-                  input [3:0] b,  
-                  input c_in,  
-                  output reg c_out,  
-                  output reg [3:0] sum);  
-  
-    always @ (a or b or c_in) begin  
-    {c_out, sum} = a + b + c_in;  
-  end  
-endmodule  
 
-tb
-module tb_fulladd;  
-    // 1. Declare testbench variables  
-   reg [3:0] a;  
-   reg [3:0] b;  
-   reg c_in;  
-   wire [3:0] sum;  
-   integer i;  
-  
-    // 2. Instantiate the design and connect to testbench variables  
-   fulladd  fa0 ( .a (a),  
-                  .b (b),  
-                  .c_in (c_in),  
-                  .c_out (c_out),  
-                  .sum (sum));  
-  
-    // 3. Provide stimulus to test the design  
-   initial begin  
-      a <= 0;  
-      b <= 0;  
-      c_in <= 0;  
-  
-      $monitor ("a=0x%0h b=0x%0h c_in=0x%0h c_out=0x%0h sum=0x%0h", a, b, c_in, c_out, sum);  
-  
-        // Use a for loop to apply random values to the input  
-      for (i = 0; i < 5; i = i+1) begin  
-         #10 a <= $random;  
-             b <= $random;  
-                 c_in <= $random;  
-      end  
-   end  
-endmodule  
 
 </details>
 	
@@ -85,53 +42,7 @@ Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e0245a8279215425e6a0e2ccf73813ad8d797a02/Samsung_PD_%23day0/pt_shell.png">
 
-.v
-module encoder8_3( input [7:0]y, input en, output reg [2:0]a);
 
-always @(*)
-begin
-if (en)
-case (y)
-8'b0000_0001: a=3'd0;
-8'b0000_0010: a=3'd1;
-8'b0000_0100: a=3'd2;
-8'b0000_1000: a=3'd3;
-8'b0001_0000: a=3'd4;
-8'b0010_0000: a=3'd5;
-8'b0100_0000: a=3'd6;
-8'b1000_0000: a=3'd7;
-endcase
-else ;
-end
-endmodule
-
-tb
-`timescale 1ns / 1ps
-module test_encoder;
-reg [7:0]Y;
-reg EN;
-wire [2:0]A;
-encoder8_3 uut(.y(Y), .en(EN),.a(A));
-initial
-begin
-EN=1;
-Y=8'h0_1;
-#30;
-Y=8'h0_2;
-#30;
-Y=8'h0_4;
-#30;
-Y=8'h0_8;
-#30;
-Y=8'h1_0;
-#30;
-Y=8'h2_0; #30;
-Y=8'h4_0;
-#30; Y=8'h8_0;
-#30; 
-$finish; 
-end
-endmodule
 
 </details>
 
@@ -1977,6 +1888,7 @@ gtkwave tb_mythcore_test.vcd
 
 
 
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk.png">
 
 Pll
@@ -2009,12 +1921,17 @@ gtkwave rvmyth_avsddac.vcd
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int_gtk.png">
 
 
+
 rvmyth interfaced with pll
 ==
 
 The below snap shows the simulation after the integration of Rvmyth with PLL. In the first snap we can observe how the 2 designs under test merge to give the resultant design.
 
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int.png">
+
+
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int_gtk.png">
@@ -2025,6 +1942,7 @@ VSDSOC
 The simulation of the final Top module:
 rvmyth with PLL and DAC integrated together is shown below.
 
+
 Commands
 ~~~ruby
 iverilog vsdbabysoc.v testbench.v avsdpll.v avsddac.v mythcore_test.v
@@ -2033,9 +1951,14 @@ gtkwave dump.vcd
 ~~~
 
 This snap shows all the blocks as unit under tests.
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsd_full.png">
 
 The below snap shows the final simulation.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsdsoc_gtk.png">
 
 </details>
