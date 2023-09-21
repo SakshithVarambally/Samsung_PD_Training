@@ -1724,7 +1724,7 @@ The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobil
    
 </details>
 
-# Day 12
+# Day 12 Baby SOC modelling
 
 <details>
 <summary>RISCV </summary>
