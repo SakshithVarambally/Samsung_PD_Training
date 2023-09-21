@@ -1878,26 +1878,64 @@ endmodule
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_tb.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/encoder_gtk.png">
 
-The below snap shows the Verilog and corresponding testbench of Digital to analog Converter and its GTKWave observed after simulation
+The below snap shows the Verilog and corresponding testbench of Digital to analog Converter and its GTKWave observed after simulation.
+
+Commands
+~~~ruby
+iverilog avsddac.v avsddac_tb_test.v
+./a.out
+gtkwave avsddac_tb_test.vcd
+~~~
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_v.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_tb.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/dac_gtk.png">
 
-The below snaps show the GTKWave of the core
+The RVMyth processor operates as a RISC-V processor with a five-stage pipeline, consisting of fetch, decode, read, execute, and write stages. At its output, it produces 10-bit digital codes. Its primary function is to perform addition by incrementing a 10-bit binary value by 1, with the 11th bit reserved for a sign flag. When the sign flag is set, it begins counting down instead of up.
+The below snaps show the GTKWave of the RVMyth processor
+
+Commands
+~~~ruby
+iverilog mythcore_test.v tb_mythcore_test.v 
+./a.out
+gtkwave tb_mythcore_test.vcd
+~~~
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk_reset.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/mythcore_gtk.png">
 
-The below snaps show the GTKwave of Pll which is the clock generator in the deisgn after simulation.
+The below snaps show the GTKwave of Pll after simulation which is the clock generator in the deisgn.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/pll_gtk.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int.png">
 
-The below snap shows the simulation of the RISCV core integrated with DAC Block.
+The below snap shows the simulation of the rvmyth interfaced with DAC Block.
+
+Commands
+~~~ruby
+verilog rvmyth_avsddac.v rvmyth_avsddac_TB.v
+./a.out
+gtkwave rvmyth_avsddac.vcd
+~~~
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_dac_int_gtk.png">
-The below snap shows the simulation after the integration of RISCV with PLL. In the first snap we can observe how the 2 designs merge to give the integrated design
+
+The below snap shows the simulation after the integration of RISCV with PLL. In the first snap we can observe how the 2 designs merge to give the integrated design.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/rv_pll_int_gtk.png">
 
-The simulation of the final Top module with RISCV Core, PLL and DAC integrated together is shown below.
+The simulation of the final Top module:
+rvmyth with PLL and DAC integrated together is shown below.
+
+Commands
+~~~ruby
+iverilog vsdbabysoc.v testbench.v avsdpll.v avsddac.v mythcore_test.v
+./a.out
+gtkwave dump.vcd
+~~~
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsdsoc_gtk.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/56885b0215f657d90e4cc5fdb4c23a5f4346e908/day12/vsd_full.png">
 
