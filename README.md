@@ -1,5 +1,4 @@
 
-
 ## Day-0-Installation
 
 	
@@ -13,6 +12,52 @@ IC Compiler II is a complete netlist-to-GDSII implementation system that include
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f81f46c9f861cb08ef7596f570cbd10cc01e9091/Samsung_PD_%23day0/icc2_shell.png">
+
+.v
+module fulladder (  input [3:0] a,  
+                  input [3:0] b,  
+                  input c_in,  
+                  output reg c_out,  
+                  output reg [3:0] sum);  
+  
+    always @ (a or b or c_in) begin  
+    {c_out, sum} = a + b + c_in;  
+  end  
+endmodule  
+
+tb
+module tb_fulladd;  
+    // 1. Declare testbench variables  
+   reg [3:0] a;  
+   reg [3:0] b;  
+   reg c_in;  
+   wire [3:0] sum;  
+   integer i;  
+  
+    // 2. Instantiate the design and connect to testbench variables  
+   fulladd  fa0 ( .a (a),  
+                  .b (b),  
+                  .c_in (c_in),  
+                  .c_out (c_out),  
+                  .sum (sum));  
+  
+    // 3. Provide stimulus to test the design  
+   initial begin  
+      a <= 0;  
+      b <= 0;  
+      c_in <= 0;  
+  
+      $monitor ("a=0x%0h b=0x%0h c_in=0x%0h c_out=0x%0h sum=0x%0h", a, b, c_in, c_out, sum);  
+  
+        // Use a for loop to apply random values to the input  
+      for (i = 0; i < 5; i = i+1) begin  
+         #10 a <= $random;  
+             b <= $random;  
+                 c_in <= $random;  
+      end  
+   end  
+endmodule  
+
 </details>
 	
 <details>
@@ -39,6 +84,54 @@ Synopsys' PrimeTime static timing analysis tool provides a single, golden, trust
 Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e0245a8279215425e6a0e2ccf73813ad8d797a02/Samsung_PD_%23day0/pt_shell.png">
+
+.v
+module encoder8_3( input [7:0]y, input en, output reg [2:0]a);
+
+always @(*)
+begin
+if (en)
+case (y)
+8'b0000_0001: a=3'd0;
+8'b0000_0010: a=3'd1;
+8'b0000_0100: a=3'd2;
+8'b0000_1000: a=3'd3;
+8'b0001_0000: a=3'd4;
+8'b0010_0000: a=3'd5;
+8'b0100_0000: a=3'd6;
+8'b1000_0000: a=3'd7;
+endcase
+else ;
+end
+endmodule
+
+tb
+`timescale 1ns / 1ps
+module test_encoder;
+reg [7:0]Y;
+reg EN;
+wire [2:0]A;
+encoder8_3 uut(.y(Y), .en(EN),.a(A));
+initial
+begin
+EN=1;
+Y=8'h0_1;
+#30;
+Y=8'h0_2;
+#30;
+Y=8'h0_4;
+#30;
+Y=8'h0_8;
+#30;
+Y=8'h1_0;
+#30;
+Y=8'h2_0; #30;
+Y=8'h4_0;
+#30; Y=8'h8_0;
+#30; 
+$finish; 
+end
+endmodule
 
 </details>
 
@@ -1237,3 +1330,486 @@ By adding an inverter and Xnor gate the slack is being met. This is also an opti
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d2c490ebdd83cf5fa1b4eaa5ff4a65a520a4f073/day_8/3/slack_not_violated.png">
 
 </details>
+
+# Day9 Optimizations
+<details>
+<summary> Optimization techniques </summary>
+Optimization goals primarily revolve around achieving the best trade-offs between power consumption, performance, and area utilization. These goals are often conflicting, and optimizing one can negatively impact the others. Cost function-based optimization is commonly employed to balance these objectives. Let's delve into each of these optimization goals and their trade-offs:
+
+1. Power Optimization:
+ - Goal: Minimizing power consumption is crucial to extend battery life in portable devices and reduce overall energy consumption.
+ - Methods: Techniques like voltage scaling, clock gating, and power gating are used to reduce dynamic and leakage power.
+ - Trade-offs: Aggressively reducing power can slow down performance and require larger areas due to the need for power-efficient components.
+
+2. *Performance Optimization*:
+- Goal: Enhancing performance aims to maximize the speed and throughput of the VLSI design.
+- Methods: Techniques include high clock frequencies, pipelining, and parallel processing to improve performance.
+- Trade-offs: Focusing too much on performance can increase power consumption and may require larger chip areas to accommodate complex circuitry.
+
+3. *Area Optimization*:
+- Goal: Minimizing chip area is essential to reduce manufacturing costs and allow for integration of more functions on a single chip.
+- Methods: Logic optimization, area-efficient circuit designs, and efficient placement and routing can help reduce area utilization.
+- Trade-offs: Reducing chip area often results in increased power consumption and can limit the performance due to constraints on component size and complexity.
+
+Some examples of Tradeoff related issues
+
+- *Power-Performance Trade-off*: Aggressively optimizing for power can lead to lower clock frequencies and reduced performance. Conversely, pushing for higher performance may result in increased power consumption.
+
+- *Performance-Area Trade-off*: Achieving higher performance may require more complex and larger circuits, thus increasing the chip area and possibly manufacturing costs.
+
+- *Power-Area Trade-off*: Minimizing power and area simultaneously can be challenging, as low-power designs may necessitate larger transistors or additional components, which can increase area.
+
+
+COMBINATIONAL
+
+
+*1. Constant Propagation:*
+- Constant Propagation: When one input is made constant in a Boolean expression, the circuit can be simplified. For example, (AB+C)' can be reduced to C', saving area and power.
+
+*2. Boolean Logic Optimization:*
+- Karnaugh Maps (K-Maps): K-Maps are graphical tools used to minimize Boolean functions by grouping adjacent minterms or maxterms.
+- Quine-McCluskey Algorithm: This method systematically finds the prime implicants of a Boolean function to achieve minimal logic expressions.
+
+*3. Resource Sharing:*
+- Multiplexer Optimization: Consider a ternary operator y=sel?ab:cd. Instead of using separate multipliers for a*b and c*d, you can share the same sel condition, reducing area and power consumption.
+
+*4. Logic Sharing:*
+- Shared Logic: When multiple gates can use the same intermediate logic, it reduces redundancy. For example, if you have y=a&b&c and z=(a&b)|c, sharing the common AND gate results in a more area and power-efficient design.
+
+*5. Balanced vs. Preferential Implementation:*
+- Balanced Implementation: Ensures equal time allocation to all timing arcs. This approach is suitable when all signals have similar timing requirements.
+- Preferential Implementation: Gives priority to signals with tight timing constraints, allowing them to have shorter delays. This strategy optimizes for critical paths but may not be energy-efficient for non-critical paths.
+
+*6. Nested Ternary Operator Optimization:*
+- Nested Ternary Operators: Simplifying nested ternary operators can significantly reduce logic complexity. For example, optimizing a nested ternary operator with 3 multiplexers can be reduced to an XOR (exnor) gate, leading to area and power savings.
+
+SEQUENTIAL
+
+*Basic Sequential Optimization:*
+
+1. Sequential Constant Propagation:
+- Goal: Identify and propagate constants through sequential logic to simplify the design.
+- Method: When a flip-flop's D input is connected to a constant value (e.g., high or low), the optimization tool can replace it with a direct connection to Vdd or Vss to save area and power.
+
+2. Retiming:
+- Goal: Reorder flip-flops in the design to optimize for critical paths and minimize clock-to-q delays.
+- Method: By moving flip-flops across combinational logic, retiming aims to balance the pipeline stages, improve performance, and meet timing constraints.
+
+3. Unused Flop Removal:
+- Goal: Eliminate flip-flops that are not contributing to the functionality of the design.
+- Method: If a flip-flop's output is unused or redundant, it can be safely removed from the circuit, reducing area and power consumption.
+
+4. Clock Gating:
+- Goal: Reduce power consumption by gating the clock signal to flip-flops when their operation is unnecessary.
+- Method: Clock gating logic is introduced to enable/disable clock signals to flip-flops based on certain conditions, saving dynamic power.
+
+*Advanced Sequential Optimization:*
+
+1. State Optimization:
+- Goal: Optimize the state encoding in finite state machines (FSMs) to reduce area and improve performance.
+- Method: Re-encoding the states in an FSM can lead to a more compact representation, reducing the number of flip-flops required.
+
+2. Sequential Logic Cloning:
+- Goal: Replicate specific sequential logic elements to meet timing constraints.
+- Method: Cloning allows for the duplication of critical flip-flops to ensure that timing requirements are met, even at the expense of area.
+
+*Optimization of Unused Outputs:*
+
+1. Unused Output Optimization:
+- Goal: Minimize the generation of outputs that are not used in the design.
+- Method: When certain outputs are not required, the optimization tool can eliminate the associated logic and flip-flops, leading to area and power savings.
+
+The use of boolean variables like `compile_seqmap_propagate_constants`, `compile_delete_unloaded_sequential_cells`, and `compile_register_replication` allows  to control these optimization processes. Enabling or disabling these variables helps tailor the optimization to specific design requirements and constraints.
+</details>
+<details>
+<summary> Labs </summary>
+The opt_check design has a Multiplexer in its design, but after optimization it reduces into an AND gate and an inverter as shown below.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check_schematic1.png">
+
+In the design opt_check2.v the ternary operator reduces to an OR gate as shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/optcheck2_2.png">
+
+The optimization reduces the design into a 3input Nand gate as shown below
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check3_3.png">
+
+In the below snaps, The design shows 3 Multiplexers which after optimization reduces ti just a single Ex-Nor Gate as shown.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check4_beforeopt_4.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/opt_check4_afteropt_5.png">
+
+The below snaps show how the resource sharing works by reducing the no of cells and accordingly reducing the area.
+This also includes the usage of an application variable that is set_max_area.
+Here it is restricted to 800 micro metre².
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_max_area800_7.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_R1_6.png">
+
+The Schematic after applying delay  to select line
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/resource_sharing_delay_to_sel_7.png">
+
+The schematic showing the usage of tie cells 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const_tiecellis_shown_9.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff-const2_10.png">
+
+Boundary Optimization
+==================
+
+Boundary optimization is a vital strategy employed during the logic synthesis phase of chip design to achieve optimal balance in terms of area usage, timing performance, and power efficiency. When implementing boundary optimization, it's possible to realize a notable reduction of approximately 5-10% in the standard cell area, along with a timing enhancement of roughly 2-5%. 
+
+In the synthesis process, an essential decision involves selecting which specific modules or components should undergo boundary optimization and which should remain unaffected. This choice plays a crucial role in fine-tuning the overall design, ensuring that critical areas such as area utilization, timing constraints, and power consumption are optimized to meet the desired specifications.
+
+
+The below snap shows the schematic without optimization 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const3_no_opt_11.png">
+
+The below snap shows the schematic when the seq_mapping is set to false.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/dff_const2_seq_map_false_12.png">
+
+The below snaps show the schematic of Boundary optimization when boundary optimization is enabled and set to false  respectively.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_boundary_schematic_13.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/check_bound_opt_false_14.png">
+
+Retiming
+======
+The below snaps show how the retiming concept works; by removing and adding adding logic between other flops where there is availability of slack with corrsponding timing reports.
+
+Retiming is an optimizing algorithm for improving the circuit performance. It moves registers across combo-logic without affecting the functionality of design at primary input/output ports. Registers shall be added and to or removed from the design while performing retiming. However, additional registers do not add clock latency to the design’s performance.
+Critical paths are examined along with their non-critical adjacent paths. There shall be many non-critical paths with positive slack. The strategy is to leverage positive slack on one side of a sequential element to balance negative slack on the other. 
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/boundry_schem_16.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/retime_after_15.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_after_buff_18.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/report_timing_before_19.png">
+
+Multicycle Path
+==============
+
+A Multi-Cycle Path (MCP) in digital circuit design represents a path connecting two flip-flops, where the intermediate combinational logic can introduce delays spanning more than one clock cycle. This design approach allows certain paths to take their time propagating data from source to destination, acknowledging that not all data needs to meet standard single-cycle timing constraints. Unlike false paths, MCPs are valid and must be analyzed, but over multiple clock periods.
+
+In standard timing analysis without MCP constraints, setup checks assess the time for data to travel from a source flip-flop's clock edge to the destination flip-flop's next clock edge, while hold checks ensure data stability within the same clock period. However, with MCPs, the analysis expands to multiple clock periods, recognizing that data on these paths may propagate more slowly but remains valid and reliable for specific design purposes.
+
+The below snaps shows the timing report before considering the multipath cycle.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_before_timing_20.png">
+
+The below snap shows the timing report after the Multicycle path.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_after_mcp_21.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_final_report_after_buff_22.png">
+
+The below snap shows the timing report of the entire design after the multicycle path has been initiated.
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/fe9612408ad4f51dbc5e543d1ba62ce4243ccc6c/day9/mcp_report_0cycle_path_22.png">
+
+</details>
+
+# Day 10 QOR
+<details>
+<summary> Introduction to QOR</summary>
+	
+Quality of Results or Quality Checks
+===============
+
+Quality checks are integral to the VLSI design and manufacturing process, serving to ensure the reliability and functionality of integrated circuits. These checks are ongoing and iterative, occurring at various stages to guarantee that ICs meet performance, reliability, and manufacturability standards. Advanced simulation and verification tools are frequently employed to automate and streamline these checks.
+
+In the realm of digital electronics and integrated circuits, propagation delay assumes a pivotal role. It signifies the time required for an electrical signal to travel from a digital logic gate's input to its output. Propagation delay, measured in units like nanoseconds (ns) or picoseconds (ps), significantly influences circuit speed and performance. Various factors, such as technology choices, wire lengths, and circuit complexity, impact this parameter.
+
+**Delay**
+
+
+Rising Edge Propagation Delay (tpdr) characterizes the duration needed for an output signal to change from a low state (0) to a high state (1) following a corresponding transition in the input signal.
+
+On the other hand, Falling Edge Propagation Delay (tpdf) represents the time required for the output signal to shift from a high state (1) back to a low state (0) in response to a similar transition in the input signal.
+
+It's important to note that tpdr and tpdf are not equal because the mobility of electrons and holes, essential components in electronic circuits, differs. This discrepancy in mobility leads to variations in signal propagation times during transitions from low to high and high to low states
+ 
+</details>
+
+<details> 
+<summary> report_timing </summary>
+The 'report_timing' command in VLSI design is a valuable tool for analyzing the timing characteristics of a digital circuit. It provides essential information about timing paths, including cell delays, signal transitions, capacitance, and slack. By default, 'report_timing' displays setup delay with two significant digits.
+
+
+**Theoretical Explanation:**
+
+**Timing Analysis Fundamentals:**
+- Timing analysis evaluates signal propagation in a digital design to ensure it meets specific timing constraints.
+- Key parameters include setup time, hold time, clock-to-q delay, propagation delay, and slack.
+
+**Design Compiler's Role:**
+- Design Compiler performs timing analysis and generates reports.
+- Helps guarantee correct operation at the desired clock frequency.
+
+**Usage:**
+
+**1. Open Design Compiler:**
+- Launch the Design Compiler tool and load your synthesized design.
+
+**2. Compile the Design:**
+- Ensure your design is compiled with necessary constraints (e.g., SDC files).
+
+**3. Run Timing Analysis:**
+- Use the report_timing command in the Design Compiler command-line interface.
+
+**4. Basic Syntax:**
+- `report_timing -from <source> -to <destination>`
+
+**Key Options:**
+
+**-from <source>:**
+- Specifies the source signal or path for analysis.
+
+**-to <destination>:**
+- Specifies the destination signal or path for analysis.
+
+**-fall_from <source> and -rise_from <source>:**
+- Analyze falling or rising edge timing paths from a source.
+
+**-delay_type max/min:**
+- Report maximum or minimum delays for timing paths.
+
+**Examples:**
+
+**1. Basic Timing Analysis:**
+- Analyze timing from input A to output Z:
+  ```
+  report_timing -from A -to Z
+  ```
+
+**2. Analyze Falling-Edge Timing:**
+- Analyze falling-edge timing from input A to output Z:
+  ```
+  report_timing -fall_from A -to Z
+  ```
+
+**3. Report Maximum Delay:**
+- Report the maximum delay from input A to output Z:
+  ```
+  report_timing -from A -to Z -delay_type max
+  ```
+
+**4. Maximum Path Analysis:**
+- Report the 5 worst-case timing paths in the design:
+  ```
+  report_timing -max paths -nworst 5
+  ```
+
+**5. Specific Path Analysis:**
+- Report the single worst-case timing path in the design:
+  ```
+  report_timing -max paths -nworst 1
+  ```
+
+**6. Balanced Path Analysis:**
+- Report the top 10 worst-case timing paths:
+  ```
+  report_timing -max paths -nworst 10
+  ```
+
+The above examples showcase various ways to use the report_timing command to analyze and optimize design's timing characteristics. The choice of options and values depends on specific design goals and debugging requirements.
+
+<img width="1109" alt="Screenshot 2023-09-19 at 7 15 40 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/331095b4-d2fe-4d85-a84a-067350bea262">
+
+
+In a design with multiple sequential elements, such as flip-flops (DFF_A, DFF_B, DFF_C), you may have various timing paths to consider. For instance, there are two critical paths: one from DFF_A to DFF_C with a maximum delay of 1.65ns and another from DFF_B to DFF_C with a minimum delay of 1ns. In this context, 'delay_type max' analyzes the A-to-C path, while 'delay_type min' assesses the B-to-C path.
+
+To ensure proper circuit operation within a specified clock cycle (e.g., 5ns), it's crucial for the clock's rising edge to arrive no earlier than the data signal. This condition ensures a non-negative slack. 'check_design' identifies design inconsistencies, 'check_timing' verifies constraint specifications, and 'report_constraints' assesses design feasibility regarding electrical parameters like power and capacitance.
+
+The 'report_timing -rise_to DFF_C/D' command reports a maximum delay of 1.5ns for the A-to-C path and a minimum delay of 1.15ns for the B-to-C path. Slack, the time margin for meeting setup and hold requirements, is calculated as required time minus arrival time. For setup, the A-to-C path exhibits positive slack of 2.85ns, indicating timing compliance. Similarly, the B-to-C path, in terms of hold requirements, has positive slack of 0.9ns, indicating a met hold condition.
+
+When assessing multiple paths, the 'report_timing -max_paths' command identifies the worst violated path per endpoint. Combining it with 'nworst' helps select the number of paths to report per endpoint, providing a comprehensive view of critical timing issues in the design.
+
+<img width="1266" alt="Screenshot 2023-09-19 at 7 16 46 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a6c420d6-4876-42d1-a66f-60e5d046086a">
+
+In the design, there are four distinct timing paths to consider, each with its own characteristics. To assess these paths, the '-max_paths' switch is employed, allowing you to retrieve information about the most critical paths in the design. For example, using 'report_timing -max_paths 2' will generate reports for the two most critical timing paths, revealing details like slack values (-1vand -1.2ns).
+
+It's crucial to understand that 'max_paths' focuses on identifying the worst violated path for each specific endpoint, rather than providing an overview of the worst violations across the entire design. To obtain more comprehensive insights into critical timing issues, the 'nworst' switch complements 'max_paths' by specifying the number of worst violated paths to report for each endpoint. This combined approach lets you effectively pinpoint and address critical timing challenges within the design.
+</details>
+<details>
+<summary> Lab </summary>
+
+setup check is being analyzed with report_timing.
+
+points to note, for identifying if the check is for setup
+- The path type shown as max
+- Slack is reqd time - arrival time
+- launch and captire edges are different
+- Library setup time is included in the report
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep_time1.png">
+
+The fall to rise and rise to fall delay mismatch can be observed between the above snippet and the one below for the same nor gates in the design but for different conditions i.e. Rise and fall
+
+Library setup time for capturing rise and fall are also different.
+
+All these factors add up to show a different delay value altogether as shown 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep2.png">
+
+The below snap reports Hold check.
+Points to identify it is hold check
+- Path type is Min
+- Library hold time is mentioned
+- slack is reqd - arrival
+- The check is happening for same clock cycle.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/rep_hold3.png">
+
+Check_design shows the presence of Feedthrough
+
+Feedthrough
+=========
+
+Feedthrough refers to the situation where the synthesis tool generates logic or routing that allows a signal to propagate between unrelated parts of the design, potentially causing unintended interactions and issues.
+
+**Causes of Feedthrough in VLSI Synthesis:**
+
+- Logical Errors: Errors in the RTL (Register Transfer Level) description of the design, such as missing or incorrect constraints, can lead to feedthrough issues during synthesis.
+- Insufficient Constraints: Insufficient timing, area, or other constraints provided to the synthesis tool can result in suboptimal or incorrect logic being generated, leading to feedthrough.
+- High-Level Abstractions: Sometimes, high-level abstractions or design descriptions may not accurately capture the intended behavior of the design, causing feedthrough to occur.
+  
+**Mitigation of Feedthrough in VLSI Synthesis:**
+
+- Constraints: Providing accurate and comprehensive design constraints is crucial to guide the synthesis tool in generating the desired logic.
+- Static Timing Analysis (STA): Use STA tools to verify and analyze the synthesized design. STA can help identify potential feedthrough issues by analyzing signal paths and timing violations.
+- Design Reviews: Conduct thorough design reviews to identify and rectify logical errors or ambiguities in the RTL code.
+- Retiming: Retiming is a synthesis optimization technique that can help reduce feedthrough by repositioning flip-flops or registers in the design. It can be used to minimize the impact of feedthrough on critical paths.
+- Gate-Level Simulation: Simulate the synthesized design at the gate level to validate its functionality and timing correctness.
+- Sequential Equivalence Checking: Use sequential equivalence checking tools to ensure that the synthesized logic behaves equivalently to the original RTL description and does not introduce feedthrough.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_design_feedthrough4.png">
+
+In the below schematic we can see the single enable_pin drawing the entire design which is a high fanout pin in the design.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
+
+check_timing gives the overall picture if the constraints are applied or not.
+As seen below, the following end points are not constrained which will be constrained further later.
+
+Note: Clock pins can never be constrained, only frequency of their operation can be changed.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/check_timing5.png">
+
+report_constraint shows all the violations that are occurring on the deisgn 
+ The below snao shows the violation of transition, capacitance and leakage power.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/report_constraints6.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/report_constraint.png">
+
+
+High net fanout can be observed on the enable pin i.e. 128
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_high_fanout.png">
+In the below snap we can see the high fanout being reduced to 17 and tge subsequent introduction of buffers in the design.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_after_set_max.png">
+
+set_max_tranistion being applied to the design
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_before_set_transition.png">
+
+After max transition is mentioned, the transition constraint gets nullified as shown.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_transition_after.png">
+
+The timing report that is observed after providing maximum transition is shown below. The transition value is being limited which was earlier mentioning some library value that was fed from .lib
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_trans_met.png">
+
+The final design schematic after the the application of constraints. We can observe that the load on select/enable pin is reduced deastically by the introduction of buffers which drive the subsequent nets.
+We can see fhe usage of divide and rule policy, where the fanout on single load pin is divided by the usage of local buffers.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f0293c75dc3300fdd82b952cebf6770a73e009de/day10/en_dv_en_split.png">
+</details>
+<details>
+<summary> Summary </summary>
+The key aspects of constraining a design in the context of a synthesis script using TCL (Tool Command Language) in synthesis flow and optimization knobs is as follows:
+
+**1. Clock Constraints:**
+   - Clock constraints involve specifying clock sources, clock edges, and clock relationships in the design.
+   - Create commands like `create_clock` define clock domains.
+   - You can set clock latency and uncertainty using `set_clock_uncertainty`.
+
+**2. Input and Output Constraints:**
+   - Input and output constraints ensure proper data arrival and departure times.
+   - `set_input_delay` and `set_output_delay` specify timing requirements.
+   - Transition and driving cell are set using `set_input_transition` and `set_driving_cell`.
+   - `set_load` defines the output load conditions.
+
+**3. Design Metrics Constraints:**
+   - Constraints like `set_max_capacitance`, `set_max_transition`, and `set_max_area` define design limits for capacitance, transition times, and area.
+
+**4. Synthesis Flow:**
+   - Read the Verilog description of the design.
+   - Read the technology library (database).
+   - Check the design for issues.
+   - Source the constraints file.
+   - Check timing constraints after constraint sourcing.
+   - Perform the synthesis, often using a high-efficiency compile step.
+   - Report constraint violations and area usage.
+   - Generate the final netlist.
+   
+**5. Optimization Knobs:**
+   - Boundary Optimization: Adjusting logic near the boundary for better timing.
+   - Retiming: Reordering registers to optimize for performance.
+   - Constant Propagation: Replacing constants with their values to simplify logic.
+   - Unused Flop Removal: Identifying and removing unused registers.
+   - Isolate Ports: Separating ports for better timing or area trade-offs.
+
+In a nutshell, TCL scripts are used to specify how a digital design should be synthesized, including timing, clock domains, and optimization strategies. The synthesis flow involves checking, compiling, and reporting, while optimization knobs fine-tune the design for better performance or area efficiency. Proper constraints and optimization can significantly impact the final quality of the synthesized design.
+</details>
+
+# Day 11 SOC
+<details>
+	
+<summary> My Phone Processor </summary>
+
+Qualcomm Snapdragon 888 Octa-Core Processor
+======
+
+The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobile devices. Here are its key architecture and design specifications:
+
+1. **CPU Architecture**:
+   - The Snapdragon 888 uses a tri-cluster CPU architecture.
+   - It features one high-performance core, three high-performance cores, and four power-efficient cores.
+
+2. **CPU Cores**:
+   - 1x Cortex-X1 core clocked at up to 2.84 GHz for maximum performance.
+   - 3x Cortex-A78 cores clocked at up to 2.4 GHz for sustained high performance.
+   - 4x Cortex-A55 cores clocked at up to 1.8 GHz for power efficiency.
+
+3. **Manufacturing Process**:
+   - Built using a 5nm process technology for improved power efficiency and performance.
+
+4. **GPU**:
+   - Adreno 660 GPU for graphics processing, offering excellent gaming performance and graphics rendering.
+
+5. **AI and Machine Learning**:
+   - Hexagon 780 AI processor with improved AI and machine learning capabilities.
+   - 26 TOPS (Trillions of Operations Per Second) AI performance.
+
+6. **Modem**:
+   - Integrated X60 5G modem for high-speed 5G connectivity with support for mmWave and sub-6 GHz bands.
+
+7. **Camera Support**:
+   - Up to a 200-megapixel single camera or dual 64-megapixel cameras.
+   - 8K video recording and playback support.
+   - Advanced image signal processing capabilities.
+
+8. **Display Support**:
+   - Support for QHD+ displays with up to a 144Hz refresh rate.
+   - HDR10+ support for high-quality visuals.
+
+9. **Connectivity**:
+   - Bluetooth 5.2, Wi-Fi 6E, and Wi-Fi 6 for fast and reliable wireless connections.
+
+10. **Security**:
+    - Hardware-based security features, including a secure processing unit (SPU) for enhanced device security.
+
+11. **Audio**:
+    - Qualcomm Aqstic audio technology for improved audio quality.
+
+12. **Charging and Battery**:
+    - Support for Qualcomm Quick Charge 5 technology for fast charging.
+    - Enhanced power efficiency for longer battery life.
+
+13. **Operating System Support**:
+    - Compatible with various Android-based operating systems.
+   
+</details>
+
