@@ -1730,8 +1730,7 @@ The Qualcomm Snapdragon 888 is a high-end octa-core processor designed for mobil
 <summary>RISCV </summary>
 RISC-V is an open-source instruction set architecture (ISA) based on reduced instruction set computing (RISC) principles. It's designed to be highly customizable and adaptable for various computing needs. RISC-V stands out for its openness, allowing anyone to implement it without licensing fees, which has led to its growing popularity in both academia and industry. It has the potential to be used in a wide range of applications, from embedded systems to supercomputers
 
-risc V architecture, fetch ...
-Sure, I can explain the basic structure of a RISC-V CPU with the key stages you mentioned:
+Main Key stages
 
 1. **Fetch (IF - Instruction Fetch):** In this stage, the CPU fetches the next instruction from memory. The program counter (PC) is used to determine the address of the instruction in memory. The fetched instruction is then stored in an instruction register.
 
