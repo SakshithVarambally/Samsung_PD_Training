@@ -2027,3 +2027,10 @@ The below snap shows the final simulation.
 
 </details>
 
+# Day 13 Post Synthesis Simulation
+
+<details>
+<summary> Introduction </summary>
+
+</details>
+
