@@ -2027,6 +2027,7 @@ Compiler-Friendly: RISC's simplicity extends a welcoming hand to compilers. Comp
 Reduced Heat Generation: With lower power consumption and efficient execution, RISC processors generate less heat during operation. This not only prolongs the lifespan of components but also reduces the need for elaborate cooling solutions, contributing to quieter and more reliable systems.
 
 In sum, RISC architecture's benefits lies in its elegant simplicity, which translates into speed, efficiency, and adaptability. These qualities make RISC processors the preferred choice in a multitude of computing applications, from high-performance computing clusters to the palm-sized devices we carry in our pockets.
+</details>
 
 
 
