@@ -2099,4 +2099,17 @@ Ensuring that pre-synthesis and post-synthesis results match is essential for se
 
 In summary, pre-synthesis verifies the design's high-level functionality, while post-synthesis ensures that the synthesis process has correctly translated the design into gates and interconnections. Ensuring that pre and post-synthesis results match is vital for detecting and resolving errors, validating the synthesis process, and building confidence in the correctness of the final hardware design.
 </details>
+<details>
+<summary> Encoder </summary>
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/encoder_post_synth_gtk.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/encoder_schematic.png">
+</details>
+
+<details> 
+<summary> BabySoc </summary>
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/mymyth_gtk1.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/mymyth_gtk2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/vsd_top_gtk.png">
+</details>
+
 
