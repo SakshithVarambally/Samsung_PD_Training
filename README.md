@@ -2031,11 +2031,9 @@ The below snap shows the final simulation.
 
 <details>
 <summary> Introduction </summary>
+
 	
-**Synthesis** 
-===
-	
-refers to the process of translating a high-level hardware description of a digital circuit into a lower-level representation that consists of gates, flip-flops, and interconnections. It's a critical step in the design flow when moving from an abstract design description (usually in RTL - Register Transfer Level) to a form that can be physically implemented in hardware.
+**Synthesis** refers to the process of translating a high-level hardware description of a digital circuit into a lower-level representation that consists of gates, flip-flops, and interconnections. It's a critical step in the design flow when moving from an abstract design description (usually in RTL - Register Transfer Level) to a form that can be physically implemented in hardware.
 
 **Pre-Synthesis**:
 
