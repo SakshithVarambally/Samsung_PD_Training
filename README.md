@@ -13,7 +13,73 @@ Below is the screenshot showing sucessful launch:
 
 <img width="1085" alt="icc2_shell" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f81f46c9f861cb08ef7596f570cbd10cc01e9091/Samsung_PD_%23day0/icc2_shell.png">
 
+erilog Priority Encoder & Test Bench
 
+Default (GPT-3.5)
+
+User
+8:3 priority encoder verilog code using case statement. And it's test bench
+
+ChatGPT
+Sure, here's a Verilog code for an 8:3 priority encoder using a case statement, along with its test bench:
+
+verilog
+Copy code
+// 8:3 Priority Encoder Module
+module PriorityEncoder_8to3 (
+    input [7:0] inputs,
+    output reg [2:0] output
+);
+
+always @(*) begin
+    case (inputs)
+        8'b00000001, 8'b00000010, 8'b00000100, 8'b00001000, 8'b00010000, 8'b00100000, 8'b01000000, 8'b10000000:
+            output = 3'b000;
+        8'b00000011, 8'b00000101, 8'b00001001, 8'b00010001, 8'b00100001, 8'b01000001, 8'b10000001:
+            output = 3'b001;
+        8'b00000110, 8'b00001010, 8'b00010010, 8'b00100010, 8'b01000010, 8'b10000010:
+            output = 3'b010;
+        8'b00001100, 8'b00010100, 8'b00100100, 8'b01000100, 8'b10000100:
+            output = 3'b011;
+        8'b00011000, 8'b00101000, 8'b01001000, 8'b10001000:
+            output = 3'b100;
+        8'b00110000, 8'b01010000, 8'b10010000:
+            output = 3'b101;
+        8'b01100000, 8'b10100000:
+            output = 3'b110;
+        8'b11000000:
+            output = 3'b111;
+        default:
+            output = 3'b000; // Default case, should not occur
+    endcase
+end
+
+endmodule
+
+// Test Bench for PriorityEncoder_8to3
+module testbench;
+
+reg [7:0] inputs;
+wire [2:0] output;
+
+PriorityEncoder_8to3 DUT (
+    .inputs(inputs),
+    .output(output)
+);
+
+initial begin
+    // Test case 1: Input 0x0A (Binary: 00001010)
+    inputs = 8'b00001010;
+    #10;
+    // Test case 2: Input 0x3C (Binary: 00111100)
+    inputs = 8'b00111100;
+    #10;
+    // Add more test cases as needed
+    
+    $finish;
+end
+
+endmodule
 
 </details>
 	
