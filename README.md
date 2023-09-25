@@ -1808,8 +1808,12 @@ In sum, RISC architecture's benefits lies in its elegant simplicity, which trans
  
  <details>
 <summary> Encoder Task </summary>
-	 
-Code of encoder
+	
+
+An 8:3 encoder, also known as a priority encoder, is a digital circuit that encodes one of eight active inputs into a 3-bit binary output code. 
+
+Code of Encoder
+
 	
 ~~~ ruby
 module encoder8_3( input [7:0]y, input en, output reg [2:0]a);
@@ -1867,7 +1871,8 @@ end
 endmodule
 ~~~
 
-An 8:3 encoder, also known as a priority encoder, is a digital circuit that encodes one of eight active inputs into a 3-bit binary output code. In this case, you want to understand how it works with the given inputs: 01, 02, 04, 08, 10, 20, 40, and 80. Let's break down how this encoder operates and its waveform for these inputs.
+
+**Breaking down its operation**
 
 1. Inputs:
 - 01: 0001
