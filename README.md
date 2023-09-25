@@ -2031,7 +2031,11 @@ The below snap shows the final simulation.
 
 <details>
 <summary> Introduction </summary>
-**Synthesis** refers to the process of translating a high-level hardware description of a digital circuit into a lower-level representation that consists of gates, flip-flops, and interconnections. It's a critical step in the design flow when moving from an abstract design description (usually in RTL - Register Transfer Level) to a form that can be physically implemented in hardware.
+	
+**Synthesis** 
+===
+	
+refers to the process of translating a high-level hardware description of a digital circuit into a lower-level representation that consists of gates, flip-flops, and interconnections. It's a critical step in the design flow when moving from an abstract design description (usually in RTL - Register Transfer Level) to a form that can be physically implemented in hardware.
 
 **Pre-Synthesis**:
 
@@ -2042,9 +2046,10 @@ The below snap shows the final simulation.
 
 
 **Gate Level Simulation**
+===
 
 
-**Gate-level simulation** is a crucial step in the digital design and verification process. It involves simulating a digital circuit at the gate level, meaning that the simulation models individual logic gates, flip-flops, interconnections, and their timing characteristics. Here's why gate-level simulation is necessary:
+Gate-level simulation is a crucial step in the digital design and verification process. It involves simulating a digital circuit at the gate level, meaning that the simulation models individual logic gates, flip-flops, interconnections, and their timing characteristics. Here's why gate-level simulation is necessary:
 
 **1. Realistic Representation:**
    - Gate-level simulation provides the most detailed and realistic representation of a digital circuit, as it takes into account the actual gates and flip-flops used in the design.
@@ -2075,6 +2080,7 @@ The below snap shows the final simulation.
 In summary, gate-level simulation is necessary because it provides a detailed and accurate representation of a digital circuit's behavior, including timing aspects, and helps ensure that the circuit meets its functional requirements and operates reliably in real-world conditions. It is a critical step in the design and verification process to identify and address issues before physical implementation, reducing the risk of costly errors in integrated circuits.
 
 **Post Synthesis**
+===
 
 This phase comes into play after the high-level RTL (Register-Transfer Level) design has been transformed into a gate-level representation. Here, the focus shifts to a series of intricate tasks and actions, all geared toward fine-tuning and enhancing the design. The goal is clear: ensure that the design aligns with stringent performance, area, and power constraints, ultimately bringing forth an optimized and efficient digital circuit ready for the next stages of the design flow.
 
