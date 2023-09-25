@@ -2155,7 +2155,7 @@ The functionality of the design remains consistent with the pre-synthesis stage.
 
 After this synthesis process, the simulation results can be analyzed to ensure that the design meets its functionality requirements as both pre synthesis and post synthesis waveforms are matching, confirming the successful synthesis of the RVMYTH IP.
 
-The below waveform representats the simulation results of the entore VSDBABYSOC after synthesise.
+The below waveform representats the simulation results of the entie VSDBABYSOC after synthesis.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/vsd_top_gtk.png">
 
