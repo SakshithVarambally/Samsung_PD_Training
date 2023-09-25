@@ -2041,7 +2041,9 @@ The below snap shows the final simulation.
   - To validate that the design meets its functional goals before investing time and resources in the synthesis process.
 
 
-Gate Level Simulation
+**Gate Level Simulation**
+
+
 **Gate-level simulation** is a crucial step in the digital design and verification process. It involves simulating a digital circuit at the gate level, meaning that the simulation models individual logic gates, flip-flops, interconnections, and their timing characteristics. Here's why gate-level simulation is necessary:
 
 **1. Realistic Representation:**
