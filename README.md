@@ -2112,6 +2112,7 @@ read_verilog <file_name.v>
 link
 compile_ultra
 ~~~
+The schematic seen after the design is loaded and observed in design vision is shown below.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/encoder_schematic.png">
 
 The Encoder output discussed in the pre-synthesis simulation matches the post-synthesis simulation output. The following are the sequence of steps for simulating the output:
