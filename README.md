@@ -2135,10 +2135,30 @@ There is a clear match between pre-syntheiss and post-synthesis simulation.
 
 <details> 
 <summary> BabySoc </summary>
+Among the three Intellectual Properties (IPs), namely RVMYTH, DAC, and PLL, only RVMYTH is synthesizable. Consequently, the synthesis process is performed exclusively on the RVMYTH IP. The following commands outline the steps for synthesizing this block:
+
+ ~~~ruby
+set target_library <path_of_target_library>
+set link library { * <path_of_target_library> }
+read_verilog mythcore_test.v
+link
+compile_ultra
+write -f verilog -output rvmyth_core_test.v
+~~~
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/mymyth_gtk1.png">
+
+The functionality of the design remains consistent with the pre-synthesis stage. It continues to compute the sum of the first n natural numbers up to 1000 and then decrements in the same manner, reflecting a seamless transition from the pre-synthesis behavior to the post-synthesis phase.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/mymyth_gtk2.png">
+
+After this synthesis process, the simulation results can be analyzed to ensure that the design meets its functionality requirements as both pre synthesis and post synthesis waveforms are matching, confirming the successful synthesis of the RVMYTH IP.
+
+The below waveform representats the simulation results of the entore VSDBABYSOC after synthesise.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/vsd_top_gtk.png">
+
 </details>
 
 
