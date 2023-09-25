@@ -2101,12 +2101,40 @@ In summary, pre-synthesis verifies the design's high-level functionality, while 
 </details>
 <details>
 <summary> Encoder </summary>
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/encoder_post_synth_gtk.png">
+	
+Synthesis of Encoder using DC shell:
+The following are the sequence of steps:
+
+~~~ruby
+set target_library <path_of_the_target_library>
+set link_library {* <path_of_the_target_library>}
+read_verilog <file_name.v>
+link
+compile_ultra
+~~~
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/encoder_schematic.png">
+
+The Encoder output discussed in the pre-synthesis simulation matches the post-synthesis simulation output. The following are the sequence of steps for simulating the output:
+
+~~~ruby
+iverilog <netlist_file_name> <testbench>
+./a.out
+gtkwave <vcd_file_name>
+~~~
+
+The 'iverilog' command uses the gate-level netlist obtained after syntehsis and the same testbench for post-synthesis simulation. Running './a.out' generates a VCD format file corresponding to the netlist, which can be viewed using 'gtkwave'. 
+The gtkwave simulation observed post synthesis is shown below.
+
+There is a clear match between pre-syntheiss and post-synthesis simulation.
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/encoder_post_synth_gtk.png">
+
 </details>
 
 <details> 
 <summary> BabySoc </summary>
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/mymyth_gtk1.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/mymyth_gtk2.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/day%2013/vsd_top_gtk.png">
