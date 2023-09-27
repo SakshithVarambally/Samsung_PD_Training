@@ -2161,6 +2161,10 @@ The below waveform representats the simulation results of the entie VSDBABYSOC a
 
 </details>
 
+# Day 14 
+<details>
+<summary> lab </summary>
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v65_2.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v65_1.png">
 
@@ -2223,3 +2227,4 @@ The below waveform representats the simulation results of the entie VSDBABYSOC a
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/tt_025_1v80_2.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/tt_025C_1v80_1.png">
+ </details>
