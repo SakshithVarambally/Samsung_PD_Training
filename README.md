@@ -2514,45 +2514,62 @@ Standard cells are fundamental building blocks used in this process. They have a
 <details>
 <summary> Labs </summary>
 
-
 1. Skywater PDK Files:
    - The "Skywater-pdk" directory holds various files related to the PDK (Process Design Kit) provided by the foundry.
    - "Open_pdks" contains scripts that bridge the compatibility gap between closed-source and open-source PDKs for Electronic Design Automation (EDA) tools.
    - "Sky130A" contains open-source compatible PDK files, ensuring accessibility for open-source EDA tools.
+  
+     
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/Skywater_PDK_Files.png">
+
 
 2. Invoking OpenLane:
    - To utilize OpenLane, you use a script named "flow.tcl" that manages the entire OpenLANE flow.
    - OpenLane can be run interactively or autonomously.
    - For interactive usage, you can employ the "-interactive" option with the "./flow.tcl" script.
 
-3. Preparing Design:
+
+     
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/invoking_openlane.png">
+
+Importing the Package :
+
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/package_imporing.png">
+
+The design Hierarchy is shown in the below snap:
+
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/design_hierarchy.png">
+
+Preparing Design:
    - The "prep" phase sets up the file structure for your design within OpenLane.
    - After running it, you'll find a new directory structure created in the "openlane/design/picro32a" folder, specifically under the "runs" subdirectory.
    - This directory structure enables the OpenLANE flow for your design.
 
-4. Configuration File:
+ *Configuration File*
    - The "config.tcl" file located in the design's directory contains all the parameters used by OpenLANE for a particular run.
    - This file specifies various settings and options that govern the behavior of the OpenLANE flow for your specific design.
 
-5. Merging Technology and Cell Information:
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prepare_design_1.png">
+
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prep_design_2.png">
+
+
+*Merging Technology and Cell Information*
    - During the preparation of the design in OpenLANE, the tool combines technology-specific LEF (Library Exchange Format) information with cell LEF data.
    - Technology LEF includes layer definitions and essential design rules crucial for Place and Route (PnR) flow.
    - Cell LEF contains obstruction information for each standard cell, which helps minimize Design Rule Checking (DRC) errors during the PnR process.
 
-In summary, OpenLANE relies on specific directories and configuration files to manage the design flow. It combines technology and cell information to ensure a smooth PnR process while keeping the design within specified constraints.
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/Skywater_PDK_Files.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/invoking_openlane.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/package_imporing.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/design_hierarchy.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prepare_design_1.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prep_design_2.png">
-
+     This shown in the below snaps.
+     
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/merging_lef.png">
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/run_synthesis.png">
  
