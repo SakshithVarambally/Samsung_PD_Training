@@ -2385,8 +2385,10 @@ This particular component is housed in a QFN-48 package, which stands for Quad F
 
 <img width="1565" alt="Screenshot 2023-10-03 at 6 48 38 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/456f8778-7a54-4d96-8a1f-7c18dee217f2">
 
-**RTL2GDS**
+</details>
 
+<details>
+<summary> RTL2GDS </summary>
 
 The RTL2GDS flow is a series of steps that starts with the initial RTL (Register Transfer Level) design and concludes with the creation of the final layout in GDSII format. This entire process relies on a Process Design Kit (PDK) for guidance.
 
@@ -2439,41 +2441,53 @@ Standard cells are fundamental building blocks used in this process. They have a
    - This structure often takes the form of a tree, which can be configured in different shapes, such as an H or X, depending on the design requirements.
 
 
-
 *Routing*
 
    - Routing is the phase in chip design where the interconnections are realized using the available metal layers.
    - These metal layers act as tracks on a grid, and due to the vast grid size, a divide-and-conquer approach is typically used.
 
-2. Global Routing:
+1. Global Routing:
    - Global routing involves creating routing guides or high-level plans for how the interconnections should be established.
    - It's a preliminary stage that lays out the general path for the wiring.
 
-3. Detailed Routing:
+2. Detailed Routing:
    - In detailed routing, the routing guides generated during global routing are used to execute the actual wiring of the interconnects.
    - It's the step where the specific paths and connections are implemented based on the earlier plans.
 
 *Sign-off*
    - Sign-off refers to the final stage in chip design where the completed layout undergoes rigorous verifications to ensure its integrity and functionality.
 
-5. Physical Verifications:
+ Physical Verifications:
    - This step involves several checks:
      - Design Rule Checking (DRC) ensures that the layout complies with all design rules and constraints.
      - Layout vs. Schematic (LVS) compares the final layout with the gate-level netlist to confirm consistency.
-     - Timing Verification is crucial for Static Timing Analysis (STA), which guarantees that timing constraints are met, and the circuit will operate at the designated clock frequencies.
+     - Timing Verification is crucial for Static Timing Analysis (STA), which guarantees that timing constraints are met, and the circuit will operate at the designated        clock frequencies.
 
-If you have any more questions or need further elaboration on any of these topics, please feel free to ask!
 
 </details>
+
+<details>
+<summary>  </summary>
+	
+</details>
+
 <details>
 <summary> Labs </summary>
+	
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/Skywater_PDK_Files.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/invoking_openlane.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/package_imporing.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/design_hierarchy.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prepare_design_1.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prep_design_2.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/merging_lef.png">
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/run_synthesis.png">
  
 </details>
