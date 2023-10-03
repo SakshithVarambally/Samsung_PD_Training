@@ -2352,7 +2352,7 @@ On the other side, the most favorable PVT corner is the "ff_n40C_1v76." This cor
 In summary, faster cells are prone to hold violations because they process data quickly, potentially violating the minimum hold time requirement. Slower cells are more susceptible to setup violations because they change data relatively slowly, potentially missing the minimum setup time requirement. Designers must carefully analyze and address these timing issues to ensure proper operation of digital circuits.
 </details>
 
-# Day 15
+# Day 15 Inception of EDA and PDK
 <details>
 <summary> Introduction </summary>
 
@@ -2569,8 +2569,8 @@ Preparing Design:
    - During the preparation of the design in OpenLANE, the tool combines technology-specific LEF (Library Exchange Format) information with cell LEF data.
    - Technology LEF includes layer definitions and essential design rules crucial for Place and Route (PnR) flow.
    - Cell LEF contains obstruction information for each standard cell, which helps minimize Design Rule Checking (DRC) errors during the PnR process.
-
-     This shown in the below snaps.
+     
+This is shown in the below snaps.
      
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/merging_lef.png">
 
