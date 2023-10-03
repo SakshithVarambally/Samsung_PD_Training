@@ -2351,3 +2351,20 @@ On the other side, the most favorable PVT corner is the "ff_n40C_1v76." This cor
 
 In summary, faster cells are prone to hold violations because they process data quickly, potentially violating the minimum hold time requirement. Slower cells are more susceptible to setup violations because they change data relatively slowly, potentially missing the minimum setup time requirement. Designers must carefully analyze and address these timing issues to ensure proper operation of digital circuits.
 </details>
+
+# Day 15
+<details>
+<summary> </summary>
+</details>
+<details>
+<summary> Labs </summary>
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/Skywater_PDK_Files.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/invoking_openlane.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/package_imporing.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/design_hierarchy.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prepare_design_1.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/prep_design_2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/merging_lef.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/run_synthesis.png">
+ 
+</details>
