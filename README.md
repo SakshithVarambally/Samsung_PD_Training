@@ -2383,6 +2383,10 @@ This particular component is housed in a QFN-48 package, which stands for Quad F
 <img width="920" alt="Screenshot 2023-10-03 at 6 47 28 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fc0e5c3b-1d94-4b20-8c1b-624a568f93de">
 
 
+
+
+The journey from system architecture to layout design involves a sequence of steps where application software, the operating system, and various software tools collaborate to compile, convert, link, and synthesize the design into a netlist that represents the integrated circuit.
+
 <img width="1565" alt="Screenshot 2023-10-03 at 6 48 38 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/456f8778-7a54-4d96-8a1f-7c18dee217f2">
 
 </details>
