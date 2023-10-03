@@ -2246,3 +2246,27 @@ The below waveform representats the simulation results of the entie VSDBABYSOC a
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/tt_025_1v80_2.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/tt_025C_1v80_1.png">
  </details>
+
+ 
+# DAY 14>>
+<details>
+<summary> LABS </summary>
+
+sky130_fd_sc_hd__ff_100C_1v65 
+
+
+
+sky130_fd_sc_hd__ff_100C_1v95
+
+
+sky130_fd_sc_hd__ss_100C_1v40
+sky130_fd_sc_hd__ss_100C_1v60
+sky130_fd_sc_hd__ff_n40C_1v56
+sky130_fd_sc_hd__ff_n40C_1v65
+sky130_fd_sc_hd__ff_n40C_1v76
+sky130_fd_sc_hd__ss_n40C_1v28
+sky130_fd_sc_hd__ss_n40C_1v35
+sky130_fd_sc_hd__ss_n40C_1v40
+sky130_fd_sc_hd__ss_n40C_1v44
+sky130_fd_sc_hd__ss_n40C_1v76
+sky130_fd_sc_hd__tt_025C_1v80
