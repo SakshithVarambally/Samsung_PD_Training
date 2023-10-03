@@ -1,22 +1,5 @@
 set_units -time ns
-create_clock -name MYCLK -per 2 [get_pins {pll/CLK}];
 
-set_clock_latency -source 1 [get_clocks MYCLK]
-set_clock_uncertainty -setup 0.5 [get_clocks MYCLK]; 
-set_clock_uncertainty -hold 0.4 [get_clocks MYCLK]; 
-
-set_input_delay -max 1 -clock \[get_clocks MYCLK] [all_inputs];
-set_input_delay -min 0.5 -clock \[get_clocks MYCLK] [all_inputs];
-set_output_delay -max 1 -clock \[get_clocks MYCLK] [all_outputs];
-set_output_delay -min 0.5 -clock \[get_clocks MYCLK] [all_outputs];
-
-set_input_transition -max 0.2 \[all_inputs];
-set_input_transition -min 0.1 \[all_inputs];
-
-set_max_area  800;
-
-set_load -max 0.2 \[all_outputs];
-set_load -min 0.1 \[all_outputs];
 ## Day-0-Installation
 
 	
@@ -2346,7 +2329,7 @@ TNS HOLD
 </details>
 
 <details>
-<summary> Summary </summary>
+<summary> Summary and Understanding </summary>
 
 1. **Hold Violations in Faster Cells**:
    - Faster cells, often referred to as "fast corners" in semiconductor design, have transistors with lower threshold voltages and faster switching speeds.
@@ -2359,6 +2342,12 @@ TNS HOLD
    - Setup time is the minimum time data must be stable after the clock signal arrives.
    - In slower cells, data changes relatively slowly, and it may not meet the required setup time, leading to setup violations.
    - These violations happen when data changes too late after the clock edge, potentially causing incorrect data to be captured.
+
+
+The most critical corner in terms of setup timing is the "ss_n40C_1v28." Ensuring that setup requirements are met at this corner essentially guarantees that setup timing will be satisfied at all other corners as well. Meeting the setup criteria at this specific corner acts as a benchmark for the entire design.
+
+On the other side, the most favorable PVT corner is the "ff_n40C_1v76." This corner exhibits no setup violations and only minimal hold violations. In other words, it represents the best-case scenario for timing performance, ensuring that the design operates optimally with excellent setup timing and minimal issues related to hold timing across different process, voltage, and temperature corners.
+
 
 In summary, faster cells are prone to hold violations because they process data quickly, potentially violating the minimum hold time requirement. Slower cells are more susceptible to setup violations because they change data relatively slowly, potentially missing the minimum setup time requirement. Designers must carefully analyze and address these timing issues to ensure proper operation of digital circuits.
 </details>
