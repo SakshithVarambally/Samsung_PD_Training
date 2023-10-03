@@ -2396,7 +2396,7 @@ The journey from system architecture to layout design involves a sequence of ste
 
 The RTL2GDS flow is a series of steps that starts with the initial RTL (Register Transfer Level) design and concludes with the creation of the final layout in GDSII format. This entire process relies on a Process Design Kit (PDK) for guidance.
 
-OpenLANE, the tool used in this flow, is built upon various open-source projects such as OpenROAD, KLayout, Yosys, QFlow, ABC, Magic VLSI Layout Tool, Fault, and more. It leverages these tools to automate and streamline the design process.
+*Synthesis*
 
 Synthesis is a crucial step within this flow. It involves converting the RTL description into a circuit composed of components from the standard cell library (SCL). The output of this step is a gate-level netlist, described in HDL (Hardware Description Language), which is functionally equivalent to the original RTL.
 
@@ -2473,6 +2473,7 @@ Standard cells are fundamental building blocks used in this process. They have a
 <details>
 <summary> Open Lane Flow  </summary>
 	
+OpenLANE, the tool used in this flow, is built upon various open-source projects such as OpenROAD, KLayout, Yosys, QFlow, ABC, Magic VLSI Layout Tool, Fault, and more. It leverages these tools to automate and streamline the design process.
 
 1. Synthesis Exploration:
    - Synthesis exploration is a utility used to generate reports that display the design's delay and area characteristics.
