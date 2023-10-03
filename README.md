@@ -2467,13 +2467,79 @@ Standard cells are fundamental building blocks used in this process. They have a
 </details>
 
 <details>
-<summary>  </summary>
+<summary> Open Lane Flow  </summary>
 	
+
+1. Synthesis Exploration:
+   - Synthesis exploration is a utility used to generate reports that display the design's delay and area characteristics.
+   - It helps identify the most suitable design strategy to proceed with by analyzing these reports.
+   - Additionally, it can be used to sweep through various design configurations and create reports, which are then observed to ensure that the final layout meets requirements.
+
+2. Design for Testability (DFT):
+   - After synthesis, DFT steps prepare the design for testing before fabrication (optional).
+   - These steps include:
+     - Scan Insertion
+     - Automatic Test Pattern Generation (ATPG)
+     - Test Patterns Compaction
+     - Fault Coverage Analysis
+     - Fault Simulation
+
+3. Physical Implementation (Automated PnR):
+   - Physical implementation, often referred to as Automated Place and Route (PnR), is conducted using open-source tools like OpenRoad.
+   - It encompasses various steps:
+     - Floor and Power Planning
+     - End Decoupling Capacitors and Tap Cells Insertion
+     - Placement (Global and Detailed)
+     - Post Placement Optimization
+     - Clock Tree Synthesis (CTS)
+     - Routing (Global and Detailed)
+     - Logic Equivalent Check (LEC) to ensure functionality consistency after netlist modifications.
+
+4. Dealing with Antenna Rules Violations:
+   - A specific phase during physical implementation addresses Antenna Rules Violations.
+   - It involves inserting Antenna Diodes to mitigate issues caused by long metal wire segments acting as antennas, which can accumulate charge and potentially damage transistor gates during fabrication.
+   - Solutions include bridging and adding antenna diode cells.
+
+5. Static Timing Analysis (STA):
+   - STA involves several steps, including RC extraction (from .def to .spef format) and the use of tools like OpenSTA (within OpenROAD).
+   - It generates timing reports to check for violations in timing paths and ensure that the design meets its timing constraints.
+
+6. Physical Verification (DRC & LVS):
+   - Magic is utilized for Design Rule Checking (DRC) and SPICE Extraction from Layout.
+   - Netgen, along with Magic, is employed for Layout vs. Schematic (LVS) checks, comparing the extracted SPICE data from Magic with the Verilog netlist.
+
+
 </details>
 
 <details>
 <summary> Labs </summary>
-	
+
+
+1. Skywater PDK Files:
+   - The "Skywater-pdk" directory holds various files related to the PDK (Process Design Kit) provided by the foundry.
+   - "Open_pdks" contains scripts that bridge the compatibility gap between closed-source and open-source PDKs for Electronic Design Automation (EDA) tools.
+   - "Sky130A" contains open-source compatible PDK files, ensuring accessibility for open-source EDA tools.
+
+2. Invoking OpenLane:
+   - To utilize OpenLane, you use a script named "flow.tcl" that manages the entire OpenLANE flow.
+   - OpenLane can be run interactively or autonomously.
+   - For interactive usage, you can employ the "-interactive" option with the "./flow.tcl" script.
+
+3. Preparing Design:
+   - The "prep" phase sets up the file structure for your design within OpenLane.
+   - After running it, you'll find a new directory structure created in the "openlane/design/picro32a" folder, specifically under the "runs" subdirectory.
+   - This directory structure enables the OpenLANE flow for your design.
+
+4. Configuration File:
+   - The "config.tcl" file located in the design's directory contains all the parameters used by OpenLANE for a particular run.
+   - This file specifies various settings and options that govern the behavior of the OpenLANE flow for your specific design.
+
+5. Merging Technology and Cell Information:
+   - During the preparation of the design in OpenLANE, the tool combines technology-specific LEF (Library Exchange Format) information with cell LEF data.
+   - Technology LEF includes layer definitions and essential design rules crucial for Place and Route (PnR) flow.
+   - Cell LEF contains obstruction information for each standard cell, which helps minimize Design Rule Checking (DRC) errors during the PnR process.
+
+In summary, OpenLANE relies on specific directories and configuration files to manage the design flow. It combines technology and cell information to ensure a smooth PnR process while keeping the design within specified constraints.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/Skywater_PDK_Files.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/invoking_openlane.png">
