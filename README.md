@@ -2354,7 +2354,38 @@ In summary, faster cells are prone to hold violations because they process data 
 
 # Day 15
 <details>
-<summary> </summary>
+<summary> Introduction </summary>
+
+A chip (integrated circuit) is typically mounted on a printed circuit board (PCB) to create a functional electronic system.
+
+ <img width="799" alt="Screenshot 2023-10-03 at 6 55 52 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b739bc5d-5a9e-48af-9b09-93d8a80a3de3">
+
+The complete system is represnted as shown below
+
+<img width="1146" alt="Screenshot 2023-10-03 at 6 55 28 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/9cbb2935-6bf8-4414-8d9a-edcaece504ef">
+
+
+*Die:*
+The term "die" refers to the individual silicon wafer that contains the integrated circuit. In the semiconductor manufacturing process, multiple copies of the same integrated circuit are fabricated on a single silicon wafer. Each of these copies, when separated from the wafer, is called a "die." Each die represents a single instance of the SoC design.
+
+*Pad:*
+Pads are the physical external connections or terminals on the SoC. These are the points through which the SoC interfaces with the external world, such as input and output pins for connecting to other electronic components, power supply pins, ground pins, and so on. Pads are typically located around the perimeter of the die and are used for soldering or connecting wires to the SoC.
+
+*Core:*
+The "core" in an SoC refers to the central processing unit (CPU) or the primary processing element of the chip. It is the heart of the SoC and typically consists of one or more CPU cores, along with other essential components like memory, caches, and various hardware accelerators. The core is responsible for executing instructions, running software, and performing computations.
+
+- The "die" is the physical silicon wafer containing the integrated circuit.
+- "Pads" are the external connection points on the chip.
+- The "core" is the central processing unit and primary computing component of the SoC.
+
+
+<img width="920" alt="Screenshot 2023-10-03 at 6 47 28 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fc0e5c3b-1d94-4b20-8c1b-624a568f93de">
+
+
+<img width="1565" alt="Screenshot 2023-10-03 at 6 48 38 PM" src="https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/456f8778-7a54-4d96-8a1f-7c18dee217f2">
+
+
+
 </details>
 <details>
 <summary> Labs </summary>
