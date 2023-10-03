@@ -1,4 +1,3 @@
-set_units -time ns
 
 ## Day-0-Installation
 
