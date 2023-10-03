@@ -2164,7 +2164,8 @@ The below waveform representats the simulation results of the entie VSDBABYSOC a
 
 
  
-# DAY 14>>
+# DAY 14 Synopsys DC and Timing Analysis
+
 <details>
 <summary> PVT </summary>
 PVT corners, or Process-Voltage-Temperature corners, are fundamental considerations in VLSI (Very Large Scale Integration) design. They account for the varying conditions integrated circuits might encounter during their operation, and understanding these corners is essential for achieving optimal chip performance, power efficiency, and reliability.
