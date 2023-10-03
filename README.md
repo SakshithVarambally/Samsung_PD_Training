@@ -2179,73 +2179,7 @@ The below waveform representats the simulation results of the entie VSDBABYSOC a
 
 </details>
 
-# Day 14 
-<details>
-<summary> lab </summary>
 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v65_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v65_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v95_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v95_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v60_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v60.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v40_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_100C_1v40_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_n40C_1v56_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_n40_1v56_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_n40C1v65_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_n40C_1v65_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_n40_1v76_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ff_n40C_1v76_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C1v28_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v28_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v35_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v35_1.png
-">
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v40_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss%2Bn40C_1v40_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v44_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v44_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v76_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/ss_n40C_1v76_1.png">
-
-
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/tt_025_1v80_2.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d5707d922dd2c4444d78e70c0086a07cc3f505ff/day%2014/day14_TP_1ns/tt_025C_1v80_1.png">
- </details>
 
  
 # DAY 14>>
@@ -2322,6 +2256,13 @@ sky130_fd_sc_hd__tt_025C_1v80
 </details>
 
 <details>
-	<summary> Graphs </summary>
-	
+<summary> Graphs </summary>
+WNS SETUP
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/wns_setup_graph.PNG">
+TNS SETUP
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/tns_setup_graph.PNG">
+WNS HOLD
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/wns_hold_graph.PNG">
+TNS HOLD
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/tns_hold_graph.PNG">
 </details>
