@@ -2184,7 +2184,75 @@ The below waveform representats the simulation results of the entie VSDBABYSOC a
  
 # DAY 14>>
 <details>
+<summary> PVT </summary>
+PVT corners, or Process-Voltage-Temperature corners, are fundamental considerations in VLSI (Very Large Scale Integration) design. They account for the varying conditions integrated circuits might encounter during their operation, and understanding these corners is essential for achieving optimal chip performance, power efficiency, and reliability.
+
+1. **Process Corner**:
+   - *Process Variations*: Semiconductor manufacturing processes inherently introduce variations in transistor characteristics, including threshold voltage, mobility, and oxide thickness.
+   - *Process Corners*: Designers define three primary process corners:
+     - **Nominal (N)**: Represents the typical or ideal process conditions.
+     - **Fast (F)**: Reflects conditions where transistors are faster with lower threshold voltages.
+     - **Slow (S)**: Represents conditions where transistors are slower with higher threshold voltages.
+
+2. **Voltage Corner**:
+   - *Voltage Variations*: Integrated circuits can operate at different supply voltages, affecting speed and power consumption.
+   - *Voltage Corners*: Designers consider three voltage corners:
+     - **Low Voltage (LV)**: Indicates operation at the lowest allowable supply voltage.
+     - **Nominal Voltage (NV)**: Represents the standard supply voltage.
+     - **High Voltage (HV)**: Indicates operation at the highest allowable supply voltage.
+
+3. **Temperature Corner**:
+   - *Temperature Variations*: Temperature fluctuations impact transistor performance due to changes in electron and hole mobility.
+   - *Temperature Corners*: Designers account for temperature variations with:
+     - **Low Temperature (LT)**: Signifies operation at the lowest expected temperature.
+     - **Nominal Temperature (NT)**: Represents the standard operating temperature.
+     - **High Temperature (HT)**: Indicates operation at the highest expected temperature.
+
+**Importance of PVT Corner in VLSI**:
+   - PVT corner analysis is vital to ensure reliable chip operation under diverse conditions.
+   - It identifies worst-case scenarios where the chip might fail to meet performance, power, or reliability requirements.
+   - PVT corners help designers optimize circuits for a balance of performance, power efficiency, and reliability.
+   - PVT-aware designs are essential for robust integrated circuits, particularly in critical sectors like automotive, aerospace, and medical devices, where reliability is paramount.
+</details>
+
+<details>
 <summary> LABS </summary>
+
+Here are the steps to perform the series of tasks for different PVT corners :
+
+1. **Clone the Repository and Handle .lib Files**:
+   - Clone the GitHub repository at https://github.com/Geetima2021/vsdpcvrd.git.
+   - For each .lib file in the repository, remove lines that contain errors.
+
+2. **Load the LC Shell and Convert to .db**:
+   - Launch the LC shell.
+   - Use the following commands:
+     - `read_lib <library_name>` to load the library.
+     - `write_lib <library_name> -f db -o <name_of_the_db_file>` to convert it into a .db file.
+
+3. **Generate a Constraint File**:
+   - Set time units to nanoseconds using `set_units -time ns`.
+   - Create a clock definition named "MYCLK" with a period of 2 ns for a specific pin (pll/CLK) using `create_clock`.
+   - Set clock latency to 1 time unit for "MYCLK" with `set_clock_latency`.
+   - Define setup and hold clock uncertainties for "MYCLK" using `set_clock_uncertainty`.
+   - Set input and output delays and transitions using `set_input_delay`, `set_output_delay`, and `set_input_transition`.
+   - Limit the maximum area to 800 units with `set_max_area`.
+   - Set load and max/min values for inputs and outputs using `set_load` and `set_input_delay`.
+
+4. **Set Required DB Files and Compile**:
+   - Specify the target library as a combination of "<sky130_PVT_corner>", "avsddac.db", and "avsdpll.db".
+   - Link the library with `set link_library`.
+   - Read the Verilog design file "vsdbabysoc.v".
+   - Link the design with `link`.
+   - Load the previously created constraint file with `source <constraints_file_name>`.
+   - Compile the design using `compile_ultra`.
+
+5. **Report Quality of Results (QoR)**:
+   - Generate a report to assess the quality of the results with `report_qor`.
+
+These steps are essential for configuring and compiling a VLSI design using specific libraries, constraints, and tools.
+
+The snippets of results after the above mentioned steps, are mentioned below for the specific PVT corner.
 
 sky130_fd_sc_hd__ff_100C_1v65 
 
@@ -2257,12 +2325,40 @@ sky130_fd_sc_hd__tt_025C_1v80
 
 <details>
 <summary> Graphs </summary>
+
+The snapped graphs generated for all the PVT corners for setup and Hold are mentioned below.
+
+
 WNS SETUP
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/wns_setup_graph.PNG">
+
 TNS SETUP
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/tns_setup_graph.PNG">
+
 WNS HOLD
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/wns_hold_graph.PNG">
+
 TNS HOLD
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e6d1e4c7918bbbf7b5a822ef82d321c93c906f6d/DAY14%3E%3E/tns_hold_graph.PNG">
+</details>
+
+<details>
+<summary> Summary </summary>
+
+1. **Hold Violations in Faster Cells**:
+   - Faster cells, often referred to as "fast corners" in semiconductor design, have transistors with lower threshold voltages and faster switching speeds.
+   - Hold time is the minimum amount of time data must be stable before the clock signal arrives.
+   - In faster cells, data changes quickly, and it may not meet the required hold time, leading to hold violations.
+   - These violations occur when the data changes too close to the clock edge, potentially causing incorrect data to be latched.
+
+2. **Setup Violations in Slower Cells**:
+   - Slower cells, known as "slow corners," have transistors with higher threshold voltages and slower switching speeds.
+   - Setup time is the minimum time data must be stable after the clock signal arrives.
+   - In slower cells, data changes relatively slowly, and it may not meet the required setup time, leading to setup violations.
+   - These violations happen when data changes too late after the clock edge, potentially causing incorrect data to be captured.
+
+In summary, faster cells are prone to hold violations because they process data quickly, potentially violating the minimum hold time requirement. Slower cells are more susceptible to setup violations because they change data relatively slowly, potentially missing the minimum setup time requirement. Designers must carefully analyze and address these timing issues to ensure proper operation of digital circuits.
 </details>
