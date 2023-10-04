@@ -2577,5 +2577,11 @@ This is shown in the below snaps.
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/master/Day%2015/run_synthesis.png">
+
+
+To calculate the percentage of flip flops:
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/641334e69ad026c3ba430a4dbc3065448c9aa5a1/Day%2015/ff_percentage.png">
+
  
 </details>
