@@ -2583,5 +2583,12 @@ To calculate the percentage of flip flops:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/641334e69ad026c3ba430a4dbc3065448c9aa5a1/Day%2015/ff_percentage.png">
 
+Total number of d flip flops = 1613
+
+Total Number of cells = 14876
+
+D flip flop ratio is given by = 1613/14876 = 0.108429
+
+Hence the Percentage is => 10.8429%
  
 </details>
