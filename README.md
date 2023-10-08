@@ -2705,7 +2705,7 @@ The addition of decoupling capacitors serves several critical purposes:
 
 In summary, decoupling capacitors are like reservoirs of electrical charge that support the stability of voltage levels in a circuit during dynamic operations. They play a vital role in ensuring reliable signal processing and preventing issues like crosstalk and logic degradation.
 
-</detais>
+</details>
 
 <details>
 <summary>Power planning and pin placements </summary>
@@ -2789,8 +2789,8 @@ In summary, the IC flow involves a series of stages where cell information, floo
 </details>
 
 <details>
-<summary> </summary>
-Absolutely, let's break down the cell design flow into a detailed and structured explanation, including key inputs, design steps, and outputs:
+<summary>  </summary>
+
 
 **Cell Design Flow: Inputs, Steps, and Outputs**
 
@@ -2893,4 +2893,21 @@ In summary, these timing threshold definitions play a vital role in characterizi
 
 <details>
 <summary> Labs </summary>
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/READ_ME_1.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/README_synth_2.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/README_floorplan.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/README_placement.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/README_cts_routing.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/config_tcl.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/floorplan_tcl.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/run_floorplan.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/floorplan_def.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/run_floorplan.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/ENTIRE_PLACEMENT.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/placement_1.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/placement_2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/placement_def.png">
+
+ 
 </details>
