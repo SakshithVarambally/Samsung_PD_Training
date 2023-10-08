@@ -2593,10 +2593,10 @@ Hence the Percentage is => 10.8429%
  
 </details>
 
-# Day 16
+# Day 16 Good and Bad Floorplan
 
 <details>
-<summary> utilization factor </summary>
+<summary> Utilization factor </summary>
 
 
 1. **Core and Die Dimensions**:
@@ -2628,9 +2628,12 @@ Hence the Percentage is => 10.8429%
    - Let's consider an example with a utilization factor of 0.5 and an aspect ratio of 0.5.
    - If the die's length is 2 units and the height is 4 units, the aspect ratio is calculated as 2/4, resulting in 0.5.
    - With a required logic area of 4 units, the utilization factor is computed as 4/(2 x 4), equating to 0.5.
-   
-<insert umage here>
 
+   ![die_core](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/4e2c3d48-8c05-4b6e-adfb-6df890fd5187)
+
+Let us consider another core with area of 4x4 sq.units with the same netlist. So, The utilization factor now would be (2x2)/(4x4)= 0.25. So, Only 25% of area is utilized, the reamining area can be used for optimization.The aspect ratio here is 1, so it is a square chip.
+
+ t![272643562-1832eb88-5287-44ea-a55d-f47a64f223ea](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fbd070ac-a4bf-457a-869a-70b4502c226b)
 In summary, core and die dimensions in chip design are influenced by the area occupied by the logic components, the utilization factor reflects the core's usage, and the aspect ratio describes the chip's shape, with a typical utilization factor target of 50-60% to allow room for optimizations.
 
 </details>
@@ -2641,6 +2644,9 @@ In summary, core and die dimensions in chip design are influenced by the area oc
 1. **Preplaced Cells in Chip Design**:
    - Preplaced cells are specialized sections of combinational logic, such as macros or IPs (Intellectual Properties), that are intended for reuse multiple times in a chip design.
    - These cells are strategically positioned within the chip, and their locations are carefully defined based on the design scenario.
+
+![272645026-b873a560-8336-4b82-a3fe-76d7ce5e72ed](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/dbfbb575-6960-40b8-ab20-22c2db850c1a)
+
 
 2. **Reusability and IP Modules**:
    - To illustrate the concept, consider a combinational logic circuit with 100k gates that can be divided into smaller, reusable blocks.
@@ -2668,7 +2674,7 @@ In summary, core and die dimensions in chip design are influenced by the area oc
    - In chip design, Vss (ground) must effectively handle the currents discharged by logic when transitioning from logic 1 to 0.
    - Additionally, the physical wires connecting various components in the design experience voltage drops due to resistance, inductance, and capacitance, which need to be managed for signal integrity.
 
-   <enter image here>
+   
 
 In summary, preplaced cells in chip design offer reusability and flexibility, and their precise arrangement, along with considerations like decoupling capacitors, plays a crucial role in ensuring efficient and reliable chip functionality.
 
@@ -2692,6 +2698,10 @@ Here's how they work: Every time the circuit switches, it demands a surge of cur
 
 To maintain stable voltage levels, an RL network (Resistance and Inductance) is often employed. It helps replenish the charge into Cd, ensuring that the voltage remains within the acceptable range.
 
+![272646834-ffb2006a-7b5d-4486-b26f-a30da19d379a](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/be98d2f2-3410-47e8-a4c5-8af8bf7ddf32)
+
+![272647684-8bcfa01e-5d14-4227-b1d0-558d26f2b894](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/885196da-4010-4a31-b4a1-4e5aad25a1fb)
+
 **Benefits of Decoupling Capacitors**:
 
 The addition of decoupling capacitors serves several critical purposes:
@@ -2702,6 +2712,7 @@ The addition of decoupling capacitors serves several critical purposes:
 
 3. **Logic Integrity**: Decoupling capacitors contribute to maintaining the integrity of logic levels by preventing voltage drops that could lead to signal misinterpretation.
 
+![272645751-07f30b08-f84d-48a4-ba93-41858a8522ce](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/34e936c4-3d66-4859-9284-ec30024f0b8b)
 
 In summary, decoupling capacitors are like reservoirs of electrical charge that support the stability of voltage levels in a circuit during dynamic operations. They play a vital role in ensuring reliable signal processing and preventing issues like crosstalk and logic degradation.
 
@@ -2713,7 +2724,9 @@ In summary, decoupling capacitors are like reservoirs of electrical charge that 
 
 **Power Planning: Managing Voltage Stability**
 
-In the realm of chip design, macros (reusable blocks of logic) often demand specific current when reused. To illustrate, let's envision a design with various macros, each thoughtfully surrounded by decoupling capacitors to maintain voltage stability.
+In chip design, macros (reusable blocks of logic) often demand specific current when reused. To illustrate, let's envision a design with various macros, each thoughtfully surrounded by decoupling capacitors to maintain voltage stability.
+
+![272649623-2c0c62a7-aeda-4fea-886e-c00cf8a5caac](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/158bdcd2-743a-4e68-a819-02badfeaac94)
 
 Now, consider two adjacent macros, one acting as the driver and the other as the load, with a signal transitioning from logic 0 to logic 1. Adding decoupling capacitors to every cell within the logic isn't always feasible. Instead, critical blocks receive these capacitors.
 
@@ -2728,6 +2741,9 @@ In chip design, the connectivity between gates is specified in VHDL/Verilog as a
 The strategic placement of pins plays a crucial role. These pins are typically located in the region between the die and the core, specifically reserved for pin placement. Logical cell placement blockages are employed to prevent the tool from inserting cells in this reserved region.
 
 Consider the input ports situated on the left-hand side and output ports on the right-hand side. The specific ordering of ports depends on the planned placement of cells. Notably, flipflops should not be positioned on preplaced cells due to their fixed location. The clock port's continuous driving necessitates the shortest path with the least resistance.
+
+![272651070-831dfec7-b607-43b3-88a6-c866e6d3a2cf](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/bf0d879e-f05f-4156-836e-7aa6c7645214)
+
 
 In summary, Power Planning ensures voltage stability through strategic capacitor placement, while Pin Placement optimizes connectivity by carefully positioning pins in designated regions, enhancing chip functionality and predictability.
 </details>
@@ -2789,6 +2805,7 @@ In summary, the IC flow involves a series of stages where cell information, floo
 </details>
 
 <details>
+<summary> Placement Optimization </summary>
 
 **Optimizing Placement in VLSI Chip Design**
 
@@ -2836,7 +2853,7 @@ Optimization using wire length and capacitance typically involves an iterative a
 In essence, optimizing placement in VLSI chip design is a multifaceted process that harmonizes wire length and capacitance considerations to attain high-performance, energy-efficient, and cost-effective integrated circuits.
 </details>
 <details>
-<summary>Funal placement </summary>
+<summary>Final placement </summary>
 Absolutely, let's explore the significance of final placement optimization and abutment in the realm of VLSI chip design:
 
 **Final Placement Optimization:**
@@ -2887,7 +2904,7 @@ EDA tools often provide automated abutment options during the placement phase.
 In summary, final placement optimization and abutment are indispensable stages in the physical design flow of VLSI chip design. These stages refine the positions of standard cells, addressing wire length, timing, area, power, and signal integrity objectives. Abutment, in particular, streamlines chip area usage by aligning the edges of adjacent cells, reducing unused space, and simplifying interconnection routing. Together, these processes contribute to high-performance and efficient chip layouts.
 </details>
 <details>
-<summary>  </summary>
+<summary> Cell Design Flow </summary>
 
 
 **Cell Design Flow: Inputs, Steps, and Outputs**
@@ -2951,7 +2968,7 @@ In conclusion, the cell design flow is a comprehensive process that involves a s
 </details>
 
 <details> 
-<summary> General timing Char</summary>
+<summary> General timing Characteristics </summary>
 	
 **General Timing Characterization Parameters:**
 
@@ -2993,7 +3010,8 @@ In summary, these timing threshold definitions play a vital role in characterizi
 <summary> Labs </summary>
 
 The Images shown below give a clear understanding of how the different stages of design flow are done in Openlane and how the directories look before and after the run,
-->README.md file which will say what all parameters need to be set for each stage,
+
+ README.md file which will say what all parameters need to be set for each stage,
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/READ_ME_1.png">
 
  For Synthesis stage:
@@ -3021,16 +3039,28 @@ The values chosen are chosen based on set of priorities, the least priority is f
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/run_floorplan.png">
 
 
- Tge def : design exchange formate file that is created after running the floorplan:
+  def : design exchange formate file that is created after running the floorplan:
  
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/floorplan_def.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/run_floorplan.png">
 
-The entire placement generated  is shown below:
+The floorplan in magic is as follows
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/ENTIRE_PLACEMENT.png">
 
+We can select and check any components metal layer details , by typing 'what' on the command window of tkkon2.3
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/275bd0ef19c1b2fe9b785c82947c67216648a18d/Day16/tkcon_what_selection.png">
+
+**Placement Labs**
+ To run the placement we use the command run_placement:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/placement_1.png">
+
+The placement of different cells cann be seen in the below snap:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/placement_2.png">
+
+The def file generated after placement is shown below, which also shows the total area.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/f2a3b326ef04d823cd97a68eebc5df05350a603a/Day16/placement_def.png">
 
  
