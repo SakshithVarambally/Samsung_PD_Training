@@ -3076,3 +3076,151 @@ The def file generated after placement is shown below, which also shows the tota
 
  
 </details>
+
+# Day 17
+
+<details>
+<summary> CMOS Inverter </summary>
+
+**Viewing the Floorplan with Magic:**
+
+- OpenLANE provides flexibility to adjust variable options on-the-fly.
+- To change the congestion of IO pins alignment, you can use the "magic" command to view the floorplan DEF file.
+- Here's how you can do it:
+  ```
+  magic -T /Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+  ```
+- The floorplan shows the placement of pins, often arranged equidistantly.
+
+**Adjusting IO Pin Congestion:**
+
+- The IO placer tool is used to place IO pins based on specific requirements.
+- To increase the congestion, you can change the variable to a higher value, for example, to 2.
+
+**SPICE Simulations:**
+
+- Before performing SPICE simulations, you need to create a SPICE deck.
+- The SPICE deck contains connectivity information about the netlist, input configurations, and tap points for viewing outputs.
+- It's essential to define the substrate, which influences the threshold of NMOS and PMOS transistors.
+- Components' values, including W/L (width/length) ratios, need to be specified, for example, 0.375u/0.25u for both NMOS and PMOS (typically, PMOS is twice the size of NMOS).
+- The output load capacitance, often denoted as Cload, is determined through complex computational analysis.
+- Applied gate voltage is typically chosen as a multiple of the channel length, e.g., 2.5V.
+- Node definitions are crucial to establishing connections between components.
+- The netlist typically follows a format of drain, gate, source, and substrate.
+- Here's how you can define  components in the SPICE deck:
+
+~~~ruby
+M1 out in vdd vdd pmos W=0.375u L=0.25u
+M2 out in 0 0 nmos W=0.375u W=0.25u
+cload out 0 10f
+Vdd vdd 0 2.5
+Vin in 0 2.5
+~~~
+  
+
+  Where "M1" represents the transistor, "output_node" and "input_node" are the nodes, "substrate_node" is the substrate connection, and "W=0.375u L=0.25u" specifies the width and length of the transistor.
+
+**Component Definition:**
+
+In the SPICE deck, components are precisely defined with specific attributes:
+
+- Component Name: Each component, such as a transistor, is given a unique name, like "M1."
+- Component Type: Components are categorized by type, for instance, "PMOS."
+- Width and Length (W/L): The width and length of the component, expressed as "W=0.375u L=0.25u" for PMOS, define its physical dimensions.
+
+**Node Connections:**
+
+Components are interconnected through nodes, indicating how signals flow:
+
+- Drain and Gate Connections: For example, "out" is connected to the drain, and "in" is connected to the gate.
+- Substrate and Source: In PMOS, the substrate and source connect to the supply voltage. In NMOS, these connections link to the ground.
+
+**Load Capacitance:**
+
+- The load capacitance, often denoted as "Cload," is an essential component in the SPICE deck.
+- It's connected between the "out" port and the ground node.
+- Its value is specified as 10fF, representing the capacitive load the circuit must drive.
+
+**Supply Voltages:**
+
+- Supply voltages are connected between ground and the respective nodes.
+- In this case, a voltage of 2.5V is applied, ensuring proper operation of the components.
+
+~~~ruby
+.op
+.dc Vin 0 2.5 0.05
+~~~
+
+In this command, a systematic variation of the gate voltage is executed, ranging from 0V to 2.5V. This voltage sweep is performed meticulously in 0.05V increments. The primary purpose is to capture a detailed snapshot of how the output behaves concerning different input voltages.
+
+
+In summary, the SPICE deck defines components, their attributes, and interconnections through nodes. It ensures that signals propagate correctly through the circuit while taking into account load capacitance and the necessary supply voltages. This comprehensive approach to component and node definition is vital for accurate SPICE simulations in VLSI chip design.
+
+</details>
+
+<details>
+<summary> Fabrication </summary>
+
+**CMOS Fabrication Process**
+
+**1. Selecting a Substrate**
+- The foundation of chip fabrication begins with selecting a substrate.
+- The most common substrate is P-type silicon, known for its high resistivity, specific doping levels, and (100) orientation.
+- Substrate doping is typically lower than well doping, as wells are used to separate NMOS and PMOS components.
+
+**2. Creating an Active Region for Transistors**
+- Active regions are pockets on the P-substrate where PMOS and NMOS cells will be placed.
+- Isolation must be established between these active regions.
+- This isolation process involves:
+  - Growing a silicon dioxide layer as an insulator (approximately 40nm thick).
+  - Depositing a layer of silicon nitride (approximately 80nm of Si3N4).
+  - Applying a photoresist layer as a mask for creating wells.
+  - Etching and stripping to expose silicon nitride.
+  - Growing a second layer of oxide through a process known as LOCOS (Local Oxidation of Silicon).
+  - Removing silicon nitride using hot phosphoric acid, ensuring electrical isolation.
+
+**3. N-Well and P-Well Formation**
+- N-wells are used for PMOS fabrication, while P-wells are for NMOS fabrication.
+- Formation involves:
+  - Deposition of a photoresist layer.
+  - Creating masked areas exposed to UV light for implantation.
+  - Diffusing boron for P-well and phosphorous for N-well using ion implantation.
+  - Ensuring the wells occupy half of the substrate area.
+  - Using a high-temperature furnace to finalize well formation (twin-tub process).
+
+**4. Formation of Gate Terminal**
+- The gate is crucial for controlling the threshold voltage, which determines when the transistor turns on.
+- To achieve the desired threshold voltage, the gate formation process involves:
+  - Depositing a polysilicon layer (approximately 0.4μm) and doping it with impurities like phosphorous or arsenic.
+  - Applying a photoresist and gate mask, followed by etching and removal to form the gate terminal.
+  - Precise control of dimensions and impurity concentration ensures the required threshold voltage is attained.
+
+**5. Lightly Doped Drain (LDD) Formation**
+- LDD structures are essential to mitigate issues like hot electron effect and short-channel effects.
+- Formation process includes:
+  - Using masks and photoresist layers to selectively expose regions.
+  - Implanting phosphorous and boron with specific energies to create N+ and P+ regions while preserving lightly doped areas.
+  - Utilizing side-wall spacers to protect the lightly doped regions.
+
+**6. Source and Drain Formation**
+- Creating the source and drain regions involves:
+  - Adding a thin screen oxide layer to randomize ion directions.
+  - Masking and exposing specific regions.
+  - Implanting boron and arsenic to form P+ and N+ areas beneath the P-well and N-well regions, respectively.
+
+**7. Contacts and Local Interconnects**
+- Preparing for interconnects:
+  - Removing the thin screen oxide.
+  - Depositing titanium via sputtering and heating to form TiSi2 for local interconnects.
+  - Applying masks to define interconnect gaps.
+  - Etching away excess TiN using an RCA cleaning solution.
+  
+**8. Higher-Level Metal Formation**
+- Achieving a planar surface:
+  - Depositing a thick SiO2 layer doped with phosphorous or boron.
+  - Utilizing chemical-mechanical polishing (CMP) for planarization.
+- Creating contact holes, depositing TiN, tungsten, and aluminum layers, and forming metal contacts using masks and photolithography.
+- Deposition, masking, and layering processes are repeated to achieve multi-level metal interconnections.
+
+This meticulously executed process results in the fabrication of CMOS devices with precise dimensions, controlled doping, and well-defined components, essential for modern VLSI chip design.
+</details>
