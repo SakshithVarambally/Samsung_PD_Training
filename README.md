@@ -2307,8 +2307,19 @@ sky130_fd_sc_hd__tt_025C_1v80
 </details>
 
 <details>
-<summary> Graphs </summary>
+<summary> Tables and Graphs </summary>
+	
+The table for all WNS and TNS in setup condition is shown below:
 
+	
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/b24c1c6b93c69513fff5fc5811f9ccae23ebaecb/DAY14%3E%3E/setup%20%20table.PNG">
+
+
+
+The table for all WNS and TNS in Hold conditions is shown below:
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/b24c1c6b93c69513fff5fc5811f9ccae23ebaecb/DAY14%3E%3E/Hold%20table.PNG">
+ 
 The snapped graphs generated for all the PVT corners for setup and Hold are mentioned below.
 
 
