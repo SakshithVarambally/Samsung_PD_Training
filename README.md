@@ -3258,18 +3258,41 @@ This meticulously executed process results in the fabrication of CMOS devices wi
 
 <details>
 <summary> Labs </summary>
-
+The spice file generated is shown below:
+	
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/spice_file.png">
+ 
+The snap of the schematic of the same  is shown below:
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/INV_schematic_1.png">
+
+ Loading the met_3_mag into magic :
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/met_3_mag.png">
+
+ Loading the sky130.tech file
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/load_tech_file.png">
+
+ Snap depicting different types of DRC:
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/DRC_fast_full.png">
+
+ 
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/DRC_fast_full.png">
+
+ Loading another design, and snapping its n well:
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/nwell_mag.png">
+
+ 
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/nwell_6.png">
+
+ 
 <img width="1085" alt="yosys" src=" https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/poly_create_1.png">
+
+
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/poly_create_1.png">
+
+ Fixing the Poly drc :
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/polyfix.png">
+
+ The mask is shown below:
 <img width="1085" alt="yosys" src=" https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/Mask.png">
  
  
