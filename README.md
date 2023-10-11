@@ -3157,6 +3157,37 @@ In this command, a systematic variation of the gate voltage is executed, ranging
 In summary, the SPICE deck defines components, their attributes, and interconnections through nodes. It ensures that signals propagate correctly through the circuit while taking into account load capacitance and the necessary supply voltages. This comprehensive approach to component and node definition is vital for accurate SPICE simulations in VLSI chip design.
 
 </details>
+<details>
+<summary> Inverter Layout</summary>
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/INV_schematic_1.png">
+
+
+**Poly Crosses N-Diffusion: NMOS**
+- When a polysilicon (poly) layer crosses an N-diffusion region, it signifies the formation of an NMOS (N-type Metal-Oxide-Semiconductor) transistor.
+
+**In Magic**:
+- In Magic, if this specific configuration of poly crossing N-diffusion is selected, the corresponding command or action in the Tkcon window would typically be to highlight or select this region.
+
+**Poly Crosses P-Diffusion: PMOS**
+- Conversely, when the poly layer crosses a P-diffusion region, it indicates the creation of a PMOS (P-type Metal-Oxide-Semiconductor) transistor.
+
+**In Magic**:
+- In Magic, selecting the poly crossing P-diffusion would also involve a corresponding command or action in the Tkcon window to highlight or select this configuration.
+
+**Connection of Y with Drain of PMOS and NMOS**:
+- In the schematic or layout, there is a connection represented as "Y" that is shared between the drain terminals of both PMOS and NMOS transistors. This connection typically represents a common output node or signal line in the circuit.
+
+**Other Connections**:
+- The source terminals of the PMOS and NMOS transistors are connected as follows:
+  - The source of the PMOS transistor is connected to one point in the circuit.
+  - The source of the NMOS transistor is connected to a different point in the circuit.
+
+These connections play a crucial role in determining how signals propagate through the transistors and the overall circuit.
+
+In summary, when designing integrated circuits, the placement and connections of transistors play a vital role in defining the functionality and behavior of the circuit. Identifying whether a poly layer crosses N-diffusion or P-diffusion helps differentiate between NMOS and PMOS transistors, which are fundamental building blocks in VLSI design.
+ 
+</details>
 
 <details>
 <summary> Fabrication </summary>
