@@ -3224,3 +3224,23 @@ In summary, the SPICE deck defines components, their attributes, and interconnec
 
 This meticulously executed process results in the fabrication of CMOS devices with precise dimensions, controlled doping, and well-defined components, essential for modern VLSI chip design.
 </details>
+
+<details>
+<summary> Labs </summary>
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/spice_file.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/INV_schematic_1.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/met_3_mag.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/load_tech_file.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/DRC_fast_full.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/DRC_fast_full.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/nwell_mag.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/nwell_6.png">
+<img width="1085" alt="yosys" src=" https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/poly_create_1.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/poly_create_1.png">
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/polyfix.png">
+<img width="1085" alt="yosys" src=" https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/Mask.png">
+ 
+ 
+ 
+</details>
