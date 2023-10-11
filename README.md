@@ -3258,6 +3258,13 @@ This meticulously executed process results in the fabrication of CMOS devices wi
 
 <details>
 <summary> Labs </summary>
+
+The drc error in metal is seen.
+As the 3.4 rule is not visible, it is visualised by selecting the location and filling it with metal3 layer
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/Mask.png">
+ 
+ 
 The spice file generated is shown below:
 	
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/spice_file.png">
@@ -3292,9 +3299,8 @@ The snap of the schematic of the same  is shown below:
  Fixing the Poly drc :
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/polyfix.png">
 
- The mask is shown below:
-<img width="1085" alt="yosys" src=" https://github.com/SakshithVarambally/Samsung_PD_Training/blob/21ad36dd631f6178c55c7fc3bac92c85da14da84/Day17/Mask.png">
+
  
- 
+
  
 </details>
