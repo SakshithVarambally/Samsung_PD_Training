@@ -3077,7 +3077,7 @@ The def file generated after placement is shown below, which also shows the tota
  
 </details>
 
-# Day 17
+# Day 17 Standard Cell Characterisation 
 
 <details>
 <summary> CMOS Inverter </summary>
