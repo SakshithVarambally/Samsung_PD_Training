@@ -3305,9 +3305,10 @@ The snap of the schematic of the same  is shown below:
  
 </details>
 
-# Day 18
+# Day 18 Pre Laypot timing analysis and importance of good clock tree
+
 <details>
-<summary> </summary>
+<summary> Delay Tables and setup analysis </summary>
 Introduction to Delay Tables:
 - **Problem**: In clock tree design, variations in capacitance/load at output nodes lead to changing input transitions and delays, causing clock skew.
 - **Solution**: 2D delay tables are employed to characterize delays based on input transitions and output load. These tables summarize timing models in the liberty file, with output slew being a significant factor.
@@ -3385,5 +3386,60 @@ Introduction to Delay Tables:
 
 8. **Refer to the Tracks.info**: Navigate to the "tracks.info" file within your Process Design Kit (PDK) folder. This file provides detailed information about the available tracks and their properties, helping you align your design elements correctly.
 
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/track_info.png">
+
+Creation and assigning ports:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/ports_creation.png">
+
+Inverter LEF file:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/inverter_LEF_file.png">
+
+Snap showing Grid spacing :
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/Grid_spaced_1.png">
+
+Run synthesis:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/Run_syntyhesis.png">
+
+Fixed Worst negative slack(wns) :
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/fixed_wns_synthesis_2.png">
+
+Merging our custom inverter into the flow :
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/merging_new_inv_w_synthesis.png">
+
+sky_invsakshith incorporated into the design:
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/placement_sky_invsakshith.png">
+
+Running floorplan:
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/run_floorplan.png">
+
+Running placement:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/run_placement.png">
+
+Snap showing the entire placement:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/entire_placement.png">
+
+Checks through openroad:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/openroad_checks.png">
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/open_road_checks2.png">
+
+Snap showing changed clock buffer and improved slack:
+
+ <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/changed_clock_bufferfrom1to2_improved_slack.png">
+
+Snap showing final setup and hold skew:
+
+ <img width="1085"alt="yosys"src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/hold_setup_skew.png">
 
 </details>
