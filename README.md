@@ -3313,11 +3313,17 @@ Introduction to Delay Tables:
 - **Solution**: 2D delay tables are employed to characterize delays based on input transitions and output load. These tables summarize timing models in the liberty file, with output slew being a significant factor.
 - **Impact Factors**: Input transition and output load influence output slew, with input slew affected by the previous buffer's output load and input slew.
 
+
+![delay table usage](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/810187dd-c2fa-464f-a1d5-42afa5f549d7)
+
 **Setup Time Analysis**:
 - **Clock Edge Handling**: Launch and capture flops receive clock edges.
 - **Combinational Delay**: Combinational delay must be shorter than the clock period.
 - **Internal Delays**: Delays within flops, including multiplexers, influence combinational delay requirements.
 - **Setup Time**: It's the time required for the capture flop to settle and produce an output.
+
+  ![setup ](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c2b1357f-3f8a-468b-aa24-bffca9e735d4)
+
 </details>
 
 <details>
@@ -3326,21 +3332,36 @@ Introduction to Delay Tables:
 **Introduction to Clock Jitter and Uncertainty**:
 - **Clock Jitter**: Clock signals are supposed to arrive at regular intervals, but due to delays and variations, they may not, causing temporary variations known as jitter.
 - **Accounting for Jitter**: The time period must be less than the setup time plus uncertainty time to accommodate jitter.
+![setup with jitter](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/e294dd94-5026-4a49-ab0e-0c937fa91e4b)
+
 
 **Clock Tree Synthesis**:
 - **Skew Minimization**: Clock tree routing is designed to minimize skew, ensuring synchronous operation.
 - **H Tree Calculation**: The H tree calculates distances to flip flops to reduce time differences and enhance synchronization.
 - **Repeater Usage**: To compensate for signal degradation due to wire resistance, repeaters are added.
+
+
+![cts with buffer](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a58e02f2-62de-4bb9-9f9f-3947323af3e4)
+
+
 - **Crosstalk Mitigation**: Protecting clock nets from external interference through shielding minimizes glitch and delta delay issues.
+
+  ![cross talk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a1481a35-2d05-4844-b61f-f4bf91629dd8)
 
 **Timing Analysis with Real Clocks**:
 - **Buffer Delays**: Incorporating buffer delays and wire effects in the clock tree design increases the overall time period.
 - **Data Timing**: Data required time must be less than data arrival time to ensure proper circuit operation.
 - **Slack Management**: Slack, the time difference between data arrival and data required time, is a crucial parameter for synchronization.
 
+![cts with buffer](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/4582c359-701a-4498-97ec-db18d21e956b)
+
+
 **Hold Time Analysis**:
 - **Hold Time Requirement**: Hold time ensures reliable sampling after the clock edge.
 - **Mux2 Delays**: It is the time for Mux2 to provide output based on the previous MUX's input, allowing for stable and accurate data capture.
+
+  ![hold](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b0f2eacb-2f2c-4abb-97e9-72a37bea2947)
+
 </details>
 
 <details >
