@@ -3406,7 +3406,7 @@ Introduction to Delay Tables:
 
 8. **Refer to the Tracks.info**: Navigate to the "tracks.info" file within your Process Design Kit (PDK) folder. This file provides detailed information about the available tracks and their properties, helping you align your design elements correctly.
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/track_info.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/track_info.png">
 
 Creation and assigning ports:
 
@@ -3444,7 +3444,7 @@ Running placement:
 
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/run_placement.png">
 
-Snap showing the entire placement:
+Snap showing the our custom cell after placement:
 
  <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/entire_placement.png">
 
