@@ -3305,7 +3305,7 @@ The snap of the schematic of the same  is shown below:
  
 </details>
 
-# Day 18 Pre Laypot timing analysis and importance of good clock tree
+# Day 18 Pre Layout timing analysis and importance of good clock tree
 
 <details>
 <summary> Delay Tables and setup analysis </summary>
