@@ -3309,19 +3309,26 @@ The snap of the schematic of the same  is shown below:
 
 <details>
 <summary> Delay Tables and setup analysis </summary>
+	
 Introduction to Delay Tables:
+
 - **Problem**: In clock tree design, variations in capacitance/load at output nodes lead to changing input transitions and delays, causing clock skew.
 - **Solution**: 2D delay tables are employed to characterize delays based on input transitions and output load. These tables summarize timing models in the liberty file, with output slew being a significant factor.
 - **Impact Factors**: Input transition and output load influence output slew, with input slew affected by the previous buffer's output load and input slew.
 
+  
+
 
 ![delay table usage](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/810187dd-c2fa-464f-a1d5-42afa5f549d7)
+
 
 **Setup Time Analysis**:
 - **Clock Edge Handling**: Launch and capture flops receive clock edges.
 - **Combinational Delay**: Combinational delay must be shorter than the clock period.
 - **Internal Delays**: Delays within flops, including multiplexers, influence combinational delay requirements.
 - **Setup Time**: It's the time required for the capture flop to settle and produce an output.
+
+
 
   ![setup ](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c2b1357f-3f8a-468b-aa24-bffca9e735d4)
 
@@ -3330,13 +3337,19 @@ Introduction to Delay Tables:
 <details>
 
  <summary> Click jitter and uncertainty </summary>
+ 
 **Introduction to Clock Jitter and Uncertainty**:
+
+
 - **Clock Jitter**: Clock signals are supposed to arrive at regular intervals, but due to delays and variations, they may not, causing temporary variations known as jitter.
 - **Accounting for Jitter**: The time period must be less than the setup time plus uncertainty time to accommodate jitter.
+
 ![setup with jitter](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/e294dd94-5026-4a49-ab0e-0c937fa91e4b)
 
 
 **Clock Tree Synthesis**:
+
+
 - **Skew Minimization**: Clock tree routing is designed to minimize skew, ensuring synchronous operation.
 - **H Tree Calculation**: The H tree calculates distances to flip flops to reduce time differences and enhance synchronization.
 - **Repeater Usage**: To compensate for signal degradation due to wire resistance, repeaters are added.
@@ -3347,12 +3360,19 @@ Introduction to Delay Tables:
 
 - **Crosstalk Mitigation**: Protecting clock nets from external interference through shielding minimizes glitch and delta delay issues.
 
+  Shielding techniques can effectively safeguard clock nets from external interference, reducing the occurrence of issues such as glitches and delta delays. This protection ensures the integrity of clock signals by creating a barrier that minimizes the impact of crosstalk and other external disturbances, ultimately contributing to a more stable and reliable operation of the circuit.
+  
+
   ![cross talk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a1481a35-2d05-4844-b61f-f4bf91629dd8)
 
 **Timing Analysis with Real Clocks**:
+
+
 - **Buffer Delays**: Incorporating buffer delays and wire effects in the clock tree design increases the overall time period.
 - **Data Timing**: Data required time must be less than data arrival time to ensure proper circuit operation.
 - **Slack Management**: Slack, the time difference between data arrival and data required time, is a crucial parameter for synchronization.
+
+  
 
 ![cts with buffer](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/4582c359-701a-4498-97ec-db18d21e956b)
 
@@ -3406,7 +3426,7 @@ Run synthesis:
 
 Fixed Worst negative slack(wns) :
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/fixed_wns_synthesis_2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/fixed_wns_synthesis_2.png">
 
 Merging our custom inverter into the flow :
 
@@ -3414,11 +3434,11 @@ Merging our custom inverter into the flow :
 
 sky_invsakshith incorporated into the design:
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/placement_sky_invsakshith.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/placement_sky_invsakshith.png">
 
 Running floorplan:
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/run_floorplan.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/run_floorplan.png">
 
 Running placement:
 
@@ -3440,6 +3460,6 @@ Snap showing changed clock buffer and improved slack:
 
 Snap showing final setup and hold skew:
 
- <img width="1085"alt="yosys"src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/hold_setup_skew.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/hold_setup_skew.png">
 
 </details>
