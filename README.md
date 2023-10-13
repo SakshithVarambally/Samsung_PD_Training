@@ -3310,24 +3310,53 @@ The snap of the schematic of the same  is shown below:
 <details>
 <summary> Delay Tables and setup analysis </summary>
 	
-Introduction to Delay Tables:
+**Introduction to Delay Tables:**
 
-- **Problem**: In clock tree design, variations in capacitance/load at output nodes lead to changing input transitions and delays, causing clock skew.
-- **Solution**: 2D delay tables are employed to characterize delays based on input transitions and output load. These tables summarize timing models in the liberty file, with output slew being a significant factor.
-- **Impact Factors**: Input transition and output load influence output slew, with input slew affected by the previous buffer's output load and input slew.
+
+**The Problem**:
+Clock tree design in Very Large Scale Integration (VLSI) chips faces challenges due to variations in capacitance and load at output nodes. These variations result in changing input transitions and, consequently, clock skew issues.
+
+**The Solution**:
+To address these challenges, engineers employ 2D delay tables. These tables serve as a critical component of the design process, providing a way to characterize delays based on input transitions and output load variations. By doing so, these tables help mitigate clock skew problems effectively.
+
+**Key Elements**:
+
+1. **Characterizing Delays**: Delay tables are a vital part of the "liberty" file used in the VLSI design process. They provide a structured way to summarize timing models.
+
+2. **Output Slew as a Factor**: Output slew, or the rate of change in the output signal, plays a significant role in these tables. It is a parameter that significantly influences the overall timing behavior of a circuit.
+
+3. **Influence of Input Transition**: Input transitions, or how fast the input signal changes, directly impact the delays experienced in the circuit.
+
+4. **Effect of Output Load**: The load placed at the output nodes of the circuit can significantly affect the output slew, which, in turn, influences overall timing.
+
+5. **Input Slew Dependency**: It's important to note that input slew is influenced by the previous buffer's output load and input slew. This interplay adds complexity to the design process.
+
+In summary, 2D delay tables are a powerful tool used to address clock skew problems in VLSI design. They provide a structured way to characterize delays, considering various factors like input transitions, output slew, and the impact of output loads. Understanding these tables is crucial for achieving precise and efficient clock tree design.
 
   
 
 
 ![delay table usage](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/810187dd-c2fa-464f-a1d5-42afa5f549d7)
 
+</details>
+<details>
+<summary> Setup Time analysis</summary>
 
-**Setup Time Analysis**:
-- **Clock Edge Handling**: Launch and capture flops receive clock edges.
-- **Combinational Delay**: Combinational delay must be shorter than the clock period.
-- **Internal Delays**: Delays within flops, including multiplexers, influence combinational delay requirements.
-- **Setup Time**: It's the time required for the capture flop to settle and produce an output.
+**Understanding Setup Time Analysis**:
 
+**Handling Clock Edges**:
+In digital circuits, we have flip-flops that rely on clock edges. The setup time analysis deals with the timing of these clock edges in the context of launching and capturing data.
+
+**Combinational Delay Check**:
+For proper functioning, the combinational logic in a circuit should operate within specific time constraints. This analysis ensures that the combinational delay, the time it takes for these logic gates to process data, is shorter than the clock period.
+
+**Internal Delays Matter**:
+The setup time isn't just about combinational logic; it also considers the internal delays within flip-flops. Elements like multiplexers and other internal components can influence the overall delay within a flip-flop.
+
+**Defining Setup Time**:
+Setup time is a fundamental concept in this analysis. It's the amount of time necessary for a capture flip-flop to stabilize and produce a reliable output signal. It's crucial to ensure that this settling period aligns with the requirements of the circuit.
+
+In summary, setup time analysis is all about ensuring that the clock edges, combinational logic, and internal delays work harmoniously to meet the setup time requirements, allowing for correct and synchronized data processing in digital circuits.
 
 
   ![setup ](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c2b1357f-3f8a-468b-aa24-bffca9e735d4)
@@ -3341,45 +3370,88 @@ Introduction to Delay Tables:
 **Introduction to Clock Jitter and Uncertainty**:
 
 
-- **Clock Jitter**: Clock signals are supposed to arrive at regular intervals, but due to delays and variations, they may not, causing temporary variations known as jitter.
-- **Accounting for Jitter**: The time period must be less than the setup time plus uncertainty time to accommodate jitter.
+**Understanding Clock Jitter in Timing Analysis**:
+
+**Clock Jitter Unveiled**:
+Clock signals, responsible for synchronizing actions in digital circuits, are ideally expected to arrive at consistent intervals. However, due to various factors such as signal delays and variations, they don't always maintain this perfect regularity. These temporary variations in clock signals are what we refer to as "clock jitter."
+
+**Dealing with Jitter**:
+In timing analysis, accounting for clock jitter is essential to ensure the reliable operation of digital circuits. To accommodate clock jitter, we must ensure that the time period provided for each clock cycle is not just greater than the setup time of the flip-flops but also takes into account a certain "uncertainty time."
+
+**Uncertainty Time and Jitter**:
+Uncertainty time refers to the potential variations and irregularities in clock signals due to jitter. By allowing for this uncertainty time, we create a buffer period that can absorb the temporary fluctuations in clock intervals, ultimately ensuring that the circuit's operations remain synchronized and free from timing errors.
+
+In summary, understanding and accommodating clock jitter in timing analysis is critical for maintaining the stability and accuracy of digital circuits, ensuring that they function reliably even in the presence of temporary variations in clock signals.
 
 ![setup with jitter](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/e294dd94-5026-4a49-ab0e-0c937fa91e4b)
 
+</details>
 
+<details>
+<summary>Clock Tree Synthesis </summary>
 **Clock Tree Synthesis**:
 
+**Achieving Synchronization through Skew Minimization**:
 
-- **Skew Minimization**: Clock tree routing is designed to minimize skew, ensuring synchronous operation.
-- **H Tree Calculation**: The H tree calculates distances to flip flops to reduce time differences and enhance synchronization.
-- **Repeater Usage**: To compensate for signal degradation due to wire resistance, repeaters are added.
+**Skew Reduction**:
+1. **Skew Minimization**: In the realm of clock tree design, a pivotal objective is to minimize skew. Skew represents the variation in arrival times of clock signals at different points in a circuit. By reducing skew, designers aim to achieve synchronous operation.
+
+**The Role of H Trees**:
+2. **H Tree Calculation**: To tackle skew head-on, a significant tool in the designer's arsenal is the H tree. This geometric structure calculates distances to various flip-flops within the circuit. These distance calculations are crucial in reducing the time differences between different parts of the circuit, contributing to enhanced synchronization.
+
+**Addressing Wire Resistance**: 
+3. **Repeater Deployment**: As signals traverse lengthy wires within a chip, they can face resistance that degrades signal integrity. To counter this, repeaters are judiciously added to the design. These repeaters act as signal boosters, ensuring that the clock signals maintain their quality and integrity over long distances.
+
+In summary, the quest for synchronization in clock tree design involves minimizing skew, utilizing geometric structures like H trees, and deploying repeaters to address signal degradation. These strategies collectively contribute to reliable and coordinated circuit operation.
+
 
 
 ![cts with buffer](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a58e02f2-62de-4bb9-9f9f-3947323af3e4)
 
+</details>
 
-- **Crosstalk Mitigation**: Protecting clock nets from external interference through shielding minimizes glitch and delta delay issues.
+<details>
+<summary> Cross Talk and its mitigation </summary>
+	
+**Preserving Clock Net Integrity Through Crosstalk Mitigation**:
 
-  Shielding techniques can effectively safeguard clock nets from external interference, reducing the occurrence of issues such as glitches and delta delays. This protection ensures the integrity of clock signals by creating a barrier that minimizes the impact of crosstalk and other external disturbances, ultimately contributing to a more stable and reliable operation of the circuit.
-  
+1. **Crosstalk Challenges**: Clock nets are vulnerable to external interference, leading to challenges like glitches and delta delays in signal transmission.
+
+2. **Shielding Strategies**: To counter these challenges, shielding techniques come into play. These methods effectively safeguard clock nets from external interference, creating a protective barrier.
+
+3. **Glitch and Delta Delay Reduction**: By creating this protective barrier, shielding minimizes the impact of crosstalk and other external disturbances. This reduction leads to fewer glitches and delta delays in signal transmission.
+
+In summary, shielding techniques serve as a robust defense mechanism for clock nets, ensuring their integrity and contributing to the reliable operation of the circuit.
 
   ![cross talk](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/a1481a35-2d05-4844-b61f-f4bf91629dd8)
+</details>
 
-**Timing Analysis with Real Clocks**:
+<details>
+<summary> Timing analysis with real clocks</summary>
+**Real Clock Timing Analysis**:
 
+1. **Buffer and Wire Delays**: Accounting for buffer delays and wire effects within the clock tree design extends the overall clock period. These delays influence the time constraints for circuit operation.
 
-- **Buffer Delays**: Incorporating buffer delays and wire effects in the clock tree design increases the overall time period.
-- **Data Timing**: Data required time must be less than data arrival time to ensure proper circuit operation.
-- **Slack Management**: Slack, the time difference between data arrival and data required time, is a crucial parameter for synchronization.
+2. **Data Timing**: To maintain proper circuit operation, the time required for data to propagate must be less than the time it takes for data to arrive at its destination.
 
+3. **Slack as Synchronization Parameter**: Slack, which represents the time difference between data arrival and data required time, plays a pivotal role in ensuring synchronization within the circuit. Proper slack management is essential for reliable performance.
+
+In summary, real clock timing analysis considers buffer delays, wire effects, and data timing to optimize synchronization, with slack acting as a key parameter in this process.
   
 
 ![cts with buffer](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/4582c359-701a-4498-97ec-db18d21e956b)
+ </details>
 
+ <details>
+ <summary> Hold time analysis </summary>
 
 **Hold Time Analysis**:
-- **Hold Time Requirement**: Hold time ensures reliable sampling after the clock edge.
-- **Mux2 Delays**: It is the time for Mux2 to provide output based on the previous MUX's input, allowing for stable and accurate data capture.
+
+1. **Hold Time Necessity**: Hold time is a critical aspect of maintaining the reliability of data sampling following the clock edge. It ensures that data is correctly and consistently captured.
+
+2. **Mux2 Delay**: The Mux2 delay represents the time required for Mux2 to generate its output based on the input received from the previous MUX. This delay is crucial for achieving stable and accurate data capture.
+
+Understanding hold time is essential for guaranteeing data integrity and accurate sampling in digital circuits. It involves evaluating the timing requirements for Mux2 and ensuring that data remains stable during the capture process.
 
   ![hold](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b0f2eacb-2f2c-4abb-97e9-72a37bea2947)
 
