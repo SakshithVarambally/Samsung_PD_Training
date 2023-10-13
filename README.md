@@ -3498,6 +3498,14 @@ Run synthesis:
 
 Fixed Worst negative slack(wns) :
 
+Some parameters to be considered:
+
+    SYNTH_STRATEGY: control the area and timing
+    SYNTH_BUFFERING: control if we want to buffer high fanout net
+    SYNTH_SIZING: control in cell sizing instead of buffering
+    SYNTH_DRIVING_CELL: ensure more drive strength cell to drive input
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day18%26%26/fixed_wns_synthesis_2.png">
 
 Merging our custom inverter into the flow :
