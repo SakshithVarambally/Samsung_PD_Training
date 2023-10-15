@@ -3543,3 +3543,90 @@ Snap showing final setup and hold skew:
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/c74c87c897345f35f69f056a7cd98493d017861c/day18/day%2018%3E%3E/hold_setup_skew.png">
 
 </details>
+
+# Day 19
+
+<details>
+
+ <summary> Lee</summary>
+ **Routing Stage: Lee's Algorithm**
+
+1. **Maze Routing - Lee's Algorithm (Lee, 1961)**: Lee's Algorithm is a routing algorithm designed to determine the shortest path between two nodes in a grid, a fundamental process in routing physical connections within a chip design.
+
+2. **Routing Process**: Routing is the procedure that establishes the physical wire connections within the chip design, with the aim of finding the optimal path between a source and a target. This optimal path should have the shortest distance and involve the fewest zig-zag turns.
+
+3. **Blockage Consideration**: During the routing process, the algorithm must account for any blockages that have been defined in the design. Blockages are areas where routing is restricted or prohibited.
+
+**Lee's Algorithm Steps**:
+
+1. **Creation of Routing Grid**: The algorithm starts by generating a routing grid that matches the floorplan of the design. This grid provides a framework for the routing process.
+
+2. **Source and Target Nodes**: The two essential points to be connected are identified within the grid – the source and the target.
+
+3. **Route Determination**: Lee's Algorithm then searches for the optimal route to connect the source and target points using the routing grid as a guide.
+
+4. **Grid Labeling**: The algorithm labels the grid, marking it as "ground," particularly in areas adjacent to horizontal and vertical grids. This labeling aids in guiding the routing process.
+
+5. **Obstacle Recognition**: It's important to note that the algorithm does not label the grid areas that are underneath blockages, as well as those located at the boundary of the design.
+
+Lee's Algorithm is a critical tool in the routing stage that enables designers to navigate the chip's layout, avoiding obstacles and seeking the shortest and most efficient path to connect source and target nodes.
+
+</details>
+
+<details>
+
+ <summary> Lee 2</summary>
+
+ **Optimal Routing Path Selection**:
+
+- **Choosing the Optimal Path**: In the context of routing, it's often preferable to select the Left-Hand Side (LHS) option when presented with multiple routing choices as illustrated in the figure below.
+
+- **Selection Rationale**: The decision to choose the LHS route is primarily based on its alignment with the "best" routing criteria. In this case, the LHS route offers advantages due to its reduced bending, forming an L-shaped path, as compared to the Right-Hand Side (RHS) alternative.
+
+- **Benefit for Global Routing**: Consequently, the LHS figure is favored for further global routing processes due to its potential for forming efficient routes with fewer bends.
+
+- **Challenges in Routing**: While routing a single path is a relatively straightforward task, the complexity increases significantly when dealing with numerous start and endpoint pairs. This extensive routing task demands substantial time and memory resources.
+
+- **Resource Consumption in Maze Routing**: The method of maze routing, while effective in finding optimal paths, can be resource-intensive, particularly in large and complex designs.
+
+- **Mitigating Resource Consumption**: To address the challenges posed by extensive routing requirements, alternative algorithms come into play. For example, line-search algorithms and stanner-tree algorithms are employed to reduce the time and memory resources consumed during routing.
+
+In summary, choosing the optimal routing path, reducing bends, and managing resource consumption are crucial considerations in the routing process, especially when dealing with complex and large-scale chip designs. Different routing algorithms, such as line-search and stanner-tree algorithms, are deployed to enhance efficiency and conserve resources.
+
+</details>
+
+<details>
+<summary>  </summary>
+
+ **Design Rule Check (DRC) in Routing**:
+
+- **Design Rule Enforcement**: DRC refers to the essential set of rules that must be adhered to during the routing phase to ensure that the design complies with manufacturing and performance standards.
+
+- **Wire Width Rule**: One fundamental DRC rule pertains to wire width, specifying the minimum allowable width of wires based on the fabrication process's limitations.
+
+- **Wire Pitch Rule**: Another rule tied to the lithographic process is wire pitch, dictating the minimum center-to-center distance between two wires on the same layer.
+
+- **Wire Spacing Rule**: A third critical DRC rule involves wire spacing, establishing the minimum separation distance required between two wires.
+
+- **Complex Rule Set**: The routing tool must consider and enforce a multitude of DRC rules, each addressing specific aspects of design quality, manufacturability, and functionality.
+
+- **Signal Short DRC Violation**: One common DRC violation is a "signal short," where unintended wire contact occurs on the same layer, posing a risk of functional failure.
+
+- **Mitigation Strategy**: To rectify a signal short, the solution is to relocate one of the wires onto a different metal layer, preventing unintended connections.
+
+- **Evolving DRC Rules**: It's important to note that DRC rules evolve over time to align with technological advancements and manufacturing capabilities.
+
+- **New DRC Rules**: After addressing and resolving DRC violations, new rules emerge, including considerations for via width (minimum via size) and via spacing (minimum separation between vias).
+
+- **Origin of DRC Rules**: Most DRC rules are rooted in the intricacies of the lithographic process and are designed to accommodate the constraints of the technology.
+
+- **Parasitic Extraction**: In addition to DRC, the routing process often involves parasitic extraction, a critical step where the resistances and capacitances of the wires are quantified. These parameters are subsequently used in downstream design processes.
+
+In summary, DRC rules in routing encompass a wide range of regulations that ensure the design's manufacturability, quality, and performance. Adhering to DRC guidelines is essential to avoid violations like signal shorts, and it's important to adapt to evolving rules and consider parasitic extraction as part of the routing process.
+</details>
+
+<details>
+<summary> Labs </summary>
+
+ 
+</details>
