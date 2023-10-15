@@ -3548,7 +3548,7 @@ Snap showing final setup and hold skew:
 
 <details>
 
- <summary> Lee</summary>
+ <summary> Maze Routing using Lee,s algorithm </summary>
  **Routing Stage: Lee's Algorithm**
 
 1. **Maze Routing - Lee's Algorithm (Lee, 1961)**: Lee's Algorithm is a routing algorithm designed to determine the shortest path between two nodes in a grid, a fundamental process in routing physical connections within a chip design.
@@ -3568,14 +3568,17 @@ Snap showing final setup and hold skew:
 4. **Grid Labeling**: The algorithm labels the grid, marking it as "ground," particularly in areas adjacent to horizontal and vertical grids. This labeling aids in guiding the routing process.
 
 5. **Obstacle Recognition**: It's important to note that the algorithm does not label the grid areas that are underneath blockages, as well as those located at the boundary of the design.
+![215032150-34401e02-d2db-4d5c-a437-3ca369b4cdec](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/971f0eae-8e9e-43d1-8aa9-83eb893532e0)
 
 Lee's Algorithm is a critical tool in the routing stage that enables designers to navigate the chip's layout, avoiding obstacles and seeking the shortest and most efficient path to connect source and target nodes.
+![215030291-ceea2ccd-d922-4883-8370-97a39a423721](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/75f96403-b6e4-4386-8740-edd50998452a)
+
 
 </details>
 
 <details>
 
- <summary> Lee 2</summary>
+ <summary> Theory about Lee,s algorithm </summary>
 
  **Optimal Routing Path Selection**:
 
@@ -3590,13 +3593,15 @@ Lee's Algorithm is a critical tool in the routing stage that enables designers t
 - **Resource Consumption in Maze Routing**: The method of maze routing, while effective in finding optimal paths, can be resource-intensive, particularly in large and complex designs.
 
 - **Mitigating Resource Consumption**: To address the challenges posed by extensive routing requirements, alternative algorithms come into play. For example, line-search algorithms and stanner-tree algorithms are employed to reduce the time and memory resources consumed during routing.
+  
+![215033857-8446f957-7d5d-4378-accf-81f824cfbdd9](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/7d2caaa8-c8c8-42ec-b822-b7718a9fc5bf)
 
 In summary, choosing the optimal routing path, reducing bends, and managing resource consumption are crucial considerations in the routing process, especially when dealing with complex and large-scale chip designs. Different routing algorithms, such as line-search and stanner-tree algorithms, are deployed to enhance efficiency and conserve resources.
 
 </details>
 
 <details>
-<summary>  </summary>
+<summary> DRC and Rule Set </summary>
 
  **Design Rule Check (DRC) in Routing**:
 
@@ -3621,6 +3626,8 @@ In summary, choosing the optimal routing path, reducing bends, and managing reso
 - **Origin of DRC Rules**: Most DRC rules are rooted in the intricacies of the lithographic process and are designed to accommodate the constraints of the technology.
 
 - **Parasitic Extraction**: In addition to DRC, the routing process often involves parasitic extraction, a critical step where the resistances and capacitances of the wires are quantified. These parameters are subsequently used in downstream design processes.
+- 
+![215037259-747e6a52-c7cd-4a01-ab20-209179aef4fe](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/34fd780a-d030-4564-b941-9a1b7b0ae11b)
 
 In summary, DRC rules in routing encompass a wide range of regulations that ensure the design's manufacturability, quality, and performance. Adhering to DRC guidelines is essential to avoid violations like signal shorts, and it's important to adapt to evolving rules and consider parasitic extraction as part of the routing process.
 </details>
@@ -3628,5 +3635,24 @@ In summary, DRC rules in routing encompass a wide range of regulations that ensu
 <details>
 <summary> Labs </summary>
 
+With the .def file created after cts we run the pdn and then the routing through the 'run_routing' command.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/after_run_routing.png">
+
+The snap clicked after routing.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/routed_pic.png">
+
+
+Spec file generated after Routing
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/spec_after_routing.png">
+
+On doing run_magic openlane generates the GDSII file
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/after_run_magic.png">
+
+Snap showing the final GDS
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/gds_png.png">
  
 </details>
