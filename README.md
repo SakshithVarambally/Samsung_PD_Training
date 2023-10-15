@@ -3635,23 +3635,49 @@ In summary, DRC rules in routing encompass a wide range of regulations that ensu
 <details>
 <summary> Labs </summary>
 
+
+
 With the .def file created after cts we run the pdn and then the routing through the 'run_routing' command.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/after_run_routing.png">
 
+
+
 The snap clicked after routing.
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/routed_pic.png">
 
 
-Spec file generated after Routing
+
+
+Spec file generated after Routing:
+
+spec files in the design process are crucial for documenting, guiding, and ensuring the integrity and quality of integrated circuit designs, from initial concept to final manufacturing and beyond.
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/spec_after_routing.png">
 
+
+
+
 On doing run_magic openlane generates the GDSII file
+
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/after_run_magic.png">
 
+
+
 Snap showing the final GDS
+
+GDS is the standard format for representing and exchanging layout and mask information in the VLSI industry. GDSII files contain detailed information about the physical layout of integrated circuits, including the positions and shapes of transistors, interconnects, and other components.
+
+VLSI designers use GDSII files to describe the physical design of integrated circuits, which are then sent to semiconductor fabrication facilities for manufacturing. GDSII files are essential for ensuring that the design is accurately translated into the physical mask sets used to create the actual silicon wafers.
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/gds_png.png">
  
