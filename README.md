@@ -3548,7 +3548,7 @@ Snap showing final setup and hold skew:
 
 <details>
 
- <summary> Maze Routing using Lee,s algorithm </summary>
+ <summary> Maze Routing using Lee's algorithm </summary>
  **Routing Stage: Lee's Algorithm**
 
 1. **Maze Routing - Lee's Algorithm (Lee, 1961)**: Lee's Algorithm is a routing algorithm designed to determine the shortest path between two nodes in a grid, a fundamental process in routing physical connections within a chip design.
@@ -3578,7 +3578,7 @@ Lee's Algorithm is a critical tool in the routing stage that enables designers t
 
 <details>
 
- <summary> Theory about Lee,s algorithm </summary>
+ <summary> Theory about Lee's algorithm </summary>
 
  **Optimal Routing Path Selection**:
 
@@ -3601,7 +3601,7 @@ In summary, choosing the optimal routing path, reducing bends, and managing reso
 </details>
 
 <details>
-<summary> DRC and Rule Set </summary>
+<summary> DRC and Rule Sets </summary>
 
  **Design Rule Check (DRC) in Routing**:
 
