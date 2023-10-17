@@ -3699,3 +3699,55 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9ee5459af7d9394f58baa657034f8d1406f718eb/day19/gds_png.png">
  
 </details>
+
+# Day 20
+<details >
+<summmary> Labs </summmary>
+
+**1. Create a gate-level netlist (after synthesis)**
+   - Netlist is the foundation for physical design.
+   - It results from synthesizing RTL designs in VHDL or Verilog HDL.
+   - Contains cell information, interconnections, area usage, and other design parameters.
+
+**2. Floorplanning**
+   - Determine block dimensions and their placement on the chip.
+   - Aim to position highly connected blocks in proximity for efficient routing.
+
+**3. Partitioning**
+   - Divide the chip into functional blocks or modules.
+   - Eases placement and routing by separating distinct parts of the design.
+
+**4. Placement**
+   - Optimal placement of standard cells within the core boundary.
+   - Minimize congestion and optimize timing.
+   - May include physical-only cells and buffers/inverters to meet timing and foundry requirements.
+   - User preferences and tool commands can enhance quality of results (QoR).
+
+**5. Static Timing Analysis (STA)**
+   - Validates design's timing performance.
+   - Checks all possible paths for timing violations.
+   - Calculates signal propagation delay and enforces timing constraints.
+   - Faster than dynamic simulation, as it doesn't simulate the circuit's logical operation.
+   - Thoroughly examines all timing paths.
+   - Focuses on timing, not functional correctness.
+
+**6. Clock Tree Synthesis (CTS)**
+   - Critical for reducing clock skew and insertion delay.
+   - Distributes the clock signal evenly across sequential elements.
+   
+**7. Routing**
+   - Establishes connections between cells and blocks.
+   - Involves global routing (allocating routing resources and tracking network assignments) and detailed routing (making actual connections).
+   
+**8. Physical Verification**
+   - Ensures the layout design is valid.
+   - Checks for correctness, technological prerequisites, density verification, and other requirements.
+
+The Physical Design Flow is a comprehensive process that transforms a synthesized netlist into a chip layout while optimizing for factors like wire length, area, and power. Each step plays a crucial role in achieving a functional and efficient integrated circuit design.
+</details>
+
+<details>
+<summary> Labs </summary>
+
+
+</details>
