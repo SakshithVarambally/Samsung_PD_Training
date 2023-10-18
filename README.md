@@ -3710,7 +3710,7 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
  
 </details>
 
-# Day 20
+# Day 20 Floorplan and Powerplanning of VSDBabySoC
 
 <details>
 <summmary> Theory </summmary>
@@ -3763,15 +3763,43 @@ The Physical Design Flow is a comprehensive process that transforms a synthesize
 <details>
 <summary> Labs </summary>
 
+After sourcing vsdbabysoc.tcl in dc_shell, generating all the reports of area, power and constraints.
+
+
+Report Area:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_area.png">
+
+Report Power:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_power.png">
+
+
+Report Constraints
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_constraints.png">
+
+Opening icc2_shell by invoking the shell and sourcing top.tcl in icc2 shell.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_source_top.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/schematic.png">
+
+The schematics observed are snapped as follows:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic2.png">
+
+Report timing after generating propagater clocks:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_timing_after_prop_clock.png">
+
+Snap after estimate_timing:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_estimate_timing.png">
+
+Starting Gui and observing the output layout :
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui1.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui2.png">
