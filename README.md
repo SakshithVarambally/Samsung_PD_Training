@@ -3943,5 +3943,6 @@ estimate_timing
 report_constraints -all_violators
 ~~~
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/violators_report.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/violators_report.png">
+
 </details>
