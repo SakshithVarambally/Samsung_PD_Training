@@ -3810,8 +3810,138 @@ Starting Gui and observing the output layout :
 # Day 21 
 
 <details>
+<summary> Theory> <summary>
+
+**Placement in Physical Design**
+
+Placement is a pivotal phase in physical design, consisting of several key aspects and stages aimed at optimizing various objectives.
+
+**1. Pre-placement Sanity Check:**
+   - Identify issues like floating pins, unconstrained pins, timing discrepancies, and pin direction mismatches in the netlist.
+
+**2. Standard Cell Placement:**
+   Placement involves dividing the chip into regions and positioning standard cells and macros for optimal chip performance.
+
+**Placement Stages:**
+
+**a. Global Placement:**
+   - Initial placement to roughly position cells.
+   - Balancing objectives such as congestion, timing, and routability.
+   
+**b. Legalization:**
+   - Ensure standard cells are legally placed.
+   - Prevent overlaps and meet design rules.
+   
+**c. Detailed Placement:**
+   - Fine-tune cell positions for optimal performance.
+   - Focus on congestion, timing, and runtime.
+
+**Placement Objectives:**
+
+**a. Congestion:**
+   - Minimize congestion to enhance routing feasibility.
+   - Prevent congested areas where routing becomes challenging.
+
+**b. Performance:**
+   - Optimize the physical placement for chip performance.
+   - Minimize signal propagation delays.
+
+**c. Timing:**
+   - Ensure that the placement meets critical timing requirements.
+   - Align paths to achieve synchronous operation.
+
+**d. Routability:**
+   - Facilitate easy routing by organizing cells efficiently.
+   - Avoid obstacles and congestion.
+
+**e. Runtime:**
+   - Consider the time it takes to complete placement.
+   - Efficiency in placement impacts overall design time.
+
+**3. Clock Tree Synthesis (CTS):**
+
+CTS is the process of creating an efficient clock distribution network, ensuring synchronous operation of circuit elements.
+
+**Inputs of CTS:**
+   - Placement Database (Placement DB)
+   - CTS Specification File (CTS Spec file)
+
+**CTS Steps:**
+
+**a. Clustering:**
+   - Group clock sinks into clusters to simplify clock tree generation.
+
+**b. DRV Fixing (Drive Strength Fixing):**
+   - Adjust drive strengths to balance loads and meet timing.
+
+**c. Insertion Delay Reduction:**
+   - Optimize delay elements to ensure consistent clock arrival times.
+
+**d. Power Reduction:**
+   - Minimize power consumption by optimizing the clock tree.
+
+**e. Balancing:**
+   - Balance clock skew across the chip to maintain synchronization.
+
+**f. Post-conditioning:**
+   - Fine-tune the clock tree structure after initial synthesis.
+
+**CTS Quality Checks:**
+
+**a. Skew:**
+   - Verify that clock skew meets design constraints.
+   
+**b. Pulse Width:**
+   - Ensure clock pulse width adheres to requirements.
+   
+**c. Duty Cycle:**
+   - Confirm that the duty cycle is within acceptable bounds.
+   
+**d. Latency:**
+   - Check and control clock latency.
+   
+**e. Clock Tree Power:**
+   - Examine and optimize power distribution in the clock tree.
+   
+**f. Signal Integrity and Crosstalk:**
+   - Address issues related to signal integrity and crosstalk in the clock network.
+   
+**g. Timing Analysis and Fixing:**
+   - Perform timing analysis to identify and rectify any violations in the clock tree.
+
+These processes collectively contribute to a well-optimized physical design, ensuring that the chip meets performance, power, and timing requirements.
+
+</details>
+
+<details>
 <summary> Labs</summary>
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/core_utilization_40.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/dac_pll_seen.png
+
+Core utilization was previously set to 0.07.
+
+
+The snap below represents the run when core utilization was set to 0.4 or 40%.
+
+The vsdbabysoc.tcl is rerun in dc shell aand then top.tcl is run on icc2_shell
+The change in the design placements and route can be observed in the below snap:
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/core_utilization_40.png">
+
+In the below snap the Dac and pll can be clearly observed which are part of the VSDbabysoc.
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/dac_pll_seen.png">
+
+The below snap shows the violators report:
+
+some commands to ve fed into icc2 shell:
+
+
+~~~ruby
+set_propagated_clock [all_clocks]             (Converting clock object from ideal clock to propagated clock)
+report_timing
+estimate_timing
+report_constraints -all_violators
+~~~
+
 https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/violators_report.png
 </details>
