@@ -3711,8 +3711,9 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
 </details>
 
 # Day 20
-<details >
-<summmary> Labs </summmary>
+
+<details>
+<summmary> Theory </summmary>
 
 **1. Create a gate-level netlist (after synthesis)**
    - Netlist is the foundation for physical design.
