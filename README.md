@@ -3806,3 +3806,12 @@ Starting Gui and observing the output layout :
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui2.png">
  
 </details>
+
+# Day 21 
+
+<details>
+<summary> Labs</summary>
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/core_utilization_40.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/dac_pll_seen.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/violators_report.png
+</details>
