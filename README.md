@@ -3713,6 +3713,7 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
 # Day 20 Floorplan and Powerplanning of VSDBabySoC
 
 <details>
+	
 <summmary> Theory </summmary>
 
 **1. Create a gate-level netlist (after synthesis)**
@@ -3758,6 +3759,7 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
 
 
 The Physical Design Flow is a comprehensive process that transforms a synthesized netlist into a chip layout while optimizing for factors like wire length, area, and power. Each step plays a crucial role in achieving a functional and efficient integrated circuit design.
+
 </details>
 
 <details>
