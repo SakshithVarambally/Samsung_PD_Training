@@ -3713,8 +3713,7 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
 # Day 20 Floorplan and Powerplanning of VSDBabySoC
 
 <details>
-	
-<summmary> Theory </summmary>
+<summary> Theory </summary>
 
 **1. Create a gate-level netlist (after synthesis)**
    - Netlist is the foundation for physical design.
