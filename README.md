@@ -3634,7 +3634,17 @@ In summary, choosing the optimal routing path, reducing bends, and managing reso
 
 - **Signal Short DRC Violation**: One common DRC violation is a "signal short," where unintended wire contact occurs on the same layer, posing a risk of functional failure.
 
+
+  
+![215036320-f0517b39-378a-4a40-9f0f-eb735c2001b4-2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/53551b15-b7af-46be-9b40-427f251d1a1c)
+
+
+
 - **Mitigation Strategy**: To rectify a signal short, the solution is to relocate one of the wires onto a different metal layer, preventing unintended connections.
+
+- ![215036993-58407624-384b-4965-a9b1-0519dc5a5670](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/57c49dcf-77ef-4ac1-9104-258be2c282b0)
+
+
 
 - **Evolving DRC Rules**: It's important to note that DRC rules evolve over time to align with technological advancements and manufacturing capabilities.
 
@@ -3743,22 +3753,26 @@ VLSI designers use GDSII files to describe the physical design of integrated cir
    - Ensures the layout design is valid.
    - Checks for correctness, technological prerequisites, density verification, and other requirements.
 
+     ![215411723-547f98c2-d8ac-446c-92b2-19e020ed9f1c](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/38a952bd-2a1b-4322-8d6e-88d2dc09ca13)
+
+
 The Physical Design Flow is a comprehensive process that transforms a synthesized netlist into a chip layout while optimizing for factors like wire length, area, and power. Each step plays a crucial role in achieving a functional and efficient integrated circuit design.
 </details>
 
 <details>
 <summary> Labs </summary>
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_area.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_power.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_constraints.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_source_top.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/schematic.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic2.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_timing_after_prop_clock.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_estimate_timing.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui1.png
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui2.png
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_area.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_power.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_constraints.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_source_top.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/schematic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_timing_after_prop_clock.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_estimate_timing.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui1.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui2.png">
  
 </details>
