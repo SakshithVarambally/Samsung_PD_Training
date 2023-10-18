@@ -3748,6 +3748,17 @@ The Physical Design Flow is a comprehensive process that transforms a synthesize
 
 <details>
 <summary> Labs </summary>
-
-
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_area.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_power.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_constraints.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_source_top.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/schematic.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/rvmyth_schematic2.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/report_timing_after_prop_clock.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_estimate_timing.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui1.png
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/ac117f14b46b2cf26f6d9eef61301cc249f0ff48/day19/day20/after_start_gui2.png
+ 
 </details>
