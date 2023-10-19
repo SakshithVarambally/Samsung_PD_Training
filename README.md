@@ -3940,8 +3940,6 @@ some commands to ve fed into icc2 shell:
 
 ~~~ruby
 set_propagated_clock [all_clocks]             (Converting clock object from ideal clock to propagated clock)
-report_timing
-estimate_timing
 report_constraints -all_violators
 ~~~
 
