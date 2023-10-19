@@ -3810,7 +3810,8 @@ Starting Gui and observing the output layout :
 # Day 21 
 
 <details>
-<summary> Theory> <summary>
+	
+<summary> Theory> </summary>
 
 **Placement in Physical Design**
 
@@ -3915,7 +3916,7 @@ These processes collectively contribute to a well-optimized physical design, ens
 
 <details>
 	
-<summary> Labs</summary>
+<summary> Labs </summary>
 
 Core utilization was previously set to 0.07.
 
