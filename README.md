@@ -3964,6 +3964,11 @@ report_constraints -all_violators
    - This ensures uniform and minimal skew delivery to all sequential elements (e.g., flip-flops and registers) within the chip.
    - The goal is to maintain synchronous operation and precise timing in digital circuits.
 
+     *Some algorithms used in CTS:*
+![276619307-028ffc89-4f70-43a6-a1d4-5418c3e5cbb3](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/331d983d-7c96-4494-8231-16956dd84545)
+
+     
+
 **2. Algorithms for CTS - The H-tree Algorithm:**
    - Identify all the flip-flops present in the design.
    - Calculate the center point of these flip-flops.
@@ -3971,6 +3976,9 @@ report_constraints -all_violators
    - Divide the chip's core into two parts and trace to each center.
    - Repeatedly divide the area into halves and trace until reaching the clock pin of the flip-flop.
    - This process creates an H-tree structure for efficient clock distribution.
+   - 
+![276620129-5a4081a0-e390-4e3e-a845-3b26477b9f90](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/e5ae738e-1fdd-4337-b4dc-7785f1c51ffe)
+
 
 **3. Key Steps in Clock Tree Synthesis:**
    - **Clock Tree Generation:** Create a hierarchical tree structure branching from the primary clock source to minimize skew and optimize signal distribution.
