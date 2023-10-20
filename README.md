@@ -3952,3 +3952,44 @@ report_constraints -all_violators
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/9e4268eafaa247c2673ff47206a4e7b2f0c08542/day21/violators_report.png">
 
 </details>
+
+# Day 22
+
+<details>
+<summary> Theory </summary>
+
+</details>
+
+
+<details>
+<summary> Labs </summary>
+Snap after check_clock_tree:
+	
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_clock_tree1.png">
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_clock_tree2.png">
+
+Snap after check_legality:
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_legality1.png">
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_legality2.png">
+
+Snap after report_clock_timing -type summary :
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/report_clock_timing.png">
+
+Snap after report_clock_timing -type skew :
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_skew.png">
+
+Snap after report_clock_timing -type latency :
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_latency.png">
+
+SNap clicked after report_clock_timing -type transition :
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_transition.png">
+</details>
