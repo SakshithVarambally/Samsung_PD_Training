@@ -4074,18 +4074,3 @@ Snap clicked after report_clock_timing -type transition :
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_transition.png">
 </details>
 
-#Day 23
-
-<details> 
-<summary> Labs </summary>
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/changed_voltage.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/add_line_top_tcl.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/report_timing.png">
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/schematic_w_gcg.png">
-
- 
-</details>
