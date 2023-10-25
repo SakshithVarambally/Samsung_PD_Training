@@ -4150,7 +4150,8 @@ The routing process is typically executed using a command such as "route_opt" Th
 
 <details> 
 <summary> Labs </summary>
-
+ Voltage is first changed from 1.1 V to 1.8 V.
+	
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/changed_voltage.png">
 
 In order to add clock buffers in the design, the following lines are added in between place.opt and clock.opt in the script top.tcl as highlighted below in the snap.
