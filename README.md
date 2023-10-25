@@ -4033,6 +4033,19 @@ Snap after check_clock_tree:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_clock_tree2.png">
 
+Checking some clock tree related desinitions and issues by 'man <CTS no.>'
+
+CTS : 002 
+Ensures and checks if all active CTS have atleast 1 clock defined in the design. New clocks are created through SDC comstaraints and status of created clock is checked through set_scenario_status.
+
+CTS - 013
+
+Ensures that the CTS process does not resize, optimize or replace the cells which are set under dont touch condition.
+
+CTS -907
+
+A clock signal cannot propagate through disabled arcs. This message indicates that there are timing arcs in the clock network that have been disabled.
+
 *check_legality*
 
 This command conducts a comprehensive assessment of design rules, looking for potential problems like design overlaps and improper routing on metal layers. The outcome reveals that there are no instances of these issues; all counts are at zero, signifying a successful confirmation of design legality.
@@ -4091,6 +4104,13 @@ Snap clicked after report_clock_timing -type transition :
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_transition.png">
+
+*CTS*
+
+The entire Clock tree(excluding the design) can be seen in the below snap which is synthesised in the design now.
+ 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
+
 </details>
 
 
@@ -4145,11 +4165,7 @@ The layout obtained after adding clock buffers is shown below:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/schematic_w_gcg.png">
 
-*CTS*
 
-The entire Clock tree(excluding the design) can be seen in the below snap which is synthesised in the design now.
- 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
 
 **CLOCK GATING**
 
