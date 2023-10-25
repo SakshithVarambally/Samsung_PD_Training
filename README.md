@@ -4172,6 +4172,8 @@ In this manner, the `compile_ultra -incremental -gate_clock` command is used in 
 
 Inorder to see all the Clock gated cells added by the tool, we click on the logical hierarchy drop down box and the tool shows all the clock gated cells that are added.
 
+With 544 gated registers, among 901 total registers: The percentage is observed to be 60.38%.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/clock_gating.png">
 
 When we select a particular gated cell:
