@@ -4021,6 +4021,10 @@ Skew Balancing: It examines the balance in signal arrival times, and in this cas
 Capacitance & Transition in Clock Network: This part evaluates the behavior of the clock network concerning capacitance and signal transitions. The results indicate that these aspects are well within the acceptable range.
 
 Reference Cells (Don't Use/Don't Touch Cells): It identifies cells designated as "don't use" or "don't touch." The command output indicates that none of these cells have been violated or tampered with.
+
+*check_clock_tree*
+ 
+ The "check_clock_tree" command is employed to inspect potential problems that may negatively affect the Quality of Results (QoR) in a design, focusing on issues related to the structure of the clock tree, constraints, and exceptions. Its purpose is to detect issues that could hinder the successful execution of Clock Tree Synthesis (CTS).
  
 Snap after check_clock_tree:
 	
@@ -4041,6 +4045,8 @@ Snap after check_legality:
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_legality2.png">
 
 
+*report_clock_timing -type summary*
+
 The "report_clock_timing -type summary" command produces a concise report focusing on clock timing aspects. This summary report offers a high-level perspective on critical timing details and performance metrics pertaining to the clock network.
 
 
@@ -4049,6 +4055,8 @@ Snap after report_clock_timing -type summary :
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/report_clock_timing.png">
+
+*report_clock_timing -type skew*
 
 
 The "report_clock_timing -type skew" command is designed to create a report that is specifically centered on clock skew. This report delivers in-depth information regarding timing related to skew, which is crucial for maintaining synchronized clock signals.
@@ -4060,13 +4068,13 @@ Snap after report_clock_timing -type skew :
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_skew.png">
 
+
 *report_clock_timing -type latency*
 
 The "report_clock_timing -type latency" command generates a report with a specific emphasis on clock latency. This report offers insights into the elements of the clock network related to latency, which can have implications for the overall performance of the design.
 
 
 Snap after report_clock_timing -type latency :
-
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_latency.png">
