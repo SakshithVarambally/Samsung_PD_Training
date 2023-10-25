@@ -4124,7 +4124,7 @@ Routing is the last step in the physical design flow of integrated circuits. It 
 Routing can be further divided into global routing and detailed routing. Global routing establishes the initial connections on a high-level, defining the general path for signals and power. Detailed routing refines these connections at a more granular level, ensuring proper timing and signal integrity.
 
 **The route_opt Command**
-The routing process is typically executed using a command such as "route_opt." This command optimizes the placement of routing tracks and connections to achieve the best possible performance and signal integrity in the final physical layout of the chip.
+The routing process is typically executed using a command such as "route_opt" This command optimizes the placement of routing tracks and connections to achieve the best possible performance and signal integrity in the final physical layout of the chip.
 </details>
 
 
@@ -4138,6 +4138,16 @@ The routing process is typically executed using a command such as "route_opt." T
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/report_timing.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/schematic_w_gcg.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/clock_gating.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell.png">
+<img width="1085" alt="yosys" src="https://githhttps://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/worst_slack.png">
+
+
+
+
 
 </details>
 
