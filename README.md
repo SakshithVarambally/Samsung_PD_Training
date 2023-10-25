@@ -4075,7 +4075,7 @@ Snap clicked after report_clock_timing -type transition :
 </details>
 
 
-#Day 23
+# Day 23
 
 <details> 
 <summary> Theory </summary>
