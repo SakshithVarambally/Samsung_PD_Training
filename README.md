@@ -4141,16 +4141,15 @@ The below snap shows the report_timing after adding the clock buffers  into the 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/report_timing.png">
 
-The layout obtained after adding buffers is shown below:
+The layout obtained after adding clock buffers is shown below:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/schematic_w_gcg.png">
 
 *CTS*
 
-The entire Clock tree(excluding the design) can be seen in the below snap which is sunthesised in the design now after the updated compile ultra as mentioned below.
+The entire Clock tree(excluding the design) can be seen in the below snap which is synthesised in the design now.
  
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
-
 
 **CLOCK GATING**
 
