@@ -4133,16 +4133,57 @@ The routing process is typically executed using a command such as "route_opt" Th
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/changed_voltage.png">
 
+In order to add clock buffers in the design, the following lines are added in between place.opt and clock.opt in the script top.tcl as highlighted below in the snap.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/add_line_top_tcl.png">
+
+The below snap shows the report_timing after adding the clock buffers  into the design.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/report_timing.png">
 
+The layout obtained after adding buffers is shown below:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/schematic_w_gcg.png">
 
+CTS
+ 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
+
+
+**CLOCK GATING**
+
+
+1. **Stage**: Synthesis
+   - **Command Used**: `compile_ultra -incremental -gate_clock`
+   - **Purpose**: This command is used during the synthesis stage.
+   - **Function**: It initiates the synthesis process, which converts a high-level RTL (Register-Transfer Level) description of the design into a gate-level representation. The `-incremental` option indicates that it is an incremental synthesis, which means that it only updates the parts of the design that have changed since the last synthesis run. The `-gate_clock` option suggests that it is related to optimizing clock gating.
+
+2. **Input Data**:
+   - **Input Files**: The DEF (Design Exchange Format) and gate-level netlist generated after synthesis are provided as input.
+   - **Purpose**: These input files serve as the basis for the synthesis process.
+
+3. **ICGs (Integrated Clock Gating) Insertion**:
+   - **Action**: During the synthesis process, Integrated Clock Gating cells (ICGs) are inserted into the design.
+   - **Purpose**: ICGs are added to optimize power consumption by gating the clock signals to specific parts of the design when they are not actively processing data. This helps reduce dynamic power consumption in the circuit.
+
+In this manner, the `compile_ultra -incremental -gate_clock` command is used in the synthesis stage, with input from DEF and gate-level netlist files, to insert ICGs into the design and optimize power efficiency by controlling clock signals.
+
+Inorder to see all the Clock gated cells added by the tool, we click on the logical hierarchy drop down box and the tool shows all the clock gated cells that are added.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/clock_gating.png">
+
+When we select a particular gated cell:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell.png">
+
+Observing the schematic of this cell:
+
+
 <img width="1085" alt="yosys" src="https://githhttps://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell2.png">
+
+On order to show the worst slack in the design gui, we redirect the report_timing file to a txt file and then load that into gui. The tool then shows this worst path in the design as shown below.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/worst_slack.png">
 
 
