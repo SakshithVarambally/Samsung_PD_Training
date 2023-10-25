@@ -4041,6 +4041,8 @@ Snap after check_legality:
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_legality2.png">
 
 
+The "report_clock_timing -type summary" command produces a concise report focusing on clock timing aspects. This summary report offers a high-level perspective on critical timing details and performance metrics pertaining to the clock network.
+
 
 Snap after report_clock_timing -type summary :
 
@@ -4049,6 +4051,8 @@ Snap after report_clock_timing -type summary :
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/report_clock_timing.png">
 
 
+The "report_clock_timing -type skew" command is designed to create a report that is specifically centered on clock skew. This report delivers in-depth information regarding timing related to skew, which is crucial for maintaining synchronized clock signals.
+
 
 Snap after report_clock_timing -type skew :
 
@@ -4056,6 +4060,9 @@ Snap after report_clock_timing -type skew :
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_skew.png">
 
+*report_clock_timing -type latency*
+
+The "report_clock_timing -type latency" command generates a report with a specific emphasis on clock latency. This report offers insights into the elements of the clock network related to latency, which can have implications for the overall performance of the design.
 
 
 Snap after report_clock_timing -type latency :
@@ -4064,6 +4071,10 @@ Snap after report_clock_timing -type latency :
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_latency.png">
 
+
+*report_clock_timing -type transition*
+
+The "report_clock_timing -type transition" command produces a report that centers on the transitions of clock signals. It provides information about how clock signals shift between various components within the design, giving insights into these transition behaviors.
 
 
 Snap clicked after report_clock_timing -type transition :
