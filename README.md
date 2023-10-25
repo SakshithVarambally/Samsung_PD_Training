@@ -4145,7 +4145,9 @@ The layout obtained after adding buffers is shown below:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/06ad151ed528d61e8aaa3854267c5af424160795/Day%2023/schematic_w_gcg.png">
 
-CTS
+*CTS*
+
+The entire Clock tree(excluding the design) can be seen in the below snap which is sunthesised in the design now after the updated compile ultra as mentioned below.
  
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
 
@@ -4173,6 +4175,14 @@ Inorder to see all the Clock gated cells added by the tool, we click on the logi
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/clock_gating.png">
 
 When we select a particular gated cell:
+
+Inorder to obtain its reference name in the design
+
+~~~ruby
+get_attribute [get_selection] ref_name
+~~~
+
+In snapshot here is the ICG cell, whose ref_name is SNPS_CLOCK_GATE_HIGH_rvmyth_16, it contains latch from sky130 lib as shown below
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell.png">
 
