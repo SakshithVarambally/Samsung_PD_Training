@@ -4105,36 +4105,6 @@ Routing is the last step in the physical design flow of integrated circuits. It 
 Routing can be further divided into global routing and detailed routing. Global routing establishes the initial connections on a high-level, defining the general path for signals and power. Detailed routing refines these connections at a more granular level, ensuring proper timing and signal integrity.
 
 **The route_opt Command**
-The routing process is typically executed using a command such as "route_opt." This command optimizes the placement of routing tracks and conne#Day 23
-
-<details> 
-<summary> Theory </summary>
-**Clock Tree Synthesis (Advanced H-Tree)**
-
-**Clock Distribution Challenges in Digital Circuits**
-In digital circuits with numerous clock domains, designing a single, large clock tree can be overwhelming. To address this, a chip can be divided into smaller sections, each of which has its own clock tree. Ultimately, these individual clock trees are interconnected to create a complete routed clock tree.
-
-**Clock Gating for Power Efficiency**
-Apart from area and timing considerations, power efficiency is a critical factor in chip design. Clock gating is a technique used to reduce the dynamic power consumption of clocked elements in a design. The principle behind clock gating is to halt the clock signal to sequential elements when their data isn't changing, effectively saving power. Clock gating can be implemented using AND, OR, or universal NAND gates and is inserted during synthesis and optimized during the physical design stage.
-
-**Power Savings through Clock Gating**
-Clock gating is essential to reduce dynamic power consumption because it has been observed that approximately 50% of dynamic power originates from clock-related circuits. This technique is particularly valuable in scenarios where a block requires a clock signal for only a brief period, preventing unnecessary power dissipation due to continuous clock operation.
-
-**Routing in Physical Design Flow**
-
-**The Final Stage of Physical Design**
-Routing is the last step in the physical design flow of integrated circuits. It involves creating physical connections between signal pins using metal layers. There are three main types of routing:
-
-1. **P/G Routing:** This involves connecting power and ground (P/G) signals to all the components in the design, ensuring a stable power supply and signal reference.
-
-2. **Clock Routing:** Clock signals need to be distributed efficiently throughout the chip, so clock routing focuses on connecting clock domains to the respective components.
-
-3. **Signal Routing:** Signal routing encompasses the interconnection of various functional blocks within the design to ensure that data can flow as intended.
-
-**Global and Detailed Routing**
-Routing can be further divided into global routing and detailed routing. Global routing establishes the initial connections on a high-level, defining the general path for signals and power. Detailed routing refines these connections at a more granular level, ensuring proper timing and signal integrity.
-
-**The route_opt Command**
 The routing process is typically executed using a command such as "route_opt." This command optimizes the placement of routing tracks and connections to achieve the best possible performance and signal integrity in the final physical layout of the chip.
 </details>
 
