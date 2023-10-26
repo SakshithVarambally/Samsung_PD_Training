@@ -4023,6 +4023,7 @@ Capacitance & Transition in Clock Network: This part evaluates the behavior of t
 Reference Cells (Don't Use/Don't Touch Cells): It identifies cells designated as "don't use" or "don't touch." The command output indicates that none of these cells have been violated or tampered with.
 
 *check_clock_tree*
+===
  
  The "check_clock_tree" command is employed to inspect potential problems that may negatively affect the Quality of Results (QoR) in a design, focusing on issues related to the structure of the clock tree, constraints, and exceptions. Its purpose is to detect issues that could hinder the successful execution of Clock Tree Synthesis (CTS).
  
@@ -4047,6 +4048,7 @@ CTS -907
 A clock signal cannot propagate through disabled arcs. This message indicates that there are timing arcs in the clock network that have been disabled.
 
 *check_legality*
+===
 
 This command conducts a comprehensive assessment of design rules, looking for potential problems like design overlaps and improper routing on metal layers. The outcome reveals that there are no instances of these issues; all counts are at zero, signifying a successful confirmation of design legality.
 
@@ -4057,10 +4059,20 @@ Snap after check_legality:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/check_legality2.png">
 
+Some important terms menthoned in the above check_legality snap are:
+
+- Movable: These are cells or instances that can be freely moved by the placement and optimization algorithms during the physical design process. They are not constrained to specific positions and can be rearranged to achieve better overall design quality, such as improved performance or reduced area.
+
+ - Appfixed: "Appfixed" cells, short for "application fixed," are those that are fixed in position based on application-specific constraints. These constraints might be set to meet specific requirements of the design, and the placement and optimization tools will not move these cells. The designer specifies these constraints to ensure that certain parts of the design remain in fixed positions.
+
+- User Fixed: "User fixed" cells are similar to "appfixed" cells but are typically set by the user explicitly. Users can designate specific cells or instances that must remain fixed in position, regardless of the automated placement and optimization. This is often done to enforce critical design requirements or to maintain compatibility with other parts of the design.
+
 
 *report_clock_timing -type summary*
+===
 
 The "report_clock_timing -type summary" command produces a concise report focusing on clock timing aspects. This summary report offers a high-level perspective on critical timing details and performance metrics pertaining to the clock network.
+
 
 
 Snap after report_clock_timing -type summary :
@@ -4069,7 +4081,17 @@ Snap after report_clock_timing -type summary :
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/report_clock_timing.png">
 
+
+- "rp-+" signifies a specific timing analysis scenario in digital circuits. It stands for "rising transition (r)" of a signal, "propagated clock (p)" at the clock input pin, and it evaluates the time it takes for a signal to propagate from the launch to the capture point.
+
+- Clock skew refers to the variation in arrival times of the same edge of a clock signal at the clock input pins of different flip-flops in a digital circuit. This variation occurs because signals take time to travel from one point to another. Clock skew is essentially the difference between the time it takes for the clock signal to reach the clock input of the capture flip-flop (capture flop latency) and the time it takes to reach the clock input of the launch flip-flop (launch flop latency). It's a measure of how synchronized or misaligned the clock edges are between different parts of the circuit. Reducing clock skew is crucial for maintaining proper synchronization in VLSI designs.
+
+- func1 is the corner whole flow PD flow was ran on and it represent corner sky130_fd_sc_hd__tt_025C_1v80.
+
+  
+
 *report_clock_timing -type skew*
+=====
 
 
 The "report_clock_timing -type skew" command is designed to create a report that is specifically centered on clock skew. This report delivers in-depth information regarding timing related to skew, which is crucial for maintaining synchronized clock signals.
@@ -4082,7 +4104,12 @@ Snap after report_clock_timing -type skew :
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_skew.png">
 
 
+Skew" represents the time difference between the arrival of the clock signal at these two pins
+
+Here the skew value of 0.24 indicates that there is a timing delay between when the clock signal arrives at the two pins, with a4_reg pin lagging behind a3_reg pin by 0.24 units of time.
+
 *report_clock_timing -type latency*
+====
 
 The "report_clock_timing -type latency" command generates a report with a specific emphasis on clock latency. This report offers insights into the elements of the clock network related to latency, which can have implications for the overall performance of the design.
 
@@ -4092,8 +4119,10 @@ Snap after report_clock_timing -type latency :
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_latency.png">
 
+ This represents the delay introduced by the network logic between the source (where the clock signal originates) and the destination (where it's received): This is shown as 0.32 as mentioned under network column.
 
 *report_clock_timing -type transition*
+====
 
 The "report_clock_timing -type transition" command produces a report that centers on the transitions of clock signals. It provides information about how clock signals shift between various components within the design, giving insights into these transition behaviors.
 
@@ -4101,15 +4130,30 @@ The "report_clock_timing -type transition" command produces a report that center
 Snap clicked after report_clock_timing -type transition :
 
 
-
-
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/d3b5e3b7c5d9662f51348f8a8f340fbb880de6b8/day22/repoert_clocjk_timing_transition.png">
 
+
 *CTS*
+==
 
 The entire Clock tree(excluding the design) can be seen in the below snap which is synthesised in the design now.
  
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/cts.png">
+
+
+Some default constraints used by CTS:
+~~~ruby
+max_trans  - 0.5ns
+max_cap    - 0.6pF
+max_fanout - 2000
+~~~
+
+Using ICC2 with Debug Mode:
+
+To enable debug mode in ICC2, you can use the following command:
+set cts_use_debug_mode true
+
+Enabling debug mode allows for more detailed insights into the Clock Tree Synthesis (CTS) process, making it easier to analyze and troubleshoot any issues that may arise during CTS. This can be particularly useful when you need to fine-tune your clock tree and debug any clock-related problems in the design.
 
 </details>
 
