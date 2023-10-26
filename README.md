@@ -4204,18 +4204,22 @@ In snapshot here is the ICG cell, whose ref_name is SNPS_CLOCK_GATE_HIGH_rvmyth_
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell.png">
 
-Observing the schematic of this cell:
+Observing the schematic of this cell, which shows the Enable signal controlling the clk signal passing to to the output signal:
 
 
 <img width="1085" alt="yosys" src="https://githhttps://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/gated_cell2.png">
 
-On order to show the worst slack in the design gui, we redirect the report_timing file to a txt file and then load that into gui. The tool then shows this worst path in the design as shown below.
+In order to show the worst slack in the design gui, we redirect the report_timing file to a txt file and then load that into gui. The tool then shows this worst path in the design as shown below.
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e236905c57de39539c5461bbf43c407a3c480304/Day%2023/worst_slack.png">
 
+</details>
 
+# Day 24 
 
+<details> 
+<summary> Labs </summary>
 
 
 </details>
