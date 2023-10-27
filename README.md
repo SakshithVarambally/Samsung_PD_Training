@@ -3953,7 +3953,7 @@ report_constraints -all_violators
 
 </details>
 
-# Day 22
+# Day 22 CTS Analysis Labs
 
 <details>
 <summary> Theory </summary>
@@ -4158,7 +4158,7 @@ Enabling debug mode allows for more detailed insights into the Clock Tree Synthe
 </details>
 
 
-# Day 23
+# Day 23 Clock Gating Techniques
 
 <details> 
 <summary> Theory </summary>
