@@ -4286,29 +4286,114 @@ The ECO process is a critical aspect of the design and development of complex en
 
 <details> 
 <summary> Labs </summary>
+
+ The post_estimated_timing_report is shown below, and the highlighted part clearly shows the absense of any clock network delay, as the clock is ideal.
+
+ The projected timeframe for the report's completion prior to entering the Clock Tree Synthesis (CTS) phase appears to be proceeding as planned. This assessment is based on the observation that the clock network's delay is functioning ideally, leading to a situation where no delays have been reported. This is indicative of a positive and healthy slack margin, emphasizing that the design or system is well within the desired timing constraints. These findings provide confidence in the current state of the project, suggesting that it is on course to meet its timing objectives without the need for significant adjustments or optimizations in the clock network. This information is reassuring as it indicates that the timing aspects of the design are currently robust and meeting the required specifications.
+
+ 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/post_estimated_timing.png">
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing1.png">
 
+
+The below snap shows the entire timing report on which we will start doing ECO in the next part.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing_mmm.png">
+
+We can see many cells which have variable delays and are adding up to the final slack that is observed at the end that is observed to be -0.29ps, which clearly shows a violation. 
+
+In order to correct this we begin ghe process of Sizing up the cell.
+        
+
+*Cell Sizing*
+
+
+
+
+In order to enhance timing performance, it's advisable to consider upsizing the cell. This strategic adjustment involves boosting up the cell's drive strength, a pivotal factor in minimizing delay.
+
+By elevating the drive strength of these cells, we can significantly contribute to the overall improvement of timing parameters, aligning our actions with the specific analysis detailed in the timing report. 
+
+This approach focuses on the fundamental importance of drive strength as a key lever for optimizing timing within the design.
+
+*Some examples of sizing shown below:*
+
+
+Here we are sizing the cell U_347 as shown:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u347.png">
 
+
+The next sizing is performed on the cell U343 :
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u343.png">
 
+The next sizing is performed on the cell U86 from drive strength 1 to 2.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_U86_1_2.png">
+
+Now we begin to analize the qor reports.
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_timing.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_timing.png">
 
+The critical path slack has improved from -0.13 to 0.12 which is a very good improvement observed. Along with this there is also a slight change observed in the length of the critical path.
+
+The number of violating paths has reduced to 0, which were 12 initially.
+
+
+Analyzing the Power report:
+
+When upsizing is performed or when we increase the drive strength of cells in a digital design, various aspects of power consumption can be affected. Here's an explanation for each of the reported changes in power:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_before.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_after.png">
 
+- Net Switching Power:
+  Increased from 1.46e+06nW to 4.65e+06nW
+
+   Increasing cell sizes or drive strengths allows cells to drive larger loads and switch more current during logic transitions. This results in an increased dynamic power component due to higher switching activity. As the cells become more capable of driving larger loads, the capacitance on the nets driven by these cells also increases. This, in turn, leads to higher net switching power due to increased switching activity, especially in the presence of larger capacitances.
+
+- Total Dynamic Power:
+  Increased from 4.26e+06 nW to 7.35e+06 nW
+
+Total Dynamic Power is the sum of Cell Internal Power and Net Switching Power. When the cell internal power remains the same, but the Net Switching Power increases as explained above, it results in an overall increase in Total Dynamic Power due to the higher switching activity.
+
+
+- Leakage Power:
+
+Imcreaed from 1.25e+01 nW to 2.12e+02 nW
+
+As mentioned earlier, increasing the cell sizes or drive strengths typically leads to an increase in leakage power. This is because larger transistors have a higher leakage current, which contributes to the total power consumed by the design. The increase in leakage power is generally more pronounced when cells are upsized because larger transistors inherently exhibit greater leakage.
+
+In summary, when you upsize or increase the drive strength of cells in a design, you can expect an increase in both dynamic power components (Net Switching Power and Total Dynamic Power) due to increased switching activity and higher capacitance on the nets driven by these cells. At the same time, the leakage power increases because larger transistors exhibit higher leakage currents, contributing to the overall power consumption of the design. This explains the observed changes in the power report.
+
+
+Analyzing Area Report:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_area%26cellcount.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_cell_count%24area.png">
+
+Total area has increased from 1735477 to 1735490.
+
+Due to upsizing the cell, the Cell area has increased which is shown by increase in Combinational area, thereby affecting the total area.
+
+
+Insertion of Decaps:
+
+The below snap shows the insertion if decaps intk the design.
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_inserting_decap_cells.png">
 
