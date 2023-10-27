@@ -4262,8 +4262,58 @@ In order to show the worst slack in the design gui, we redirect the report_timin
 
 # Day 24 
 
+<details>
+<summary> Theory </summary>
+An Engineering Change Order (ECO) is a process used to incorporate last-minute design changes into a project. It typically involves modifying the gate-level netlist and ensuring these changes are also reflected in the RTL (Register-Transfer Level) representation of the design. The key steps in performing an ECO are as follows:
+
+1. **Investigate the Problem**: Begin by analyzing the issue or changes required using the most recent database and design documentation.
+
+2. **ECO Generation**: Create an ECO document that outlines the necessary changes, specifying which components need to be modified and how.
+
+3. **ECO Implementation**: Carry out the actual changes in the design, both at the gate-level netlist and the RTL, ensuring consistency between them.
+
+4. **Verification**: Rigorously verify the modified design to ensure that it passes both formal and functional verification. This step is crucial to guarantee the design's correctness and performance.
+
+5. **Fix Violations**: Address any violations or issues that may arise during the verification process. Ensure that the design complies with all relevant specifications and constraints.
+
+6. **Sign-off Checks**: Perform any sign-off checks that were not conducted during the previous stages of the design process. These checks are necessary to ensure that the design is ready for the layout phase.
+
+7. **Database Update**: Save the modified design in the database for future reference. This helps maintain a clear record of all design changes and their implementations.
+
+The ECO process is a critical aspect of the design and development of complex engineering projects, ensuring that last-minute changes are incorporated correctly and do not introduce errors or issues. It requires careful planning, verification, and documentation to maintain the integrity of the design.
+
+</details>
+
 <details> 
 <summary> Labs </summary>
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/post_estimated_timing.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing1.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing_mmm.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_U86_1_2.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u343.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u347.png
+
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_timing.png
+
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_timing.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_before.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_after.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_area%26cellcount.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_cell_count%24area.png
+
+https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_inserting_decap_cells.png
+
 
 
 </details>
