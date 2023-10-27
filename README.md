@@ -4292,15 +4292,13 @@ The ECO process is a critical aspect of the design and development of complex en
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing_mmm.png">
 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_U86_1_2.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u347.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u343.png">
 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u347.png">
-
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_U86_1_2.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_timing.png">
-
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_timing.png">
 
