@@ -4286,34 +4286,33 @@ The ECO process is a critical aspect of the design and development of complex en
 
 <details> 
 <summary> Labs </summary>
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/post_estimated_timing.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/post_estimated_timing.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing1.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing1.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing_mmm.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_timing_mmm.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_U86_1_2.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_U86_1_2.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u343.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u343.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u347.png
-
-
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_timing.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/sized_u347.png">
 
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_timing.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_timing.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_before.png
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_after.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_timing.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_area%26cellcount.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_before.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_cell_count%24area.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/report_power_after.png">
 
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_inserting_decap_cells.png
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/before_area%26cellcount.png">
 
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_cell_count%24area.png">
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/29daf868e3186dd0894d8dce9273be2067b98674/Day%2024/after_inserting_decap_cells.png">
 
 
 </details>
