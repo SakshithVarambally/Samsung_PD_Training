@@ -4400,7 +4400,70 @@ The below snap shows the insertion if decaps intk the design.
 
 </details>
 
+# Day 25 RISC V Core; RTL to GDS flow
+
+<details>
+<summary> RTL to GDS Flow </summary>
+
+ **RTL to GDS Flow for IC Design**
+
+*This comprehensive flow guides the transformation of a Register-Transfer Level (RTL) description into a physical layout ready for semiconductor fabrication.*
+
+**1. RTL Design**
+- **Description**: Create the logical design using hardware description languages (e.g., VHDL or Verilog).
+- **Objective**: Define registers, combinational logic, and data paths.
+
+**2. Functional Verification**
+- **Description**: Validate the RTL design's functionality through simulations and testing.
+- **Objective**: Identify and rectify logical errors or functional issues.
+
+**3. Synthesis**
+- **Description**: Convert RTL into a gate-level netlist using synthesis tools like Design Compiler or Genus.
+- **Objective**: Optimize for area, power, and timing by mapping to standard cells.
+
+**4. Design Constraints**
+- **Description**: Set performance criteria, such as clock frequency, power consumption, and area.
+- **Objective**: Guide subsequent steps in the flow.
+
+**5. Technology Libraries**
+- **Description**: Select the appropriate technology library with information on standard cells, flip-flops, etc.
+- **Objective**: Choose components available in the manufacturing process.
+
+**6. Placement**
+- **Description**: Place synthesized gates on the chip using tools like Innovus or ICC.
+- **Objective**: Minimize wirelength, optimize for constraints, and meet performance targets.
+
+**7. Clock Tree Synthesis (CTS)**
+- **Description**: Generate clock distribution network and optimize it for clocking requirements.
+- **Objective**: Ensure minimal skew and jitter in clock signals.
+
+**8. Routing**
+- **Description**: Use routing tools to connect placed gates with wires, adhering to design constraints.
+- **Objective**: Create physical interconnections and minimize signal delay.
+
+**9. Design Rule Check (DRC)**
+- **Description**: Perform checks to ensure the layout complies with fabrication rules.
+- **Objective**: Verify minimum feature sizes, spacing, and other manufacturing constraints.
+
+**10. Layout vs. Schematic (LVS) Check**
+- **Description**: Compare physical layout with the schematic netlist to ensure consistency.
+- **Objective**: Flag and resolve any discrepancies.
+
+**11. Timing Analysis**
+- **Description**: Analyze the design to confirm it meets performance goals, including clock frequency and setup/hold times.
+
+**12. Sign-off**
+- **Description**: After successful checks, declare the design ready for fabrication.
+
+**13. GDSII Generation**
+- **Description**: Generate the GDSII file containing geometric layout data for semiconductor foundry manufacturing.
+
+This flow seamlessly transforms a high-level RTL description into a physical chip layout, ensuring the design meets stringent performance and fabrication requirements.
+
+</details>
+
 # Day 26 Introduction to Mixed Signal Flow
+
 <details>
 <summary> 
 Mixed Signal Flow Integration:
