@@ -4400,3 +4400,20 @@ The below snap shows the insertion if decaps intk the design.
 
 </details>
 
+# Day 27
+
+<details>
+<summary> Lab </summary>
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_read_sdc.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_spef_read.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/read_parasitics.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_check_timing.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_timing.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_report_si_bottleneck.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_bottleneck.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_si_delay_analysis.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_si_aggressor_exclusion.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_si_noise_analysis.png">
+
+</details>
+
