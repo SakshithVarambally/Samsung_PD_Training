@@ -4531,6 +4531,15 @@ In summary, Signal Integrity and Crosstalk evaluations in clock route design are
 
 <details>
 <summary> Lab </summary>
+After ent
+~~~ruby
+ set target_library "<location of avsddac.db> <location of avsdpll.db> <location of sky130_fd_sc_hd__tt_025C_1v80.db>"
+set link_library [list  <location of avsddac.db> <location of avsdpll.db> <location of sky130_fd_sc_hd__tt_025C_1v80.db>]
+read_verilog <location of the synthesized netlist>
+link_design
+current_design
+~~~
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_read_sdc.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_spef_read.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/read_parasitics.png">
