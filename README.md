@@ -4399,10 +4399,11 @@ The below snap shows the insertion if decaps intk the design.
 
 
 </details>
+
 # Mixed Signal 
 <details>
 <summary> 
-**Mixed Signal Flow Integration**:
+Mixed Signal Flow Integration:
 </summary>
 
 *Understanding the Fusion of Analog and Digital Signals*
@@ -4420,7 +4421,7 @@ The below snap shows the insertion if decaps intk the design.
 </details>
 
 <details>
-<summary>AMS Design Unveiled: Bridging Analog and Digital Realms </summary>
+<summary> AMS Design Unveiled: Bridging Analog and Digital Realms </summary>
 
 **Defining AMS**:
 - **AMS**: "AMS" abbreviates "Analog and Mixed-Signal" design, the unification of analog and digital circuitry on a single chip. This amalgamation empowers systems to handle both continuous (analog) and discrete (digital) data, as vividly seen in the VSDBabySoC, harmoniously integrating analog modules like PLL and DAC with the digital entity RVMYTHCore.
@@ -4510,9 +4511,10 @@ In summary, the integration of analog and digital signals in mixed-signal design
 - **Effective Strategies**: Several strategies can mitigate crosstalk problems. These include employing guard rings, down-sizing the aggressors or introducing shielding, layer promotion of nets, and segmenting lengthy nets into more manageable sections.
 - **A Complex Web of Interactions**: In the realm of crosstalk, there are victim nets, which suffer undesired cross-coupling effects, and aggressor nets, which generate these disruptive effects. Aggressor nets can sometimes become victims, and vice versa.
 - **Varied Timing Effects**: The timing effects of an aggressor net on a victim net are influenced by multiple factors. These include the switching direction (rise or fall), relative signal transition times, slew rates, cross-coupled capacitance, and the combinational impact of multiple aggressor nets on a single victim net.
+</details>
 
 <details>
-<summary> **Glitches: The Consequences of Crosstalk** </summary>
+<summary> Glitches: The Consequences of Crosstalk </summary>
 
 
 - **Unwanted Spikes and Glitches**: Crosstalk leads to glitches, characterized by unexpected voltage spikes that can distort the signal. This occurs when one net is actively switching while another remains constant.
