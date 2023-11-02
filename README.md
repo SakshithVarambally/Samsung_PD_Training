@@ -4400,7 +4400,7 @@ The below snap shows the insertion if decaps intk the design.
 
 </details>
 
-# Mixed Signal 
+# Day 26 Introduction to Mixed Signal Flow
 <details>
 <summary> 
 Mixed Signal Flow Integration:
@@ -4470,7 +4470,7 @@ In summary, AMS design serves as the bridge between analog and digital domains, 
 In summary, the integration of analog and digital signals in mixed-signal design leverages the strengths of both domains. It involves critical components like ADCs and DACs to bridge the gap between analog and digital systems, while the utilization of essential file formats and IP cores ensures efficient design processes and reuse opportunities.
 </details>
 
-# Day 27
+# Day 27 Introduction to Signal integrity and cross talk
 
 <details>
 <summary> Understanding Signal Integrity and Crosstalk</summary>
@@ -4531,7 +4531,7 @@ In summary, Signal Integrity and Crosstalk evaluations in clock route design are
 
 <details>
 <summary> Lab </summary>
-After ent
+After entering into pt_shell, the following commands are fed into the shell to set the library and load the design into the shell:
 ~~~ruby
  set target_library "<location of avsddac.db> <location of avsdpll.db> <location of sky130_fd_sc_hd__tt_025C_1v80.db>"
 set link_library [list  <location of avsddac.db> <location of avsdpll.db> <location of sky130_fd_sc_hd__tt_025C_1v80.db>]
@@ -4540,15 +4540,72 @@ link_design
 current_design
 ~~~
 
+The below snap shows after the tool reads the sdc file:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_read_sdc.png">
+
+The below snal shows after reading the spef file; Spef file is the parasitic extraction file and contians all the necessary details about it:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_spef_read.png">
+
+The below snap is taken after reading the parasitics:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/read_parasitics.png">
+
+The bellw snap shows the check timing command being run:
+
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_check_timing.png">
+
+The below snap shows the report_timing command being run in the tool:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_timing.png">
+
+Different checks are done on the design which are shown below:
+
+~~~ruby
+report_si_bottleneck              
+~~~
+This This command generates a report on setup and hold time bottlenecks in your design. Bottlenecks are points in the design where the setup or hold time requirements are most critical and might be violated.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/after_report_si_bottleneck.png">
+
+~~~ruby
+report_bottleneck                
+~~~
+
+This command is used to generate a comprehensive report on bottlenecks in the design, including information about setup, hold, and recovery time violations.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_bottleneck.png">
+
+
+~~~ruby
+report_si_delay_analysis
+~~~
+
+
+This command generates a report on setup and hold time analysis for your design. It includes detailed information about the timing paths, such as the worst-case paths and their corresponding delays.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_si_delay_analysis.png">
+
+~~~ruby
+report_si_aggressor_exclusion
+~~~
+
+This command generates a report that identifies aggressor nets, which are signal nets that might affect the timing of victim nets. The report includes information about aggressor exclusion rules to mitigate these effects.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_si_aggressor_exclusion.png">
+
+~~~ruby
+report_si_noise_analysis
+~~~
+This command generates a report on noise analysis in your design. It includes information about noise contributions from different sources, such as power grid and crosstalk.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e14ab7ada90aeb5a43aea74a0296de646015f83d/day_27/report_si_noise_analysis.png">
 
 </details>
