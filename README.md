@@ -4853,21 +4853,212 @@ There are three types of libraries available in skwater pdks.
 <details>
 <summary> Labs   </summary>
 
+- To activate Xschem, enter "xschem" in the command prompt.
+
+- Unlike applications with a separate console window, Xschem operates with the terminal serving as its console, lacking a quick command interface.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/xchem.png">
+
+- Command magic in the command prompt to invoke magic interface.
+- Magic opens two windows namely layout window and console window as shown below.
+
+The below snap shows the window after placing a nmos from sky130A technology.
+
+By selecting a part of the nmos and ttping 'what' , the selcted item can be viewed as shown below.
+
+Here the mask layer was selected and correspondingly it is shown in the tkcon window.
+  
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/what_selection_magic.png">
+
+The below snap shows the process of editing the cell properties.
+
+Here the length is changed to 0.5um, width to 2um and fingers is changed to 3 as shown adjacent to the layout.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/nmos_g5_magic.png">
+
+ **Creating an Inverter Layout in Xschem:**
+
+1. **Accessing "Choose Symbol" Window:**
+   - Press the "Insert" key to bring up the menu.
+   - Navigate to the SkyWater library by specifying the directory path.
+   - Choose the "fd_pr" library.
+
+2. **Selecting nfet and pfet Devices:**
+   - Pick the fundamental nfet and pfet devices from the insertion menu.
+   - Position them freely within the schematic.
+
+3. **Symbol Selection:**
+   - Specifically, choose "nfet_1v80.sym" and "pfet3_1v80" from the list of symbols.
+
+4. **Adding Pins:**
+   - Access the "xschem" library in the insert window to find non-PDK-specific pins.
+   - Include "ipin.sym," "opin.sym," and "iopin.sym" as necessary.
+
+5. **Arranging Components:**
+   - Use the "M" key to move components to desired locations.
+   - Utilize the "C" key to duplicate components.
+   - Employ the "Del" key to remove unwanted components.
+
+6. **Establishing Connections:**
+   - Use the "W" key to insert wires between components, forming connections.
+
+7. **Naming Pins:**
+   - Give meaningful names to each pin:
+     - Use the "Q" key to access the parameter window.
+     - Modify labels as needed.
+
+8. **Component Configuration:**
+   - Select components by clicking on them.
+   - Press the "Q" key to open the parameter window for configuration.
+
+9. **nfet Configuration:**
+   - Adjust the nfet component settings:
+     - Set length to 0.18.
+     - Specify 3 fingers with a width of 1.5 each.
+     - Ensure total width in the parameter window is 4.5.
+
+10. **pfet Configuration:**
+    - Configure the pfet component:
+      - Set 3 fingers with a width of 1 each.
+      - Length is 0.18.
+      - Connect the body to the Vdd pin (3-pin pfet).
+
+11. **Final Adjustments:**
+    - Refine the layout by making any additional adjustments.
+    - Ensure all connections are accurately represented.
+
+12. **Review and Save:**
+    - Double-check the schematic for accuracy.
+    - Save the work as inverter.sch
+
+By following these steps, you can successfully create an inverter layout in Xschem with precision and clarity.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/inverter_schematic.png">
+
+**Creating inverter Symbol**
+
+1. **Symbol Creation:**
+   - Navigate to the Symbol menu.
+   - Choose "Make symbol from schematic" to generate a symbol for the schematic.
+   - This symbol will represent the schematic in the testbench.
+
+2. **Testbench Schematic Setup:**
+   - Create a new testbench schematic using the "new schematic" option.
+   - To integrate the schematic into the testbench, use the "Insert" key.
+
+3. **Inserting Symbol:**
+   - Locate the generated symbol in the local directory.
+   - Insert the symbol into the testbench schematic using the "Insert" key.
+
+4. **Functional Validation:**
+   - Ensure that the schematic is accurately represented by the symbol.
+   - Validate the functionality of the schematic within the testbench environment.
+
+By following these steps, you establish a clear linkage between the schematic and the testbench, allowing for effective functional validation. The creation of a symbol serves as a representation of the schematic in the testbench, facilitating comprehensive testing and verification.
+
+The below snap shows the command setting up the 1st voltage source.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/voltage-source.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/symbol_xchgem.png">
+
+
+### **Creating a Testbench in Xschem: Observation of Inverter Response**
+
+1. **Open Schematic:**
+   - Launch a new schematic from the "File" tab.
+   - Import the "inverter.sch" file located in the home directory by pasting it onto the schematic window.
+
+2. **Testbench Setup:**
+   - Insert two voltage sources from the default "xschem" library—one for the input and one for the power supply.
+   - Establish connections between these voltage sources and add a ground (GND) node to the supply connections.
+
+3. **Signal Definition:**
+   - Create "ipins" and "opins" to designate input and output signals for observation in Ngspice.
+   - Set the supply voltage to 1.8 V.
+
+4. **Input Voltage Specification:**
+   - Define the input voltage using a piece-wise linear function (PWL) to generate a ramp.
+   - Specify voltage and time values for the PWL function, such as:
+     - Supply starting at 0 V.
+     - Voltage ramping up from 20 ns to 1.8 V by 900 ns.
+
+5. **Ngspice Integration:**
+   - Integrate two additional statements for Ngspice using text boxes.
+   - Use the "code_shown.sym" component from the "xschem" library to create text boxes.
+
+6. **Text Box Content:**
+   - In the first text box, specify the location of device models in the device schematic.
+   - Include a ".lib" statement to select a top-level file, e.g., ".lib /usr/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt" for the typical corner with value "tt."
+   - In the second text box, include specific instructions or information, e.g.:
+     ```plaintext
+     .control
+     tran 1n 1u
+     plot V(in) V(out)
+     .endc
+     ```
+
+By following these steps, you establish a comprehensive testbench for the inverter, allowing the observation of its response to a ramp input in Ngspice.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/blabla1.png">
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/blabla2_tran.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/waveform.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/symbol_transient_solution.png">
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/extraction_snaop.png">
+
+The final oitput is shown below:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/inverter_schematic.png">
+
+The below waveforms show that the circuit behaves like an inverter.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/waveform.png">
+
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/symbol_transient_solution.png">
+
+The extraction process for .ext file is shown below 
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/extraction_snaop.png">
+
+There were almost 18 DRC errors. By going to the DRC manager and solving them one by one the final DRC result was 0. At times solving 1 error fixed many DRC's all at once.
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/after_drc.png">
+
+### **Importing Schematic to Layout in Magic**
+
+1. **Accessing Magic:**
+   - Navigate to the "mag" directory and launch Magic.
+
+2. **Import Schematic:**
+   - In Magic, go to File -> Import SPICE.
+   - Choose the "inverter.spice" file from the xschem directory.
+   - Once executed correctly, the layout corresponding to the schematic opens in Magic.
+
+3. **Manual Placement and Routing:**
+   - Since schematic import lacks knowledge of analog placing and routing complexities, manual intervention is essential.
+   - Place the pfet device above the nfet and adjust the positions of input, output, and supply pins as needed.
+
+4. **Parameter Adjustment:**
+   - To streamline the wiring process, open the parameter editing section using the 'S' key.
+   - Select an object ('I' key) and use CTRL+P to access parameter options for the chosen device.
+   - Set "Top guard ring via coverage" to 100 for both pfet and nfet.
+   - Adjust "Source via coverage" and "Drain via coverage" to +40 and -40, respectively, for both pfet and nfet.
+
+5. **Wiring the Layout:**
+   - Utilize metal1 layers to paint wires.
+   - Connect the source of the pfet to Vdd, source of the nfet to Vss.
+   - Link drains of both mosfets to the output.
+   - Connect the input to all poly contacts of the gate.
+
+By following these steps, you effectively import the schematic into Magic, manually place and route the components, and optimize the layout for efficient wiring.
+
 <img width="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/7d8dac594742ea94478bd32f2b81268a256e8fc9/day28/lvs_and_magic.png">
+
+LVS matching is shown in the below snap:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/LVS_match.png">
+
+The testbench snap is shown below:
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/tb_new.png">
 
 </details>
