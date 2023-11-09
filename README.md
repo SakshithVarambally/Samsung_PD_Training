@@ -4997,7 +4997,7 @@ The below snap shows the command setting up the 1st voltage source.
      .endc
      ```
 
-By following these steps, you establish a comprehensive testbench for the inverter, allowing the observation of its response to a ramp input in Ngspice.
+By following these steps, we can establish a comprehensive testbench for the inverter, allowing the observation of its response to a ramp input in Ngspice.
 
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/blabla1.png">
@@ -5020,9 +5020,6 @@ The extraction process for .ext file is shown below
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/extraction_snaop.png">
 
-There were almost 18 DRC errors. By going to the DRC manager and solving them one by one the final DRC result was 0. At times solving 1 error fixed many DRC's all at once.
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/after_drc.png">
 
 ### **Importing Schematic to Layout in Magic**
 
@@ -5052,6 +5049,11 @@ There were almost 18 DRC errors. By going to the DRC manager and solving them on
 
 By following these steps, you effectively import the schematic into Magic, manually place and route the components, and optimize the layout for efficient wiring.
 
+There were almost 18 DRC errors. By going to the DRC manager and solving them one by one the final DRC result was 0. At times solving 1 error fixed many DRC's all at once.
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/after_drc.png">
+
+
 <img width="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/7d8dac594742ea94478bd32f2b81268a256e8fc9/day28/lvs_and_magic.png">
 
 LVS matching is shown in the below snap:
@@ -5060,6 +5062,11 @@ LVS matching is shown in the below snap:
 
 The testbench snap is shown below:
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/tb_new.png">
+
+
+Now by running the modified testbench file, the obtained result is almost the same as previous simulation in xschem
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/waveform.png">
 
 </details>
 
