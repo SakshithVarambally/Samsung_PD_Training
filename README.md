@@ -4676,6 +4676,86 @@ This command generates a report on noise analysis in your design. It includes in
 # Day 28
 
 <details>
+<summary>Skywater 130nm Process Design Kit (PDK)
+</summary>
+
+ 
+
+Overview
+===
+
+The Skywater 130nm PDK is a robust open-source toolkit for chip designers, offering comprehensive design rules, layer definitions, device specs, and models. It empowers individuals to create circuits using open-source design tools, fostering innovation.
+
+Caravel Chip
+==
+
+The Caravel chip, a prime example, integrates a RISC-V processor and allows users to define their design space. This chip showcases the versatility enabled by the Sky130 PDK.
+
+Understanding the "130"
+===
+
+The "130" signifies the process's feature size, indicating the smallest transistors achievable—130nm. This measurement is crucial for chip designers working within this framework.
+
+Components of Sky130 PDK
+===
+
+Documentation
+===
+
+Primarily sourced from the Skywater PDK, the documentation provides essential guidance for chip designers navigating the intricacies of the process foundry.
+
+Library Files
+===
+
+Accessible on GitHub, the library files complement the PDK, offering a repository of resources for designers.
+
+Community Engagement
+===
+
+The Slack group serves as a vibrant community hub, fostering collaboration and knowledge-sharing among designers using the Sky130 PDK.
+
+Open Source EDA Tools
+===
+
+Introduction
+===
+
+Open_pdks, hosted on opencircuitdesign.com, functions as an installer based on makefiles. It streamlines the Skywater PDK files, ensuring compatibility with various open-source Electronic Design Automation (EDA) tools.
+
+#### Installation Steps
+1. **Clone Repository**
+   ```
+   git clone https://github.com/RTimothyEdwards/open_pdks
+   ```
+
+2. **Navigate to Directory**
+   ```
+   cd open_pdks
+   ```
+
+3. **Configure for Sky130 PDK**
+   ```
+   configure --enable-sky130-pdk
+   ```
+
+4. **Compile**
+   ```
+   make
+   ```
+
+5. **Install**
+   ```
+   sudo make install
+   ```
+
+ Compatibility Considerations
+ ===
+ 
+
+Open-source PDKs align seamlessly with open-source EDA tools, ensuring a harmonious design environment. However, caution is advised when integrating them with commercialized EDA tools due to potential file format disparities.
+</details>
+
+<details>
 <summary> Labs   </summary>
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/xchem.png">
