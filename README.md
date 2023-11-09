@@ -4756,6 +4756,101 @@ Open-source PDKs align seamlessly with open-source EDA tools, ensuring a harmoni
 </details>
 
 <details>
+	
+<summary> Tools </summary>
+
+ ### Magic:
+
+- **Overview**
+  - Magic stands as a renowned Electronic Design Automation (EDA) tool pivotal in Very Large Scale Integration (VLSI) design.
+  - Primarily caters to the layout and physical design aspects of integrated circuits.
+
+- **Functionality**
+  - Empowers designers in creating and refining the layout of integrated circuits.
+  - Offers an array of tools for drawing, modifying, and visualizing physical components like transistors, wires, and interconnections.
+
+### OpenLANE: 
+
+- **Concept**
+  - OpenLANE emerges as an open-source framework and toolchain, revolutionizing digital integrated circuit design.
+  - Primarily tailored for ASIC (Application-Specific Integrated Circuit) design.
+
+- **Key Features**
+  - Provides a comprehensive and automated RTL-to-GDSII flow for chip design.
+  - Leverages open-source EDA tools and methodologies.
+
+### XSCHEM: 
+
+- **Role in EDA**
+  - XSCHEM, an open-source EDA tool, focuses on schematic capture and simulation.
+  - Integral part of the XESS project, often synergizing with other EDA tools for seamless circuit design.
+
+- **Interface Features**
+  - Presents a graphical interface facilitating the capture of electronic circuit schematics.
+  - Enables designers to draw and connect various electronic components like transistors, resistors, and capacitors.
+
+### Netgen: 
+
+- **Synthesis and Verification**
+  - Netgen holds prominence in digital logic synthesis and formal verification for digital circuits.
+  - Takes high-level hardware descriptions (VHDL or Verilog) to generate gate-level representations.
+
+- **Context of Use**
+  - Commonly employed in ASIC and FPGA design landscapes.
+
+### NGSpice: Simulating Excellence in Mixed-Signal Analysis
+
+- **Electronic Circuit Simulator**
+  - NGSpice, an open-source simulator, plays a vital role in EDA for analog and mixed-signal circuit analysis.
+  - Offers a platform to simulate a diverse range of electronic circuits.
+
+- **Versatility**
+  - Supports analog, digital, and mixed-signal circuit simulations, catering to a broad spectrum of engineering needs.
+
+### Additional Tools in the EDA Toolbox
+
+- **qflow, IRSIM, and xcircuit**
+  - Diverse set of tools complementing the EDA landscape.
+  - qflow facilitates a complete design flow, IRSIM serves as a switch-level simulator and power analyzer, while xcircuit adds versatility to the toolkit.
+
+### Harmony Through Open_PDks
+
+- **Common Ground for Libraries**
+  - Open_PDks, in conjunction with open-source EDA tools, establishes a shared foundation.
+  - Installation amalgamates foundry and third-party libraries, creating a unified directory across the source.
+
+### Tailored Libraries for Optimal Performance
+
+- **Digital Libraries**
+  - Tailored to meet diverse requirements based on the speed and power of operation.
+  - Each library serves a specific purpose, enhancing the efficiency of the design process.
+
+### In Conclusion
+
+In the symphony of Electronic Design Automation, each tool plays a unique melody, contributing to the harmonious creation of integrated circuits. From layout precision with Magic to the open horizons of OpenLANE, and the creative canvas provided by XSCHEM, the EDA realm is a rich tapestry of innovation and functionality. Together with NGSpice and additional tools, designers can orchestrate the perfect circuit, while Open_PDks ensures a unified foundation for their creative endeavors.
+</details>
+
+<details>
+<summary> Skywater Libraries</summary>
+	
+- The sky130_fd_pr is the standard library for analog components.The most analog components such as transistors are handled by extraction, and do not need libraries. The components such as RF layouts, bipolar devices and parallel plate capacitors have an approved layout that can be used as an IP format in the library.
+
+-   The devices operate from 1.8V to 20V, with common voltages being 1.8V and 3.3V. The sky130_fd_io is the library for IO pads and pad frame cells. It contains power, ground pads, general purpose IO pads. The sky130_ml_xx_hd is the third-party library contains alpha-numeric text layouts, for putting text in the layout.
+
+- The sky130A contains libs.tech and libs.ref directories. The libs.tech contains all opensource EDA tools setup and libs.ref contains reference libraries. The sky130 process is described as a hybrid 130nm-180nm standard CMOS fabrication process. There are 5 layers of aluminium metal and titanium nitride (used for short routes due to high resisitivity), called local interconnect li.
+  
+-  The local interconnect is used for power and ground rails in skywater standard layouts. The poly contacts require a nitride polycut around the contacts. The metal layers are in progressive thickness. Usually higher order metal is used for routing purposes.
+
+There are three types of libraries available in skwater pdks.
+
+- Digital standard cells: These come with layout and GDS and formats used in synthesis flow. There are various flavours of cells covering high speed, high density, high voltage and low leakage. All the libraries follow a naming convention.
+
+- I/O cells The I/O cell libraries contain entire power and ground pads which have entire disconnected blocks with them. The overlay connects the clamps/pads to power rails.
+
+- Primitive devices and models The primitive designs include bipolar transistors, varactors, ESD devices
+</details>
+
+<details>
 <summary> Labs   </summary>
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/xchem.png">
