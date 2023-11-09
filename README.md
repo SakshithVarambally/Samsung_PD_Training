@@ -4673,3 +4673,28 @@ This command generates a report on noise analysis in your design. It includes in
 
 </details>
 
+# Day 28
+
+<details>
+<summary> Labs   </summary>
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/xchem.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/what_selection_magic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/nmos_g5_magic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/inverter_schematic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/voltage-source.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/symbol_xchgem.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/blabla1.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/blabla2_tran.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/waveform.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/symbol_transient_solution.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/extraction_snaop.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/inverter_schematic.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/after_drc.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/LVS_match.png">
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/tb_new.png">
+
+</details>
+
+
+
