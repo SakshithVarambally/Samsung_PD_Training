@@ -4673,7 +4673,7 @@ This command generates a report on noise analysis in your design. It includes in
 
 </details>
 
-# Day 28
+# Day 28 Introduction to DRC/LVS
 
 <details>
 <summary>Skywater 130nm Process Design Kit (PDK)
