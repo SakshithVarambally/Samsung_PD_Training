@@ -4850,6 +4850,30 @@ There are three types of libraries available in skwater pdks.
 - Primitive devices and models The primitive designs include bipolar transistors, varactors, ESD devices
 </details>
 
+<details> 
+<summary> DRC and LVS </summary>
+
+ **DRC (Design Rule Checks)**
+
+Design Rule Checks (DRC) play a vital role in VLSI design and manufacturing, ensuring the physical layout of an integrated circuit aligns with the design rules set by the semiconductor fabrication process. These automated checks are essential for preventing layout errors that might lead to manufacturing defects such as shorts, opens, or excessive metal density. By confirming design compliance with technology-specific rules, DRC contributes to the reliability and manufacturability of semiconductor devices.
+
+DRC checks are executed using specialized software tools provided by semiconductor foundries or third-party Electronic Design Automation (EDA) tools. These tools utilize design layout data in formats like GDSII or OASIS, along with technology-specific rules, to perform automatic checks. Compatibility with the specific semiconductor manufacturing process, like 28nm or 14nm, is crucial. Designers iteratively run DRC checks, making adjustments until achieving a DRC-clean design.
+
+Adhering to DRC rules is imperative for producing semiconductor devices that meet manufacturing requirements and ensuring their reliability in real-world applications.
+
+---
+
+**LVS (Layout Versus Schematic)**
+
+Layout Versus Schematic (LVS) stands as a critical step in VLSI design, verifying that the geometric layout of a chip accurately corresponds to its intended electrical schematic. In simpler terms, LVS checks whether the physical representation (layout) aligns with the functional design specified in the schematic.
+
+LVS tools compare layout data (typically in GDSII or OASIS format) with schematic data, analyzing geometric shapes, connectivity, and other properties against logical connectivity defined in the schematic. The software identifies issues like missing connections, shorts, and opens, ensuring consistency between the layout and functionality.
+
+LVS is an iterative process where designers adjust the layout based on LVS results, running checks multiple times until achieving an LVS-clean design. Debugging and resolving LVS issues become integral parts of the IC design process.
+
+Layout Versus Schematic is crucial for maintaining the functionality and performance of integrated circuits while minimizing errors during the manufacturing process.
+</details>
+
 <details>
 <summary> Labs   </summary>
 
