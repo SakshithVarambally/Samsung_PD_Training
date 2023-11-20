@@ -5126,6 +5126,11 @@ https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_4_sdc.png
 
+</details>
+
+<details>
+<summary> Day 4 </summary>
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_6_after_hierarchy_check_pass.png
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_7_hier_outputs.png
@@ -5134,7 +5139,7 @@ https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716
 </details>
 
 <details> 
-<summary> Day 5</summary>
+<summary> Day 5 </summary>
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_1.png">
 
@@ -5162,7 +5167,8 @@ https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716
 
 <details> 
 <summary> Module 1</summary>
-## **Why Low Power Design:**
+	
+ ## Why Low Power Design ? 
 
 ### **Differentiating "Power" and "Energy" and Their Impact on Performance:**
 
@@ -5306,10 +5312,12 @@ Considerations include performance, cost, packaging, battery capacity, shipping,
    - Encourage knowledge sharing among design teams to propagate best practices and lessons learned.
 
 Power Consumption View of SoC
- <i sertimage 1>
+ 
+![lpd1](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/d9f4c078-2d25-4c93-b504-fd994935fa47)
 
 Balance between power management and low power design.
-<image2>
+
+![lpd2](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/02a29787-5a61-4834-a4bf-b48417876cc6)
 
 ## **Density and Delivery:**
 
@@ -5381,13 +5389,15 @@ Density = Power/Area.
   - Proper verification is crucial to prevent issues like data loss or corruption during power transitions.
 
   Retention
-  <add image here>
+  ![lpd4](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/c364fb37-6d25-4444-aeaa-b0e253de0efa)
+
   ## **Dynamic Voltage Scaling (DVS):**
 
 **Overview:**
 Dynamic Voltage Scaling, also known as Dynamic Voltage and Frequency Scaling (DVFS), is a technique employed in low-power IC design to dynamically adjust the operating voltage and frequency based on workload or processing requirements.
 
-![DVS Diagram](lpd5.png)
+![lpd5](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/7988b0ec-77a1-4b08-b5df-37fbd5ec9fbe)
+
 
 **How Dynamic Voltage Scaling Works:**
 
@@ -5434,7 +5444,8 @@ Dynamic Voltage Scaling, also known as Dynamic Voltage and Frequency Scaling (DV
 - Some systems employ multiple voltage and frequency levels, allowing for more nuanced adjustments based on workload characteristics.
 
   ## **Low VDD Standby:**
-<add image here>
+![lpd6](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/fb9160b9-a57b-4020-b2c4-88ff58e6cd7d)
+
 	
 **Overview:**
 "Low VDD standby" refers to a low voltage state applied to the power supply (VDD) of a semiconductor device, particularly during standby or idle modes. This technique is commonly employed in low-power designs to minimize power consumption when the device is in a low-activity or idle state, contributing to energy efficiency and extended battery life.
@@ -5499,12 +5510,15 @@ Dynamic Voltage Scaling, also known as Dynamic Voltage and Frequency Scaling (DV
 
 *Power State Space:*
 In low-power design, the "power state space" encompasses the various states or modes in which a semiconductor device operates concerning power consumption. It includes operational modes like Active, Sleep, Idle, and Power-Off. Managing transitions between these states is crucial for minimizing power consumption without compromising functionality, involving techniques like power gating, voltage scaling, clock gating, and efficient power management units (PMUs).
+![lpd7](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/56578a2d-df4f-48b6-a478-53c01dbc1355)
 
 **Low Power DUT:**
 
 Low power DUTs are engineered with specialized design techniques to reduce power consumption while maintaining essential functionalities. These designs often incorporate strategies like power gating, voltage scaling, and advanced verification techniques to achieve low power while ensuring correct functionality and performance.
+![lpd8](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/868576eb-1452-4e74-aeb5-66b1435cc938)
 
 **Low Power VMM Testbench:**
+![lpd9](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/31a8c3bc-1494-402b-ae1f-5c28872c2611)
 
 *Testbench Architecture:*
 A low-power VMM testbench is designed for verifying low-power IC designs. Its architecture includes components modeling power management units, power domains, and power modes of the DUT.
@@ -5658,6 +5672,7 @@ This comprehensive approach ensures ARM-based SoCs achieve optimal power efficie
 
 <details> 
 <summary> Module 5 </summary>
+	
 **Island Ordering in Low-Power Design:**
 
 Island ordering stands out as a pivotal technique within low-power design, strategically minimizing power consumption by optimizing the arrangement of voltage islands on the chip. Voltage islands, clusters of logic blocks operating at distinct supply voltages, are strategically placed to shorten power supply wires, thereby mitigating voltage drop and, consequently, reducing power consumption.
