@@ -5106,8 +5106,10 @@ Now by running the modified testbench file, the obtained result is almost the sa
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_4.png">
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_5.png">
 
+</details>
+
 <details>
-<symmary> Day 2</symmary>
+<summary> Day 2</summary>
 https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_1.png
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_4.png">
 
@@ -5655,7 +5657,7 @@ This comprehensive approach ensures ARM-based SoCs achieve optimal power efficie
 </details>
 
 <details> 
-<summary> Day 5 </summary>
+<summary> Module 5 </summary>
 **Island Ordering in Low-Power Design:**
 
 Island ordering stands out as a pivotal technique within low-power design, strategically minimizing power consumption by optimizing the arrangement of voltage islands on the chip. Voltage islands, clusters of logic blocks operating at distinct supply voltages, are strategically placed to shorten power supply wires, thereby mitigating voltage drop and, consequently, reducing power consumption.
