@@ -5500,26 +5500,407 @@ Different procs used throught the training is given below:
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_7_synthesis_log.png">
 
 **Procs**
+- reopenStdout.proc
+  ~~~ruby
+    #!/bin/tclsh
+#proc to redirect screen log to file
+proc reopenStdout {file} {
+    close stdout
+    open $file w       
+}
+~~~
 
+- set_multi_cpu_usage.proc
 
-Using the procs to write timing files
+~~~ruby
+#!/bin/tclsh
+proc set_multi_cpu_usage {args} {
+        array set options {-localCpu <num_of_threads> -help "" }
+        foreach {switch value} [array get options] {
+        puts "Option $switch is $value"
+        }
+        while {[llength $args]} {
+        puts "llength is [llength $args]"
+        puts "lindex 0 of \"$args\" is [lindex $args 0]"
+                switch -glob -- [lindex $args 0] {
+                -localCpu {
+                           puts "old args is $args"
+                           set args [lassign $args - options(-localCpu)]
+                           puts "new args is \"$args\""
+                           puts "set_num_threads $options(-localCpu)"
+                          }
+                -help {
+                           puts "old args is $args"
+                           set args [lassign $args - options(-help) ]
+                           puts "new args is \"$args\""
+                           puts "Usage: set_multi_cpu_usage -localCpu <num_of_threads> -help"
+                           puts "\t-localCpu - To limit number of threads used"
+                           puts "\t-help - To print details of proc"
+                      }
+                }
+        }
+}
+~~~
+
+- read_lib.proc
+~~~ruby
+#!/bin/tclsh
+proc read_lib args {
+	# Setting command parameter options and its values
+	array set options {-late <late_lib_path> -early <early_lib_path> -help ""}
+	while {[llength $args]} {
+		switch -glob -- [lindex $args 0] {
+		-late {
+			set args [lassign $args - options(-late) ]
+			puts "set_late_celllib_fpath $options(-late)"
+		      }
+		-early {
+			set args [lassign $args - options(-early) ]
+			puts "set_early_celllib_fpath $options(-early)"
+		       }
+		-help {
+			set args [lassign $args - options(-help) ]
+			puts "Usage: read_lib -late <late_lib_path> -early <early_lib_path>"
+			puts "-late <provide late library path>"
+			puts "-early <provide early library path>"
+			puts "-help - Provides user deatails on how to use the command"
+		      }	
+		default break
+		}
+	}
+}
+~~~
+
+read_verilog.proc
+
+~~~ruby
+proc read_verilog {arg1} {
+puts "set_verilog_fpath $arg1"
+}
+~~~
+
+- read_sdc.proc
+
+  ~~~ruby
+  proc read_sdc {arg1} {
+set sdc_dirname [file dirname $arg1]
+set sdc_filename [lindex [split [file tail $arg1] .] 0 ]
+set sdc [open $arg1 r]
+set tmp_file [open /tmp/1 w]
+puts -nonewline $tmp_file [string map {"\[" "" "\]" " "} [read $sdc]]     
+close $tmp_file
+#-----------------------------------------------------------------------------#
+#----------------converting create_clock constraints--------------------------#
+#-----------------------------------------------------------------------------#
+set tmp_file [open /tmp/1 r]
+set timing_file [open /tmp/3 w]
+set lines [split [read $tmp_file] "\n"]
+set find_clocks [lsearch -all -inline $lines "create_clock*"]
+foreach elem $find_clocks {
+	set clock_port_name [lindex $elem [expr {[lsearch $elem "get_ports"]+1}]]
+	set clock_period [lindex $elem [expr {[lsearch $elem "-period"]+1}]]
+	set duty_cycle [expr {100 - [expr {[lindex [lindex $elem [expr {[lsearch $elem "-waveform"]+1}]] 1]*100/$clock_period}]}]
+	puts $timing_file "clock $clock_port_name $clock_period $duty_cycle"
+	}
+close $tmp_file
+#-----------------------------------------------------------------------------#
+#----------------converting set_clock_latency constraints---------------------#
+#-----------------------------------------------------------------------------#
+set find_keyword [lsearch -all -inline $lines "set_clock_latency*"]
+set tmp2_file [open /tmp/2 w]
+set new_port_name ""
+foreach elem $find_keyword {
+        set port_name [lindex $elem [expr {[lsearch $elem "get_clocks"]+1}]]
+	if {![string match $new_port_name $port_name]} {
+        	set new_port_name $port_name
+        	set delays_list [lsearch -all -inline $find_keyword [join [list "*" " " $port_name " " "*"] ""]]
+        	set delay_value ""
+        	foreach new_elem $delays_list {
+        		set port_index [lsearch $new_elem "get_clocks"]
+        		lappend delay_value [lindex $new_elem [expr {$port_index-1}]]
+        	}
+		puts -nonewline $tmp2_file "\nat $port_name $delay_value"
+	}
+}
+close $tmp2_file
+set tmp2_file [open /tmp/2 r]
+puts -nonewline $timing_file [read $tmp2_file]
+close $tmp2_file
+#-----------------------------------------------------------------------------#
+#----------------converting set_clock_transition constraints------------------#
+#-----------------------------------------------------------------------------#
+set find_keyword [lsearch -all -inline $lines "set_clock_transition*"]
+set tmp2_file [open /tmp/2 w]
+set new_port_name ""
+foreach elem $find_keyword {
+        set port_name [lindex $elem [expr {[lsearch $elem "get_clocks"]+1}]]
+        if {![string match $new_port_name $port_name]} {
+		set new_port_name $port_name
+		set delays_list [lsearch -all -inline $find_keyword [join [list "*" " " $port_name " " "*"] ""]]
+        	set delay_value ""
+        	foreach new_elem $delays_list {
+        		set port_index [lsearch $new_elem "get_clocks"]
+        		lappend delay_value [lindex $new_elem [expr {$port_index-1}]]
+        	}
+        	puts -nonewline $tmp2_file "\nslew $port_name $delay_value"
+	}
+}
+close $tmp2_file
+set tmp2_file [open /tmp/2 r]
+puts -nonewline $timing_file [read $tmp2_file]
+close $tmp2_file
+#-----------------------------------------------------------------------------#
+#----------------converting set_input_delay constraints-----------------------#
+#-----------------------------------------------------------------------------#
+set find_keyword [lsearch -all -inline $lines "set_input_delay*"]
+set tmp2_file [open /tmp/2 w]
+set new_port_name ""
+foreach elem $find_keyword {
+        set port_name [lindex $elem [expr {[lsearch $elem "get_ports"]+1}]]
+        if {![string match $new_port_name $port_name]} {
+                set new_port_name $port_name
+        	set delays_list [lsearch -all -inline $find_keyword [join [list "*" " " $port_name " " "*"] ""]]
+		set delay_value ""
+        	foreach new_elem $delays_list {
+        		set port_index [lsearch $new_elem "get_ports"]
+        		lappend delay_value [lindex $new_elem [expr {$port_index-1}]]
+        	}
+        	puts -nonewline $tmp2_file "\nat $port_name $delay_value"
+	}
+}
+close $tmp2_file
+set tmp2_file [open /tmp/2 r]
+puts -nonewline $timing_file [read $tmp2_file]
+close $tmp2_file
+#-----------------------------------------------------------------------------#
+#----------------converting set_input_transition constraints------------------#
+#-----------------------------------------------------------------------------#
+set find_keyword [lsearch -all -inline $lines "set_input_transition*"]
+set tmp2_file [open /tmp/2 w]
+set new_port_name ""
+foreach elem $find_keyword {
+        set port_name [lindex $elem [expr {[lsearch $elem "get_ports"]+1}]]
+        if {![string match $new_port_name $port_name]} {
+                set new_port_name $port_name
+        	set delays_list [lsearch -all -inline $find_keyword [join [list "*" " " $port_name " " "*"] ""]]
+        	set delay_value ""
+        	foreach new_elem $delays_list {
+        		set port_index [lsearch $new_elem "get_ports"]
+        		lappend delay_value [lindex $new_elem [expr {$port_index-1}]]
+        	}
+        	puts -nonewline $tmp2_file "\nslew $port_name $delay_value"
+	}
+}
+close $tmp2_file
+set tmp2_file [open /tmp/2 r]
+puts -nonewline $timing_file [read $tmp2_file]
+close $tmp2_file
+#-----------------------------------------------------------------------------#
+#---------------converting set_output_delay constraints-----------------------#
+#-----------------------------------------------------------------------------#
+set find_keyword [lsearch -all -inline $lines "set_output_delay*"]
+set tmp2_file [open /tmp/2 w]
+set new_port_name ""
+foreach elem $find_keyword {
+        set port_name [lindex $elem [expr {[lsearch $elem "get_ports"]+1}]]
+        if {![string match $new_port_name $port_name]} {
+                set new_port_name $port_name
+        	set delays_list [lsearch -all -inline $find_keyword [join [list "*" " " $port_name " " "*"] ""]]
+        	set delay_value ""
+        	foreach new_elem $delays_list {
+        		set port_index [lsearch $new_elem "get_ports"]
+        		lappend delay_value [lindex $new_elem [expr {$port_index-1}]]
+        	}
+        	puts -nonewline $tmp2_file "\nrat $port_name $delay_value"
+	}
+}
+
+close $tmp2_file
+set tmp2_file [open /tmp/2 r]
+puts -nonewline $timing_file [read $tmp2_file]
+close $tmp2_file
+#-----------------------------------------------------------------------------#
+#-------------------converting set_load constraints---------------------------#
+#-----------------------------------------------------------------------------#
+set find_keyword [lsearch -all -inline $lines "set_load*"]
+set tmp2_file [open /tmp/2 w]
+set new_port_name ""
+foreach elem $find_keyword {
+        set port_name [lindex $elem [expr {[lsearch $elem "get_ports"]+1}]]
+        if {![string match $new_port_name $port_name]} {
+                set new_port_name $port_name
+        	set delays_list [lsearch -all -inline $find_keyword [join [list "*" " " $port_name " " "*" ] ""]]
+        	set delay_value ""
+        	foreach new_elem $delays_list {
+        	set port_index [lsearch $new_elem "get_ports"]
+        	lappend delay_value [lindex $new_elem [expr {$port_index-1}]]
+        	}
+        	puts -nonewline $timing_file "\nload $port_name $delay_value"
+	}
+}
+close $tmp2_file
+set tmp2_file [open /tmp/2 r]
+puts -nonewline $timing_file  [read $tmp2_file]
+close $tmp2_file
+#-----------------------------------------------------------------------------#
+close $timing_file
+set ot_timing_file [open $sdc_dirname/$sdc_filename.timing w]
+set timing_file [open /tmp/3 r]
+while {[gets $timing_file line] != -1} {
+        if {[regexp -all -- {\*} $line]} {
+                set bussed [lindex [lindex [split $line "*"] 0] 1]
+                set final_synth_netlist [open $sdc_dirname/$sdc_filename.final.synth.v r]
+                while {[gets $final_synth_netlist line2] != -1 } {
+                        if {[regexp -all -- $bussed $line2] && [regexp -all -- {input} $line2] && ![string match "" $line]} {
+                        puts -nonewline $ot_timing_file "\n[lindex [lindex [split $line "*"] 0 ] 0 ] [lindex [lindex [split $line2 ";"] 0 ] 1 ] [lindex [split $line "*"] 1 ]"
+                        } elseif {[regexp -all -- $bussed $line2] && [regexp -all -- {output} $line2] && ![string match "" $line]} {
+                        puts -nonewline $ot_timing_file "\n[lindex [lindex [split $line "*"] 0 ] 0 ] [lindex [lindex [split $line2 ";"] 0 ] 1 ] [lindex [split $line "*"] 1 ]"
+                        }
+                }
+        } else {
+        puts -nonewline $ot_timing_file  "\n$line"
+        }
+}
+close $timing_file
+puts "set_timing_fpath $sdc_dirname/$sdc_filename.timing"
+}
+~~~
+  
+
+Using these procs to write timing files:
 
 In below code procs are used to create timing configuration files required for the OpenTimer tool.
 
-
-The ohtputs obtained after processing the proc files:
-
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_8_after_procs.png">
+The outputs obtained after processing the proc files:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_8_after_procs.png">
+
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_9_after_procs.png">
 
 
 Data extraction from .results file for QOR:
 
+~~~ruby
+#################################### RESULTS ########################################################################
+#
+
+# Find worst output violation
+set worst_RAT_slack "-"
+set report_file [open $Output_Directory/$Design_Name.results r]
+set pattern {RAT}
+while { [gets $report_file line] != -1 } {
+	if {[regexp $pattern $line]} {
+		set worst_RAT_slack "[expr {[lindex $line 3]/1000}]ns"
+		break
+	} else {
+		continue
+	}
+}
+close $report_file
+
+# Find number of output violation
+set report_file [open $Output_Directory/$Design_Name.results r]
+set count 0
+while { [gets $report_file line] != -1 } {
+	incr count [regexp -all -- $pattern $line]
+}
+set Number_output_violations $count
+close $report_file
+
+# Find worst setup violation
+set worst_negative_setup_slack "-"
+set report_file [open $Output_Directory/$Design_Name.results r]
+set pattern {Setup}
+while { [gets $report_file line] != -1 } {
+	if {[regexp $pattern $line]} {
+		set worst_negative_setup_slack "[expr {[lindex $line 3]/1000}]ns"
+		break
+	} else {
+		continue
+	}
+}
+close $report_file
+
+# Find number of setup violation
+set report_file [open $Output_Directory/$Design_Name.results r]
+set count 0
+while { [gets $report_file line] != -1 } {
+	incr count [regexp -all -- $pattern $line]
+}
+set Number_of_setup_violations $count
+close $report_file
+
+# Find worst hold violation
+set worst_negative_hold_slack "-"
+set report_file [open $Output_Directory/$Design_Name.results r]
+set pattern {Hold}
+while { [gets $report_file line] != -1 } {
+	if {[regexp $pattern $line]} {
+		set worst_negative_hold_slack "[expr {[lindex $line 3]/1000}]ns"
+		break
+	} else {
+		continue
+	}
+}
+close $report_file
+
+# Find number of hold violation
+set report_file [open $Output_Directory/$Design_Name.results r]
+set count 0
+while {[gets $report_file line] != -1} {
+	incr count [regexp -all -- $pattern $line]
+}
+set Number_of_hold_violations $count
+close $report_file
+
+# Find number of instance
+set pattern {Num of gates}
+set report_file [open $Output_Directory/$Design_Name.results r]
+while {[gets $report_file line] != -1} {
+	if {[regexp -all -- $pattern $line]} {
+		set Instance_count [lindex [join $line " "] 4 ]
+		break
+	} else {
+		continue
+	}
+}
+close $report_file
+
+# Capturing end time of the script
+set end_time [clock clicks -microseconds]
+
+# Setting total script runtime to 'time_elapsed_in_sec' variable
+set time_elapsed_in_sec "[expr {($end_time-$start_time)/1000000}]sec"
+puts "\nInfo: Design Name = $Design_Name"
+puts "\nInfo: Worst RAT slack = $worst_RAT_slack"
+puts "\nInfo: Number of output violations = $Number_output_violations"
+puts "\nInfo: Worst negative setup slack = $worst_negative_setup_slack"
+puts "\nInfo: Number of setup violation = $Number_of_setup_violations"
+puts "\nInfo: Worst Negative Hold Slack = $worst_negative_hold_slack"
+puts "\nInfo: Number of Hold Violations = $Number_of_hold_violations"
+puts "\nInfo: Number of Instances = $Instance_count"
+puts "\nInfo: Time elapsed = $time_elapsed_in_sec"
+~~~
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/6_1.png">
+
+~~~ruby
+# Quality of Results (QoR) generation
+puts "\n"
+puts "                                                           ****PRELAYOUT TIMING RESULTS_SYNUI****\n"
+set formatStr {%15s%14s%21s%16s%16s%15s%15s%15s%15s}
+puts [format $formatStr "-----------" "-------" "--------------" "---------" "---------" "--------" "--------" "-------" "-------"]
+puts [format $formatStr "Design Name" "Runtime" "Instance Count" "WNS Setup" "FEP Setup" "WNS Hold" "FEP Hold" "WNS RAT" "FEP RAT"]
+puts [format $formatStr "-----------" "-------" "--------------" "---------" "---------" "--------" "--------" "-------" "-------"]
+foreach design_name $Design_Name runtime $time_elapsed_in_sec instance_count $Instance_count wns_setup $worst_negative_setup_slack fep_setup $Number_of_setup_violations wns_hold $worst_negative_hold_slack fep_hold $Number_of_hold_violations wns_rat $worst_RAT_slack fep_rat $Number_output_violations {
+	puts [format $formatStr $design_name $runtime $instance_count $wns_setup $fep_setup $wns_hold $fep_hold $wns_rat $fep_rat]
+}
+puts [format $formatStr "-----------" "-------" "--------------" "---------" "---------" "--------" "--------" "-------" "-------"]
+puts "\n"
+~~~
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/final_qor.png">
 
