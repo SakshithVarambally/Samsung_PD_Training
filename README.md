@@ -5422,21 +5422,102 @@ The following are the outputs generated after this run:
 
 <details> 
 <summary> Day 5 </summary>
+**Day 5 Task: Automating Synthesis with Yosys and Generating OpenTimer Files**
+
+The focus is on streamlining the synthesis process using Yosys and preparing essential files for the subsequent OpenTimer tool. Here's a breakdown of the steps involved:
+
+**1. Yosys Synthesis Automation:**
+
+In this initial step, we create a .ys file (Yosys script) to guide the Yosys tool through the synthesis process. This script serves as a blueprint, defining the synthesis steps, optimizations, and target configurations. Yosys utilizes this script to generate the necessary output files for further stages.
+
+**2. OpenTimer File Generation:**
+
+The .ys script sets the stage for OpenTimer file preparation. After Yosys completes synthesis, we generate crucial files required by the OpenTimer Static Timing Analysis (STA) tool. These include:
+
+- **.conf file:** Configuration file specifying settings and options for OpenTimer.
+  
+- **.spef file:** Standard Parasitic Exchange Format file containing information about parasitic elements in the design, crucial for accurate timing analysis.
+
+- **Timing file:** Capturing timing information, essential for evaluating the quality of results (QoR) in subsequent stages.
+
+**3. OpenTimer Script Creation:**
+
+A dedicated OpenTimer script is crafted to orchestrate the Static Timing Analysis. This script is designed to take into account the specifics of our project, ensuring a tailored and accurate analysis of timing constraints and violations.
+
+**4. OpenTimer STA Execution:**
+
+Launching the OpenTimer tool using the created script initiates the Static Timing Analysis. OpenTimer rigorously examines timing constraints, evaluates delays, and identifies potential violations.
+
+**5. QoR Data Collection:**
+
+Post-STA, we gather comprehensive data to assess the Quality of Results (QoR). This involves extracting relevant information from the results generated during the OpenTimer run, including critical paths, slack values, and potential timing bottlenecks.
+
+**6. Tool-Standard QoR Output:**
+
+To present our findings in a standardized format, we compile the QoR data into a tool-standard output. This could be a concise and informative report detailing critical metrics, enabling a quick and insightful overview of the design's performance and adherence to timing constraints.
+
+By following this systematic approach, we ensure a seamless integration of Yosys synthesis and OpenTimer STA, ultimately yielding valuable insights into the design's timing characteristics and overall Quality of Results.
+
+The snaps below show the execution of the above mentioned steps:
+
+~~~ruby
+# Main Synthesis Script for yosys
+# ---------------------
+puts "\nInfo: Creating main synthesis script to be used by Yosys"
+set data "read_liberty -lib -ignore_miss_dir -setattr blackbox ${Late_Library_Path}"
+set filename "$Design_Name.ys"
+set fileId [open $Output_Directory/$filename "w"]
+puts -nonewline $fileId $data
+set netlist [glob -dir $Netlist_Directory *.v]
+foreach f $netlist {
+	puts -nonewline $fileId "\nread_verilog $f"
+}
+puts -nonewline $fileId "\nhierarchy -top $Design_Name"
+puts -nonewline $fileId "\nsynth -top $Design_Name"
+puts -nonewline $fileId "\nsplitnets -ports -format ___\ndfflibmap -liberty ${Late_Library_Path} \nopt"
+puts -nonewline $fileId "\nabc -liberty ${Late_Library_Path}"
+puts -nonewline $fileId "\nflatten"
+puts -nonewline $fileId "\nclean -purge\niopadmap -outpad BUFX2 A:Y -bits\nopt\nclean"
+puts -nonewline $fileId "\nwrite_verilog $Output_Directory/$Design_Name.synth.v"
+close $fileId
+puts "\nInfo: Synthesis script created and can be accessed from path $Output_Directory/$Design_Name.ys"
+~~~
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_1.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_2.png">
 
+Snap taken after synthesis stage:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_4_after_synthesis.png">
 
+Viewing the synthesis Log file:
+
+Procs can be used to create user-defined commands.
+Different procs used throught the training is given below:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_7_synthesis_log.png">
+
+**Procs**
+
+
+Using the procs to write timing files
+
+In below code procs are used to create timing configuration files required for the OpenTimer tool.
+
+
+The ohtputs obtained after processing the proc files:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_8_after_procs.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_8_after_procs.png">
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_9_after_procs.png">
 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/5_9_after_procs.png">
+
+Data extraction from .results file for QOR:
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/6_1.png">
 
