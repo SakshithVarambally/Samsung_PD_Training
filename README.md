@@ -6,6 +6,11 @@
  <summary>icc2_shell </summary>
 I invoked icc2_shell using the following commands: icc2_shell
 
+![2_inputs](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3353fa7c-217d-4a0a-b9d8-911707ae5364)
+![constraints_csv](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/529cfa12-52c6-4787-9845-34898124a0c0)
+![details_csv](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/af62fa21-9d2f-4508-a222-e07b145251c5)
+
+
 
 IC Compiler II is a complete netlist-to-GDSII implementation system that includes early design exploration and prototyping, detailed design planning, block implementation, chip assembly and sign-off driven design closure.
      
