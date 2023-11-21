@@ -5153,10 +5153,11 @@ else
 fi
 ~~~
 
-From the above code total of 5 general scenarios are created from the user's point of view in the bash script.
 
 The below snap shows all the files present in the directory which will be used in the subsequent steps.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_1.png">
+
+From the above code total of 5 general scenarios are created from the user's point of view in the bash script.
 
 - Case 1: No input file provided
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_2.png">
@@ -5190,7 +5191,7 @@ Review of input file - openMSP430_design_constraints.csv
 
 The below snap shows a glimpse of synui.tcl:
 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_1.
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_1">
 
 Output:
 
