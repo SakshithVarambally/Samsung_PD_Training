@@ -5092,37 +5092,252 @@ Now by running the modified testbench file, the obtained result is almost the sa
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/e29c0bfeda84ddee0e9969a46acb63bfe9a8704f/day28/waveform.png">
 
+
 </details>
 
 # TCL Workshop
 
 <details>
 <summary> Day 1 </summary>
+Day 1's task is to create a command 'synui'  (any nane that user wants) and pass a .csv file from the shell to the TCL script, taking into consideration many general scenarios from the user's point of view.
 
+![282279655-a4b6a17a-6624-4cdb-9af4-db9ada89d907](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/b8ed09cf-326a-441f-96c9-3dc9c4166d17)
+
+
+~~~ruby
+#!/bin/bash
+if [ $#argv -eq 0 ]
+then  
+       	echo "Info: Please provide a CSV file"
+	exit 1
+elif [ $#argv -gt 1 ]
+then 
+	echo "Info: Please provide  1 CSV file"
+	exit 1
+else 
+	if [[ $1 != *.csv && $1 != "-help" ]]
+		then
+			echo "Info: Please provide a .csv format file"
+			exit 1
+		fi
+fi
+
+if [ ! -f $1 ] || [ $1 == "-help" ]
+then
+	if [ $1 != "-help" ]
+	then
+		echo "Error: The file $1 is not found in current directory."
+		exit 1
+	else
+		echo "USAGE: ./tclbox <csv_file>"
+		echo 
+		echo " where <csv file> consists of 2 columns, below keyword being in 1st column and is Case Sensitive. Please request Niharika for sample csv file."
+		echo 
+		echo " <Design Name> is the name of top level module."
+		echo 
+		echo " <Output Directory> is the name of output directory where you want to dump synthesis script, synthesized netlist and timing reports."
+		echo 
+		echo " <Netlist Directory> is the name of directory where all RTL netlist are present."
+		echo 
+		echo " <Early Library Path> is the file path of the early cell library to be used for STA."
+		echo 
+		echo " <Late Library Path> is file path of the late cell library to be used for STA."
+		echo 
+		echo " <Constraints file> is csv file path of constraints to be used for STA."
+		exit 1
+	fi
+
+else
+       	echo "Info: CSV file accepted"
+       	tclsh tclbox.tcl $1
+fi
+~~~
+
+From the above code total of 5 general scenarios are created from the user's point of view in the bash script.
+
+The below snap shows all the files present in the directory which will be used in the subsequent steps.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_1.png">
 
+- Case 1: No input file provided
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_2.png">
+
+- Case 2: File provided is not of .csv format
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_3.png">
+
+-Case 3: provided .csv file does not exist in the directory.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_4.png">
+
+Case 4: type -help for usage information
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_5.png">
 
 </details>
 
 <details>
 <summary> Day 2</summary>
-https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_1.png
+
+Day 2 task:
+
+![282354024-7c319820-9bc4-4ea2-9442-be474378fa97](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/f6b9b169-fb06-4983-9d3e-f88b588ac336)
+![282354359-497b8036-4b3d-40b0-8a0b-ce16fdfe2035]
+
+
+![282354359-497b8036-4b3d-40b0-8a0b-ce16fdfe2035](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/db0d895d-56dd-4ead-9625-ae7a3b2fa12d)
+
+
+Review of input file - openMSP430_design_constraints.csv
+
+
+The below snap shows a glimpse of synui.tcl:
+
+<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_1.
+
+Output:
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_4.png">
 
-<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_6.png">
+Above code has set following variables.
+- Design Name : 'openMSP430'
+- Output Directory : './outdir_openMSP430'
+- Netlist Directory : './verilog'
+- Early Library Path : 'osu018_stdcells.lib'
+- Late Library Path : 'osu018_stdcells.lib'
+- Constraints File : 'openMSP430_design_constraints.csv'
+- Output directory : /home/vsduser/vsdsynth/outdir_openMSP430
+- RTL netlist directory : /home/vsduser/vsdsynth/verilog
+- Early cell library : /home/vsduser/vsdsynth/osu018_stdcells.lib
+- Late cell library : /home/vsduser/vsdsynth/osu018_stdcells.lib
+- Constraints file f : /home/vsduser/vsdsynth/openMSP430_design_constraints.csv
+
+Code for Processing openMSP430_design_constraints.csv file in synui.tcl:
+
+~~~ruby
+# Constraints csv file data processing for convertion to format[1](excel) and SDC
+
+puts "\nInfo: Dumping SDC constraints for $Design_Name"
+::struct::matrix m1
+set f1 [open $Constraints_File]
+csv::read2matrix $f1 m1 , auto
+close $f1
+set n_rows_concsv [m1 rows]
+set n_columns_concsv [m1 columns]
+# Finding row number starting for CLOCKS section
+set clocks_start_row [lindex [lindex [m1 search all CLOCKS] 0] 1]
+# Finding column number starting for CLOCKS section
+set clocks_start_column [lindex [lindex [m1 search all CLOCKS] 0] 0]
+# Finding row number starting for INPUTS section
+set inputs_start [lindex [lindex [m1 search all INPUTS] 0] 1]
+# Finding row number starting for OUTPUTS section
+set outputs_start [lindex [lindex [m1 search all OUTPUTS] 0] 1]
+
+puts "\nInfo: Listing value of variables for user debug"
+puts "Number of rows in CSV file = $n_rows_concsv"
+puts "Number of columns in CSV file = $n_columns_concsv"
+puts "CLOCKS starting row in CSV file = $clocks_start_row"
+puts "CLOCKS starting column in CSV file = $clocks_start_column"
+puts "INPUTS starting row in CSV file = $inputs_start "
+puts "OUTPUTS starting row in CSV file = $outputs_start
+~~~
+
+Output after processing constraint file and listing the values of the corresponding variables:
+
+
+"<img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/2_6.png">
 </details>
 
 <details>
 <summary> Day 3 </summary>
 
+Processing Clock and Input Constraints from CSV and dumping SDC
+
+The task for Day 3 was to analyze clock and input constraints in a CSV file and generate the SDC file.
+In addition to a number of matrix search algorithms, it also uses an algorithm to distinguish between inputs that are buses and bits.
+Processing of the constraints in .csv file for CLOCKS and generating SDC
+
+
+~~~ruby
+# Finding the starting column number for input clock latency in INPUTS section
+set ip_erd_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] early_rise_delay] 0 ] 0 ]
+set ip_efd_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] early_fall_delay] 0 ] 0 ]
+set ip_lrd_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] late_rise_delay] 0 ] 0 ]
+set ip_lfd_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] late_fall_delay] 0 ] 0 ]
+
+# Finding column number starting for input clock transition in INPUTS section only
+set ip_ers_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] early_rise_slew] 0 ] 0 ]
+set ip_efs_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] early_fall_slew] 0 ] 0 ]
+set ip_lrs_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] late_rise_slew] 0 ] 0 ]
+set ip_lfs_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] late_fall_slew] 0 ] 0 ]
+
+# Finding column number starting for input related clock in INPUTS section only
+set ip_rc_st_col [lindex [lindex [m1 search rect $clocks_start_column $inputs_start [expr {$n_columns_concsv-1}] [expr {$outputs_start-1}] clocks] 0 ] 0 ]
+
+# Setting variables for actual input row start and end
+set i [expr {$inputs_start+1}]
+set end_of_inputs [expr {$outputs_start-1}]
+
+puts "\nInfo-SDC: Working on input constraints.."
+puts "\nInfo-SDC: Categorizing input ports as bits and busses"
+
+# while loop to write constraint commands to .sdc file
+while { $i < $end_of_inputs } {
+# Checking if input is bussed or not
+	set netlist [glob -dir $Netlist_Directory *.v]
+	set tmp_file [open /tmp/1 w]
+	foreach f $netlist {
+		set fd [open $f]
+		while { [gets $fd line] != -1 } {
+			set pattern1 " [m1 get cell 0 $i];"
+			if { [regexp -all -- $pattern1 $line] } {
+				set pattern2 [lindex [split $line ";"] 0]
+				if { [regexp -all {input} [lindex [split $pattern2 "\S+"] 0]] } {
+					set s1 "[lindex [split $pattern2 "\S+"] 0] [lindex [split $pattern2 "\S+"] 1] [lindex [split $pattern2 "\S+"] 2]"
+					puts -nonewline $tmp_file "\n[regsub -all {\s+} $s1 " "]"
+				
+				}
+			}
+		}
+		close $fd
+	}
+	close $tmp_file
+	set tmp_file [open /tmp/1 r]
+	set tmp2_file [open /tmp/2 w]
+	puts -nonewline $tmp2_file "[join [lsort -unique [split [read $tmp_file] \n]] \n]"
+	close $tmp_file
+	close $tmp2_file
+	set tmp2_file [open /tmp/2 r]
+	set count [llength [read $tmp2_file]]
+	close $tmp2_file
+	if {$count > 2} {
+		set inp_ports [concat [m1 get cell 0 $i]*]
+	} else {
+		set inp_ports [m1 get cell 0 $i]
+	}
+		# set_input_transition SDC command to set input transition values
+	puts -nonewline $sdc_file "\nset_input_transition -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -min -rise -source_latency_included [m1 get cell $ip_ers_st_col $i] \[get_ports $inp_ports\]"
+	puts -nonewline $sdc_file "\nset_input_transition -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -min -fall -source_latency_included [m1 get cell $ip_efs_st_col $i] \[get_ports $inp_ports\]"
+	puts -nonewline $sdc_file "\nset_input_transition -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -max -rise -source_latency_included [m1 get cell $ip_lrs_st_col $i] \[get_ports $inp_ports\]"
+	puts -nonewline $sdc_file "\nset_input_transition -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -max -fall -source_latency_included [m1 get cell $ip_lfs_st_col $i] \[get_ports $inp_ports\]"
+# set_input_delay SDC command to set input latency values
+	puts -nonewline $sdc_file "\nset_input_delay -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -min -rise -source_latency_included [m1 get cell $ip_erd_st_col $i] \[get_ports $inp_ports\]"
+	puts -nonewline $sdc_file "\nset_input_delay -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -min -fall -source_latency_included [m1 get cell $ip_efd_st_col $i] \[get_ports $inp_ports\]"
+	puts -nonewline $sdc_file "\nset_input_delay -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -max -rise -source_latency_included [m1 get cell $ip_lrd_st_col $i] \[get_ports $inp_ports\]"
+	puts -nonewline $sdc_file "\nset_input_delay -clock \[get_clocks [m1 get cell $ip_rc_st_col $i]\] -max -fall -source_latency_included [m1 get cell $ip_lfd_st_col $i] \[get_ports $inp_ports\]"
+	set i [expr {$i+1}]
+
+}
+~~~
+
+Output:
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_1.png">
 
+Output of constraints processing:
+
+Successfully processed the input data from the CSV file, distinguishing between bit and bus inputs. The corresponding SDC commands based on the inputs have been accurately written to an .sdc file. Enclosed are terminal screenshots featuring numerous "puts" displaying variables, user debug information, and the generated output.sdc file. 
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_2.png">
+
+The csv file contains the CLOCKS data and clock-based SDC commands have been generated into the.sdc file. The clock name = dco_clk_synui can be observed in the below snap.
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_4_sdc.png">
 
@@ -5131,9 +5346,65 @@ https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716
 <details>
 <summary> Day 4 </summary>
 
+The task of Day 4 includes processing the output section and generating the SDC, checking the Yosys hierarchy and resolving errors.
+Processing of the constraints .csv file for OUTPUTS and dumping SDC commands to .sdc
+
+Below code will process the csv file for the outputs data and then generate the output-based SDC instructions into SDC file.
+
+Hierarchy Check script:
+
+~~~ruby
+# Hierarchy Check
+puts "\nInfo: Creating hierarchy check script to be used by Yosys"
+set data "read_liberty -lib -ignore_miss_dir -setattr blackbox ${Late_Library_Path}"
+set filename "$Design_Name.hier.ys"
+set fileId [open $Output_Directory/$filename "w"]
+puts -nonewline $fileId $data
+set netlist [glob -dir $Netlist_Directory *.v]
+foreach f $netlist {
+	set data $f
+	puts -nonewline $fileId "\nread_verilog $f"
+	puts "\nInfo: Netlist being read for user debug: $f" 
+}
+puts -nonewline $fileId "\nhierarchy -check"
+close $fileId
+
+# Hierarchy check error handling
+# Hierarchy check error handling done to see any errors popping up in above script.
+# Running hierarchy check in yosys by dumping log to log file and catching execution message
+set error_flag [catch {exec yosys -s $Output_Directory/$Design_Name.hier.ys >& $Output_Directory/$Design_Name.hierarchy_check.log} msg]
+puts "Errfor flag value for user debug: $error_flag"
+if { $error_flag } {
+	set filename "$Output_Directory/$Design_Name.hierarchy_check.log"
+	# EDA tool specific hierarchy error search pattern
+	set pattern {referenced in module}
+	set count 0
+	set fid [open $filename r]
+	while { [gets $fid line] != -1 } {
+		incr count [regexp -all -- $pattern $line]
+		if { [regexp -all -- $pattern $line] } {
+			puts "\nError: Module [lindex $line 2] is not part of design $Design_Name. Please correct RTL in the path '$Netlist_Directory'"
+			puts "\nInfo: Hierarchy check FAIL"
+		}
+	}
+	close $fid
+	puts "\nInfo: Please find hierarchy check details in '[file normalize $Output_Directory/$Design_Name.hierarchy_check.log]' for more info. Exiting..."
+	
+} else {
+	puts "\nInfo: Hierarchy check PASS"
+	puts "\nInfo: Please find hierarchy check details in '[file normalize $Output_Directory/$Design_Name.hierarchy_check.log]' for more info"
+}
+~~~
+
+The following are the outputs generated after this run:
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_6_after_hierarchy_check_pass.png">
 
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_7_hier_outputs.png">
+
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/3_8.png">
 
