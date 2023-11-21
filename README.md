@@ -6,9 +6,6 @@
  <summary>icc2_shell </summary>
 I invoked icc2_shell using the following commands: icc2_shell
 
-![2_inputs](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3353fa7c-217d-4a0a-b9d8-911707ae5364)
-![constraints_csv](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/529cfa12-52c6-4787-9845-34898124a0c0)
-![details_csv](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/af62fa21-9d2f-4508-a222-e07b145251c5)
 
 
 
@@ -5170,10 +5167,15 @@ From the above code total of 5 general scenarios are created from the user's poi
 - Case 2: File provided is not of .csv format
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_3.png">
 
--Case 3: provided .csv file does not exist in the directory.
+-Case 3: Providing more tham 1 argument.
+
+![2_inputs](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/3353fa7c-217d-4a0a-b9d8-911707ae5364)
+
+
+-Case 4: provided .csv file does not exist in the directory.
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_4.png">
 
-Case 4: type -help for usage information
+Case 5: type -help for usage information
 
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/1_5.png">
 
@@ -5192,6 +5194,8 @@ Day 2 task:
 
 
 Review of input file - openMSP430_design_constraints.csv
+
+![constraints_csv](https://github.com/SakshithVarambally/Samsung_PD_Training/assets/142480548/529cfa12-52c6-4787-9845-34898124a0c0)
 
 
 The below snap shows a glimpse of synui.tcl:
