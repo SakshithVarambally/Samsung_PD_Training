@@ -5902,6 +5902,13 @@ puts [format $formatStr "-----------" "-------" "--------------" "---------" "--
 puts "\n"
 ~~~
 
+The final output for QoR(Quality of results) is shown below with the below meanings:
+
+WNS - worst negative slack.
+RAT - Required arrival time.
+FEP - Failing end points.
+
+
 <img width="1085" alt="yosys" src="https://github.com/SakshithVarambally/Samsung_PD_Training/blob/dbe6775b2bd1fd716da9486bbf650a52cfe677b8/TCL_workshop/final_qor.png">
 
 
